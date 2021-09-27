@@ -8,27 +8,14 @@
 
 ## Personas
 
-Pedro Paulo tem 26 anos, é arquiteto recém-formado e autônomo. Pensa em
-se desenvolver profissionalmente através de um mestrado fora do país,
-pois adora viajar, é solteiro e sempre quis fazer um intercâmbio. Está
-buscando uma agência que o ajude a encontrar universidades na Europa
-que aceitem alunos estrangeiros.
+<strong>Wellington</strong> tem 47 anos, e já foi motorista de ônibus e taxi. Ele mora no centro da cidade e tem carro próprio que o possibilita ser motorista de aplicativo de viagem, sua principal fonte de renda aliás. Por não ter muito poder aquisitivo, o Wellington vive sofrendo com a mal optimização dos aplicativos de GPS em seu celular, além de reclamar muito dos diversos problemas ocasionados nas rotas geradas automaticamente. Outro problema que afeta negativamente a vida do motorista é a dificuldade de entender o mapa do aplicativo, por ter uma interface muito poluída com informações desnecessárias para a usabilidade dele.
 
+<strong>Adriano</strong> tem 35 anos e também é motorista de aplicativo de viagem, além de ser entregador de aplicativo (motoboy). Por morar em uma região periférica, tem muito apreço pela segurança, tanto no trânsito como pessoal. Ele é extremamente pontual e não gosta de atrasos, por isso se sente muito frustrado quando as viagens demoram mais do que o informado pelos aplicativos. Atualmente ele resolve esse problema ele negocia com o cliente para não ter problemas. Outro problema que afeta a vida do Adriano é ausência de indicação da elevação das ruas. Quando elas são muito íngremes, o carro dele não consegue subi-las.
 
-> Enumere e detalhe as personas da sua solução. Para
-> tanto, baseie-se tanto nos documentos disponibilizados na disciplina
-> e/ou nos seguintes links:
->
-> **Links Úteis**:
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Hotmart](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [Mapa de Empatia](https://resultadosdigitais.com.br/blog/mapa-da-empatia/)
-> - [Mapa de Stalkeholders](https://www.racecomunicacao.com.br/blog/como-fazer-o-mapeamento-de-stakeholders/)
->
-> Lembre-se que você deve ser enumerar e descrever precisamente e
-> personalizada todos os clientes ideais que sua solução almeja.
+<strong>Luiz</strong> tem 26 anos e é um profissional liberal. Ele sai de casa quase todos os dias, inclusive nos finais de semana para lazer, e por não ter carro próprio, ele utiliza aplicativos de viagem e entrega. Por ser um usuário ativo desses serviços, ele se sente irritado quando o GPS do aplicativo de viagem erra o caminho, causando-lhe um atraso, ou quando algum produto erra o endereço. Ele tem o sonho de comprar um carro próprio e parar de usar esses aplicativos.
+
+<strong>Guilherme</strong> tem 25 anos e mora na região central da cidade. Ele é recém habilitado e já tem carro próprio. Por não ter muita experiência no trânsito e muito menos com mapas e GPS, ele se depara com muitos problemas no dia-dia com os aplicativos de rotas GPS. Um exemplo é quando o carro morre em um local muito movimentado, isso deixa-o extremamente irritado e nervoso. Ele soluciona esse problema optando por fazer rotas que passam em ruas com o trânsito mais tranquilo, o que é um pouco difícil para ele.
+
 
 ## Histórias de Usuários
 
