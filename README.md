@@ -6,7 +6,7 @@ Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.
 ## Alunos integrantes da equipe
 
 * Daniel Jost Andrade
-* Frederico
+* Frederico dos Santos Ferreira de Andrade
 * Igor de Oliveira Martins dos Santos
 * Nikolas Augusto Vieira Louret
 * Rafael Fernandino Vitoretti
