@@ -9,7 +9,7 @@ para a realização final do trabalho.
 
 |       Papel       |                  Nome                    |
 | ----------------- | ---------------------------------------- |
-| Product Owner     | Daniel Jost Andrade                      |
+| Membro da equipe  | Daniel Jost Andrade                      |
 | Membro da equipe  | Frederico dos Santos Ferreira de Andrade |
 | Membro da equipe  | Igor de Oliveira Martins dos Santos      |
 | Membro da equipe  | Nikolas Augusto Vieira Louret            |
