@@ -1,19 +1,24 @@
 # Informações do Projeto
-`TÍTULO DO PROJETO`  
+
+`Klug`  
 
 Trabalho Interdisciplinar - Aplicacões Web
 
-`CURSO`
+`Engenharia de Software`
 
-`SEMESTRE`
+`Manhã`
+
+`1º Período`
 
 ## Participantes
 
-Os membros do grupo são: 
-- Fulano da Silva
-- Ciclano Albuquerque
+Os membros do grupo são:
 
-> Inclua a lista dos membros da equipe com seus nomes completos.
+- Daniel Jost Andrade
+- Frederico dos Santos Ferreira de Andrade
+- Igor de Oliveira Martins dos Santos
+- Nikolas Augusto Vieira Louret
+- Rafael Fernandino Vitoretti
 
 # Estrutura do Documento
 
