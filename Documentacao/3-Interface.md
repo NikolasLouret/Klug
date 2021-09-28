@@ -9,17 +9,17 @@
 > mapear todo fluxo de telas do site ou app. Essa técnica funciona
 > para alinhar os caminhos e as possíveis ações que o usuário pode
 > fazer junto com os membros de sua equipe.
->
-> **Links Úteis**:
->
-> - [User Flow: O Quê É e Como Fazer?](https://medium.com/7bits/fluxo-de-usu%C3%A1rio-user-flow-o-que-%C3%A9-como-fazer-79d965872534)
-> - [User Flow vs Site Maps](http://designr.com.br/sitemap-e-user-flow-quais-as-diferencas-e-quando-usar-cada-um/)
-
-* * *
 
 ## Wireframes
 
-### Fluxo 1: Usuário editar rota **antes** dela ser feita
+> Para o nosso projeto, pensamos inicialmente em fazer dois fluxos do usuário para usar nossa aplicação.
+>
+> - No primeiro fluxo, o usuário pode editar sua rota antes mesmo de ser criada. É útil nos casos em que o usuário já conhece a região e não quer passar por ali por algum motivo.
+> - No segundo fluxo, o usuário cria sua rota e após ela ser criada ele tem as opções de seguir automaticamente com a rota feita pela aplicação ou marcar alguma área caso não queira passar naquela região.
+>
+> Ambos os fluxos terminam com a possibilidade do usuário poder conferir algumas informações da rota clicando na seta do lado direito da tela.
+
+### Fluxo 1: Usuário editar rota ***antes*** dela ser feita
 
 ### 1 - Home
 
@@ -47,7 +47,7 @@
 
 * * *
 
-### Fluxo 2: Usuário editar rota **depois** dela ser feita
+### Fluxo 2: Usuário editar rota ***depois*** dela ser feita
 
 ### 1 - Home
 
@@ -66,6 +66,7 @@
 ![Wireframe de Marcar Áreas Indesejadas (após criar rota)](./images/8%20-%20Marcar-Área-Indesejada.png)
 
 ### 5 - Rota Atualizada (após marcar áreas indesejadas)
+
 > A área demarcada em vermelho indica os locais indesejados de passar.
 
 ![Wireframe de Rota Atualizada (após marcar áreas indesejadas)](./images/9%20-%20Rota-Atualizada.png)
@@ -77,3 +78,12 @@
 ### 7 - Mostrar Informações da Rota (com a rota atualizada)
 
 ![Wireframe de Mostrar Informações da Rota (com a rota atualizada)](./images/10%20-%20Mostrar-Rota-Infos%20-%20Home.png)
+* * *
+
+## Links
+
+> Caso queira ver nosso protótipo, ver sua apresentação e nosso mural no miro, eles podem ser acesados pelo link a seguir
+>
+> - [***Protótipo***](https://www.figma.com/file/1IGCD2fJ4EiFWup2q1DN7J/Rotas-GPS?node-id=0%3A1)
+> - [***Apresentação do Figma***](https://www.figma.com/proto/1IGCD2fJ4EiFWup2q1DN7J/Rotas-GPS?node-id=12%3A5&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=12%3A5)
+> - [***Mural no Miro***](https://miro.com/app/board/o9J_lyl521s=/)
