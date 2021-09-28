@@ -47,7 +47,7 @@ como últimos ajustes no projeto e transcrição para a documentação no GitHub
 
 As ferramentas empregadas no projeto são:
 
- - [![Miro](https://img.shields.io/badge/-Miro-yellow)](https://miro.com/app/dashboard/)
+ - [![Miro](https://img.shields.io/badge/-Miro-yellow)](https://miro.com/welcomeonboard/UWZkSkU4NmkwWjVROWpaQVRtTFBaVFV5RnFvbGwyNlljUGxJSkRWWTJHSGpjYm52TkVia0VKeDdSTFlGVXUwbHwzMDc0NDU3MzYzNDUwODY3ODkx?invite_link_id=758156308290)
  > O Miro foi usado como uma ferramente de organização e ideação, por agrupar elementos de planejamento 
  > e poder ser alterado por todos integrantes ao mesmo tempo.
 ##
