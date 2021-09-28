@@ -9,11 +9,11 @@ Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.
 * Frederico
 * Igor de Oliveira Martins dos Santos
 * Nikolas Augusto Vieira Louret
-* Rafael
+* Rafael Fernandino Vitoretti
 
 ## Professores responsáveis
 
-* Roberto 
+* Roberto Felipe Dias Ferreira Da Rocha
 * Rommel Vieira Carneiro
 
 ## Instruções de utilização
