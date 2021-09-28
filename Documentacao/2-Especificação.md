@@ -1,11 +1,5 @@
 # Especificações Do Projeto
 
-<span style="color:red">Pré-requisitos: <a href="1-Contexto.md"> Documentação de Contexto</a></span>
-
-> Apresente uma visão geral do que será abordado nesta parte do
-> documento, enumerando as técnicas e/ou ferramentas utilizadas para
-> realizar a especificações do projeto
-
 ## Personas
 
 1. **Wellington** tem 47 anos, e já foi motorista de ônibus e taxi. Ele mora no centro da cidade e tem carro próprio que o possibilita ser motorista de aplicativo de viagem, sua principal fonte de renda aliás. Por não ter muito poder aquisitivo, o Wellington vive sofrendo com a mal optimização dos aplicativos de GPS em seu celular, além de reclamar muito dos diversos problemas ocasionados nas rotas geradas automaticamente. Outro problema que afeta negativamente a vida do motorista é a dificuldade de entender o mapa do aplicativo, por ter uma interface muito poluída com informações desnecessárias para a usabilidade dele.
