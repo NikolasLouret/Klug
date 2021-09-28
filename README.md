@@ -5,15 +5,15 @@ Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.
 
 ## Alunos integrantes da equipe
 
-* Daniel
+* Daniel Jost Andrade
 * Frederico
-* Igor
-* Nikolas
+* Igor de Oliveira Martins dos Santos
+* Nikolas Augusto Vieira Louret
 * Rafael
 
 ## Professores responsáveis
 
-* Roberto
+* Roberto 
 * Rommel Vieira Carneiro
 
 ## Instruções de utilização
