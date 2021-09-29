@@ -1,7 +1,7 @@
 # Contexto do Projeto
 Com o crescente uso de aplicativos que necessitam interação com as ruas do mundo real(uber,ifood,99POP...), torna-se imprescindível a precisão das rotas e mapas para que esses aplicativos atinjam seus propósitos da forma mais satisfatória possível.
 ## Problema
-> O problema que a aplicação deve resolver são erros ocorrem devido a rotas imprecisas e realistas, acarretando em caminhos pouco práticos ou até mesmo inviáveis.
+> O problema que a aplicação deve resolver são erros ocorrem devido a rotas imprecisas e pouco realistas, acarretando em caminhos pouco práticos ou até mesmo inviáveis.
 > A aplicação será usada ao planejar as rotas que serão seguidas, tanto por motoristas e entregadores de apps e empresas privadas quanto para usuários que também
 > procuram soluções em suas rotas pessoais devido problemas semelhantes.
 
