@@ -20,4 +20,4 @@ para o usuário com base nas alterações feita pelo mesmo.
 O usuário também poderá marcar uma determinada área em que não deseja  
 passar antes de adicionar um trajeto.
 
-![Diagrama da solução](imagens/Diagrama solução.jpg)
+
