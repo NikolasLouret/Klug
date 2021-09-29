@@ -31,7 +31,7 @@
 
 # Rotas GPS
 
-Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
+O objetivo do grupo é criar um aplicativo de rotas GPS que seja fidedigno as ruas da vida real, intuitivo e funcional. Foco principal em poder evitar rotas indesejadas pelo usuário, de acordo com o que é desejado ou não pelo proprio usuário. Além disso esperamos que o uso da aplicação seja leve, dinâmica e principalmente intuitiva.
 
 ## Alunos integrantes da equipe
 
