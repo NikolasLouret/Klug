@@ -10,10 +10,10 @@ para a realização final do trabalho.
 |       Papel       |                  Nome                    |
 | ----------------- | ---------------------------------------- |
 |    Scrum Master   | Daniel Jost Andrade                      |
-| Membro da equipe  | Frederico dos Santos Ferreira de Andrade |
-| Membro da equipe  | Igor de Oliveira Martins dos Santos      |
-| Membro da equipe  | Nikolas Augusto Vieira Louret            |
-| Membro da equipe  | Rafael Fernandino Vitoretti              |
+|   Desenvolvedor   | Frederico dos Santos Ferreira de Andrade |
+|   Desenvolvedor   | Igor de Oliveira Martins dos Santos      |
+|   Desenvolvedor   | Nikolas Augusto Vieira Louret            |
+|   Desenvolvedor   | Rafael Fernandino Vitoretti              |
 
 ## Processo
 
