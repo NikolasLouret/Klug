@@ -17,8 +17,7 @@ o usuário poderá visualizar irformações sobre a rota, podendo editá-la
 marcando uma área em que não deseja passar, adicionando uma novo trajeto
 para o usuário com base nas alterações feita pelo mesmo.
 
-O usuário também poderá marcar uma determinada área em que não deseja  
-passar antes de adicionar um trajeto.
+O usuário também poderá marcar uma determinada área em que não deseja passar antes de adicionar um trajeto.
 
 ![Diagrama solução](https://user-images.githubusercontent.com/90854639/135290846-ce28d902-5189-41c0-ac9b-f094433d1347.jpg)
 
