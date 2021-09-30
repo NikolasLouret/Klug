@@ -67,8 +67,6 @@
 
 ### 5 - Rota Atualizada (após marcar áreas indesejadas)
 
-> A área demarcada em vermelho indica os locais indesejados de passar.
-
 ![Wireframe de Rota Atualizada (após marcar áreas indesejadas)](./images/9%20-%20Rota-Atualizada.png)
 
 ### 6 - Mostrar Rota Atualizada
@@ -78,6 +76,7 @@
 ### 7 - Mostrar Informações da Rota (com a rota atualizada)
 
 ![Wireframe de Mostrar Informações da Rota (com a rota atualizada)](./images/10%20-%20Mostrar-Rota-Infos%20-%20Home.png)
+
 * * *
 
 ## Links
