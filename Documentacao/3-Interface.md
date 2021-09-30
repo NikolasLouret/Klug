@@ -97,8 +97,10 @@ Traçadas as principais funcionalidades e o estilo de interface que seguiríamos
 ## Futuras funcionalidades
 
 - [ ] Exibir alertas no mapa com ícones no local da ocorrência
-- [ ] Alertar o usuário em tempo real de incidentes em sua rota
+- [ ] Alertar o usuário em tempo real de ocorrências em sua rota
 - [ ] Avisar quando houver alagamento de alguma região
+- [ ] Criar o Klug Community, uma comunidade de usuários colaboradores de feedbacks do mapa
+- [ ] Gamificar a aplicação
 
 * * *
 
