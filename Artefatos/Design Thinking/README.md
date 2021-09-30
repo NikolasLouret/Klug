@@ -133,4 +133,4 @@
 
 ## Mais Informações e Diagramas
 
-Mais diagramas e gráficos do nosso projeto podem ser vistos [clicando aqui](./images/Rotas%20GPS%20-%20Meta%20de%20Longo%20Prazo.jpg).
+Mais diagramas e gráficos do nosso projeto podem ser vistos [clicando aqui](./images/).
