@@ -46,6 +46,8 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RF-007| Filtrar rotas                     | MÉDIA |
 |RF-008| A rota automática mais precisa    | MÉDIA |
 |RF-009| Escolher o perfil do percurso     | BAIXA |
+|RF-010| Cadastro                          | BAIXA |
+|RF-011| Efetuar Login                     | BAIXA |
 
 
 ### Requisitos não Funcionais
