@@ -44,10 +44,9 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RF-005| Informar trechos mais carregados  | MÉDIA |
 |RF-006| Editar a rota                     | MÉDIA |
 |RF-007| Filtrar rotas                     | MÉDIA |
-|RF-008| A rota automática mais precisa    | MÉDIA |
-|RF-009| Escolher o perfil do percurso     | BAIXA |
-|RF-010| Cadastro                          | BAIXA |
-|RF-011| Efetuar Login                     | BAIXA |
+|RF-008| Escolher o perfil do percurso     | BAIXA |
+|RF-009| Cadastro                          | BAIXA |
+|RF-010| Efetuar Login                     | BAIXA |
 
 
 ### Requisitos não Funcionais
@@ -57,6 +56,7 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RNF-001| Interface limpa                     | ALTA | 
 |RNF-002| Percurso claro e visível            | ALTA |
 |RNF-003| Compatível com os principais navegadores | ALTA |
+|RNF-004| A rota automática mais precisa    | MÉDIA |
 
 ## Restrições
 
