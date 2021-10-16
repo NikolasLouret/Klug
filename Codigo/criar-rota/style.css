@@ -1,0 +1,26 @@
+/* Global ====================================================================*/
+:root {
+  --bg: #333333;
+  --bg-panel: #434343;
+  --bg-header: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+  --color-text: #b5b5b5;
+  --color-text-secondary: #333333;
+
+  transition: all 0.3s linear;
+}
+
+/* Elementos =================================================================*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 93.75w;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
