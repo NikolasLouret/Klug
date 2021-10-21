@@ -41,12 +41,9 @@ function initMap() {
   // cria uma caixinha de informação do mapa
   const infoWindow = new google.maps.InfoWindow();
 
-  // cria um botão para achar a posição atual
-  const locationButton = document.createElement("button");
-
-  locationButton.textContent = "Localização atual";
-  locationButton.classList.add("custom-map-control-button");
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+  // chama o botão para achar a posição atual
+  const locationButton = document.getElementById("minha-localizacao");
+  
   locationButton.addEventListener("click", () => {
     // Try HTML5 geolocation.
     if (navigator.geolocation) {

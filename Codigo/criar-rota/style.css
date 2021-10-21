@@ -1,9 +1,8 @@
 /* Global ====================================================================*/
 :root {
-  --bg: #333333;
-  --bg-panel: #434343;
-  --bg-header: linear-gradient(to right, #30cfd0 0%, #330867 100%);
-  --color-text: #b5b5b5;
+  --bg: #3d3d3d;
+  --bg-panel: #dfdfdf;
+  --color-text: #fff5f5;
   --color-text-secondary: #333333;
 
   transition: all 0.3s linear;
@@ -11,39 +10,106 @@
 
 /* Elementos =================================================================*/
 
-/* {
+/* retira todos os espaçamentos e tamanhos do documento */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html {
-  font-size: 93.75w;
-}
-
+html,
 body {
+  /* altura de 100% da página, para ocupar todo o conteúdo */
+  height: 100%;
+
+  /* tamanho da fonte, para questões de responsividade */
+  font-size: 16px;
+
   font-family: "Open Sans", sans-serif;
 }
 
-.map {
+/* Corpo da página ===========================================================*/
+
+body section#elementos {
+  /* outros elementos na frente do mapa */
+  position: absolute;
+  z-index: 0;
+
+  height: 100%;
   width: 100%;
-  min-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-#map {
+body section#map {
+  /* tamanho da div do mapa com 100% da altura da página */
   height: 100%;
-}*/
+  /* mapa no fundo de tudo */
+  position: relative;
+  z-index: -1;
+}
 
-/* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-       #map {
-        height: 100%;
-      }
-      
-      /* Optional: Makes the sample page fill the window. */
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
+/* Estilo padrão principais botões da página =================================*/
+body section .botao-container {
+  background-color: var(--bg);
+  height: 4.5rem;
+  width: 4.5rem;
+  display: flex;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+/* Header  ===================================================================*/
+body section header {
+  margin: 4rem 0 0 1rem;
+}
+
+/* Rodapé - Barra de Pesquisa ================================================*/
+body section footer {
+  margin: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+section footer #barra-pesquisa {
+  width: 30rem;
+}
+
+section footer input {
+  border: 1px solid var(--bg);
+  border-radius: 50px;
+  color: var(--color-text);
+  
+  background: var(--bg);
+  padding: 1rem;
+  width: 100%;
+
+  font-size: 1.125rem;
+}
+section footer input::placeholder {
+  color: var(--color-text);
+  opacity: 0.7;
+}
+
+/* Rodapé - Hud de avisos ====================================================*/
+section footer #hud-avisos {
+  display: flex;
+  gap: 2rem;
+}
+
+footer #hud-avisos .botao-container {
+  background-color: var(--bg);
+  height: 4rem;
+  width: 4rem;
+  display: flex;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: center;
+}
