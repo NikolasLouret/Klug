@@ -130,19 +130,19 @@ body {
 }
 
 #search {
-    margin-top: 1px;
+    margin-top: 2px;
     padding-left: 30px;
-    width: 550px;
 }
 
 #barra-pesquisa button {
-    margin-top: 2px;
+    text-align: right;
+    margin-top: -2px;
     padding-right: 23px;
 }
 
 #barra-pesquisa {
     height: 35px;
-    width: 700px;
+    width: 50%;
     margin-top: -55px;
     border: 1px solid #FFF;
     border-radius: 50px 50px;
