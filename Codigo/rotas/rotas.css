@@ -8,20 +8,16 @@
   transition: all 0.3s linear;
 }
 
-/* Elementos =================================================================*/
-
 /* retira todos os espaçamentos e tamanhos do documento */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  z-index: 0;
 }
 
-html,
-body {
-  /* altura de 100% da página, para ocupar todo o conteúdo */
-  height: 100%;
-
+html, body {
   /* tamanho da fonte, para questões de responsividade */
   font-size: 16px;
 
@@ -29,30 +25,15 @@ body {
 }
 
 /* Corpo da página ===========================================================*/
-
-body section#elementos {
-  /* outros elementos na frente do mapa */
-  position: absolute;
-  z-index: 0;
-
-  height: 100%;
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 body section#map {
   /* tamanho da div do mapa com 100% da altura da página */
-  height: 100%;
+  height: 100vh;
   /* mapa no fundo de tudo */
-  position: relative;
-  z-index: -1;
+  z-index: 1;
 }
 
 /* Estilo padrão principais botões da página =================================*/
-body section button {
+body section .botao {
   background-color: var(--bg);
   height: 4.5rem;
   width: 4.5rem;
@@ -69,20 +50,28 @@ body section button {
 
 body section button:hover {
   opacity: 0.9;
+  transition: all 0.3s linear;
 }
 
 /* Header  ===================================================================*/
-body section header {
+section header #botao-editar-rota {
   margin: 4rem 0 0 1rem;
+
+  z-index: 2;
+  position: fixed;
 }
 
 /* Rodapé - Barra de Pesquisa ================================================*/
 body section footer {
-  margin: 2rem;
-
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+
+  z-index: 2;
+  position: fixed;
+
+  bottom: 1rem;
+  margin: 0 auto; 
 }
 
 section footer #barra-pesquisa {
@@ -112,7 +101,6 @@ section footer #hud-avisos {
 }
 
 footer #hud-avisos button {
- 
   height: 4rem;
   width: 4rem;
   
