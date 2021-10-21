@@ -7,9 +7,13 @@
 html,
 body {
     max-width: 100%;
-    overflow-x: hidden;
     padding: 0px;
     margin: 0px;
+}
+
+.main {
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 * {
@@ -126,19 +130,19 @@ body {
 }
 
 #search {
-    margin-top: 1px;
+    margin-top: 2px;
     padding-left: 30px;
-    width: 550px;
 }
 
 #barra-pesquisa button {
-    margin-top: 2px;
+    text-align: right;
+    margin-top: -2px;
     padding-right: 23px;
 }
 
 #barra-pesquisa {
     height: 35px;
-    width: 700px;
+    width: 50%;
     margin-top: -55px;
     border: 1px solid #FFF;
     border-radius: 50px 50px;
@@ -171,7 +175,7 @@ body {
 
 div.texto-problemas {
     margin: 80px auto;
-    width: 70%;
+    width: 750px;
     text-align: center;
     display: flex;
     flex-wrap: wrap;
@@ -201,7 +205,7 @@ div.texto-problemas {
 /*Inicio Link Editor de Rotas*/
 
 .icone-editar img {
-    width: 12%;
+    width: 50px;
     float: right;
     transform: scaleX(-1);
 }
@@ -242,42 +246,241 @@ div.texto-problemas {
     background-image: url(img/Mapa-Mundi.png);
     background-repeat: no-repeat;
     background-position: center;
-    color: white
+    color: white;
 }
 
 div.conteudo-sobre {
-    margin-top: 250px;
-}
-
-div.backgroung-sobre {
-    height: 325px;
-    background-color: #01303F;
-    opacity: 0.84;
-    -webkit-filter: blur(10px);
-    filter: blur(10px);
+    margin-top: 125px;
 }
 
 .texto-sobre-klug {
-    position: absolute;
+    background-color: #01303F;
+    opacity: 0.9;
+    padding: 70px 0px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    text-align: center;
+}
+
+.texto-sobre-klug p {
+    width: 65%;
 }
 
 .conteudo-sobre h4 {
-    margin-top: -275px;
-    text-align: center;
+    font-size: 25px;
 }
 
 p.texto-sobre {
     margin-top: 40px;
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-    padding: 0 300px;
-}
-
-#p2 {
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-    padding: 0 300px;
 }
 
 
 /*Fim Sobre Klug*/
+
+
+/*Inicio Fale Conosco*/
+
+.fl-cn {
+    margin-top: 200px;
+    height: 100%;
+}
+
+.conteudo-fale-conosco h4 {
+    margin: 60px auto;
+    text-align: center;
+}
+
+#subtitulo-fale-conosco {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+}
+
+#titulo-fale-conosco {
+    font-family: 'Intro';
+    font-size: 25px;
+}
+
+#form-fale-conosco {
+    width: 100%;
+    margin-top: 10px;
+    padding: 0 15%;
+}
+
+#primeiro-nome-fale-conosco,
+#ultimo-nome-fale-conosco,
+#email-fale-conosco,
+#problema-fale-conosco {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    border: hidden;
+    background-color: #DADADA;
+    padding: 7px 20px;
+    border-radius: 10px 10px;
+}
+
+#primeiro-nome-fale-conosco:focus,
+#ultimo-nome-fale-conosco:focus,
+#email-fale-conosco:focus,
+#problema-fale-conosco:focus {
+    box-shadow: none;
+}
+
+#form-fc::placeholder {
+    color: #A1A1A1;
+}
+
+#problema {
+    height: 100px;
+}
+
+#anexar {
+    margin: 50px 0 5% 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    padding: 0 15%;
+}
+
+#paperclip {
+    display: none;
+}
+
+div.formulario-fale-conosco button {
+    float: right;
+    margin: 0 15%;
+}
+
+#botao-enviar {
+    background-color: #01303F;
+    border-radius: 10px 10px;
+    box-shadow: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #FFF;
+    padding: 5px 0px;
+    width: 100px;
+}
+
+#botao-enviar:hover {
+    background-color: #035e7c;
+}
+
+
+/*Fim Fale Conosco*/
+
+
+/*Inicio Rodapé*/
+
+.footer {
+    margin-top: 50px;
+    position: absolute;
+    width: 100%;
+    background-color: #D8D8D8;
+}
+
+.principais-topicos {
+    padding: 0 10%;
+}
+
+.principais-topicos h4 {
+    margin-top: 30px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn {
+    width: 100%;
+    height: 40px;
+}
+
+.editar-rotas,
+.personalizar-rotas,
+.explorar-o-mapa {
+    margin-top: 20px;
+    border: 1px solid #676767;
+    border-radius: 10px 10px;
+}
+
+#botao-principais-topicos {
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#botao-principais-topicos:focus {
+    box-shadow: none;
+}
+
+#icone-dropdonw {
+    float: right;
+}
+
+#texto-expansivo {
+    background: none;
+    border: none;
+}
+
+.logo-redes {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 25px;
+    padding: 0 10%;
+}
+
+.logo-footer a {
+    text-decoration: none;
+}
+
+#letra-rodape {
+    font-family: 'Intro';
+    color: #2C2C2C;
+    font-size: 13px;
+}
+
+#logo-rodape {
+    width: 15px;
+}
+
+#indicador-pagina-rodape {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+}
+
+.redes-footer {
+    text-align: right;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+}
+
+#siga-nos {
+    font-size: 10px;
+}
+
+.redes-footer i {
+    color: #2C2C2C;
+    width: 20px;
+}
+
+#linha-footer {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.copyright {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 5px;
+    padding: 0 10%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.copyright-texto h5 {
+    font-size: 13px;
+}
+
+.pais h5 {
+    text-align: right;
+    font-size: 13px;
+}
+
+
+/*Fim Rodapé*/

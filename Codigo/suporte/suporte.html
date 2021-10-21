@@ -51,19 +51,17 @@
                 <div class="row search-suport">
                     <h1 id="titulo">Suporte KLUG</h1>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 pesquisa">
-                        <form id="barra-pesquisa" action="" method="submit">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="search" id="search" placeholder="Pesquisar" aria-label="Search" autocomplete="off">
-                                <button class="btn btn-default"><i id="icon-search" class="fas fa-search"></i></button>
-                            </div>
+                        <form id="barra-pesquisa" class="d-flex" action="" method="submit">
+                            <input type="text" class="form-control" name="search" id="search" placeholder="Pesquisar" aria-label="Search" autocomplete="off">
+                            <button class="btn btn-default"><i id="icon-search" class="fas fa-search"></i></button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="container">
-            <div class="row principais-problemas">
+        <div class="row principais-problemas">
+            <div class="container">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 texto-problemas">
                     <a href="#">Mapa incorreto?</a>
                     <div id="lv"></div>
@@ -102,7 +100,118 @@
                 </div>
             </div>
         </div>
+
+        <div class="row fale-conosco">
+            <div class="container">
+                <div class="conteudo-fale-conosco">
+                    <h4 class="titulo-fale-conosco"><span id="subtitulo-fale-conosco">Encontrou algum erro?</span><br><span id="titulo-fale-conosco">FALE CONOSCO</span></h4>
+                </div>
+                <div class="container formulario-fale-conosco">
+                    <form id="form-fale-conosco" action="https://postman-echo.com/post" method="post">
+                        <div id="primeiro-nome" class="input-group">
+                            <label for="primeiro-nome-fale-conosco"></label>
+                            <input type="text" class="form-control" id="primeiro-nome-fale-conosco" placeholder="Primeiro nome" autocomplete="off">
+                        </div>
+                    </form>
+                    <form id="form-fale-conosco" action="https://postman-echo.com/post" method="post">
+                        <div id="ultimo-nome" class="input-group">
+                            <label for="ultimo-nome-fale-conosco"></label>
+                            <input type="text" class="form-control" id="ultimo-nome-fale-conosco" placeholder="Último nome" autocomplete="off">
+                        </div>
+                    </form>
+                    <form id="form-fale-conosco" action="https://postman-echo.com/post" method="post">
+                        <div id="email" class="input-group">
+                            <label for="email-fale-conosco"></label>
+                            <input type="email" class="form-control" id="email-fale-conosco" placeholder="Endereço de email" autocomplete="off">
+                        </div>
+                    </form>
+                    <form id="form-fale-conosco" action="https://postman-echo.com/post" method="post">
+                        <div id="problema" class="input-group">
+                            <label for="problema-fale-conosco"></label>
+                            <textarea class="form-control" id="problema-fale-conosco" placeholder="Descreva o problema" rows="3" autocomplete="off"></textarea>
+                        </div>
+                    </form>
+
+                    <div class="anexar-arquivo">
+                        <label id="anexar" for="paperclip">Anexar arquivo <span type="file"><i class="fas fa-paperclip"></i></span></label>
+                        <input type="file" id="paperclip" multiple>
+                    </div>
+
+                    <button id="botao-enviar" class="btn btn-default">Enviar</button>
+                </div>
+            </div>
+        </div>
     </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="principais-topicos">
+                <h4 class="titulo-rodape"><b>Principais tópicos de ajuda</b></h4>
+
+                <div class="editar-rotas">
+                    <button id="botao-principais-topicos" class="btn btn-default" type="button" data-bs-toggle="collapse" data-bs-target="#edicao-rotas" aria-expanded="false" aria-controls="edicao-rotas">
+                        Edição de rotas <span id="icone-dropdonw"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+
+                    <div class="collapse" id="edicao-rotas">
+                        <div id="texto-expansivo" class="card card-body">
+                            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="personalizar-rotas">
+                    <button id="botao-principais-topicos" class="btn btn-default" type="button" data-bs-toggle="collapse" data-bs-target="#personalizacao-rotas" aria-expanded="false" aria-controls="personalizacao-rotas">
+                            Personalizacao de rotas <span id="icone-dropdonw"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+
+                    <div class="collapse" id="personalizacao-rotas">
+                        <div id="texto-expansivo" class="card card-body">
+                            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="explorar-o-mapa">
+                    <button id="botao-principais-topicos" class="btn btn-default" type="button" data-bs-toggle="collapse" data-bs-target="#explorar-mapa" aria-expanded="false" aria-controls="explorar-mapa">
+                            Explorar o mapa <span id="icone-dropdonw"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+
+                    <div class="collapse" id="explorar-mapa">
+                        <div id="texto-expansivo" class="card card-body">
+                            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="logo-redes">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 logo-footer">
+                <a href="#">
+                    <h5 id="letra-rodape">K <img src="img/Logo2.png" id="logo-rodape" alt="Logo"> <i class="fas fa-chevron-right"></i> <span id="indicador-pagina-rodape">Suporte</span></h5>
+                </a>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 redes-footer">
+                <span id="siga-nos">Siga-nos</span>
+                <a class="facebook" href="https://web.facebook.com/" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                <a class="twitter" href="https://twitter.com/home" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a class="instagram" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+
+        </div>
+
+        <hr id="linha-footer">
+
+        <div class="copyright">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 copyright-texto">
+                <h5><b>Copyright&copy 2021 Klug</b> | Todos os direitos reservados</h5>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 pais">
+                <h5>Brasil</h5>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
