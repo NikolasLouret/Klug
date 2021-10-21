@@ -1,0 +1,3 @@
+onload = () => {
+    ethereum.autoRefreshOnNetworkChange = false;
+}

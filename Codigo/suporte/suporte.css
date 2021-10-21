@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+@font-face {
+    font-family: Intro;
+    src: url(Fontes/intro/Intro.otf)
+}
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 0px;
+    margin: 0px;
+}
+
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/*Inicio Menu*/
+
+.header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #01303F;
+    opacity: 0.84;
+}
+
+#navbar {
+    padding: 0;
+}
+
+.logo {
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    top: 10px;
+}
+
+#logo {
+    width: 30px;
+}
+
+#suporte {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+#nomelogo {
+    font-family: 'Intro';
+    padding-left: 10px;
+    margin-top: 5px;
+}
+
+#localpagina {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav {
+    list-style: none;
+}
+
+#navbar-nav {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0px;
+}
+
+#navbar-nav li {
+    display: inline;
+}
+
+#navbar-nav li a {
+    color: #FFF;
+    text-decoration: none;
+    padding: 5px 15px;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+}
+
+#navbar-nav li a:hover {
+    color: #8b8b8b;
+}
+
+.profile-photo {
+    width: 40px;
+    border-radius: 50%;
+    margin-left: -25px !important;
+}
+
+
+/*Fim Menu*/
+
+
+/*Inicio Suporte Klug*/
+
+.suport {
+    margin: 0;
+    background-color: #0A0A0A;
+}
+
+.search-suport {
+    height: 350px;
+    background-image: url(/img/Globo-defocado.png);
+    background-repeat: no-repeat;
+    background-position-x: 825px;
+    background-position-y: center;
+    background-size: 800px;
+}
+
+.suport h1 {
+    padding-top: 130px;
+    text-align: center;
+    color: white;
+    letter-spacing: 10px;
+    font-family: 'Intro';
+    font-size: 45px;
+}
+
+#search {
+    margin-top: 1px;
+    padding-left: 30px;
+    width: 550px;
+}
+
+#barra-pesquisa button {
+    margin-top: 2px;
+    padding-right: 23px;
+}
+
+#barra-pesquisa {
+    height: 35px;
+    width: 700px;
+    margin-top: -55px;
+    border: 1px solid #FFF;
+    border-radius: 50px 50px;
+    background-color: white;
+}
+
+#barra-pesquisa input,
+#barra-pesquisa button {
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(51, 51, 51) !important;
+    border: none;
+    background: none;
+}
+
+#barra-pesquisa input:focus,
+#barra-pesquisa button:focus {
+    box-shadow: none;
+}
+
+#barra-pesquisa button:hover {
+    color: rgb(121, 121, 121) !important;
+}
+
+
+/*Fim Suporte Klug*/
+
+
+/*Inicio Principais Problemas*/
+
+div.texto-problemas {
+    margin: 80px auto;
+    width: 70%;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.principais-problemas a {
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    color: #3E97FF;
+    letter-spacing: 1px;
+}
+
+#duas-linhas {
+    margin-top: -10px;
+}
+
+#lv {
+    margin-top: -20px;
+    height: 60px;
+    border-right: 1.5px solid #9F9F9F;
+}
+
+
+/*Fim Principais Problemas*/
+
+
+/*Inicio Link Editor de Rotas*/
+
+.icone-editar img {
+    width: 12%;
+    float: right;
+    transform: scaleX(-1);
+}
+
+.conteudo-editar h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+}
+
+#texto-editar {
+    margin-top: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#link-para-editar {
+    margin-top: 35px;
+    margin-bottom: 70px;
+}
+
+#link-para-editar a {
+    font-family: 'Montserrat', sans-serif;
+    color: #3E97FF;
+    text-decoration: none;
+}
+
+#seta {
+    padding-left: 7px;
+}
+
+
+/*Fim Link Editor de Rotas*/
+
+
+/*Inicio Sobre Klug*/
+
+.sobre-klug {
+    height: 600px;
+    background-image: url(img/Mapa-Mundi.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white
+}
+
+div.conteudo-sobre {
+    margin-top: 250px;
+}
+
+div.backgroung-sobre {
+    height: 325px;
+    background-color: #01303F;
+    opacity: 0.84;
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
+}
+
+.texto-sobre-klug {
+    position: absolute;
+}
+
+.conteudo-sobre h4 {
+    margin-top: -275px;
+    text-align: center;
+}
+
+p.texto-sobre {
+    margin-top: 40px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    padding: 0 300px;
+}
+
+#p2 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    padding: 0 300px;
+}
+
+
+/*Fim Sobre Klug*/
