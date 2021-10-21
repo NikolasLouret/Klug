@@ -52,16 +52,23 @@ body section#map {
 }
 
 /* Estilo padrão principais botões da página =================================*/
-body section .botao-container {
+body section button {
   background-color: var(--bg);
   height: 4.5rem;
   width: 4.5rem;
+  
   display: flex;
   border-radius: 50px;
   align-items: center;
   justify-content: center;
 
+  border: none;
+
   cursor: pointer;
+}
+
+body section button:hover {
+  opacity: 0.9;
 }
 
 /* Header  ===================================================================*/
@@ -104,12 +111,9 @@ section footer #hud-avisos {
   gap: 2rem;
 }
 
-footer #hud-avisos .botao-container {
-  background-color: var(--bg);
+footer #hud-avisos button {
+ 
   height: 4rem;
   width: 4rem;
-  display: flex;
-  border-radius: 50px;
-  align-items: center;
-  justify-content: center;
+  
 }
