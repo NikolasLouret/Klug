@@ -1,5 +1,5 @@
 // importa a chave de credencial de outro arquivo, por motivos de segurança
-import { apiKey } from "../config.js";
+import { apiKey } from "./config.js";
 
 // cria uma tag de script
 let script = document.createElement("script");
