@@ -65,13 +65,13 @@ section header #botao-editar-rota {
 body section footer {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
 
   z-index: 2;
-  position: fixed;
+  position: absolute;
+  gap: 4rem;
 
   bottom: 1rem;
-  margin: 0 auto; 
+  margin: 0 calc(100% - 90%);
 }
 
 section footer #barra-pesquisa {
@@ -103,5 +103,4 @@ section footer #hud-avisos {
 footer #hud-avisos button {
   height: 4rem;
   width: 4rem;
-  
 }
