@@ -83,11 +83,12 @@ body section footer {
 
 section footer #barra-pesquisa {
   width: 30rem;
+  display: flex;
 }
 
 section footer input {
   border: 1px solid var(--bg);
-  border-radius: 50px;
+  border-radius: 50px 0 0 50px;
   color: var(--color-text);
 
   background: var(--bg);
@@ -99,6 +100,25 @@ section footer input {
 section footer input::placeholder {
   color: var(--color-text);
   opacity: 0.7;
+}
+
+section footer #criar-rota {
+  border: 1px solid #000;
+  border-radius: 0 50px 50px 0;
+  color: var(--color-text);
+
+  background: #000;
+  padding: 1rem;
+  width: 20%;
+
+  font-size: 1.125rem;
+
+  cursor: pointer;
+}
+section footer #criar-rota:hover {
+  opacity: 1;
+  border: #3731af;
+  background:#3731af;
 }
 
 /* Rodapé - Hud de avisos ====================================================*/
