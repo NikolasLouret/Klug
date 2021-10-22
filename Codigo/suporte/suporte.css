@@ -23,464 +23,812 @@ body {
 }
 
 
-/*Inicio Menu*/
-
-.header {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 50px;
-    background-color: #01303F;
-    opacity: 0.84;
-}
-
-#navbar {
-    padding: 0;
-}
-
-.logo {
-    display: inline-block;
-    position: absolute;
-    left: 0px;
-    top: 10px;
-}
-
-#logo {
-    width: 30px;
-}
-
-#suporte {
-    color: white;
-    text-decoration: none;
-    font-size: 12px;
-    letter-spacing: 3px;
-}
-
-#nomelogo {
-    font-family: 'Intro';
-    padding-left: 10px;
-    margin-top: 5px;
-}
-
-#localpagina {
-    font-family: 'Montserrat', sans-serif;
-}
-
-.nav {
-    list-style: none;
-}
-
-#navbar-nav {
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    right: 0px;
-}
-
-#navbar-nav li {
-    display: inline;
-}
-
-#navbar-nav li a {
-    color: #FFF;
-    text-decoration: none;
-    padding: 5px 15px;
-    display: inline-block;
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 2px;
-}
-
-#navbar-nav li a:hover {
-    color: #8b8b8b;
-}
-
-.profile-photo {
-    width: 40px;
-    border-radius: 50%;
-    margin-left: -25px !important;
-}
-
-
-/*Fim Menu*/
-
-
-/*Inicio Suporte Klug*/
-
-.suport {
-    margin: 0;
-    background-color: #0A0A0A;
-}
-
-.search-suport {
-    height: 350px;
-    background-image: url(/img/Globo-defocado.png);
-    background-repeat: no-repeat;
-    background-position-x: 825px;
-    background-position-y: center;
-    background-size: 800px;
-}
-
-.suport h1 {
-    padding-top: 130px;
-    text-align: center;
-    color: white;
-    letter-spacing: 10px;
-    font-family: 'Intro';
-    font-size: 45px;
-}
-
-#search {
-    margin-top: 2px;
-    padding-left: 30px;
-}
-
-#barra-pesquisa button {
-    text-align: right;
-    margin-top: -2px;
-    padding-right: 23px;
-}
-
-#barra-pesquisa {
-    height: 35px;
-    width: 50%;
-    margin-top: -55px;
-    border: 1px solid #FFF;
-    border-radius: 50px 50px;
-    background-color: white;
-}
-
-#barra-pesquisa input,
-#barra-pesquisa button {
-    font-size: 15px;
-    font-family: 'Montserrat', sans-serif;
-    color: rgb(51, 51, 51) !important;
-    border: none;
-    background: none;
-}
-
-#barra-pesquisa input:focus,
-#barra-pesquisa button:focus {
-    box-shadow: none;
-}
-
-#barra-pesquisa button:hover {
-    color: rgb(121, 121, 121) !important;
-}
-
-
-/*Fim Suporte Klug*/
-
-
-/*Inicio Principais Problemas*/
-
-div.texto-problemas {
-    margin: 80px auto;
-    width: 750px;
-    text-align: center;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.principais-problemas a {
-    font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
-    color: #3E97FF;
-    letter-spacing: 1px;
-}
-
-#duas-linhas {
-    margin-top: -10px;
-}
-
-#lv {
-    margin-top: -20px;
-    height: 60px;
-    border-right: 1.5px solid #9F9F9F;
-}
-
-
-/*Fim Principais Problemas*/
-
-
-/*Inicio Link Editor de Rotas*/
-
-.icone-editar img {
-    width: 50px;
-    float: right;
-    transform: scaleX(-1);
-}
-
-.conteudo-editar h4 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 25px;
-}
-
-#texto-editar {
-    margin-top: 20px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-#link-para-editar {
-    margin-top: 35px;
-    margin-bottom: 70px;
-}
-
-#link-para-editar a {
-    font-family: 'Montserrat', sans-serif;
-    color: #3E97FF;
-    text-decoration: none;
-}
-
-#seta {
-    padding-left: 7px;
-}
-
-
-/*Fim Link Editor de Rotas*/
-
-
-/*Inicio Sobre Klug*/
-
-.sobre-klug {
-    height: 600px;
-    background-image: url(img/Mapa-Mundi.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    color: white;
-}
-
-div.conteudo-sobre {
-    margin-top: 125px;
-}
-
-.texto-sobre-klug {
-    background-color: #01303F;
-    opacity: 0.9;
-    padding: 70px 0px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 17px;
-    text-align: center;
-}
-
-.texto-sobre-klug p {
-    width: 65%;
-}
-
-.conteudo-sobre h4 {
-    font-size: 25px;
-}
-
-p.texto-sobre {
-    margin-top: 40px;
-}
-
-
-/*Fim Sobre Klug*/
-
-
-/*Inicio Fale Conosco*/
-
-.fl-cn {
-    margin-top: 200px;
-    height: 100%;
-}
-
-.conteudo-fale-conosco h4 {
-    margin: 60px auto;
-    text-align: center;
-}
-
-#subtitulo-fale-conosco {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 17px;
-}
-
-#titulo-fale-conosco {
-    font-family: 'Intro';
-    font-size: 25px;
-}
-
-#form-fale-conosco {
-    width: 100%;
-    margin-top: 10px;
-    padding: 0 15%;
-}
-
-#primeiro-nome-fale-conosco,
-#ultimo-nome-fale-conosco,
-#email-fale-conosco,
-#problema-fale-conosco {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 17px;
-    border: hidden;
-    background-color: #DADADA;
-    padding: 7px 20px;
-    border-radius: 10px 10px;
-}
-
-#primeiro-nome-fale-conosco:focus,
-#ultimo-nome-fale-conosco:focus,
-#email-fale-conosco:focus,
-#problema-fale-conosco:focus {
-    box-shadow: none;
-}
-
-#form-fc::placeholder {
-    color: #A1A1A1;
-}
-
-#problema {
-    height: 100px;
-}
-
-#anexar {
-    margin: 50px 0 5% 0;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    padding: 0 15%;
-}
-
-#paperclip {
-    display: none;
-}
-
-div.formulario-fale-conosco button {
-    float: right;
-    margin: 0 15%;
-}
-
-#botao-enviar {
-    background-color: #01303F;
-    border-radius: 10px 10px;
-    box-shadow: none;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    color: #FFF;
-    padding: 5px 0px;
-    width: 100px;
-}
-
-#botao-enviar:hover {
-    background-color: #035e7c;
-}
-
-
-/*Fim Fale Conosco*/
-
-
-/*Inicio Rodapé*/
-
-.footer {
-    margin-top: 50px;
-    position: absolute;
-    width: 100%;
-    background-color: #D8D8D8;
-}
-
-.principais-topicos {
-    padding: 0 10%;
-}
-
-.principais-topicos h4 {
-    margin-top: 30px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.btn {
-    width: 100%;
-    height: 40px;
-}
-
-.editar-rotas,
-.personalizar-rotas,
-.explorar-o-mapa {
-    margin-top: 20px;
-    border: 1px solid #676767;
-    border-radius: 10px 10px;
-}
-
-#botao-principais-topicos {
-    text-align: left;
-    font-family: 'Montserrat', sans-serif;
-}
-
-#botao-principais-topicos:focus {
-    box-shadow: none;
-}
-
-#icone-dropdonw {
-    float: right;
-}
-
-#texto-expansivo {
-    background: none;
-    border: none;
-}
-
-.logo-redes {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    margin-top: 25px;
-    padding: 0 10%;
-}
-
-.logo-footer a {
-    text-decoration: none;
-}
-
-#letra-rodape {
-    font-family: 'Intro';
-    color: #2C2C2C;
-    font-size: 13px;
-}
-
-#logo-rodape {
-    width: 15px;
-}
-
-#indicador-pagina-rodape {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 13px;
-}
-
-.redes-footer {
-    text-align: right;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
-}
-
-#siga-nos {
-    font-size: 10px;
-}
-
-.redes-footer i {
-    color: #2C2C2C;
-    width: 20px;
-}
-
-#linha-footer {
-    margin: 0 auto;
-    width: 80%;
-}
-
-.copyright {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    margin-top: 5px;
-    padding: 0 10%;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.copyright-texto h5 {
-    font-size: 13px;
-}
-
-.pais h5 {
-    text-align: right;
-    font-size: 13px;
-}
-
-
-/*Fim Rodapé*/
+/*Inicio Menu - Desktop*/
+
+@media screen and (min-width:601px) {
+    nav ul {
+        margin: 0;
+        padding: 0;
+    }
+    header a {
+        color: #FFF;
+        text-decoration: none;
+        font-family: 'Montserrat', sans-serif;
+    }
+    nav a:hover {
+        color: #8b8b8b;
+    }
+    #logo:hover {
+        color: #FFF;
+    }
+    #logo img {
+        width: 30px;
+        margin-right: 10px;
+    }
+    #nomelogo {
+        font-family: 'Intro';
+        margin-right: 5px;
+    }
+    #header {
+        position: absolute;
+        width: 100%;
+        box-sizing: border-box;
+        height: 50px;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #01303F;
+    }
+    #menu {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        gap: 2rem;
+    }
+    #logo,
+    #foto-perfil {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    #foto-perfil a:hover {
+        color: #FFF;
+    }
+    .profile-photo {
+        margin-left: 10px;
+        border-radius: 20px 20px;
+        width: 40px;
+    }
+}
+
+
+/*Fim Menu - Desktop*/
+
+
+/*Inicio Menu - Mobile*/
+
+@media (max-width:600px) {
+    nav ul {
+        margin: 0;
+        padding: 0;
+    }
+    #nomelogo,
+    #localpagina,
+    #nome-perfil {
+        display: none;
+    }
+    #logo img {
+        width: 30px;
+    }
+    #header {
+        position: absolute;
+        width: 100%;
+        box-sizing: border-box;
+        height: 50px;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #01303F;
+    }
+    #menu {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        gap: 2rem;
+    }
+    #menu a {
+        color: #FFF;
+        text-decoration: none;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .profile-photo {
+        margin-left: 10px;
+        border-radius: 20px 20px;
+        width: 40px;
+    }
+}
+
+
+/*Fim Menu - Mobile*/
+
+
+/*Inicio Suporte Klug - Desktop*/
+
+@media screen and (min-width:800px) {
+    .suport {
+        margin: 0;
+        background-color: #0A0A0A;
+    }
+    .search-suport {
+        height: 350px;
+        background-image: url(/img/Globo-defocado.png);
+        background-repeat: no-repeat;
+        background-position-x: 825px;
+        background-position-y: center;
+        background-size: 800px;
+    }
+    .suport h1 {
+        padding-top: 130px;
+        text-align: center;
+        color: white;
+        letter-spacing: 10px;
+        font-family: 'Intro';
+        font-size: 45px;
+    }
+    #search {
+        margin-top: 2px;
+        padding-left: 30px;
+    }
+    #barra-pesquisa button {
+        text-align: right;
+        margin-top: -2px;
+        padding-right: 23px;
+    }
+    #barra-pesquisa {
+        height: 35px;
+        width: 50%;
+        margin-top: -55px;
+        border: 1px solid #FFF;
+        border-radius: 50px 50px;
+        background-color: white;
+    }
+    #barra-pesquisa input,
+    #barra-pesquisa button {
+        font-size: 15px;
+        font-family: 'Montserrat', sans-serif;
+        color: rgb(51, 51, 51) !important;
+        border: none;
+        background: none;
+    }
+    #barra-pesquisa input:focus,
+    #barra-pesquisa button:focus {
+        box-shadow: none;
+    }
+    #barra-pesquisa button:hover {
+        color: rgb(121, 121, 121) !important;
+    }
+}
+
+
+/*Fim Suporte Klug - Desktop*/
+
+
+/*Inicio Suporte Klug - Mobile*/
+
+@media (max-width:799px) {
+    .suport {
+        margin: 0;
+        background-color: #0A0A0A;
+    }
+    .search-suport {
+        height: 250px;
+        background-image: url(/img/Globo-defocado.png);
+        background-repeat: no-repeat;
+        background-position-x: 220px;
+        background-position-y: center;
+        background-size: 400px;
+    }
+    .suport h1 {
+        margin-top: 100px;
+        text-align: center;
+        color: white;
+        letter-spacing: 5px;
+        font-family: 'Intro';
+        font-size: 25px;
+    }
+    #barra-pesquisa {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 25px;
+        width: 70%;
+        margin-top: -25px;
+        border-radius: 50px 50px;
+        background-color: white;
+        padding: 0 10px;
+    }
+    #barra-pesquisa input,
+    #barra-pesquisa button {
+        height: 25px;
+        font-size: 13px;
+        font-family: 'Montserrat', sans-serif;
+        color: rgb(51, 51, 51) !important;
+        border: none;
+        background: none;
+    }
+    #barra-pesquisa button {
+        display: flex;
+        align-items: center;
+    }
+    #barra-pesquisa input:focus,
+    #barra-pesquisa button:focus {
+        box-shadow: none;
+    }
+    #barra-pesquisa button:hover {
+        color: rgb(121, 121, 121) !important;
+    }
+}
+
+
+/*Fim Suporte Klug - Mobile*/
+
+
+/*Inicio Principais Problemas - Desktop*/
+
+@media screen and (min-width:800px) {
+    div.texto-problemas {
+        margin: 80px auto;
+        width: 750px;
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .principais-problemas a {
+        font-family: 'Montserrat', sans-serif;
+        text-decoration: none;
+        color: #3E97FF;
+        letter-spacing: 1px;
+    }
+    #duas-linhas {
+        margin-top: -10px;
+    }
+    #lv {
+        margin-top: -20px;
+        height: 60px;
+        border-right: 1.5px solid #9F9F9F;
+    }
+    #linha-mobile {
+        display: none;
+    }
+}
+
+
+/*Fim Principais Problemas - Desktop*/
+
+
+/*Inicio Principais Problemas - Mobile*/
+
+@media screen and (max-width:799px) {
+    div.texto-problemas {
+        display: flex;
+        flex-direction: column;
+        margin: 50px auto;
+        text-align: center;
+    }
+    .texto-problemas a {
+        margin: 25px 0;
+        font-family: 'Montserrat', sans-serif;
+        text-decoration: none;
+        color: #3E97FF;
+        letter-spacing: 1px;
+    }
+    #lv {
+        display: none;
+    }
+    #linha-mobile {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+
+/*Fim Principais Problemas - Mobile*/
+
+
+/*Inicio Link Editor de Rotas - Desktop*/
+
+@media screen and (min-width:800px) {
+    .icone-editar img {
+        width: 50px;
+        float: right;
+        transform: scaleX(-1);
+    }
+    .conteudo-editar h4 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 25px;
+    }
+    #texto-editar {
+        margin-top: 20px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    #link-para-editar {
+        margin-top: 35px;
+        margin-bottom: 70px;
+    }
+    #link-para-editar a {
+        font-family: 'Montserrat', sans-serif;
+        color: #3E97FF;
+        text-decoration: none;
+    }
+    #seta {
+        padding-left: 7px;
+    }
+}
+
+
+/*Fim Link Editor de Rotas - Mobile*/
+
+
+/*Inicio Link Editor de Rotas - Mobile*/
+
+@media screen and (max-width:799px) {
+    .icone-editar img {
+        display: flex;
+        align-items: center;
+        width: 100px;
+        transform: scaleX(-1);
+    }
+    .link-editor {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .conteudo-editar h4 {
+        margin-top: 10px;
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 25px;
+    }
+    #texto-editar {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 17px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    #link-para-editar {
+        margin-top: 25px;
+        margin-bottom: 70px;
+        text-align: center;
+    }
+    #link-para-editar a {
+        font-size: 17px;
+        font-family: 'Montserrat', sans-serif;
+        color: #3E97FF;
+        text-decoration: none;
+    }
+    #seta {
+        padding-left: 7px;
+    }
+}
+
+
+/*Fim Link Editor de Rotas - Mobile*/
+
+
+/*Inicio Sobre Klug - Desktop*/
+
+@media screen and (min-width:800px) {
+    .sobre-klug {
+        height: 600px;
+        background-image: url(img/Mapa-Mundi.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        color: white;
+    }
+    #nome-klug {
+        font-family: 'Intro';
+    }
+    div.conteudo-sobre {
+        margin-top: 125px;
+    }
+    .texto-sobre-klug {
+        background-color: #01303F;
+        opacity: 0.9;
+        padding: 70px 0px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 17px;
+        text-align: center;
+    }
+    .texto-sobre-klug p {
+        width: 65%;
+    }
+    .conteudo-sobre h4 {
+        font-size: 25px;
+    }
+    p.texto-sobre {
+        margin-top: 40px;
+    }
+}
+
+
+/*Fim Sobre Klug - Desktop*/
+
+
+/*Inicio Sobre Klug - Mobile*/
+
+@media screen and (max-width:799px) {
+    .sobre-klug {
+        background-image: url(img/Mapa-Mundi.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 550px;
+        color: white;
+    }
+    .texto-sobre-klug {
+        background-color: #01303F;
+        padding: 70px 0px;
+        opacity: 0.9;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 17px;
+        text-align: center;
+    }
+    .texto-sobre-klug p {
+        width: 80%;
+    }
+    .conteudo-sobre h4 {
+        font-size: 25px;
+    }
+    p.texto-sobre {
+        font-size: 17px;
+        margin-top: 40px;
+    }
+}
+
+
+/*Fim Sobre Klug - Mobile*/
+
+
+/*Inicio Fale Conosco - Desktop*/
+
+@media screen and (min-width:601px) {
+    .fl-cn {
+        margin-top: 200px;
+        height: 100%;
+    }
+    .conteudo-fale-conosco h4 {
+        margin: 60px auto;
+        text-align: center;
+    }
+    #subtitulo-fale-conosco {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 17px;
+    }
+    #titulo-fale-conosco {
+        font-family: 'Intro';
+        font-size: 25px;
+    }
+    #form-fale-conosco {
+        width: 100%;
+        margin-top: 10px;
+        padding: 0 15%;
+    }
+    #primeiro-nome-fale-conosco,
+    #ultimo-nome-fale-conosco,
+    #email-fale-conosco,
+    #problema-fale-conosco {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 17px;
+        border: hidden;
+        background-color: #DADADA;
+        padding: 7px 20px;
+        border-radius: 10px 10px;
+    }
+    #primeiro-nome-fale-conosco:focus,
+    #ultimo-nome-fale-conosco:focus,
+    #email-fale-conosco:focus,
+    #problema-fale-conosco:focus {
+        box-shadow: none;
+    }
+    #form-fc::placeholder {
+        color: #A1A1A1;
+    }
+    #problema {
+        height: 100px;
+    }
+    #anexar {
+        margin: 50px 0 5% 0;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        padding: 0 15%;
+    }
+    #paperclip {
+        display: none;
+    }
+    div.formulario-fale-conosco button {
+        float: right;
+        margin: 0 15%;
+    }
+    #botao-enviar {
+        background-color: #01303F;
+        border-radius: 10px 10px;
+        box-shadow: none;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        color: #FFF;
+        padding: 5px 0px;
+        width: 100px;
+    }
+    #botao-enviar:hover {
+        background-color: #035e7c;
+    }
+}
+
+
+/*Fim Fale Conosco - Desktop*/
+
+
+/*Fim Sobre Klug - Mobile*/
+
+
+/*Inicio Fale Conosco - Mobile*/
+
+@media screen and (max-width:600px) {
+    .fl-cn {
+        height: 100%;
+    }
+    .conteudo-fale-conosco h4 {
+        margin-top: 60px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    #subtitulo-fale-conosco {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 17px;
+    }
+    #titulo-fale-conosco {
+        font-family: 'Intro';
+        font-size: 25px;
+    }
+    #form-fale-conosco {
+        width: 100%;
+        margin-top: 10px;
+        padding: 0 5%;
+    }
+    #primeiro-nome-fale-conosco,
+    #ultimo-nome-fale-conosco,
+    #email-fale-conosco,
+    #problema-fale-conosco {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        border: hidden;
+        background-color: #DADADA;
+        padding: 7px 15px;
+        border-radius: 10px 10px;
+    }
+    #primeiro-nome-fale-conosco:focus,
+    #ultimo-nome-fale-conosco:focus,
+    #email-fale-conosco:focus,
+    #problema-fale-conosco:focus {
+        box-shadow: none;
+    }
+    #form-fc::placeholder {
+        color: #A1A1A1;
+    }
+    #problema {
+        height: 100px;
+    }
+    #anexar {
+        margin: 30px 0;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        padding: 0 5%;
+    }
+    #paperclip {
+        display: none;
+    }
+    div.formulario-fale-conosco button {
+        float: right;
+        margin: 0 5%;
+    }
+    #botao-enviar {
+        background-color: #01303F;
+        border-radius: 10px 10px;
+        box-shadow: none;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        color: #FFF;
+        padding: 5px 0px;
+        width: 100px;
+    }
+}
+
+
+/*Fim Fale Conosco - Mobile*/
+
+
+/*Inicio Rodapé - Desktop*/
+
+@media screen and (min-width:601px) {
+    .footer {
+        margin-top: 50px;
+        position: absolute;
+        height: 320px;
+        width: 100%;
+        background-color: #D8D8D8;
+    }
+    .principais-topicos {
+        padding: 0 10%;
+    }
+    .principais-topicos h4 {
+        margin-top: 30px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .btn {
+        width: 100%;
+        height: 40px;
+    }
+    .editar-rotas,
+    .personalizar-rotas,
+    .explorar-o-mapa {
+        margin-top: 20px;
+        border: 1px solid #676767;
+        border-radius: 10px 10px;
+    }
+    #botao-principais-topicos {
+        text-align: left;
+        font-family: 'Montserrat', sans-serif;
+    }
+    #botao-principais-topicos:focus {
+        box-shadow: none;
+    }
+    #icone-dropdonw {
+        float: right;
+    }
+    #texto-expansivo {
+        background: none;
+        border: none;
+    }
+    .final-footer {
+        display: block;
+        width: 80%;
+    }
+    .logo-redes {
+        display: flex;
+        height: 20px;
+        margin-top: 35px;
+        padding: 0;
+    }
+    .logo-footer {
+        position: absolute;
+        left: 10%;
+    }
+    .logo-footer a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        gap: 5px;
+        color: #000;
+    }
+    #letra-rodape {
+        font-family: 'Intro';
+        color: #2C2C2C;
+        font-size: 13px;
+    }
+    #logo-rodape {
+        width: 15px;
+    }
+    #indicador-pagina-rodape {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+    }
+    .redes-footer {
+        position: absolute;
+        right: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 15px;
+    }
+    #siga-nos {
+        margin-right: 5px;
+        font-size: 10px;
+    }
+    .redes-footer i {
+        color: #2C2C2C;
+        width: 20px;
+    }
+    #linha-footer {
+        margin: 0 auto;
+        width: 100%;
+    }
+    .copyright {
+        display: flex;
+        width: 100%;
+        margin-top: 5px;
+        padding: 0;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .copyright-texto {
+        position: absolute;
+        left: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .copyright-texto h5 {
+        font-size: 13px;
+    }
+    .pais {
+        position: absolute;
+        right: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .pais h5 {
+        text-align: right;
+        font-size: 13px;
+    }
+}
+
+
+/*Fim Rodapé - Desktop*/
+
+
+/*Inicio Rodapé - Mobile*/
+
+@media screen and (max-width:600px) {
+    .footer {
+        margin-top: 60px;
+        position: absolute;
+        width: 100%;
+        background-color: #D8D8D8;
+    }
+    .principais-topicos {
+        padding: 0 5%;
+    }
+    .principais-topicos h4 {
+        width: 60%;
+        margin: 30px 0 20px 0;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .btn {
+        width: 100%;
+        height: 40px;
+    }
+    .editar-rotas,
+    .personalizar-rotas,
+    .explorar-o-mapa {
+        margin-top: 10px;
+        border: 1px solid #676767;
+        border-radius: 10px 10px;
+    }
+    #botao-principais-topicos {
+        text-align: left;
+        font-family: 'Montserrat', sans-serif;
+    }
+    #botao-principais-topicos:focus {
+        box-shadow: none;
+    }
+    #icone-dropdonw {
+        float: right;
+    }
+    #texto-expansivo {
+        background: none;
+        border: none;
+    }
+    .final-footer {
+        display: block;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .logo-redes {
+        display: none;
+    }
+    .copyright {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 5%;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .copyright-texto h5 {
+        width: 60%;
+        text-align: center;
+        font-size: 13px;
+    }
+    .pais h5 {
+        margin-top: 10px;
+        text-align: right;
+        font-size: 13px;
+    }
+}
+
+
+/*Fim Rodapé - Mobile*/

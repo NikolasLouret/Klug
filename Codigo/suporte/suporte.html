@@ -11,37 +11,27 @@
 
     <script src="https://kit.fontawesome.com/c89ded80b6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="suporte.css">
-    <script src="teste04.js"></script>
+    <script src="suporte.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 
-<body>
-    <header class="header">
-        <div class="container">
-            <div class="row">
-                <nav id="navbar" class="navbar">
-                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 logo">
-                        <a id="suporte" href="#">
-                            <img src="img/Logo.png" id="logo" alt="Logo">
-                            <span id="nomelogo">KLUG</span>
-                            <span id="localpagina">| Suporte</span>
-                        </a>
-                    </div>
+<body id="body">
+    <header id="header">
+        <a id="logo" href="#">
+            <img src="img/Logo.png" alt="Logo">
+            <span id="nomelogo">KLUG </span>
+            <span id="localpagina">| Suporte</span>
+        </a>
+        <nav id="nav">
+            <ul id="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Editar rota</a></li>
+            </ul>
+        </nav>
 
-                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 menu">
-                        <nav class="nav">
-                            <ul id="navbar-nav">
-                                <li><a href="#">Página Inicial</a></li>
-                                <li><a href="#">Editar rota</a></li>
-                                <li><a href="#">Nikolas</a></li>
-                                <li>
-                                    <a href="#"><img class="profile-photo" src="img/Foto de Perfil.png"></a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </nav>
-            </div>
+        <div id="foto-perfil">
+            <a id="nome-perfil" href="#">Nikolas</a>
+            <a href="#"><img class="profile-photo" src="img/Foto de Perfil.png"></a>
         </div>
     </header>
 
@@ -50,7 +40,7 @@
             <div class="container background-globe">
                 <div class="row search-suport">
                     <h1 id="titulo">Suporte KLUG</h1>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 pesquisa">
+                    <div class="pesquisa align-items">
                         <form id="barra-pesquisa" class="d-flex" action="" method="submit">
                             <input type="text" class="form-control" name="search" id="search" placeholder="Pesquisar" aria-label="Search" autocomplete="off">
                             <button class="btn btn-default"><i id="icon-search" class="fas fa-search"></i></button>
@@ -62,11 +52,13 @@
 
         <div class="row principais-problemas">
             <div class="container">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 texto-problemas">
+                <div class="texto-problemas">
                     <a href="#">Mapa incorreto?</a>
                     <div id="lv"></div>
+                    <hr id="linha-mobile">
                     <a href="#">Rota mal planejada?</a>
                     <div id="lv"></div>
+                    <hr id="linha-mobile">
                     <a id="duas-linhas" href="#">Edição da rota não está <br>funcionando?</a>
                 </div>
             </div>
@@ -74,10 +66,10 @@
 
         <div class="container">
             <div class="row link-editor">
-                <div class="col-12 col-sm-12 col-md-5 col-lg-5 icone-editar">
+                <div class="col-12 col-sm-5 col-md-5 col-lg-5 icone-editar">
                     <img src="img/Pencil.png" alt="editar rota">
                 </div>
-                <div class="col-12 col-sm-12 col-md-7 col-lg-7 conteudo-editar">
+                <div class="col-12 col-sm-7 col-md-7 col-lg-7 conteudo-editar">
                     <h4><b>Alguma coisa errada <br>com a rota?</b></h4>
                     <p id="texto-editar">
                         Com o editor de rotas é possível <br> editar as rotas antes de iniciá-las, <br> além de inserir áreas não desejadas, <br> perigosas e avisos no mapa
@@ -91,9 +83,9 @@
             <div class="conteudo-sobre">
                 <div class="backgroung-sobre"></div>
                 <div class="texto-sobre-klug">
-                    <h4><span class="localpagina">Sobre</span><span id="nomelogo">KLUG</span></h4>
+                    <h4><span class="localpagina">Sobre</span><span id="nome-klug"> <b>KLUG</b></span></h4>
                     <p id="p1" class="texto-sobre">
-                        <span id="nomelogo">Klug </span> é um projeto que calcula as melhores rotas de GPS baseados nas áreas indesejadas aparentes no mapa criadas pelo usuário e na personalização do tipo de rota escolhida pelo usuário.</p>
+                        <span id="nome-klug"><b>Klug </b></span> é um projeto que calcula as melhores rotas de GPS baseados nas áreas indesejadas aparentes no mapa criadas pelo usuário e na personalização do tipo de rota escolhida pelo usuário.</p>
                     <p id="p2">O <b>App/Web</b> permite que o usuário edite a rota de acordo com as necessidades no momento e <b>crie avisos</b> que serão aparentes no mapa. Dessa forma, cria-se mais adaptabilidade para as rotas a fim de alcançar maior conforto
                         e melhor exeperiência para o usuário.
                     </p>
@@ -186,29 +178,33 @@
             </div>
         </div>
 
-        <div class="logo-redes">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6 logo-footer">
-                <a href="#">
-                    <h5 id="letra-rodape">K <img src="img/Logo2.png" id="logo-rodape" alt="Logo"> <i class="fas fa-chevron-right"></i> <span id="indicador-pagina-rodape">Suporte</span></h5>
-                </a>
-            </div>
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6 redes-footer">
-                <span id="siga-nos">Siga-nos</span>
-                <a class="facebook" href="https://web.facebook.com/" target="_blank"><i class="fab fa-facebook-square"></i></a>
-                <a class="twitter" href="https://twitter.com/home" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a class="instagram" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <div class="final-footer">
+            <div class="logo-redes">
+                <div class="logo-footer">
+                    <a href="#">
+                        <span id="letra-rodape">K </span>
+                        <img src="img/Logo2.png" id="logo-rodape" alt="Logo">
+                        <i class="fas fa-chevron-right"></i>
+                        <span id="indicador-pagina-rodape">Suporte</span>
+                    </a>
+                </div>
+                <div class="redes-footer">
+                    <span id="siga-nos">Siga-nos</span>
+                    <a class="facebook" href="https://web.facebook.com/" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                    <a class="twitter" href="https://twitter.com/home" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a class="instagram" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
 
-        </div>
+            <hr id="linha-footer">
 
-        <hr id="linha-footer">
-
-        <div class="copyright">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6 copyright-texto">
-                <h5><b>Copyright&copy 2021 Klug</b> | Todos os direitos reservados</h5>
-            </div>
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6 pais">
-                <h5>Brasil</h5>
+            <div class="copyright">
+                <div class="copyright-texto">
+                    <h5><b>Copyright&copy 2021 Klug</b> | Todos os direitos reservados</h5>
+                </div>
+                <div class="pais">
+                    <h5>Brasil</h5>
+                </div>
             </div>
         </div>
     </footer>
