@@ -38,36 +38,42 @@ function initMap() {
   // cria o mapa com as configurações definidas acima
   const map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
+  // chama o botão para achar a posição atual
+  const locationButton = document.getElementById("minha-localizacao");
+
+  locationButton.addEventListener("click", () => {
+    myLocation(map);
+  });
+}
+
+function myLocation(map) {
   // cria uma caixinha de informação do mapa
   const infoWindow = new google.maps.InfoWindow();
 
-  // chama o botão para achar a posição atual
-  const locationButton = document.getElementById("minha-localizacao");
-  
-  locationButton.addEventListener("click", () => {
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
 
-          infoWindow.setPosition(pos);
-          infoWindow.setContent("Location found.");
-          infoWindow.open(map);
-          map.setCenter(pos);
-        },
-        () => {
-          handleLocationError(true, infoWindow, map.getCenter());
-        }
-      );
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
-  });
+        infoWindow.setPosition(pos);
+        infoWindow.setContent("Endereço encontrado");
+        infoWindow.open(map);
+        map.setCenter(pos);
+        map.setZoom(18);
+      },
+      () => {
+        handleLocationError(true, infoWindow, map.getCenter());
+      },
+      {enableHighAccuracy:true, maximumAge:30000, timeout:27000}
+    );
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
