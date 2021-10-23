@@ -10,15 +10,30 @@
     <title>Suporte</title>
 
     <script src="https://kit.fontawesome.com/c89ded80b6.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="suporte.css">
-    <script src="suporte.js"></script>
+    <link rel="stylesheet" href="pagina-inicial.css">
+    <script type="text/javascript" src="app.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script>
+        onload = () => {
+            document.querySelector('#ano').innerHTML = new Date().getFullYear();
+            //document.querySelector('#nome-perfil').innerHTML = new
+            botao_enviar.onclick = () => {
+                window.location.href = "perguntas.html";
+            }
+        }
+
+        /*function init() {
+            // Remove todas as linhas da lista
+            $("#conteudo_discussao").html("");
+
+        }*/
+    </script>
 </head>
 
 <body id="body">
     <header id="header">
         <a id="logo" href="#">
-            <img src="SVG/Logo-Klug-2-branco.svg" id="logo-rodape" alt="Logo">
+            <img src="svg/Logo-Klug-2-branco.svg" id="logo-rodape" alt="Logo">
             <span id="nomelogo">KLUG </span>
             <span id="localpagina">| Suporte</span>
         </a>
@@ -30,7 +45,7 @@
         </nav>
 
         <div id="foto-perfil">
-            <a id="nome-perfil" href="#">Nikolas</a>
+            <span id="nome-perfil" href="#">Nikolas</span>
             <a href="#"><img class="profile-photo" src="img/Foto de Perfil.png"></a>
         </div>
     </header>
@@ -43,7 +58,7 @@
                     <div class="pesquisa align-items">
                         <form id="barra-pesquisa" class="d-flex" action="" method="submit">
                             <input type="text" class="form-control" name="search" id="search" placeholder="Pesquisar" aria-label="Search" autocomplete="off">
-                            <button class="btn btn-default"><i id="icon-search" class="fas fa-search"></i></button>
+                            <button class="btn btn-default"><i id="icon_search" class="fas fa-search"></i></button>
                         </form>
                     </div>
                 </div>
@@ -53,13 +68,13 @@
         <div class="row principais-problemas">
             <div class="container">
                 <div class="texto-problemas">
-                    <a href="#">Mapa incorreto?</a>
+                    <a href="perguntas.html">Mapa incorreto?</a>
                     <div id="lv"></div>
                     <hr id="linha-mobile">
-                    <a href="#">Rota mal planejada?</a>
+                    <a href="perguntas.html">Rota mal planejada?</a>
                     <div id="lv"></div>
                     <hr id="linha-mobile">
-                    <a id="duas-linhas" href="#">Edição da rota não está <br>funcionando?</a>
+                    <a id="duas-linhas" href="perguntas.html">Edição da rota não está <br>funcionando?</a>
                 </div>
             </div>
         </div>
@@ -99,37 +114,36 @@
                     <h4 class="titulo-fale-conosco"><span id="subtitulo-fale-conosco">Encontrou algum erro?</span><br><span id="titulo-fale-conosco">FALE CONOSCO</span></h4>
                 </div>
                 <div class="container formulario-fale-conosco">
-                    <form id="form-fale-conosco" action="https://postman-echo.com/post" method="post">
-                        <div id="primeiro-nome" class="input-group">
-                            <label for="primeiro-nome-fale-conosco"></label>
-                            <input type="text" class="form-control" id="primeiro-nome-fale-conosco" placeholder="Primeiro nome" autocomplete="off">
+                    <form id="form_fale_conosco" action="https://postman-echo.com/post" method="post">
+                        <div id="primeiro_nome-form" class="for_erro">
+                            <label for="primeir_nome"></label>
+                            <input type="text" class="form-control" id="primeiro_nome" placeholder="Primeiro nome" autocomplete="off">
+                        </div>
+
+                        <div id="ultimo_nome-form" class="form_erro">
+                            <label for="ultimo_nome"></label>
+                            <input type="text" class="form-control" id="ultimo_nome" placeholder="Último nome" autocomplete="off">
+                        </div>
+
+                        <div id="email-form" class="form_erro">
+                            <label for="email"></label>
+                            <input type="email" class="form-control" id="email" placeholder="Endereço de email" autocomplete="off">
+                        </div>
+
+                        <div id="problema-form" class="form_erro">
+                            <label for="problema"></label>
+                            <textarea class="form-control" id="problema" placeholder="Descreva o problema" rows="3" autocomplete="off"></textarea>
                         </div>
                     </form>
-                    <form id="form-fale-conosco" action="https://postman-echo.com/post" method="post">
-                        <div id="ultimo-nome" class="input-group">
-                            <label for="ultimo-nome-fale-conosco"></label>
-                            <input type="text" class="form-control" id="ultimo-nome-fale-conosco" placeholder="Último nome" autocomplete="off">
-                        </div>
-                    </form>
-                    <form id="form-fale-conosco" action="https://postman-echo.com/post" method="post">
-                        <div id="email" class="input-group">
-                            <label for="email-fale-conosco"></label>
-                            <input type="email" class="form-control" id="email-fale-conosco" placeholder="Endereço de email" autocomplete="off">
-                        </div>
-                    </form>
-                    <form id="form-fale-conosco" action="https://postman-echo.com/post" method="post">
-                        <div id="problema" class="input-group">
-                            <label for="problema-fale-conosco"></label>
-                            <textarea class="form-control" id="problema-fale-conosco" placeholder="Descreva o problema" rows="3" autocomplete="off"></textarea>
-                        </div>
-                    </form>
+                    <span id="instrucao"></span>
 
                     <div class="anexar-arquivo">
                         <label id="anexar" for="paperclip">Anexar arquivo <span type="file"><i class="fas fa-paperclip"></i></span></label>
                         <input type="file" id="paperclip" multiple>
                     </div>
 
-                    <button id="botao-enviar" class="btn btn-default">Enviar</button>
+
+                    <button id="botao_enviar" class="btn btn-default">Enviar</button>
                 </div>
             </div>
         </div>
@@ -182,7 +196,7 @@
             <div class="logo-redes">
                 <div class="logo-footer">
                     <a href="#">
-                        <img src="SVG/Logo-Klug-1-cinza.svg" id="logo-rodape" alt="Logo">
+                        <img src="svg/Logo-Klug-1-cinza.svg" id="logo-rodape" alt="Logo">
                         <i class="fas fa-chevron-right"></i>
                         <span id="indicador-pagina-rodape">Suporte</span>
                     </a>
@@ -199,7 +213,7 @@
 
             <div class="copyright">
                 <div class="copyright-texto">
-                    <h5><b>Copyright&copy 2021 Klug</b> | Todos os direitos reservados</h5>
+                    <h5><b>Copyright&copy <span id="ano"></span> Klug </b>| Todos os direitos reservados</h5>
                 </div>
                 <div class="pais">
                     <h5>Brasil</h5>
@@ -208,6 +222,7 @@
         </div>
     </footer>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 
