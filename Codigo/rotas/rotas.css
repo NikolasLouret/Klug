@@ -141,6 +141,22 @@ footer #hud-avisos button {
   width: 4rem;
 }
 
+
+
+#instructions {
+  position: absolute;
+  margin: 20px;
+  width: 25%;
+  top: 0;
+  bottom: 20%;
+  padding: 20px;
+  background-color: #fff;
+  overflow-y: scroll;
+  font-family: sans-serif;
+}
+
+
+
 /* Responsive =====================================*/
 @media (max-width: 800px) {
   html {
