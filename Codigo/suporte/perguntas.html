@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Principais Perguntas</title>
+
+    <link rel="icon" href="./img/icon.svg">
+    <link rel="stylesheet" href="perguntas.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/c89ded80b6.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script>
+        function ano_rodape() {
+            document.querySelector('#ano').innerHTML = new Date().getFullYear()
+        }
+
+        function exibePerguntas() {
+            // Remove todas as linhas da lista
+            $("#conteudo_discussao").html("");
+
+            // Popula a lista com os registros do banco de dados
+            for (let i = 0; i < db.data.length; i++) {
+                let discus = db.data[i];
+                $("#conteudo_discussao").append(`<li><h5 id="titulo_disc">${discus.titulo_pergunta}</h5>
+                                                <p id="p_disc_1">${discus.nickname}</p>
+                                                <p id="p_disc_2">${discus.texto}</p>
+                                                <hr>
+                                            </li>`);
+            }
+        }
+
+        function init() {
+            // Adiciona funções para tratar os eventos 
+            $("#postar").click(function() {
+                // Verfica se o formulário está preenchido corretamente
+                if (!$('#form-perguntas')[0].checkValidity()) {
+                    displayMessage("Preencha o formulário corretamente.");
+                    return;
+                }
+
+                // Obtem os valores dos campos do formulário
+                let campoNome = $("#inputNome").val();
+                let campoTitulo = $("#inputTitulo").val();
+                let campoTexto = $('#inputProblema').val();
+                let pergunta = {
+                    nickname: campoNome,
+                    titulo_pergunta: campoTitulo,
+                    texto: campoTexto,
+                };
+
+                insertPergunta(pergunta);
+
+                // Reexibe as perguntas
+                exibePerguntas();
+
+                // Limpa o formulario
+                $("#form-perguntas")[0].reset();
+            });
+        }
+    </script>
+
+</head>
+
+<body onload="ano_rodape(), exibePerguntas(), init()">
+    <!-- Modal Adicionar Pergunta-->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Adicionar Pergunta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-perguntas">
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <label for="inputNome"></label>
+                                <input type="text" class="form-control" id="inputNome" placeholder="Nome" autocomplete="off">
+                                <span id="alerta"></span>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="inputTitulo"></label>
+                                <input type="text" class="form-control" id="inputTitulo" placeholder="Título da perguta" autocomplete="off">
+                                <span id="alerta"></span>
+                            </div>
+                        </div>
+                        <div class="form_group">
+                            <label for="inputProblema"></label>
+                            <textarea class="form-control" id="inputProblema" placeholder="Descreva o problema" rows="5" autocomplete="off"></textarea>
+                            <span id="alerta"></span>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="postar" type="button" class="btn btn-default" data-bs-dismiss="modal">Postar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="cabecalho" id="header">
+        <a id="logo" href="#">
+            <img src="svg/Logo-Klug-2-branco.svg" id="logo-rodape" alt="Logo">
+            <span id="nomelogo">KLUG </span>
+            <span id="localpagina">| Suporte</span>
+        </a>
+        <nav id="nav">
+            <ul id="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Editar rota</a></li>
+            </ul>
+        </nav>
+
+        <div id="foto-perfil">
+            <span id="nome-perfil" href="#">Nikolas</span>
+            <a href="#"><img class="profile-photo" src="img/Foto de Perfil.png"></a>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="row pesquisa-topicos">
+            <div class="container background-globe">
+                <h2 class="topicos">Tópico <span id="topico"></span></h2>
+                <div class="pesquisa">
+                    <form id="barra-pesquisa" class="d-flex" action="" method="submit">
+                        <input type="text" class="form-control" name="search" id="search" placeholder="Pesquisar" aria-label="Search" autocomplete="off">
+                        <button><i id="icon_search" class="fas fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="container conteudo">
+                <div class="row instrucoes">
+                    <h2>Perguntas da Comunidade</h2>
+                    <p id="p1">Tire suas dúvidas aqui</p>
+                    <p id="p2">Se você tiver alguma dúvida ainda não respondida, basta escrevê-la e publicá-la</p>
+                </div>
+
+                <div class="row perguntas">
+                    <div class="col-12 col-sm-12 col-md-2 col-lg-2 perguntas-divisao-1">
+                        <div class="filtrar">
+                            <h3 class="titulo_filtro">Filtrar</h3>
+                            <ul class="filtros">
+                                <li>Edição de Rota</li>
+                                <li>Mapa</li>
+                                <li>Rota Automática</li>
+                            </ul>
+                        </div>
+                        <div class="divisao-vertical"></div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-10 col-lg-10 perguntas-divisao-2">
+                        <div class="titulo_botao">
+                            <h3>Perguntas</h3>
+                            <button id="adicionar_mais" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Adicionar Perguta <i id="mais" class="fas fa-plus"></i></button>
+                        </div>
+
+                        <div class="area_perguntas">
+                            <ul id="conteudo_discussao" class="discussao"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <div class="principais-topicos">
+                    <h4 class="titulo-rodape"><b>Principais tópicos de ajuda</b></h4>
+
+                    <div class="editar-rotas">
+                        <button id="botao-principais-topicos" class="btn btn-default" type="button" data-bs-toggle="collapse" data-bs-target="#edicao-rotas" aria-expanded="false" aria-controls="edicao-rotas">
+                            Edição de rotas <span id="icone-dropdonw"><i class="fas fa-chevron-down"></i></span>
+                        </button>
+
+                        <div class="collapse" id="edicao-rotas">
+                            <div id="texto-expansivo" class="card card-body">
+                                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="personalizar-rotas">
+                        <button id="botao-principais-topicos" class="btn btn-default" type="button" data-bs-toggle="collapse" data-bs-target="#personalizacao-rotas" aria-expanded="false" aria-controls="personalizacao-rotas">
+                                Personalizacao de rotas <span id="icone-dropdonw"><i class="fas fa-chevron-down"></i></span>
+                        </button>
+
+                        <div class="collapse" id="personalizacao-rotas">
+                            <div id="texto-expansivo" class="card card-body">
+                                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="explorar-o-mapa">
+                        <button id="botao-principais-topicos" class="btn btn-default" type="button" data-bs-toggle="collapse" data-bs-target="#explorar-mapa" aria-expanded="false" aria-controls="explorar-mapa">
+                                Explorar o mapa <span id="icone-dropdonw"><i class="fas fa-chevron-down"></i></span>
+                        </button>
+
+                        <div class="collapse" id="explorar-mapa">
+                            <div id="texto-expansivo" class="card card-body">
+                                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="final-footer">
+                <div class="logo-redes">
+                    <div class="logo-footer">
+                        <a href="#">
+                            <img src="svg/Logo-Klug-1-cinza.svg" id="logo-rodape" alt="Logo">
+                            <i class="fas fa-chevron-right"></i>
+                            <span id="indicador-pagina-rodape">Suporte</span>
+                        </a>
+                    </div>
+                    <div class="redes-footer">
+                        <span id="siga-nos">Siga-nos</span>
+                        <a class="facebook" href="https://web.facebook.com/" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                        <a class="twitter" href="https://twitter.com/home" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a class="instagram" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <hr id="linha-footer">
+
+                <div class="copyright">
+                    <div class="copyright-texto">
+                        <h5><b>Copyright&copy <span id="ano"></span> Klug </b>| Todos os direitos reservados</h5>
+                    </div>
+                    <div class="pais">
+                        <h5>Brasil</h5>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+
+</html>

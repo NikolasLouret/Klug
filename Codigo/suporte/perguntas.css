@@ -1,0 +1,645 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+@font-face {
+    font-family: Intro;
+    src: url(Fontes/intro/Intro.otf)
+}
+
+html,
+body {
+    max-width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.main {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/*Inicio Modal*/
+
+div.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 21px;
+    border: none;
+    height: 60px;
+}
+
+div.modal-header h5 {
+    margin-left: auto;
+    margin-right: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#inputNome,
+#inputTitulo,
+#inputProblema {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    border: hidden;
+    background-color: #F4F2F2;
+    padding: 7px 15px;
+    border-radius: 10px 10px;
+}
+
+div.modal-body {
+    margin-top: -20px;
+}
+
+div.modal-footer {
+    margin-right: 33px;
+    margin-left: auto;
+    padding: 9px 0;
+    border: none;
+}
+
+#postar {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: #FFF;
+    background-color: #1b718b;
+    border-radius: 20px;
+    padding: 5px 12px;
+    margin: 0;
+}
+
+
+/*Fim Modal*/
+
+
+/*Inicio Menu - Desktop*/
+
+@media screen and (min-width:601px) {
+    #header {
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        width: 100%;
+        box-sizing: border-box;
+        height: 50px;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #154F61;
+    }
+    #nav {
+        margin: 0 0 0 auto;
+    }
+    header a,
+    #nome-perfil {
+        color: #FFF;
+        text-decoration: none;
+        font-family: 'Montserrat', sans-serif;
+    }
+    nav a:hover {
+        color: #8b8b8b;
+    }
+    #logo:hover {
+        color: #FFF;
+    }
+    #logo img {
+        margin: 0;
+        width: 30px;
+        margin-right: 10px;
+    }
+    #nomelogo {
+        margin: 0;
+        font-family: 'Intro';
+        margin-right: 5px;
+    }
+    #localpagina {
+        margin: 0;
+    }
+    #menu {
+        margin-bottom: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        list-style: none;
+        gap: 2rem;
+    }
+    #logo,
+    #foto-perfil {
+        margin: 0;
+        padding: 0 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    #foto-perfil a:hover {
+        color: #FFF;
+    }
+    .profile-photo {
+        margin-left: 10px;
+        border-radius: 20px 20px;
+        width: 40px;
+    }
+}
+
+
+/*Fim Menu - Desktop*/
+
+
+/*Inicio Menu - Mobile*/
+
+@media (max-width:600px) {
+    #header {
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        width: 100%;
+        box-sizing: border-box;
+        height: 50px;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #154F61;
+    }
+    #nav {
+        margin: 0 0 0 auto;
+    }
+    #nomelogo,
+    #localpagina,
+    #nome-perfil {
+        display: none;
+    }
+    #logo img {
+        width: 30px;
+    }
+    #menu {
+        margin-bottom: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        list-style: none;
+        gap: 2rem;
+    }
+    #menu a {
+        color: #FFF;
+        text-decoration: none;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .profile-photo {
+        margin-left: 10px;
+        border-radius: 20px 20px;
+        width: 40px;
+    }
+}
+
+
+/*Fim Menu - Mobile*/
+
+
+/*Inicio Barra de Pesquisa Suporte - Desktop*/
+
+@media screen and (min-width:800px) {
+    div.pesquisa-topicos {
+        background-color: #1a1919;
+    }
+    .background-globe {
+        height: 280px;
+        background-image: url(/img/Globo-defocado.png);
+        background-repeat: no-repeat;
+        background-position-x: 120%;
+        background-position-y: center;
+        background-size: 40%;
+        padding: 0 !important;
+    }
+    h2.topicos {
+        margin: 100px auto 0;
+        text-align: center;
+        color: white;
+        letter-spacing: 10px;
+        font-family: 'Intro';
+        font-size: 45px;
+    }
+    .pesquisa {
+        margin-top: 30px;
+    }
+    #search {
+        margin-left: 30px;
+        margin-right: auto;
+        padding: 0;
+    }
+    #barra-pesquisa button {
+        padding: 0;
+        margin-left: auto;
+        margin-right: 30px;
+    }
+    #barra-pesquisa {
+        height: 35px;
+        width: 650px;
+        border-radius: 50px;
+        background-color: #F4F2F2;
+    }
+    #barra-pesquisa input,
+    #barra-pesquisa button {
+        font-size: 15px;
+        font-family: 'Montserrat', sans-serif;
+        color: rgb(51, 51, 51) !important;
+        border: none;
+        background: none;
+    }
+    #barra-pesquisa input:focus,
+    #barra-pesquisa button:focus {
+        box-shadow: none;
+    }
+    #icon_search:hover {
+        color: rgb(121, 121, 121) !important;
+    }
+}
+
+
+/*Fim Barra de Pesquisa Suporte - Desktop*/
+
+
+/*Inicio Barra de Pesquisa Suporte - Mobile*/
+
+@media (max-width:799px) {
+    #barra-pesquisa {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 25px;
+        width: 70%;
+        margin-top: -25px;
+        border-radius: 50px 50px;
+        background-color: black;
+        padding: 0 10px;
+    }
+    #barra-pesquisa input,
+    #barra-pesquisa button {
+        height: 25px;
+        font-size: 13px;
+        font-family: 'Montserrat', sans-serif;
+        color: rgb(51, 51, 51) !important;
+        border: none;
+        background: none;
+    }
+    #barra-pesquisa button {
+        display: flex;
+        align-items: center;
+    }
+    #barra-pesquisa input:focus,
+    #barra-pesquisa button:focus {
+        box-shadow: none;
+    }
+}
+
+
+/*Fim Barra de Pesquisa Suporte - Mobile*/
+
+
+/*Inicio Instruções das Perguntas - Desktop*/
+
+@media screen and (min-width:900px) {
+    div.conteudo {
+        margin: 50px auto;
+        width: 70%;
+        padding: 0;
+    }
+    .instrucoes>h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        font-size: 30px;
+        color: #1a1919;
+        padding: 0;
+        margin: 0;
+    }
+    #p1 {
+        margin: 10px 0;
+        padding: 0;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: normal;
+        font-size: 20px;
+        color: #1a1919;
+    }
+    #p2 {
+        margin: 0;
+        padding: 0;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: normal;
+        font-size: 15px;
+        color: #1a1919;
+    }
+}
+
+
+/*Fim Instruções das Perguntas - Desktop*/
+
+
+/*Inicio Area das Perguntas - Desktop*/
+
+@media screen and (min-width:900px) {
+    div.perguntas {
+        margin-top: 50px;
+        height: 100%;
+        padding: 0;
+    }
+    div.perguntas-divisao-1,
+    div.perguntas-divisao-2 {
+        padding: 0;
+        margin: 0;
+    }
+    div.filtrar {
+        margin: 0;
+    }
+    h3.titulo_filtro {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        font-size: 25px;
+        color: #1a1919;
+    }
+    ul.filtros {
+        padding: 0;
+        margin: 40px 0;
+        list-style: none;
+        font-family: 'Montserrat', sans-serif;
+        font-size: medium;
+    }
+    ul.filtros li {
+        margin-top: 10px;
+    }
+    div.perguntas-divisao-1 {
+        display: flex;
+    }
+    div.divisao-vertical {
+        height: 100%;
+        border-right: 1px solid #a1a1a1;
+    }
+    div.titulo_botao {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .titulo_botao>h3 {
+        margin: 0 0 15px 0;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        font-size: 25px;
+        color: #1a1919;
+    }
+    #adicionar_mais {
+        background-color: #154F61;
+        padding: 5px 15px;
+        border: none;
+        border-radius: 50px 50px;
+        color: #FFF;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+    }
+    #mais {
+        margin-left: 10px;
+    }
+    #adicionar_mais:hover {
+        background-color: #1b718b;
+    }
+    div.filtro,
+    div.bloco_perguntas,
+    div.area_perguntas {
+        padding: 0;
+        margin: 0;
+    }
+    #conteudo_discussao {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    #titulo_disc {
+        margin-top: 25px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 17px;
+        font-weight: bold;
+    }
+    #p_disc_1 {
+        margin-top: -3px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: medium;
+    }
+    #p_disc_2 {
+        margin-top: 20px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: large;
+    }
+}
+
+
+/*Fim Area das Perguntas - Desktop*/
+
+
+/*Inicio Rodapé - Desktop*/
+
+@media screen and (min-width:601px) {
+    .footer {
+        margin-top: 50px;
+        position: absolute;
+        height: 320px;
+        width: 100%;
+        background-color: #D8D8D8;
+    }
+    .principais-topicos {
+        padding: 0 10%;
+    }
+    .principais-topicos h4 {
+        margin-top: 30px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .btn {
+        width: 100%;
+        height: 40px;
+    }
+    .editar-rotas,
+    .personalizar-rotas,
+    .explorar-o-mapa {
+        margin-top: 20px;
+        border: 1px solid #676767;
+        border-radius: 10px 10px;
+    }
+    #botao-principais-topicos {
+        text-align: left;
+        font-family: 'Montserrat', sans-serif;
+    }
+    #botao-principais-topicos:focus {
+        box-shadow: none;
+    }
+    #icone-dropdonw {
+        float: right;
+    }
+    #texto-expansivo {
+        background: none;
+        border: none;
+    }
+    .final-footer {
+        display: block;
+        width: 80%;
+    }
+    .logo-redes {
+        display: flex;
+        height: 20px;
+        margin-top: 35px;
+        padding: 0;
+    }
+    .logo-footer {
+        position: absolute;
+        left: 10%;
+    }
+    .logo-footer a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        gap: 5px;
+        color: #000;
+    }
+    #letra-rodape {
+        font-family: 'Intro';
+        color: #2C2C2C;
+        font-size: 13px;
+    }
+    #logo-rodape {
+        width: 20px;
+    }
+    #indicador-pagina-rodape {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+    }
+    .redes-footer {
+        position: absolute;
+        right: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 15px;
+    }
+    #siga-nos {
+        margin-right: 5px;
+        font-size: 10px;
+    }
+    .redes-footer i {
+        color: #2C2C2C;
+        width: 20px;
+    }
+    #linha-footer {
+        margin: 0 auto;
+        width: 100%;
+    }
+    .copyright {
+        display: flex;
+        width: 100%;
+        margin-top: 5px;
+        padding: 0;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .copyright-texto {
+        position: absolute;
+        left: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .copyright-texto h5 {
+        font-size: 13px;
+    }
+    .pais {
+        position: absolute;
+        right: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .pais h5 {
+        text-align: right;
+        font-size: 13px;
+    }
+}
+
+
+/*Fim Rodapé - Desktop*/
+
+
+/*Inicio Rodapé - Mobile*/
+
+@media screen and (max-width:600px) {
+    .footer {
+        margin-top: 60px;
+        position: absolute;
+        width: 100%;
+        background-color: #D8D8D8;
+    }
+    .principais-topicos {
+        padding: 0 5%;
+    }
+    .principais-topicos h4 {
+        width: 60%;
+        margin: 30px 0 20px 0;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .btn {
+        width: 100%;
+        height: 40px;
+    }
+    .editar-rotas,
+    .personalizar-rotas,
+    .explorar-o-mapa {
+        margin-top: 10px;
+        border: 1px solid #676767;
+        border-radius: 10px 10px;
+    }
+    #botao-principais-topicos {
+        text-align: left;
+        font-family: 'Montserrat', sans-serif;
+    }
+    #botao-principais-topicos:focus {
+        box-shadow: none;
+    }
+    #icone-dropdonw {
+        float: right;
+    }
+    #texto-expansivo {
+        background: none;
+        border: none;
+    }
+    .final-footer {
+        display: block;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .logo-redes {
+        display: none;
+    }
+    .copyright {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 5%;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .copyright-texto h5 {
+        width: 60%;
+        text-align: center;
+        font-size: 13px;
+    }
+    .pais h5 {
+        margin-top: 10px;
+        text-align: right;
+        font-size: 13px;
+    }
+}
+
+
+/*Fim Rodapé - Mobile*/
