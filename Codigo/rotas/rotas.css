@@ -59,11 +59,18 @@ body section .botao img {
 }
 
 /* Header  ===================================================================*/
-section header #botao-editar-rota {
-  margin: 4rem 0 0 1rem;
+section header #barra-pesquisa {
+  margin: 1rem;
 
   z-index: 2;
-  position: fixed;
+  position: absolute;
+}
+
+body section header {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
 }
 
 /* Rodapé - Barra de Pesquisa ================================================*/
@@ -81,12 +88,12 @@ body section footer {
   width: 100vw;
 }
 
-section footer #barra-pesquisa {
+section header #barra-pesquisa {
   width: 30rem;
   display: flex;
 }
 
-section footer input {
+section header input {
   border: 1px solid var(--bg);
   border-radius: 50px 0 0 50px;
   color: var(--color-text);
@@ -99,12 +106,12 @@ section footer input {
 
   text-overflow: ellipsis;
 }
-section footer input::placeholder {
+section header input::placeholder {
   color: var(--color-text);
   opacity: 0.7;
 }
 
-section footer #criar-rota {
+section header #criar-rota {
   border: 1px solid #000;
   border-radius: 0 50px 50px 0;
   color: var(--color-text);
@@ -117,10 +124,10 @@ section footer #criar-rota {
 
   cursor: pointer;
 }
-section footer #criar-rota:hover {
+section header #criar-rota:hover {
   opacity: 1;
   border: #3731af;
-  background:#3731af;
+  background: #3731af;
 }
 
 /* Rodapé - Hud de avisos ====================================================*/
@@ -145,6 +152,10 @@ footer #hud-avisos button {
     width: 4rem;
   }
 
+  section header #barra-pesquisa {
+    width: calc(100vw - 14vw);
+  }
+
   section header #botao-editar-rota {
     margin: 1rem;
     z-index: 2;
@@ -152,7 +163,7 @@ footer #hud-avisos button {
   }
 
   body section footer {
-    display: grid;
+    /* display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 1fr);
 
@@ -160,13 +171,14 @@ footer #hud-avisos button {
     margin: 0;
     gap: 1rem;
 
-    justify-items: center;
+    justify-items: center; */
   }
 
   section footer #hud-avisos {
-    grid-area: 1 / 1 / 2 / 2;
-
+    display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   footer #hud-avisos button {
@@ -174,11 +186,7 @@ footer #hud-avisos button {
     width: 3.5rem;
   }
 
-  section footer #barra-pesquisa {
-    grid-area: 2 / 1 / 3 / 2;
-
-    width: calc(100vw - 10vw);
-  }
+  
 
   .gmnoprint {
     display: none;
