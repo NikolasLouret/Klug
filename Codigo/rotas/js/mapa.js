@@ -1,22 +1,7 @@
 // importa a chave de credencial de outro arquivo, por motivos de segurança
-import { apiKey } from "./config.js";
-
-// cria uma tag de script
-let script = document.createElement("script");
-// define o endereço do script como requisição da api, com a chave em seu escopo
-script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
-// função assíncrona, para não dar erro
-script.async = true;
-
-// anexa a função de iniciar mapa como resposta da requisição acima
-window.initMap = function () {
-  initMap();
-};
-// adiciona a tag acima no html
-document.head.appendChild(script);
-
 // função que inicia o mapa
-function initMap() {
+
+export function initMap() {
   // define o ponto inicial do centro do mapa
   let initialPosition = new google.maps.LatLng(-19.916667, -43.933333);
 
@@ -37,6 +22,8 @@ function initMap() {
 
   // cria o mapa com as configurações definidas acima
   const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+  let mapCopy = map;
 
   // chama o botão para achar a posição atual
   const locationButton = document.getElementById("minha-localizacao");
@@ -68,7 +55,7 @@ function myLocation(map) {
       () => {
         handleLocationError(true, infoWindow, map.getCenter());
       },
-      {enableHighAccuracy:true, maximumAge:30000, timeout:27000}
+      { enableHighAccuracy: true, maximumAge: 30000, timeout: 27000 }
     );
   } else {
     // Browser doesn't support Geolocation

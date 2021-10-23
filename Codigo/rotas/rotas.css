@@ -96,6 +96,8 @@ section footer input {
   width: 100%;
 
   font-size: 1.125rem;
+
+  text-overflow: ellipsis;
 }
 section footer input::placeholder {
   color: var(--color-text);
