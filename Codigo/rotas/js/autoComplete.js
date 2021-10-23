@@ -1,46 +1,29 @@
+import { initMap } from './mapa.js';
+
 export function initAutocomplete() {
-  // var map = new google.maps.Map(document.getElementById('map'), {
-  //   center: {
-  //     lat: 48,
-  //     lng: 4
-  //   },
-  //   zoom: 4,
-  //   disableDefaultUI: true
-  // });
+  initMap();
 
   // Create the search box and link it to the UI element.
-  let input = document.getElementById('searchTextField');
-  let autocomplete = new google.maps.places.Autocomplete(input);
-}
+  const input = document.getElementById("searchTextField");
 
-document.addEventListener("DOMContentLoaded", function(event) {
-  initAutocomplete();
-});
+  const options = {
+    componentRestrictions: { country: "br" },
+  };
 
+  const autocomplete = new google.maps.places.Autocomplete(input, options);
 
-
-
-
-
-
-
-
-
-
-function marcador() {
   var marker = new google.maps.Marker({
-    map: map
+    map: map,
   });
 
   // Bias the SearchBox results towards current map's viewport.
-  autocomplete.bindTo('bounds', map);
+  autocomplete.bindTo("bounds", map);
   // Set the data fields to return when the user selects a place.
-  autocomplete.setFields(
-    ['address_components', 'geometry', 'name']);
+  autocomplete.setFields(["address_components", "geometry", "name"]);
 
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
-  autocomplete.addListener('place_changed', function() {
+  autocomplete.addListener("place_changed", function () {
     var place = autocomplete.getPlace();
     if (!place.geometry) {
       console.log("Returned place contains no geometry");
@@ -58,3 +41,8 @@ function marcador() {
     map.fitBounds(bounds);
   });
 }
+
+document.addEventListener("DOMContentLoaded", function (event) {
+  initAutocomplete();
+  marcador();
+});

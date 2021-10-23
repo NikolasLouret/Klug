@@ -1,6 +1,5 @@
-// importa a chave de credencial de outro arquivo, por motivos de segurança
-// função que inicia o mapa
 
+// função que inicia o mapa
 export function initMap() {
   // define o ponto inicial do centro do mapa
   let initialPosition = new google.maps.LatLng(-19.916667, -43.933333);
