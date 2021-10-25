@@ -8,6 +8,14 @@ getLocation();
 let coordenadas = JSON.parse(window.sessionStorage.getItem("coordenadas"));
 console.log(coordenadas);
 
+// se não tem as coordenadas do usuário, coloca como sendo o marco central de BH
+if (!coordenadas) {
+  coordenadas = {
+    lat: -19.916667,
+    lng: -43.933333
+  }
+}
+
 // função que pega as coordenadas do usuário
 function getLocation() {
   // verifica se o navegador suporta geolocalização
@@ -202,7 +210,7 @@ map.on("load", () => {
   // get the sidebar and add the instructions
   const instructions = document.getElementById("instructions");
   const steps = data.legs[0].steps;
-  
+
   let tripInstructions = "";
   for (const step of steps) {
     tripInstructions += `<li>${step.maneuver.instruction}</li>`;
