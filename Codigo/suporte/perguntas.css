@@ -144,7 +144,7 @@ div.hudRodape {
 /*Fim Modal*/
 
 
-/*Inicio Menu*/
+/*Inicio Menu - Desktop*/
 
 @media (min-width: 601px) {
     #header {
@@ -153,8 +153,7 @@ div.hudRodape {
         position: absolute;
         width: 100%;
         box-sizing: border-box;
-        height: 50px;
-        padding: 1rem;
+        height: 45px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -171,6 +170,7 @@ div.hudRodape {
         color: #FFF;
         text-decoration: none;
         font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
     }
     nav a:hover,
     #nome-perfil:hover {
@@ -181,52 +181,49 @@ div.hudRodape {
         width: 30px;
     }
     #logo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         margin: 0;
     }
+    #logo:hover {
+        color: #FFF;
+    }
     #nomelogo {
-        margin-left: 10px;
+        margin: 3px 5px 0 10px;
         font-family: 'Intro';
-        margin-right: 5px;
         color: white;
     }
     #menu {
-        margin-bottom: 0;
+        margin: 0 0 3px;
         padding: 0;
         display: flex;
         align-items: center;
         list-style: none;
-        gap: 2rem;
-    }
-    #logo {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    #profile-photo {
-        border-radius: 20px;
-        width: 40px;
-    }
-    #logo img {
-        width: 30px;
-    }
-    #logo {
-        margin: 0;
+        gap: 1.5rem;
     }
 }
+
+
+/*Fim Menu - Desktop*/
+
+
+/*Inicio Menu - Mobile*/
 
 @media (max-width:600px) {
     #header {
         padding: 0 5% !important;
         margin: 0;
-        position: absolute;
+        position: fixed;
         width: 100%;
         box-sizing: border-box;
-        height: 50px;
+        height: 45px;
         padding: 1rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
         background: #154F61;
+        z-index: 1000;
     }
     #nav {
         margin: 0 0 0 auto;
@@ -249,11 +246,11 @@ div.hudRodape {
         justify-content: space-between;
         margin: 0;
     }
-    #profile-photo {
-        border-radius: 20px;
-        width: 40px;
+    #nomelogo {
+        font-size: 15px;
+        font-weight: bolder;
+        margin-left: 5px;
     }
-    #nomelogo,
     #localpagina,
     #nome-perfil {
         display: none;
@@ -263,11 +260,11 @@ div.hudRodape {
         position: absolute;
         padding: 0;
         z-index: 1000;
-        height: calc(100vh - 50px);
+        height: calc(100vh - 40px);
         width: 0;
         right: 0;
         background-color: #154F61;
-        top: 50px;
+        top: 40px;
         list-style: none;
         transition: .3s;
         visibility: hidden;
@@ -294,13 +291,6 @@ div.hudRodape {
         color: white;
         margin: 0 0 0 auto;
         gap: .5rem
-    }
-    #foto-perfil {
-        margin: 0;
-        width: 20px;
-    }
-    #profile-photo {
-        display: none;
     }
     #hamburguer {
         margin-top: -2px;
@@ -332,7 +322,7 @@ div.hudRodape {
 }
 
 
-/*Fim Menu*/
+/*Fim Menu - Mobile*/
 
 
 /*Inicio Barra de Pesquisa Suporte - Desktop*/
@@ -414,7 +404,7 @@ div.hudRodape {
 
 @media (max-width:899px) {
     div.suport {
-        background-color: #1a1919;
+        background-color: #0A0A0A;
     }
     .background-globe {
         height: 280px;
@@ -427,7 +417,7 @@ div.hudRodape {
     }
     #titulo {
         width: 70%;
-        margin: 100px auto 0;
+        margin: 85px auto 0;
         text-align: center;
         color: white;
         letter-spacing: 10px;
@@ -444,6 +434,7 @@ div.hudRodape {
     }
     #barra-pesquisa button {
         padding: 0;
+        margin-top: 2px;
     }
     #barra-pesquisa {
         height: 35px;
@@ -578,9 +569,9 @@ div.hudRodape {
 /*Fim Instruções das Perguntas - Mobile*/
 
 
-/*Inicio Area das Perguntas - Desktop*/
+/*Inicio Area das Perguntas - Mobile*/
 
-@media screen and (max-width: 1299px) {
+@media screen and (max-width: 600px) {
     div.perguntas {
         margin-top: 50px;
         height: 100%;
@@ -617,8 +608,8 @@ div.hudRodape {
         border: none;
         color: white;
         border-radius: 50px;
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
     }
     #mais {
         width: 13px;
@@ -650,7 +641,102 @@ div.hudRodape {
     }
 }
 
-@media screen and (min-width: 1300px) {
+
+/*Fim Area das Perguntas - Mobile*/
+
+
+/*Inicio Area das Perguntas - Tablet*/
+
+@media screen and (min-width: 601px) and (max-width: 1399px) {
+    div.perguntas {
+        margin-top: 50px;
+        height: 100%;
+        padding: 0;
+    }
+    div.perguntas-divisao-1,
+    div.perguntas-divisao-2 {
+        padding: 0;
+        margin: 0;
+    }
+    div.perguntas-divisao-1 {
+        display: flex;
+    }
+    div.divisao-vertical {
+        height: 100%;
+        border-right: 1px solid #a1a1a1;
+    }
+    div.titulo_botao {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+    }
+    .titulo_botao>h3 {
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        font-size: 25px;
+        color: #1a1919;
+    }
+    .botaoAdd {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #154F61;
+        margin: 0;
+        border: none;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+        color: white;
+        border-radius: 50px;
+        width: 185px;
+        height: 30px;
+    }
+    #mais {
+        width: 13px;
+        height: 13px;
+        margin: 0 13px 0 auto;
+        float: right;
+    }
+    .trasicao::before {
+        content: 'Adicionar Pergunta';
+        margin: 0 0 0 17px;
+        color: white;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+    }
+    div.bloco_perguntas,
+    div.area_perguntas {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+    }
+    #conteudo_discussao {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    #conteudo_discussao li {
+        cursor: pointer;
+    }
+    #inputId {
+        display: none;
+    }
+    #tituloPergunta {
+        margin-top: 25px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 17px;
+        font-weight: bold;
+    }
+}
+
+
+/*Fim Area das Perguntas - Tablet*/
+
+
+/*Inicio Area das Perguntas - Desktop*/
+
+@media screen and (min-width: 1400px) {
     div.perguntas {
         margin-top: 50px;
         height: 100%;
@@ -696,7 +782,7 @@ div.hudRodape {
         height: 30px;
     }
     .trasicao {
-        transition: width .5s;
+        transition: width .3s;
     }
     .trasicao::before {
         opacity: 0;
@@ -716,14 +802,14 @@ div.hudRodape {
         width: 13px;
         height: 13px;
         margin: 0 8.5px 0 auto;
-        transition: all .6s;
+        transition: all .4s;
     }
     .trasicao:hover {
         width: 185px;
         background-color: #1b718b;
     }
     .trasicao:hover::before {
-        animation: fadeIn 0.5s linear .068s;
+        animation: fadeIn 0.3s linear .03s;
         animation-fill-mode: forwards;
         margin: 0 0 0 17px;
         color: white;
@@ -839,6 +925,9 @@ div.hudRodape {
     #indicador-pagina-rodape {
         font-family: 'Montserrat', sans-serif;
         font-size: 13px;
+    }
+    .logo-footer a:hover {
+        color: #2C2C2C;
     }
     .redes-footer {
         position: absolute;
