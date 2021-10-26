@@ -1,7 +1,7 @@
 var db_perguntas = {
     "data": [{
             "id": 1,
-            "topico": "Edição de rota",
+            "nickname": "Samantha",
             "titulo_pergunta": "Como editar rota?",
             "texto": "Elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas maecenas pharetra",
         },

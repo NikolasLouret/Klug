@@ -32,8 +32,7 @@ body {
         position: absolute;
         width: 100%;
         box-sizing: border-box;
-        height: 50px;
-        padding: 1rem;
+        height: 45px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -50,50 +49,37 @@ body {
         color: #FFF;
         text-decoration: none;
         font-family: 'Montserrat', sans-serif;
+        font-size: 13px
     }
     nav a:hover,
     #nome-perfil:hover {
         cursor: pointer;
         color: #8b8b8b;
     }
+    #logo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0;
+    }
     #logo img {
         width: 30px;
     }
-    #logo {
-        margin: 0;
+    #logo:hover {
+        color: #FFF;
     }
     #nomelogo {
-        margin-left: 10px;
+        margin: 3px 5px 0 10px;
         font-family: 'Intro';
-        margin-right: 5px;
         color: white;
     }
-    #loginProfile {
-        margin-top: 7px !important;
-    }
     #menu {
-        margin-bottom: 0;
+        margin: 0 0 3px;
         padding: 0;
         display: flex;
         align-items: center;
         list-style: none;
-        gap: 2rem;
-    }
-    #logo,
-    l {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    #profile-photo {
-        border-radius: 20px;
-        width: 40px;
-    }
-    #logo img {
-        width: 30px;
-    }
-    #logo {
-        margin: 0;
+        gap: 1.5rem;
     }
 }
 
@@ -107,15 +93,16 @@ body {
     #header {
         padding: 0 5% !important;
         margin: 0;
-        position: absolute;
+        position: fixed;
         width: 100%;
         box-sizing: border-box;
-        height: 50px;
+        height: 45px;
         padding: 1rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
         background: #154F61;
+        z-index: 1000;
     }
     #nav {
         margin: 0 0 0 auto;
@@ -138,11 +125,11 @@ body {
         justify-content: space-between;
         margin: 0;
     }
-    #profile-photo {
-        border-radius: 20px;
-        width: 40px;
+    #nomelogo {
+        font-size: 15px;
+        font-weight: bolder;
+        margin-left: 5px;
     }
-    #nomelogo,
     #localpagina,
     #nome-perfil {
         display: none;
@@ -152,11 +139,11 @@ body {
         position: absolute;
         padding: 0;
         z-index: 1000;
-        height: calc(100vh - 50px);
+        height: calc(100vh - 40px);
         width: 0;
         right: 0;
         background-color: #154F61;
-        top: 50px;
+        top: 40px;
         list-style: none;
         transition: .3s;
         visibility: hidden;
@@ -183,13 +170,6 @@ body {
         color: white;
         margin: 0 0 0 auto;
         gap: .5rem
-    }
-    #foto-perfil {
-        margin: 0;
-        width: 20px;
-    }
-    #profile-photo {
-        display: none;
     }
     #hamburguer {
         margin-top: -2px;

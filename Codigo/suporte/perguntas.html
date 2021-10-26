@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" id="semScrollLateral">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -82,6 +82,57 @@
             }
         }
 
+        function addPergunta() {
+            validacaoForm()
+
+            // Verfica se o formulário está preenchido corretamente
+            if (!$('#form-perguntas')[0].checkValidity()) {
+                return
+            }
+
+            // Obtem os valores dos campos do formulário
+            let campoNome = $("#inputNome").val()
+            let campoTitulo = $("#inputTitulo").val()
+            let campoTexto = $("#inputProblema").val()
+            let pergunta = {
+                nickname: campoNome,
+                titulo_pergunta: campoTitulo,
+                texto: campoTexto
+            }
+
+            insertPergunta(pergunta)
+
+            location.reload()
+        }
+
+        function alterarPergunta() {
+            validacaoForm()
+
+            // Verfica se o formulário está preenchido corretamente
+            if (!$('#form-perguntas-modal')[0].checkValidity()) {
+                return
+            }
+
+            // Intercepta o click do botão Alterar
+            let campoNome = $("#inputNomeModal").val()
+            let campoTitulo = $("#inputTituloModal").val()
+            let campoTexto = $("#inputProblemaModal").val()
+            let pergunta = {
+                nickname: campoNome,
+                titulo_pergunta: campoTitulo,
+                texto: campoTexto
+            }
+
+            updatePergunta(parseInt(idPerguntaModal), pergunta)
+
+            location.reload()
+        }
+
+        function apagarPergunta() {
+            deletePergunta(parseInt(idPerguntaModal))
+            init()
+        }
+
         function gerarModal(perguntaClickada, idPergunta) {
             idPerguntaModal = descobrirId(idPergunta)
 
@@ -100,59 +151,6 @@
             $("#inputNomeModal").val($("#p1-pergunta").text());
             $("#inputTituloModal").val($("#titulo_disc").text());
             $("#inputProblemaModal").val($("#p2-pergunta").text());
-        }
-
-        function alterarPergunta() {
-            validacaoForm()
-
-            // Adiciona funções para tratar os eventos 
-            $("#confirmar-alteracao").click(function() {
-                // Verfica se o formulário está preenchido corretamente
-                if (!$('#form-perguntas')[0].checkValidity()) {
-                    return
-                }
-
-                // Intercepta o click do botão Alterar
-                let campoNome = $("#inputNomeModal").val()
-                let campoTitulo = $("#inputTituloModal").val()
-                let campoTexto = $("#inputProblemaModal").val()
-                let pergunta = {
-                    nickname: campoNome,
-                    titulo_pergunta: campoTitulo,
-                    texto: campoTexto,
-                }
-                updatePergunta(parseInt(idPerguntaModal), pergunta)
-            })
-        }
-
-        function apagarPergunta() {
-            deletePergunta(parseInt(idPerguntaModal))
-            document.location.reload()
-        }
-
-        function addPergunta() {
-
-            validacaoForm()
-
-            // Adiciona funções para tratar os eventos 
-            $("#postar").click(function() {
-                // Verfica se o formulário está preenchido corretamente
-                if (!$('#form-perguntas')[0].checkValidity()) {
-                    return
-                }
-
-                // Obtem os valores dos campos do formulário
-                let campoNome = $("#inputNome").val()
-                let campoTitulo = $("#inputTitulo").val()
-                let campoTexto = $("#inputProblema").val()
-                let pergunta = {
-                    nickname: campoNome,
-                    titulo_pergunta: campoTitulo,
-                    texto: campoTexto,
-                }
-
-                insertPergunta(pergunta)
-            })
         }
 
         function filtroPerguntas() {
@@ -312,11 +310,12 @@
 
             inputSearch.addEventListener('click', showResults)
             inputSearch.addEventListener('blur', hideResults)
+
         }
     </script>
 </head>
 
-<body id="semScrollLateral" onload="init()">
+<body onload="init()">
     <!-- Modal Adicionar Pergunta-->
     <div class="modal fade" id="adicioner-pergunta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -344,7 +343,7 @@
                     </form>
                 </div>
                 <div class="modal-footer hudRodape">
-                    <button type="submit" id="postar" type="button" class="btn btn-default">Postar</button>
+                    <button onclick="addPergunta()" type="submit" id="postar" class="btn btn-default">Postar</button>
                 </div>
             </div>
         </div>
@@ -360,10 +359,10 @@
 
                 <div class="modal-footer hudRodape">
                     <div id="botao1">
-                        <button onclick="alterarPergunta()" type="submit" id="botao-editar" class="btn btn-default" data-bs-target="#modalEditar" data-bs-toggle="modal">Editar</button>
+                        <button onclick="editarModal()" type="submit" id="botao-editar" class="btn btn-default" data-bs-target="#modalEditar" data-bs-toggle="modal">Editar</button>
                     </div>
                     <div id="botao2">
-                        <button onclick="apagarPergunta()" type="submit" id="apagar-pergunta" class="btn btn-default">Apagar</button>
+                        <button onclick="apagarPergunta()" type="submit" id="apagar-pergunta" class="btn btn-default" data-bs-dismiss="modal" aria-label="Close">Apagar</button>
                     </div>
                 </div>
             </div>
@@ -379,7 +378,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body-config">
-                    <form id="form-perguntas">
+                    <form id="form-perguntas-modal">
                         <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="inputNomeModal"></label>
@@ -415,7 +414,7 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Editar rota</a></li>
                 <li>
-                    <a id="loginProfile" href="#">Entrar <img id="profile-photo" src="img/Foto de Perfil.png"></a>
+                    <a id="loginProfile" href="#">Entrar</a>
                 </li>
             </ul>
         </nav>
@@ -450,7 +449,7 @@
                 <div class="row perguntas">
                     <div class="titulo_botao">
                         <h3>Perguntas</h3>
-                        <button onclick="addPergunta()" class="botaoAdd trasicao" id="adicionar_mais" type="button" data-bs-toggle="modal" data-bs-target="#adicioner-pergunta"><i id="mais" class="fas fa-plus"></i></button>
+                        <button class="botaoAdd trasicao" id="adicionar_mais" type="button" data-bs-toggle="modal" data-bs-target="#adicioner-pergunta"><i id="mais" class="fas fa-plus"></i></button>
                     </div>
 
                     <div class="area_perguntas">
