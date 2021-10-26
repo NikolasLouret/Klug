@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" id="semScrollLateral">
 
 <head>
     <meta charset="UTF-8">
@@ -15,89 +15,389 @@
     <script src="https://kit.fontawesome.com/c89ded80b6.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="app.js"></script>
     <script>
-        function ano_rodape() {
-            document.querySelector('#ano').innerHTML = new Date().getFullYear()
+        var idPerguntaModal
+
+        function descobrirId(id) {
+            return id
         }
 
-        function exibePerguntas() {
-            // Remove todas as linhas da lista
-            $("#conteudo_discussao").html("");
+        function validacaoForm() {
+            var asterisco;
 
-            // Popula a lista com os registros do banco de dados
-            for (let i = 0; i < db.data.length; i++) {
-                let discus = db.data[i];
-                $("#conteudo_discussao").append(`<li><h5 id="titulo_disc">${discus.titulo_pergunta}</h5>
-                                                <p id="p_disc_1">${discus.nickname}</p>
-                                                <p id="p_disc_2">${discus.texto}</p>
-                                                <hr>
-                                            </li>`);
+            //Verificar os campos do formulário das perguntas individualmente
+            const fields = document.querySelectorAll("[required]")
+
+            function validateField(field) {
+                //Lógica para verificar se existem erros
+                function verifyErrors() {
+                    let foundError = false;
+
+                    for (key in field.validity) {
+                        if (field.validity[key] && !field.validity.valid) {
+                            foundError = key
+                        }
+                    };
+                    return foundError
+                }
+
+                function setCustomMessage(message) {
+                    if (message) {
+                        $(field).attr('placeholder', field.placeholder + message)
+                    }
+                }
+
+                return function() {
+                    if (verifyErrors()) {
+                        field.style.border = "1px solid red"
+
+                        if (!asterisco) {
+                            setCustomMessage("*")
+                            asterisco = true;
+                        }
+                    } else {
+                        field.style.border = "1px solid rgb(0, 201, 0)"
+                        setCustomMessage()
+                    }
+                }
+            }
+
+            function customValidation(event) {
+                const field = event.target
+                const validation = validateField(field)
+                if (field.placeholder == "Nome" || field.placeholder == "Título da pergunta" || field.placeholder == "Descreva o problema")
+                    asterisco = false;
+                else asterisco = true
+                validation()
+            }
+
+            for (field of fields) {
+                field.addEventListener("invalid", event => {
+                    //Tirar o bubble
+                    event.preventDefault()
+
+                    customValidation(event)
+                })
+
+                field.addEventListener("blur", customValidation)
             }
         }
 
-        function init() {
+        function gerarModal(perguntaClickada, idPergunta) {
+            idPerguntaModal = descobrirId(idPergunta)
+
+            $(".modal-header").html("");
+            $("#corpoModal").html("");
+
+            // Gera o modal com a pergunta
+            $("#tituloModal").append(`<h5 id="titulo_disc">${db.data[idPergunta - 1].titulo_pergunta}</h5>
+                                        <button id="fecharModalMostrarPergunta" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>`)
+
+            $("#corpoModal").append(`<p id="p1-pergunta">${db.data[idPergunta - 1].nickname}</p>
+                                        <p id="p2-pergunta" class="p2-modal">${db.data[idPergunta - 1].texto}</p>`);
+        }
+
+        function editarModal() {
+            $("#inputNomeModal").val($("#p1-pergunta").text());
+            $("#inputTituloModal").val($("#titulo_disc").text());
+            $("#inputProblemaModal").val($("#p2-pergunta").text());
+        }
+
+        function alterarPergunta() {
+            validacaoForm()
+
             // Adiciona funções para tratar os eventos 
-            $("#postar").click(function() {
+            $("#confirmar-alteracao").click(function() {
                 // Verfica se o formulário está preenchido corretamente
                 if (!$('#form-perguntas')[0].checkValidity()) {
-                    displayMessage("Preencha o formulário corretamente.");
-                    return;
+                    return
                 }
 
-                // Obtem os valores dos campos do formulário
-                let campoNome = $("#inputNome").val();
-                let campoTitulo = $("#inputTitulo").val();
-                let campoTexto = $('#inputProblema').val();
+                // Intercepta o click do botão Alterar
+                let campoNome = $("#inputNomeModal").val()
+                let campoTitulo = $("#inputTituloModal").val()
+                let campoTexto = $("#inputProblemaModal").val()
                 let pergunta = {
                     nickname: campoNome,
                     titulo_pergunta: campoTitulo,
                     texto: campoTexto,
-                };
+                }
+                updatePergunta(parseInt(idPerguntaModal), pergunta)
+            })
+        }
 
-                insertPergunta(pergunta);
+        function apagarPergunta() {
+            deletePergunta(parseInt(idPerguntaModal))
+            document.location.reload()
+        }
 
-                // Reexibe as perguntas
-                exibePerguntas();
+        function addPergunta() {
 
-                // Limpa o formulario
-                $("#form-perguntas")[0].reset();
+            validacaoForm()
+
+            // Adiciona funções para tratar os eventos 
+            $("#postar").click(function() {
+                // Verfica se o formulário está preenchido corretamente
+                if (!$('#form-perguntas')[0].checkValidity()) {
+                    return
+                }
+
+                // Obtem os valores dos campos do formulário
+                let campoNome = $("#inputNome").val()
+                let campoTitulo = $("#inputTitulo").val()
+                let campoTexto = $("#inputProblema").val()
+                let pergunta = {
+                    nickname: campoNome,
+                    titulo_pergunta: campoTitulo,
+                    texto: campoTexto,
+                }
+
+                insertPergunta(pergunta)
+            })
+        }
+
+        function filtroPerguntas() {
+            const inputSearch = document.querySelector('#barra-pesquisa input')
+            const filterInput = document.querySelector("#search")
+            const filterList = document.querySelector('#historico')
+            const cleanButton = document.querySelector("#cleanButton")
+            const searchButton = document.querySelector("#searchButton")
+            const posts = document.querySelectorAll("#conteudo_discussao li")
+
+            const filterResults = (results, inputValue, returnMatchedResults) => results
+                .filter(result => {
+                    const matchedResults = result.textContent.toLowerCase().includes(inputValue)
+                    return returnMatchedResults ? matchedResults : !matchedResults
+                })
+
+            const hideResults = (results, inputValue) => {
+                filterResults(results, inputValue, false)
+                    .forEach(result => {
+                        result.classList.remove('block')
+                        result.classList.add('hidden')
+                    })
+            }
+
+            const showResults = (results, inputValue) => {
+                filterResults(results, inputValue, true)
+                    .forEach(result => {
+                        result.classList.remove('hidden')
+                        result.classList.add('block')
+                    })
+            }
+
+            const showPostIfMatchInputValue = inputValue => post => {
+                const postTitle = post.querySelector('#tituloPergunta').textContent.toLocaleLowerCase()
+                const postBody1 = post.querySelector('#p1-pergunta').textContent.toLocaleLowerCase()
+                const postBody2 = post.querySelector('#p2-pergunta').textContent.toLocaleLowerCase()
+                const postContainsInputValue = postTitle.includes(inputValue) ||
+                    postBody1.includes(inputValue) ||
+                    postBody2.includes(inputValue)
+
+                if (postContainsInputValue) {
+                    post.style.display = 'block'
+                    return
+                }
+
+                post.style.display = 'none'
+            }
+
+            const cleanInput = event => {
+                inputSearch.value = ""
+
+                posts.forEach(post => {
+                    post.style.display = 'block'
+                })
+
+                switchSearchIcon()
+            }
+
+            function switchSearchIcon() {
+                if (inputSearch.value.length > 0) {
+                    searchButton.classList.toggle("block");
+                    cleanButton.classList.toggle("hidden");
+                } else {
+                    searchButton.classList.toggle("hidden");
+                    cleanButton.classList.toggle("block");
+                }
+            }
+
+            const handleInputValue = event => {
+                const inputValue = event.target.value.trim().toLowerCase()
+                const results = Array.from(filterList.children)
+
+
+                posts.forEach(showPostIfMatchInputValue(inputValue))
+
+                hideResults(results, inputValue)
+                showResults(results, inputValue)
+
+                switchSearchIcon()
+            }
+
+            filterList.addEventListener('click', event => {
+                const inputValue = event.target.textContent.toLocaleLowerCase()
+
+                posts.forEach(showPostIfMatchInputValue(inputValue))
+
+                filterInput.value = event.target.textContent
+            })
+
+            inputSearch.addEventListener('input', handleInputValue)
+
+            inputSearch.addEventListener('blur', switchSearchIcon())
+
+            cleanButton.addEventListener('click', cleanInput)
+        }
+        const btnMobile = document.getElementById('btn-mobile')
+
+        function toggleMenu() {
+            const nav = document.getElementById("nav")
+
+            nav.classList.toggle('active')
+        }
+
+        function init() {
+            function resolveAfterXs(x) {
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        resolve(x);
+                    }, 100);
+                });
+            }
+
+            //Calcula o ano
+            document.querySelector('#ano').innerHTML = new Date().getFullYear()
+
+            //Limpa todas as informações do Data Base
+            $("#conteudo_discussao").html("");
+
+            // Popula a lista com os registros do banco de dados
+            for (i = 0; i < db.data.length; i++) {
+                let discus = db.data[i];
+                $("#conteudo_discussao").append(`<li display="block" class="perguntaLinha" data-bs-target="#modal-pergunta" data-bs-toggle="modal" id="${discus.id}">
+                                                    <h5 id="tituloPergunta">${discus.titulo_pergunta}</h5>           
+                                                    <p id="p1-pergunta">${discus.nickname}</p>
+                                                    <p id="p2-pergunta">${discus.texto}</p>
+                                                    <hr>
+                                                </li>`);
+                $("#historico").append(`<option id="historicoPesquisa">${discus.titulo_pergunta}</option>`)
+            }
+
+
+            // Identifica qual pergunta clickada 
+            $("#conteudo_discussao").on("click", "li", function(e) {
+                let linhaPergunta = this;
+                gerarModal(linhaPergunta, linhaPergunta.id)
             });
+
+            const filterSearch = document.querySelector('#historico')
+            const inputSearch = document.querySelector('#barra-pesquisa input')
+
+
+
+            const hideResults = async event => {
+                await resolveAfterXs(1);
+                const results = Array.from(filterSearch.children).forEach(result => {
+                    result.classList.remove('block')
+                    result.classList.add('hidden')
+                })
+            }
+
+            const showResults = event => {
+                const results = Array.from(filterSearch.children).forEach(result => {
+                    result.classList.remove('hidden')
+                    result.classList.add('block')
+                })
+            }
+
+            inputSearch.addEventListener('click', showResults)
+            inputSearch.addEventListener('blur', hideResults)
         }
     </script>
-
 </head>
 
-<body onload="ano_rodape(), exibePerguntas(), init()">
+<body id="semScrollLateral" onload="init()">
     <!-- Modal Adicionar Pergunta-->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="adicioner-pergunta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header-config">
                     <h5 class="modal-title" id="staticBackdropLabel">Adicionar Pergunta</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body-config">
                     <form id="form-perguntas">
-                        <div class="form-group row">
+                        <div class="form-group row campo1">
                             <div class="col-sm-6">
                                 <label for="inputNome"></label>
-                                <input type="text" class="form-control" id="inputNome" placeholder="Nome" autocomplete="off">
-                                <span id="alerta"></span>
+                                <input type="text" class="form-control" id="inputNome" placeholder="Nome" required>
                             </div>
                             <div class="col-sm-6">
                                 <label for="inputTitulo"></label>
-                                <input type="text" class="form-control" id="inputTitulo" placeholder="Título da perguta" autocomplete="off">
-                                <span id="alerta"></span>
+                                <input type="text" class="form-control" id="inputTitulo" placeholder="Título da pergunta" autocomplete="off" required>
                             </div>
                         </div>
-                        <div class="form_group">
+                        <div class="form_group campo2">
                             <label for="inputProblema"></label>
-                            <textarea class="form-control" id="inputProblema" placeholder="Descreva o problema" rows="5" autocomplete="off"></textarea>
-                            <span id="alerta"></span>
+                            <textarea class="form-control" id="inputProblema" placeholder="Descreva o problema" rows="5" autocomplete="off" required></textarea>
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button id="postar" type="button" class="btn btn-default" data-bs-dismiss="modal">Postar</button>
+                <div class="modal-footer hudRodape">
+                    <button type="submit" id="postar" type="button" class="btn btn-default">Postar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Mostrar Pergunta-->
+    <div class="modal fade" id="modal-pergunta" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div id="tituloModal" class="modal-header"></div>
+
+                <div id="corpoModal" class="modal-body"></div>
+
+                <div class="modal-footer hudRodape">
+                    <div id="botao1">
+                        <button onclick="alterarPergunta()" type="submit" id="botao-editar" class="btn btn-default" data-bs-target="#modalEditar" data-bs-toggle="modal">Editar</button>
+                    </div>
+                    <div id="botao2">
+                        <button onclick="apagarPergunta()" type="submit" id="apagar-pergunta" class="btn btn-default">Apagar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Editar Pergunta-->
+    <div class="modal fade" id="modalEditar" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header-config">
+                    <h5 class="modal-title" id="exampleModalToggleLabel2">Editar Pergunta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body-config">
+                    <form id="form-perguntas">
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <label for="inputNomeModal"></label>
+                                <input type="text" class="form-control" id="inputNomeModal" placeholder="Nome" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="inputTituloModal"></label>
+                                <input type="text" class="form-control" id="inputTituloModal" placeholder="Título da pergunta" autocomplete="off" required>
+                            </div>
+                        </div>
+                        <div class="form_group">
+                            <label for="inputProblemaModal"></label>
+                            <textarea class="form-control" id="inputProblemaModal" placeholder="Descreva o problema" rows="5" autocomplete="off" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer hudRodape">
+                    <button onclick="alterarPergunta()" type="submit" id="confirmar-alteracao" class="btn btn-default">Confirmar</button>
                 </div>
             </div>
         </div>
@@ -105,31 +405,35 @@
 
     <header class="cabecalho" id="header">
         <a id="logo" href="#">
-            <img src="svg/Logo-Klug-2-branco.svg" id="logo-rodape" alt="Logo">
+            <img src="svg/Logo-Klug-2-branco.svg" id="logo-menu" alt="Logo">
             <span id="nomelogo">KLUG </span>
             <span id="localpagina">| Suporte</span>
         </a>
         <nav id="nav">
-            <ul id="menu">
+            <button onclick="toggleMenu()" id="btn-mobile" aria-controls="menu" aria-haspopup="true" aria-label="Abrir Menu"><span id="hamburguer"></span></button></var>
+            <ul id="menu" role="menu">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Editar rota</a></li>
+                <li>
+                    <a id="loginProfile" href="#">Entrar <img id="profile-photo" src="img/Foto de Perfil.png"></a>
+                </li>
             </ul>
         </nav>
-
-        <div id="foto-perfil">
-            <span id="nome-perfil" href="#">Nikolas</span>
-            <a href="#"><img class="profile-photo" src="img/Foto de Perfil.png"></a>
-        </div>
     </header>
 
     <main class="main">
-        <div class="row pesquisa-topicos">
+        <div class="row suport">
             <div class="container background-globe">
-                <h2 class="topicos">Tópico <span id="topico"></span></h2>
+                <h2 id="titulo">Suporte Klug</span>
+                </h2>
                 <div class="pesquisa">
                     <form id="barra-pesquisa" class="d-flex" action="" method="submit">
-                        <input type="text" class="form-control" name="search" id="search" placeholder="Pesquisar" aria-label="Search" autocomplete="off">
-                        <button><i id="icon_search" class="fas fa-search"></i></button>
+                        <input onclick="filtroPerguntas()" type="text" class="form-control" name="search" id="search" placeholder="Pesquisar" aria-label="Search" list="historico">
+
+                        <button id="searchButton" class="block"><i id="icon_search" class="fas fa-search"></i></button>
+                        <button type="button" id="cleanButton" class="hidden"><i id="icon_clean" class="fas fa-times"></i></button>
+
+                        <datalist id="historico"></datalist>
                     </form>
                 </div>
             </div>
@@ -144,27 +448,13 @@
                 </div>
 
                 <div class="row perguntas">
-                    <div class="col-12 col-sm-12 col-md-2 col-lg-2 perguntas-divisao-1">
-                        <div class="filtrar">
-                            <h3 class="titulo_filtro">Filtrar</h3>
-                            <ul class="filtros">
-                                <li>Edição de Rota</li>
-                                <li>Mapa</li>
-                                <li>Rota Automática</li>
-                            </ul>
-                        </div>
-                        <div class="divisao-vertical"></div>
+                    <div class="titulo_botao">
+                        <h3>Perguntas</h3>
+                        <button onclick="addPergunta()" class="botaoAdd trasicao" id="adicionar_mais" type="button" data-bs-toggle="modal" data-bs-target="#adicioner-pergunta"><i id="mais" class="fas fa-plus"></i></button>
                     </div>
 
-                    <div class="col-12 col-sm-12 col-md-10 col-lg-10 perguntas-divisao-2">
-                        <div class="titulo_botao">
-                            <h3>Perguntas</h3>
-                            <button id="adicionar_mais" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Adicionar Perguta <i id="mais" class="fas fa-plus"></i></button>
-                        </div>
-
-                        <div class="area_perguntas">
-                            <ul id="conteudo_discussao" class="discussao"></ul>
-                        </div>
+                    <div class="area_perguntas">
+                        <ul id="conteudo_discussao" class="discussao"></ul>
                     </div>
                 </div>
             </div>
@@ -176,8 +466,8 @@
 
                     <div class="editar-rotas">
                         <button id="botao-principais-topicos" class="btn btn-default" type="button" data-bs-toggle="collapse" data-bs-target="#edicao-rotas" aria-expanded="false" aria-controls="edicao-rotas">
-                            Edição de rotas <span id="icone-dropdonw"><i class="fas fa-chevron-down"></i></span>
-                        </button>
+                                Edição de rotas <span id="icone-dropdonw"><i class="fas fa-chevron-down"></i></span>
+                            </button>
 
                         <div class="collapse" id="edicao-rotas">
                             <div id="texto-expansivo" class="card card-body">
@@ -188,8 +478,8 @@
 
                     <div class="personalizar-rotas">
                         <button id="botao-principais-topicos" class="btn btn-default" type="button" data-bs-toggle="collapse" data-bs-target="#personalizacao-rotas" aria-expanded="false" aria-controls="personalizacao-rotas">
-                                Personalizacao de rotas <span id="icone-dropdonw"><i class="fas fa-chevron-down"></i></span>
-                        </button>
+                                    Personalizacao de rotas <span id="icone-dropdonw"><i class="fas fa-chevron-down"></i></span>
+                            </button>
 
                         <div class="collapse" id="personalizacao-rotas">
                             <div id="texto-expansivo" class="card card-body">
@@ -200,8 +490,8 @@
 
                     <div class="explorar-o-mapa">
                         <button id="botao-principais-topicos" class="btn btn-default" type="button" data-bs-toggle="collapse" data-bs-target="#explorar-mapa" aria-expanded="false" aria-controls="explorar-mapa">
-                                Explorar o mapa <span id="icone-dropdonw"><i class="fas fa-chevron-down"></i></span>
-                        </button>
+                                    Explorar o mapa <span id="icone-dropdonw"><i class="fas fa-chevron-down"></i></span>
+                            </button>
 
                         <div class="collapse" id="explorar-mapa">
                             <div id="texto-expansivo" class="card card-body">

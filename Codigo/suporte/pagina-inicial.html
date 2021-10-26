@@ -9,58 +9,281 @@
 
     <title>Suporte</title>
 
-    <script src="https://kit.fontawesome.com/c89ded80b6.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="./img/icon.svg">
     <link rel="stylesheet" href="pagina-inicial.css">
-    <script type="text/javascript" src="app.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/c89ded80b6.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="app.js"></script>
     <script>
-        onload = () => {
-            document.querySelector('#ano').innerHTML = new Date().getFullYear();
-            //document.querySelector('#nome-perfil').innerHTML = new
-            botao_enviar.onclick = () => {
-                window.location.href = "perguntas.html";
+        function validacaoForm() {
+            var asterisco;
+
+            $("#botao_enviar").click(function() {
+                // Verfica se o formulário está preenchido corretamente
+                if (!$('#form_fale_conosco')[0].checkValidity()) {
+                    return
+                }
+
+                document.location.reload()
+            })
+
+            //Verificar os campos do formulário das perguntas individualmente
+            const fields = document.querySelectorAll("[required]")
+
+            function validateField(field) {
+                //Lógica para verificar se existem erros
+                function verifyErrors() {
+                    let foundError = false;
+
+                    for (key in field.validity) {
+                        if (field.validity[key] && !field.validity.valid) {
+                            foundError = key
+                        }
+                    };
+                    return foundError
+                }
+
+                function setCustomMessage(message) {
+                    if (message) {
+                        $(field).attr('placeholder', field.placeholder + message)
+                    }
+                }
+
+                return function() {
+                    if (verifyErrors()) {
+                        field.style.border = "1px solid red"
+
+                        if (!asterisco) {
+                            setCustomMessage("*")
+                            asterisco = true;
+                        }
+                    } else {
+                        field.style.border = "1px solid rgb(0, 201, 0)"
+                        setCustomMessage()
+                    }
+                }
+            }
+
+            function customValidation(event) {
+                const field = event.target
+                const validation = validateField(field)
+                if (field.placeholder == "Primeiro nome" || field.placeholder == "Último nome" || field.placeholder == "Endereço de email" || field.placeholder == "Descreva o problema")
+                    asterisco = false;
+                else asterisco = true
+                validation()
+            }
+
+            for (field of fields) {
+                field.addEventListener("invalid", event => {
+                    //Tirar o bubble
+                    event.preventDefault()
+
+                    customValidation(event)
+                })
+
+                field.addEventListener("blur", customValidation)
             }
         }
 
-        /*function init() {
-            // Remove todas as linhas da lista
+        function filtroPerguntas() {
+            const inputSearch = document.querySelector('#barra-pesquisa input')
+            const filterInput = document.querySelector("#search")
+            const filterList = document.querySelector('#historico')
+            const cleanButton = document.querySelector("#cleanButton")
+            const searchButton = document.querySelector("#searchButton")
+            const posts = document.querySelectorAll("#conteudo_discussao li")
+
+            const filterResults = (results, inputValue, returnMatchedResults) => results
+                .filter(result => {
+                    const matchedResults = result.textContent.toLowerCase().includes(inputValue)
+                    return returnMatchedResults ? matchedResults : !matchedResults
+                })
+
+            const hideResults = (results, inputValue) => {
+                filterResults(results, inputValue, false)
+                    .forEach(result => {
+                        result.classList.remove('block')
+                        result.classList.add('hidden')
+                    })
+            }
+
+            const showResults = (results, inputValue) => {
+                filterResults(results, inputValue, true)
+                    .forEach(result => {
+                        result.classList.remove('hidden')
+                        result.classList.add('block')
+                    })
+            }
+
+            const showPostIfMatchInputValue = inputValue => post => {
+                const postTitle = post.querySelector('#tituloPergunta').textContent.toLocaleLowerCase()
+                const postBody1 = post.querySelector('#p1-pergunta').textContent.toLocaleLowerCase()
+                const postBody2 = post.querySelector('#p2-pergunta').textContent.toLocaleLowerCase()
+                const postContainsInputValue = postTitle.includes(inputValue) ||
+                    postBody1.includes(inputValue) ||
+                    postBody2.includes(inputValue)
+
+                if (postContainsInputValue) {
+                    post.style.display = 'block'
+                    return
+                }
+
+                post.style.display = 'none'
+            }
+
+            const cleanInput = event => {
+                inputSearch.value = ""
+
+                posts.forEach(post => {
+                    post.style.display = 'block'
+                })
+
+                switchSearchIcon()
+            }
+
+            function switchSearchIcon() {
+                if (inputSearch.value.length > 0) {
+                    searchButton.classList.remove("block");
+                    searchButton.classList.add("hidden");
+
+                    cleanButton.classList.remove("hidden");
+                    cleanButton.classList.add("block");
+                } else {
+                    searchButton.classList.remove("hidden");
+                    searchButton.classList.add("block");
+
+                    cleanButton.classList.remove("block");
+                    cleanButton.classList.add("hidden");
+                }
+            }
+
+            const handleInputValue = event => {
+                const inputValue = event.target.value.trim().toLowerCase()
+                const results = Array.from(filterList.children)
+
+
+                posts.forEach(showPostIfMatchInputValue(inputValue))
+
+                hideResults(results, inputValue)
+                showResults(results, inputValue)
+
+                switchSearchIcon()
+            }
+
+            filterList.addEventListener('click', event => {
+                const posts = document.querySelectorAll("#conteudo_discussao li")
+                const inputValue = event.target.textContent.toLocaleLowerCase()
+
+                posts.forEach(showPostIfMatchInputValue(inputValue))
+
+                filterInput.value = event.target.textContent
+            })
+
+            inputSearch.addEventListener('input', handleInputValue)
+
+            inputSearch.addEventListener('blur', switchSearchIcon())
+
+            cleanButton.addEventListener('click', cleanInput)
+        }
+        const btnMobile = document.getElementById('btn-mobile')
+
+        function toggleMenu() {
+            const nav = document.getElementById("nav")
+
+            nav.classList.toggle('active')
+        }
+
+        function init() {
+
+            //Calcula o ano
+            document.querySelector('#ano').innerHTML = new Date().getFullYear()
+
+            //Limpa todas as informações do Data Base
             $("#conteudo_discussao").html("");
 
-        }*/
+            // Popula a lista com os registros do banco de dados
+            for (i = 0; i < db.data.length; i++) {
+                let discus = db.data[i];
+                $("#conteudo_discussao").append(`<li display="block" class="perguntaLinha" data-bs-target="#modal-pergunta" data-bs-toggle="modal" id="${discus.id}">
+                                                <h5 id="tituloPergunta">${discus.titulo_pergunta}</h5>           
+                                                <p id="p1-pergunta">${discus.nickname}</p>
+                                                <p id="p2-pergunta">${discus.texto}</p>
+                                                <hr>
+                                            </li>`);
+                $("#historico").append(`<option id="historicoPesquisa">${discus.titulo_pergunta}</option>`)
+            }
+
+            // Identifica qual pergunta clickada 
+            $("#conteudo_discussao").on("click", "li", function(e) {
+                let linhaPergunta = this;
+                gerarModal(linhaPergunta, linhaPergunta.id)
+            });
+
+            const filterSearch = document.querySelector('#historico')
+            const inputSearch = document.querySelector('#barra-pesquisa input')
+
+            function resolveAfterXs(x) {
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        resolve(x);
+                    }, 100);
+                });
+            }
+
+            const hideResults = async event => {
+                await resolveAfterXs(1);
+                const results = Array.from(filterSearch.children).forEach(result => {
+                    result.classList.remove('block')
+                    result.classList.add('hidden')
+                })
+            }
+
+            const showResults = event => {
+                const results = Array.from(filterSearch.children).forEach(result => {
+                    result.classList.remove('hidden')
+                    result.classList.add('block')
+                })
+            }
+
+            inputSearch.addEventListener('click', showResults)
+            inputSearch.addEventListener('blur', hideResults)
+        }
     </script>
 </head>
 
-<body id="body">
-    <header id="header">
+<body id="body" onload="init(), validacaoForm()">
+    <header class="cabecalho" id="header">
         <a id="logo" href="#">
             <img src="svg/Logo-Klug-2-branco.svg" id="logo-rodape" alt="Logo">
             <span id="nomelogo">KLUG </span>
             <span id="localpagina">| Suporte</span>
         </a>
         <nav id="nav">
-            <ul id="menu">
+            <button onclick="toggleMenu()" id="btn-mobile" aria-controls="menu" aria-haspopup="true" aria-label="Abrir Menu"><span id="hamburguer"></span></button></var>
+            <ul id="menu" role="menu">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Editar rota</a></li>
+                <li>
+                    <a href="#">Entrar <img id="profile-photo" src="img/Foto de Perfil.png"></a>
+                </li>
             </ul>
         </nav>
-
-        <div id="foto-perfil">
-            <span id="nome-perfil" href="#">Nikolas</span>
-            <a href="#"><img class="profile-photo" src="img/Foto de Perfil.png"></a>
-        </div>
     </header>
 
     <main class="main">
         <div class="row suport">
             <div class="container background-globe">
-                <div class="row search-suport">
-                    <h1 id="titulo">Suporte KLUG</h1>
-                    <div class="pesquisa align-items">
-                        <form id="barra-pesquisa" class="d-flex" action="" method="submit">
-                            <input type="text" class="form-control" name="search" id="search" placeholder="Pesquisar" aria-label="Search" autocomplete="off">
-                            <button class="btn btn-default"><i id="icon_search" class="fas fa-search"></i></button>
-                        </form>
-                    </div>
+                <h1 id="titulo">Suporte KLUG</h1>
+                <div class="pesquisa">
+                    <form id="barra-pesquisa" class="d-flex" action="" method="submit">
+                        <input onclick="filtroPerguntas()" type="text" class="form-control" name="search" id="search" placeholder="Pesquisar" aria-label="Search" list="historico">
+
+                        <button id="searchButton" class="block"><i id="icon_search" class="fas fa-search"></i></button>
+                        <button type="button" id="cleanButton" class="hidden"><i id="icon_clean" class="fas fa-times"></i></button>
+
+                        <datalist id="historico"></datalist>
+                    </form>
                 </div>
             </div>
         </div>
@@ -116,23 +339,23 @@
                 <div class="container formulario-fale-conosco">
                     <form id="form_fale_conosco" action="https://postman-echo.com/post" method="post">
                         <div id="primeiro_nome-form" class="for_erro">
-                            <label for="primeir_nome"></label>
-                            <input type="text" class="form-control" id="primeiro_nome" placeholder="Primeiro nome" autocomplete="off">
+                            <label for="primeiro_nome"></label>
+                            <input type="text" class="form-control" id="primeiro_nome" placeholder="Primeiro nome" autocomplete="off" required>
                         </div>
 
                         <div id="ultimo_nome-form" class="form_erro">
                             <label for="ultimo_nome"></label>
-                            <input type="text" class="form-control" id="ultimo_nome" placeholder="Último nome" autocomplete="off">
+                            <input type="text" class="form-control" id="ultimo_nome" placeholder="Último nome" autocomplete="off" required>
                         </div>
 
                         <div id="email-form" class="form_erro">
                             <label for="email"></label>
-                            <input type="email" class="form-control" id="email" placeholder="Endereço de email" autocomplete="off">
+                            <input type="email" class="form-control" id="email" placeholder="Endereço de email" autocomplete="off" required>
                         </div>
 
                         <div id="problema-form" class="form_erro">
                             <label for="problema"></label>
-                            <textarea class="form-control" id="problema" placeholder="Descreva o problema" rows="3" autocomplete="off"></textarea>
+                            <textarea class="form-control" id="problema" placeholder="Descreva o problema" rows="3" autocomplete="off" required></textarea>
                         </div>
                     </form>
                     <span id="instrucao"></span>
@@ -142,8 +365,7 @@
                         <input type="file" id="paperclip" multiple>
                     </div>
 
-
-                    <button id="botao_enviar" class="btn btn-default">Enviar</button>
+                    <button type="submit" id="botao_enviar" class="btn btn-default">Enviar</button>
                 </div>
             </div>
         </div>
