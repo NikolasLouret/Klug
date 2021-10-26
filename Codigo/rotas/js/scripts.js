@@ -12,8 +12,8 @@ console.log(coordenadas);
 if (!coordenadas) {
   coordenadas = {
     lat: -19.916667,
-    lng: -43.933333
-  }
+    lng: -43.933333,
+  };
 }
 
 // função que pega as coordenadas do usuário
@@ -89,7 +89,7 @@ async function getRoute(end) {
   // an arbitrary start will always be the same
   // only the end or destination will change
   const query = await fetch(
-    `https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
+    `https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&language=pt-BR&geometries=geojson&access_token=${mapboxgl.accessToken}`,
     { method: "GET" }
   );
   const json = await query.json();
@@ -128,6 +128,24 @@ async function getRoute(end) {
     });
   }
   // add turn instructions here at the end
+  // get the sidebar and add the instructions
+  const instructions = document.getElementById("instructions");
+  const steps = data.legs[0].steps;
+
+  let tripInstructions = "";
+  for (const step of steps) {
+    tripInstructions += `<li>${step.maneuver.instruction}</li>`;
+  }
+
+  instructions.innerHTML =
+    `<p><strong>Duração da viagem: ${Math.floor(
+      data.duration / 60
+    )} min 🚗 </strong></p>` +
+    `<p><strong>Distância: ${(data.distance / 1000).toFixed(
+      2
+    )} km</strong></p><ol>${tripInstructions}</ol>`;
+
+  instructions.style.display = "block";
 }
 
 map.on("load", () => {
@@ -206,16 +224,4 @@ map.on("load", () => {
     }
     getRoute(coords);
   });
-
-  // get the sidebar and add the instructions
-  const instructions = document.getElementById("instructions");
-  const steps = data.legs[0].steps;
-
-  let tripInstructions = "";
-  for (const step of steps) {
-    tripInstructions += `<li>${step.maneuver.instruction}</li>`;
-  }
-  instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
-    data.duration / 60
-  )} min 🚴 </strong></p><ol>${tripInstructions}</ol>`;
 });
