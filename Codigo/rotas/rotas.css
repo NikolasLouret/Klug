@@ -157,6 +157,24 @@ footer #hud-avisos button {
   display: none;
 }
 
+/* .mapboxgl-ctrl-geocoder,
+.mapboxgl-ctrl-geocoder > div,
+.geocoder-dropdown-item,
+.geocoder-dropdown-icon,
+.geocoder-dropdown-text {
+  border: 1px solid var(--bg) !important;
+  border-radius: 50px 0 0 50px !important;
+  color: var(--color-text) !important;
+
+  background: var(--bg) !important;
+  padding: 1rem !important;
+  width: 100% !important;
+
+  font-size: 1.125rem !important;
+
+  text-overflow: ellipsis !important;
+} */
+
 /* Responsive =====================================*/
 @media (max-width: 800px) {
   html {

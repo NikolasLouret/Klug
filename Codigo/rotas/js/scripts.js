@@ -1,5 +1,5 @@
 // importa a chave de credencial de outro arquivo, por motivos de segurança
-import { apiKey } from "./config.js";
+import { APIKEY } from "./config.js";
 
 // chama a função que pega as coordenadas do usuário
 getLocation();
@@ -44,7 +44,7 @@ function getLocation() {
   }
 }
 
-mapboxgl.accessToken = apiKey;
+mapboxgl.accessToken = APIKEY;
 const map = new mapboxgl.Map({
   container: "map", // container ID
   style: "mapbox://styles/mpolomartins/ckv3szjic4mit14leuvd8rz5a", // style URL
