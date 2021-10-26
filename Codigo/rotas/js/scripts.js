@@ -79,6 +79,13 @@ map.addControl(
   })
 );
 
+map.addControl(
+  new MapboxDirections({
+    accessToken: mapboxgl.accessToken,
+    placeholder: "Para onde iremos?",
+  })
+);
+
 // an arbitrary start will always be the same
 // only the end or destination will change
 const start = [coordenadas.lng, coordenadas.lat];
