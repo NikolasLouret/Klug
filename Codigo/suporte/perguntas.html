@@ -211,11 +211,17 @@
 
             function switchSearchIcon() {
                 if (inputSearch.value.length > 0) {
-                    searchButton.classList.toggle("block");
-                    cleanButton.classList.toggle("hidden");
+                    searchButton.classList.remove("block");
+                    searchButton.classList.add("hidden");
+
+                    cleanButton.classList.remove("hidden");
+                    cleanButton.classList.add("block");
                 } else {
-                    searchButton.classList.toggle("hidden");
-                    cleanButton.classList.toggle("block");
+                    searchButton.classList.remove("hidden");
+                    searchButton.classList.add("block");
+
+                    cleanButton.classList.remove("block");
+                    cleanButton.classList.add("hidden");
                 }
             }
 
