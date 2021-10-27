@@ -211,11 +211,17 @@
 
             function switchSearchIcon() {
                 if (inputSearch.value.length > 0) {
-                    searchButton.classList.toggle("block");
-                    cleanButton.classList.toggle("hidden");
+                    searchButton.classList.remove("block");
+                    searchButton.classList.add("hidden");
+
+                    cleanButton.classList.remove("hidden");
+                    cleanButton.classList.add("block");
                 } else {
-                    searchButton.classList.toggle("hidden");
-                    cleanButton.classList.toggle("block");
+                    searchButton.classList.remove("hidden");
+                    searchButton.classList.add("block");
+
+                    cleanButton.classList.remove("block");
+                    cleanButton.classList.add("hidden");
                 }
             }
 
@@ -465,36 +471,38 @@
 
                     <div class="editar-rotas">
                         <button id="botao-principais-topicos" class="btn btn-default" type="button" data-bs-toggle="collapse" data-bs-target="#edicao-rotas" aria-expanded="false" aria-controls="edicao-rotas">
-                                Edição de rotas <span id="icone-dropdonw"><i class="fas fa-chevron-down"></i></span>
-                            </button>
+                            Edição de rotas <span id="icone-dropdonw"><i class="fas fa-chevron-down"></i></span>
+                        </button>
 
                         <div class="collapse" id="edicao-rotas">
                             <div id="texto-expansivo" class="card card-body">
-                                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                                O menu de edição de rotas possibilita ao usuário escolher por onde ele deseja passar ou evitar, atualizar o mapa com novas informações; tudo isso em uma interface limpa, intuitiva e fácil de mexer. Para acessá-la basta clicar no ícone de "lápis" no menu
+                                inferior
                             </div>
                         </div>
                     </div>
 
                     <div class="personalizar-rotas">
                         <button id="botao-principais-topicos" class="btn btn-default" type="button" data-bs-toggle="collapse" data-bs-target="#personalizacao-rotas" aria-expanded="false" aria-controls="personalizacao-rotas">
-                                    Personalizacao de rotas <span id="icone-dropdonw"><i class="fas fa-chevron-down"></i></span>
-                            </button>
+                            Personalizacao de rotas <span id="icone-dropdonw"><i class="fas fa-chevron-down"></i></span>
+                        </button>
 
                         <div class="collapse" id="personalizacao-rotas">
                             <div id="texto-expansivo" class="card card-body">
-                                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                                No perfil, o usuário pode escolher qual o tipo de rota desejável para aquele momento, como uma rota mais rápida, segura, que evite as principais avenidas, etc; além de montar um perfil personalizado de preferência de rotas na hora de montar uma. Para
+                                criar uma personalização, acesse o perfil e clique em "Criar personalização"
                             </div>
                         </div>
                     </div>
 
                     <div class="explorar-o-mapa">
                         <button id="botao-principais-topicos" class="btn btn-default" type="button" data-bs-toggle="collapse" data-bs-target="#explorar-mapa" aria-expanded="false" aria-controls="explorar-mapa">
-                                    Explorar o mapa <span id="icone-dropdonw"><i class="fas fa-chevron-down"></i></span>
-                            </button>
+                            Explorar o mapa <span id="icone-dropdonw"><i class="fas fa-chevron-down"></i></span>
+                        </button>
 
                         <div class="collapse" id="explorar-mapa">
                             <div id="texto-expansivo" class="card card-body">
-                                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                                Na tela de configurações do mapa, o usuário pode escolher qual tipo de informação aparecerá no mapa como avisos de acidentes, radares, áreas indesejadas ou perigosas, etc...
                             </div>
                         </div>
                     </div>

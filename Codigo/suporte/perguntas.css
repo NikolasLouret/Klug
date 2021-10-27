@@ -399,6 +399,10 @@ div.hudRodape {
 
 /*Fim Barra de Pesquisa Suporte - Desktop*/
 
+input::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
 
 /*Inicio Barra de Pesquisa Suporte - Mobile*/
 
@@ -498,8 +502,7 @@ div.hudRodape {
 @media screen and (min-width:900px) {
     div.conteudo {
         margin: 50px auto;
-        width: 70%;
-        padding: 0;
+        padding: 0 25%;
     }
     .instrucoes>h2 {
         font-family: 'Montserrat', sans-serif;
@@ -853,44 +856,8 @@ div.hudRodape {
 /*Inicio Rodapé - Desktop*/
 
 @media screen and (min-width:601px) {
-    .footer {
-        box-sizing: content-box;
-        margin-top: 50px;
-        position: absolute;
-        width: 100%;
-        background-color: #D8D8D8;
-    }
     .principais-topicos {
         padding: 0 10%;
-    }
-    .principais-topicos h4 {
-        margin-top: 30px;
-        font-family: 'Montserrat', sans-serif;
-    }
-    .btn {
-        width: 100%;
-        height: 40px;
-    }
-    .editar-rotas,
-    .personalizar-rotas,
-    .explorar-o-mapa {
-        margin-top: 20px;
-        border: 1px solid #676767;
-        border-radius: 10px 10px;
-    }
-    #botao-principais-topicos {
-        text-align: left;
-        font-family: 'Montserrat', sans-serif;
-    }
-    #botao-principais-topicos:focus {
-        box-shadow: none;
-    }
-    #icone-dropdonw {
-        float: right;
-    }
-    #texto-expansivo {
-        background: none;
-        border: none;
     }
     .final-footer {
         display: block;
@@ -975,10 +942,6 @@ div.hudRodape {
         justify-content: center;
         align-items: center;
     }
-    .pais h5 {
-        text-align: right;
-        font-size: 13px;
-    }
 }
 
 
@@ -988,44 +951,8 @@ div.hudRodape {
 /*Inicio Rodapé - Mobile*/
 
 @media screen and (max-width:600px) {
-    footer {
-        margin-top: 60px;
-        position: absolute;
-        width: 100%;
-        background-color: #D8D8D8;
-    }
     .principais-topicos {
         padding: 0 5%;
-    }
-    .principais-topicos h4 {
-        width: 60%;
-        margin: 30px 0 20px 0;
-        font-family: 'Montserrat', sans-serif;
-    }
-    .btn {
-        width: 100%;
-        height: 40px;
-    }
-    .editar-rotas,
-    .personalizar-rotas,
-    .explorar-o-mapa {
-        margin-top: 10px;
-        border: 1px solid #676767;
-        border-radius: 10px 10px;
-    }
-    #botao-principais-topicos {
-        text-align: left;
-        font-family: 'Montserrat', sans-serif;
-    }
-    #botao-principais-topicos:focus {
-        box-shadow: none;
-    }
-    #icone-dropdonw {
-        float: right;
-    }
-    #texto-expansivo {
-        background: none;
-        border: none;
     }
     .final-footer {
         display: block;
@@ -1047,12 +974,60 @@ div.hudRodape {
         text-align: center;
         font-size: 13px;
     }
-    .pais h5 {
-        margin-top: 10px;
-        text-align: right;
-        font-size: 13px;
-    }
 }
 
 
 /*Fim Rodapé - Mobile*/
+
+.texto-expansivo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+}
+
+.editar-rotas,
+.personalizar-rotas,
+.explorar-o-mapa {
+    margin-top: 20px;
+    border: 1px solid #676767;
+    border-radius: 10px 10px;
+}
+
+footer {
+    margin-top: 50px;
+    position: absolute;
+    width: 100%;
+    background-color: #D8D8D8;
+}
+
+.principais-topicos h4 {
+    margin: 30px 0 20px 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn {
+    width: 100%;
+    height: 40px;
+}
+
+#botao-principais-topicos {
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#botao-principais-topicos:focus {
+    box-shadow: none;
+}
+
+#icone-dropdonw {
+    float: right;
+}
+
+#texto-expansivo {
+    background: none;
+    border: none;
+}
+
+.pais h5 {
+    text-align: right;
+    font-size: 13px;
+}
