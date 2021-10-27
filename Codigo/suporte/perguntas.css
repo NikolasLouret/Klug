@@ -136,8 +136,20 @@ div.hudRodape {
 
 #postar:hover,
 #botao-editar:hover,
-#apagar-pergunta:hover {
+#apagar-pergunta:hover,
+#confirmar-alteracao:hover {
     background-color: #1b718b;
+}
+
+#postar:focus,
+#botao-editar:focus,
+#apagar-pergunta:focus,
+#confirmar-alteracao:focus {
+    box-shadow: none;
+}
+
+#postar:focus #botao-editar:focus #apagar-pergunta:focus #confirmar-alteracao:focus {
+    box-shadow: none;
 }
 
 

@@ -8,7 +8,7 @@ var db_perguntas = {
         {
             "id": 2,
             "nickname": "Cleber",
-            "titulo_pergunta": "Como faz pra mudar a vizualização do gráfico da inclinação da rua?",
+            "titulo_pergunta": "Como faz pra mudar a visualização do gráfico da inclinação da rua?",
             "texto": "Sempre que tem uma rua mais inclinada, o site avisa através de um gráfico. Porém eu não entendo ele direito e eu queria mudar a vizualização dele pra outra mais simples."
         },
         {
