@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="Logo Klug" title="Klug" src="./Documentacao/svg/Logo-Klug-3-preto.svg"/>
+  <img alt="Logo Klug" title="Klug" src="./Documentacao/svg/Logo-Klug-3-branco.svg"/>
 </h1>
 
 <p align="center">Aplicação desenvolvida para a disciplina de <strong>"Trabalho Interdisciplinar: Aplicações Web"</strong>, com propósito de estudo.</p>
