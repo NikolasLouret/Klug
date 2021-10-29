@@ -35,17 +35,24 @@ var db_perguntas = {
 // Caso os dados já estejam no Local Storage, caso contrário, carrega os dados iniciais
 var db = JSON.parse(localStorage.getItem('db_quests'));
 if (!db) {
-    db = db_perguntas
-};
+    db = db_perguntas;
+}
 
 function insertPergunta(pergunta) {
-    let novoId = db.data[db.data.length - 1].id + 1;
+    let novoId
+
+    if (!db.data.length) {
+        novoId = 1;
+    } else {
+        novoId = db.data[db.data.length - 1].id + 1;
+    }
+
     let novaPergunta = {
         "id": novoId,
         "nickname": pergunta.nickname,
         "titulo_pergunta": pergunta.titulo_pergunta,
         "texto": pergunta.texto
-    };
+    }
 
     // Insere o novo objeto no array
     db.data.push(novaPergunta);
@@ -62,7 +69,7 @@ function updatePergunta(id, pergunta) {
     // Altera os dados do objeto no array
     db.data[index].nickname = pergunta.nickname,
         db.data[index].titulo_pergunta = pergunta.titulo_pergunta,
-        db.data[index].texto = pergunta.texto
+        db.data[index].texto = pergunta.texto;
 
     // Atualiza os dados no Local Storage
     localStorage.setItem('db_quests', JSON.stringify(db));

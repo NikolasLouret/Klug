@@ -15,17 +15,13 @@
     <script src="https://kit.fontawesome.com/c89ded80b6.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="app.js"></script>
     <script>
-        var idPerguntaModal
-
-        function descobrirId(id) {
-            return id
-        }
+        var idPerguntaModal;
 
         function validacaoForm() {
             var asterisco;
 
             //Verificar os campos do formulário das perguntas individualmente
-            const fields = document.querySelectorAll("[required]")
+            const fields = document.querySelectorAll("[required]");
 
             function validateField(field) {
                 //Lógica para verificar se existem erros
@@ -33,118 +29,120 @@
                     let foundError = false;
 
                     for (key in field.validity) {
-                        if (field.validity[key] && !field.validity.valid) {
-                            foundError = key
-                        }
-                    };
-                    return foundError
+                        if (field.validity[key] && !field.validity.valid)
+                            foundError = key;
+                    }
+
+                    return foundError;
                 }
 
                 function setCustomMessage(message) {
                     if (message) {
-                        $(field).attr('placeholder', field.placeholder + message)
+                        $(field).attr('placeholder', field.placeholder + message);
                     }
                 }
 
                 return function() {
                     if (verifyErrors()) {
-                        field.style.border = "1px solid red"
+                        field.style.border = "1px solid red";
 
                         if (!asterisco) {
-                            setCustomMessage("*")
+                            setCustomMessage("*");
                             asterisco = true;
                         }
                     } else {
-                        field.style.border = "1px solid rgb(0, 201, 0)"
-                        setCustomMessage()
+                        field.style.border = "1px solid rgb(0, 201, 0)";
+                        setCustomMessage();
                     }
                 }
             }
 
             function customValidation(event) {
-                const field = event.target
-                const validation = validateField(field)
+                const field = event.target;
+                const validation = validateField(field);
                 if (field.placeholder == "Nome" || field.placeholder == "Título da pergunta" || field.placeholder == "Descreva o problema")
                     asterisco = false;
-                else asterisco = true
-                validation()
+                else asterisco = true;
+                validation();
             }
 
             for (field of fields) {
                 field.addEventListener("invalid", event => {
                     //Tirar o bubble
-                    event.preventDefault()
+                    event.preventDefault();
 
-                    customValidation(event)
+                    customValidation(event);
                 })
 
-                field.addEventListener("blur", customValidation)
+                field.addEventListener("blur", customValidation);
             }
         }
 
         function addPergunta() {
-            validacaoForm()
+            validacaoForm();
 
             // Verfica se o formulário está preenchido corretamente
             if (!$('#form-perguntas')[0].checkValidity()) {
-                return
+                return;
             }
 
             // Obtem os valores dos campos do formulário
-            let campoNome = $("#inputNome").val()
-            let campoTitulo = $("#inputTitulo").val()
-            let campoTexto = $("#inputProblema").val()
+            let campoNome = $("#inputNome").val();
+            let campoTitulo = $("#inputTitulo").val();
+            let campoTexto = $("#inputProblema").val();
             let pergunta = {
                 nickname: campoNome,
                 titulo_pergunta: campoTitulo,
                 texto: campoTexto
             }
 
-            insertPergunta(pergunta)
+            insertPergunta(pergunta);
 
-            location.reload()
+            location.reload();
         }
 
         function alterarPergunta() {
-            validacaoForm()
+            validacaoForm();
 
             // Verfica se o formulário está preenchido corretamente
             if (!$('#form-perguntas-modal')[0].checkValidity()) {
-                return
+                return;
             }
 
             // Intercepta o click do botão Alterar
-            let campoNome = $("#inputNomeModal").val()
-            let campoTitulo = $("#inputTituloModal").val()
-            let campoTexto = $("#inputProblemaModal").val()
+            let campoNome = $("#inputNomeModal").val();
+            let campoTitulo = $("#inputTituloModal").val();
+            let campoTexto = $("#inputProblemaModal").val();
             let pergunta = {
                 nickname: campoNome,
                 titulo_pergunta: campoTitulo,
                 texto: campoTexto
             }
 
-            updatePergunta(parseInt(idPerguntaModal), pergunta)
+            updatePergunta(parseInt(idPerguntaModal.id), pergunta);
 
-            location.reload()
+            location.reload();
+        }
+
+        function descobrirId(idPergunta) {
+            idPerguntaModal = db.data.find(element => element.id == idPergunta);
         }
 
         function apagarPergunta() {
-            deletePergunta(parseInt(idPerguntaModal))
-            init()
+            deletePergunta(parseInt(idPerguntaModal.id));
+            init();
         }
 
-        function gerarModal(perguntaClickada, idPergunta) {
-            idPerguntaModal = descobrirId(idPergunta)
-
+        function gerarModal() {
             $(".modal-header").html("");
             $("#corpoModal").html("");
 
             // Gera o modal com a pergunta
-            $("#tituloModal").append(`<h5 id="titulo_disc">${db.data[idPergunta - 1].titulo_pergunta}</h5>
-                                        <button id="fecharModalMostrarPergunta" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>`)
+            $("#tituloModal").append(`<h5 id="titulo_disc">${idPerguntaModal.titulo_pergunta}</h5>
+                                        <button id="fecharModalMostrarPergunta" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>`);
 
-            $("#corpoModal").append(`<p id="p1-pergunta">${db.data[idPergunta - 1].nickname}</p>
-                                        <p id="p2-pergunta" class="p2-modal">${db.data[idPergunta - 1].texto}</p>`);
+            $("#corpoModal").append(`<p id="p1-pergunta">${idPerguntaModal.nickname}</p>
+                                        <p id="p2-pergunta" class="p2-modal">${idPerguntaModal.texto}</p>`);
         }
 
         function editarModal() {
@@ -154,59 +152,59 @@
         }
 
         function filtroPerguntas() {
-            const inputSearch = document.querySelector('#barra-pesquisa input')
-            const filterInput = document.querySelector("#search")
-            const filterList = document.querySelector('#historico')
-            const cleanButton = document.querySelector("#cleanButton")
-            const searchButton = document.querySelector("#searchButton")
-            const posts = document.querySelectorAll("#conteudo_discussao li")
+            const inputSearch = document.querySelector('#barra-pesquisa input');
+            const filterInput = document.querySelector("#search");
+            const filterList = document.querySelector('#historico');
+            const cleanButton = document.querySelector("#cleanButton");
+            const searchButton = document.querySelector("#searchButton");
+            const posts = document.querySelectorAll("#conteudo_discussao li");
 
             const filterResults = (results, inputValue, returnMatchedResults) => results
                 .filter(result => {
-                    const matchedResults = result.textContent.toLowerCase().includes(inputValue)
-                    return returnMatchedResults ? matchedResults : !matchedResults
-                })
+                    const matchedResults = result.textContent.toLowerCase().includes(inputValue);
+                    return returnMatchedResults ? matchedResults : !matchedResults;
+                });
 
             const hideResults = (results, inputValue) => {
                 filterResults(results, inputValue, false)
                     .forEach(result => {
-                        result.classList.remove('block')
-                        result.classList.add('hidden')
-                    })
+                        result.classList.remove('block');
+                        result.classList.add('hidden');
+                    });
             }
 
             const showResults = (results, inputValue) => {
                 filterResults(results, inputValue, true)
                     .forEach(result => {
-                        result.classList.remove('hidden')
-                        result.classList.add('block')
-                    })
+                        result.classList.remove('hidden');
+                        result.classList.add('block');
+                    });
             }
 
             const showPostIfMatchInputValue = inputValue => post => {
-                const postTitle = post.querySelector('#tituloPergunta').textContent.toLocaleLowerCase()
-                const postBody1 = post.querySelector('#p1-pergunta').textContent.toLocaleLowerCase()
-                const postBody2 = post.querySelector('#p2-pergunta').textContent.toLocaleLowerCase()
+                const postTitle = post.querySelector('#tituloPergunta').textContent.toLocaleLowerCase();
+                const postBody1 = post.querySelector('#p1-pergunta').textContent.toLocaleLowerCase();
+                const postBody2 = post.querySelector('#p2-pergunta').textContent.toLocaleLowerCase();
                 const postContainsInputValue = postTitle.includes(inputValue) ||
                     postBody1.includes(inputValue) ||
-                    postBody2.includes(inputValue)
+                    postBody2.includes(inputValue);
 
                 if (postContainsInputValue) {
-                    post.style.display = 'block'
+                    post.style.display = 'block';
                     return
                 }
 
-                post.style.display = 'none'
+                post.style.display = 'none';
             }
 
             const cleanInput = event => {
-                inputSearch.value = ""
+                inputSearch.value = "";
 
                 posts.forEach(post => {
-                    post.style.display = 'block'
-                })
+                    post.style.display = 'block';
+                });
 
-                switchSearchIcon()
+                switchSearchIcon();
             }
 
             function switchSearchIcon() {
@@ -226,41 +224,42 @@
             }
 
             const handleInputValue = event => {
-                const inputValue = event.target.value.trim().toLowerCase()
-                const results = Array.from(filterList.children)
+                const inputValue = event.target.value.trim().toLowerCase();
+                const results = Array.from(filterList.children);
 
 
-                posts.forEach(showPostIfMatchInputValue(inputValue))
+                posts.forEach(showPostIfMatchInputValue(inputValue));
 
-                hideResults(results, inputValue)
-                showResults(results, inputValue)
+                hideResults(results, inputValue);
+                showResults(results, inputValue);
 
-                switchSearchIcon()
+                switchSearchIcon();
             }
 
             filterList.addEventListener('click', event => {
-                const inputValue = event.target.textContent.toLocaleLowerCase()
+                const inputValue = event.target.textContent.toLocaleLowerCase();
 
-                posts.forEach(showPostIfMatchInputValue(inputValue))
+                posts.forEach(showPostIfMatchInputValue(inputValue));
 
-                filterInput.value = event.target.textContent
-            })
+                filterInput.value = event.target.textContent;
+            });
 
-            inputSearch.addEventListener('input', handleInputValue)
+            inputSearch.addEventListener('input', handleInputValue);
 
-            inputSearch.addEventListener('blur', switchSearchIcon())
+            inputSearch.addEventListener('blur', switchSearchIcon());
 
-            cleanButton.addEventListener('click', cleanInput)
+            cleanButton.addEventListener('click', cleanInput);
         }
-        const btnMobile = document.getElementById('btn-mobile')
+        const btnMobile = document.getElementById('btn-mobile');
 
         function toggleMenu() {
-            const nav = document.getElementById("nav")
+            const nav = document.getElementById("nav");
 
-            nav.classList.toggle('active')
+            nav.classList.toggle('active');
         }
 
         function init() {
+            //Funcão delay
             function resolveAfterXs(x) {
                 return new Promise(resolve => {
                     setTimeout(() => {
@@ -270,7 +269,7 @@
             }
 
             //Calcula o ano
-            document.querySelector('#ano').innerHTML = new Date().getFullYear()
+            document.querySelector('#ano').innerHTML = new Date().getFullYear();
 
             //Limpa todas as informações do Data Base
             $("#conteudo_discussao").html("");
@@ -285,39 +284,39 @@
                                                     <p id="p2-pergunta">${discus.texto}</p>
                                                     <hr>
                                                 </li>`);
-                $("#historico").append(`<option id="historicoPesquisa">${discus.titulo_pergunta}</option>`)
+                $("#historico").append(`<option id="historicoPesquisa">${discus.titulo_pergunta}</option>`);
             }
 
 
             // Identifica qual pergunta clickada 
             $("#conteudo_discussao").on("click", "li", function(e) {
                 let linhaPergunta = this;
-                gerarModal(linhaPergunta, linhaPergunta.id)
+                descobrirId(linhaPergunta.id);
+                gerarModal();
             });
 
-            const filterSearch = document.querySelector('#historico')
-            const inputSearch = document.querySelector('#barra-pesquisa input')
+            const filterSearch = document.querySelector('#historico');
+            const inputSearch = document.querySelector('#barra-pesquisa input');
 
 
 
             const hideResults = async event => {
                 await resolveAfterXs(1);
                 const results = Array.from(filterSearch.children).forEach(result => {
-                    result.classList.remove('block')
-                    result.classList.add('hidden')
-                })
+                    result.classList.remove('block');
+                    result.classList.add('hidden');
+                });
             }
 
             const showResults = event => {
                 const results = Array.from(filterSearch.children).forEach(result => {
-                    result.classList.remove('hidden')
-                    result.classList.add('block')
-                })
+                    result.classList.remove('hidden');
+                    result.classList.add('block');
+                });
             }
 
-            inputSearch.addEventListener('click', showResults)
-            inputSearch.addEventListener('blur', hideResults)
-
+            inputSearch.addEventListener('click', showResults);
+            inputSearch.addEventListener('blur', hideResults);
         }
     </script>
 </head>
