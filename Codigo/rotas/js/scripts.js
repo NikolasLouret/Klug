@@ -44,25 +44,34 @@ function getLocation() {
   }
 }
 
+// cria o mapa, com estilo próprio feito e com algumas configurações adicionais
 mapboxgl.accessToken = APIKEY;
 const map = new mapboxgl.Map({
-  container: "map", // container ID
-  style: "mapbox://styles/mpolomartins/ckv3szjic4mit14leuvd8rz5a", // style URL
-  center: [coordenadas.lng, coordenadas.lat], // starting position [lng, lat]
+  // ID do container do map
+  container: "map", 
+  // URL do estilo do mapa, focado para quem dirige
+  style: "mapbox://styles/mpolomartins/ckv3szjic4mit14leuvd8rz5a", 
+  // iniciando com a posição das coordenadas [lng, lat] do usuário, caso tenha
+  center: [coordenadas.lng, coordenadas.lat], 
+  // define o zoom do mapa
   zoom: 18, // starting zoom
 });
 
+// adiciona o botão de encontrar a localização do usuário
 map.addControl(
   new mapboxgl.GeolocateControl({
+    // ativa a opção de alta precisão 
     positionOptions: {
       enableHighAccuracy: true,
     },
-    // When active the map will receive updates to the device's location as it changes.
+    // opção para quando a posição do usuário muda
     trackUserLocation: true,
-    // Draw an arrow next to the location dot to indicate which direction the device is heading.
+    // Mostra na tela o raio da precisão da localização e um alfinete onde o usuário está
     showUserHeading: true,
   })
 );
+
+// Algumas experiências, futuras features
 
 // const geocoder = new MapboxGeocoder({
 //   accessToken: mapboxgl.accessToken,
@@ -79,17 +88,24 @@ map.addControl(
 //   })
 // );
 
+// adiciona o campo de criar rota no mapa
 map.addControl(
   new MapboxDirections({
+    // pega as credenciais usadas anteriormente
     accessToken: mapboxgl.accessToken,
-    placeholder: "Para onde iremos?",
-    unit : 'metric',
-    language: 'pt-BR',
-    placeholderOrigin: 'Origem da rota',
-    placeholderDestination: 'Destino da rota',
+    // define as unidades de medidas em metros
+    unit: "metric",
+    // define a língua como português brasileiro
+    language: "pt-BR",
+    // mensagem no local de origem da rota
+    placeholderOrigin: "Origem da rota",
+    // mensagem no local de destino da rota
+    placeholderDestination: "Destino da rota",
+    // pede para que o mapa traga mais rotas alternativas
     parameters: {
-      alternatives: true
-    }
+      alternatives: true,
+    },
   }),
-  'top-left'
+  // local onde ficará o campo de criar rota
+  "top-left"
 );
