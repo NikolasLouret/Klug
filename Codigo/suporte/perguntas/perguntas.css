@@ -45,18 +45,10 @@ div.modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 21px 0px;
+    margin: 20px 33px 0px;
     border: none;
     height: 80px;
-    padding-bottom: 0;
-}
-
-div.modal-header h5 {
-    margin: 0 auto 0 0 !important;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
-    font-weight: bold;
-    width: 90%;
+    padding: 0;
 }
 
 #inputNome,
@@ -93,29 +85,63 @@ div.modal-body {
     padding: 0;
 }
 
-p.p2-modal {
-    margin-top: 40px !important;
+@media (min-width: 601px) {
+    div.modal-header h5 {
+        margin: 0 auto 0 0 !important;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        width: 90%;
+    }
+    p.p2-modal {
+        margin-top: 40px !important;
+    }
+    #p1-pergunta {
+        margin-top: -3px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+    }
+    #p2-pergunta {
+        margin-top: 20px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+    }
+    div.hudRodape {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0 20px;
+        border: none;
+        margin: 15px 30px 0 auto;
+    }
 }
 
-#p1-pergunta {
-    margin-top: -3px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 13px;
-}
-
-#p2-pergunta {
-    margin-top: 20px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-}
-
-div.hudRodape {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0 20px;
-    border: none;
-    margin: 15px 30px 0 auto;
+@media (max-width:600px) {
+    div.modal-header h5 {
+        margin: 0 auto 0 0 !important;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 17px;
+        font-weight: bold;
+        width: 90%;
+    }
+    #p1-pergunta {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+    }
+    #p2-pergunta {
+        margin: 10px 0px 0px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+    }
+    div.hudRodape {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0 20px;
+        border: none;
+        flex: 1;
+        margin-right: 33px;
+    }
 }
 
 #botao-editar,
@@ -136,8 +162,20 @@ div.hudRodape {
 
 #postar:hover,
 #botao-editar:hover,
-#apagar-pergunta:hover {
+#apagar-pergunta:hover,
+#confirmar-alteracao:hover {
     background-color: #1b718b;
+}
+
+#postar:focus,
+#botao-editar:focus,
+#apagar-pergunta:focus,
+#confirmar-alteracao:focus {
+    box-shadow: none;
+}
+
+#postar:focus #botao-editar:focus #apagar-pergunta:focus #confirmar-alteracao:focus {
+    box-shadow: none;
 }
 
 
@@ -333,11 +371,11 @@ div.hudRodape {
     }
     .background-globe {
         height: 280px;
-        background-image: url(/img/Globo-defocado.png);
+        background-image: url(img/Globo-defocado.png);
         background-repeat: no-repeat;
-        background-position-x: 120%;
+        background-position-x: calc(100vw - 45%);
         background-position-y: center;
-        background-size: 40%;
+        background-size: 35%;
         padding: 0 !important;
     }
     #titulo {
@@ -412,11 +450,11 @@ input::-webkit-calendar-picker-indicator {
     }
     .background-globe {
         height: 280px;
-        background-image: url(/img/Globo-defocado.png);
+        background-image: url(img/Globo-defocado.png);
         background-repeat: no-repeat;
-        background-position-x: 140%;
+        background-position-x: calc(100vw - 250px);
         background-position-y: center;
-        background-size: 60%;
+        background-size: 400px;
         padding: 0 !important;
     }
     #titulo {
