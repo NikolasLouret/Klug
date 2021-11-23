@@ -4,6 +4,7 @@
   --bg-panel: #dfdfdf;
   --color-text: #fff5f5;
   --color-text-secondary: #333333;
+  --green: #49aa26;
 
   transition: all 0.3s linear;
 }
@@ -13,8 +14,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
-  z-index: 0;
 }
 
 html,
@@ -41,14 +40,43 @@ header.header-pontos {
   background-color: var(--bg);
   padding: 1rem;
   color: var(--color-text);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
+
+header.header-pontos article#container-pontos {
+  background-color: var(--green);
+  width: 20rem;
+  color: var(--color-text);
+
+  font-size: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+article#container-pontos span#pontos-do-usuario {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
 section .container-itens {
   background-color: red;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 section article.item {
-  width: 30rem;
+  width: 20rem;
   background-color: yellow;
   padding: 2rem;
   margin: 1rem;
@@ -60,7 +88,6 @@ section article.item {
   align-items: center;
 
   border-radius: 1rem;
-
 }
 
 section article.item img {
@@ -70,6 +97,23 @@ section article.item img {
 
   display: block;
 }
+
+section .container-itens article button {
+  width: 100%;
+  height: 50px;
+  background-color: var(--green);;
+  color: var(--color-text);
+
+  border: none;
+  font-weight: bold;
+
+  margin-top: 1rem;
+
+  border-radius: 0.25rem;
+
+  cursor: pointer;
+}
+
 
 /* Responsive =====================================*/
 @media (max-width: 800px) {
