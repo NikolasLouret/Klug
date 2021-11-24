@@ -96,7 +96,8 @@ function imprimeDados() {
   for (let i = 0; i < botoes.length; i++) {
     botoes[i].addEventListener("click", function () {
       alert(
-        objDados.produtosTrocas[i].titulo +
+        '"' +
+        objDados.produtosTrocas[i].titulo + '"' +
           " comprado por " +
           objDados.produtosTrocas[i].preco +
           " pontos"
