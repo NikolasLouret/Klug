@@ -5,6 +5,7 @@
   --color-text: #fff5f5;
   --color-text-secondary: #333333;
   --green: #49aa26;
+  --bg-sec: #34495e;
 
   transition: all 0.3s linear;
 }
@@ -21,8 +22,6 @@ body {
   /* tamanho da fonte, para questões de responsividade */
   font-size: 16px;
   font-family: "Open Sans", sans-serif;
-  background-color: var(--bg-panel);
-  height: 100vh;
 }
 
 header .container-header {
@@ -30,11 +29,15 @@ header .container-header {
   flex-direction: row;
   align-items: center;
   padding: 1rem;
+
+  background-color: #fbd133;
+  color: var(--bg);
 }
 header .container-header img {
   border-radius: 50rem;
   width: 5rem;
   margin: 0 1rem;
+  border: 6px solid #273c75;
 }
 
 header.header-pontos {
@@ -46,6 +49,10 @@ header.header-pontos {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+}
+
+header.header-pontos p {
+  font-size: 1.2rem;
 }
 
 header.header-pontos article#container-pontos {
@@ -63,13 +70,13 @@ header.header-pontos article#container-pontos {
   border-radius: 1rem;
 }
 
-article#container-pontos span#pontos-do-usuario {
+article#container-pontos > span#pontos-usuario {
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 section #container-itens {
-  background-color: red;
+  background-color: #192a56;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -78,9 +85,10 @@ section #container-itens {
 
 section article.item {
   width: 20rem;
-  background-color: yellow;
+  background-color: #273c75;
   padding: 2rem;
   margin: 1rem;
+  color: var(--color-text);
 
   display: flex;
   flex-direction: column;
@@ -108,7 +116,7 @@ section article.item span {
 section #container-itens article button {
   width: 100%;
   height: 50px;
-  background-color: var(--green);;
+  background-color: var(--green);
   color: var(--color-text);
 
   border: none;
@@ -128,31 +136,15 @@ footer.footer-container {
   color: var(--color-text);
 }
 
-
 /* Responsive =====================================*/
 @media (max-width: 800px) {
   html {
     font-size: 87.5%;
   }
 
-  body section .botao {
-    height: 4rem;
-    width: 4rem;
-  }
-
-  section header #barra-pesquisa {
-    width: calc(100vw - 14vw);
-  }
-
-  section footer #hud-avisos {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  footer #hud-avisos button {
-    height: 3.5rem;
-    width: 3.5rem;
+  header.header-pontos {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
   }
 }

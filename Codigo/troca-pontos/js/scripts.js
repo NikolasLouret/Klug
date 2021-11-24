@@ -10,7 +10,7 @@ function leDados() {
         {
           nome: "Nícolas Carneiro",
           foto: "https://www.placecage.com/300/300",
-          pontos: 900
+          pontos: 900,
         },
       ],
 
@@ -19,37 +19,39 @@ function leDados() {
           imagem: "./imgs/cinema.jpg",
           titulo: "R$ 5,00 de desconto em cinemas",
           descricao: "Tenha descontos para assistir seus filmes favoritos",
-          preco: 40
+          preco: 40,
         },
         {
           imagem: "./imgs/ingresso.jpg",
           titulo: "Sorteio par de ingressos",
-          descricao: "Participe do sorteio de um par de ingressos para ver Transformers",
-          preco: 20
+          descricao:
+            "Participe do sorteio de um par de ingressos para ver Transformers",
+          preco: 20,
         },
         {
           imagem: "./imgs/gift-card-music.jpg",
           titulo: "Gift Card de R$10",
-          descricao: "Troque seus pontos por um gift card de R$10 em seu serviço de streaming de música favorito",
-          preco: 60
+          descricao:
+            "Troque seus pontos por um gift card de R$10 em seu serviço de streaming de música favorito",
+          preco: 60,
         },
         {
           imagem: "./imgs/bike.jpg",
           titulo: "Desconto de R$10 em serviços de bike",
-          descricao: "Troque seus pontos por desconto em serviços de mobilidade urbana que usem bikes. Além de fazer bem para a saúde, ajuda o meio ambiente.",
-          preco: 20
+          descricao:
+            "Troque seus pontos por desconto em serviços de mobilidade urbana que usem bikes. Além de fazer bem para a saúde, ajuda o meio ambiente.",
+          preco: 20,
         },
         {
           imagem: "./imgs/pet.jpg",
           titulo: "Banho no seu pet",
-          descricao: "Troque seus pontos por um banho em seu pet. As pets shops são parceiras de nossa plataforma e irão tratar seu amigo com muito carinho.",
-          preco: 400
+          descricao:
+            "Troque seus pontos por um banho em seu pet. As pets shops são parceiras de nossa plataforma e irão tratar seu amigo com muito carinho.",
+          preco: 400,
         },
       ],
     };
   }
-
-  
 
   console.log(objDados);
 
@@ -72,7 +74,7 @@ function imprimeDados() {
 
   let objDados = leDados();
 
-  nomeUsuario.innerHTML = `Olá ${objDados.usuario[0].nome}`;
+  nomeUsuario.innerHTML = `Olá, ${objDados.usuario[0].nome}`;
   fotoUsuario.src = `${objDados.usuario[0].foto}`;
   pontosUsuarios.innerHTML = `${objDados.usuario[0].pontos} pontos`;
 
@@ -93,11 +95,16 @@ function imprimeDados() {
   let botoes = document.querySelectorAll("button");
   for (let i = 0; i < botoes.length; i++) {
     botoes[i].addEventListener("click", function () {
-        alert( objDados.produtosTrocas[i].titulo + ' comprado por ' + objDados.produtosTrocas[i].preco + ' pontos');
-        trocaPontos(objDados, i);
-    })
+      alert(
+        objDados.produtosTrocas[i].titulo +
+          " comprado por " +
+          objDados.produtosTrocas[i].preco +
+          " pontos"
+      );
+      trocaPontos(objDados, i);
+    });
   }
-  
+
   console.log(botoes);
 }
 
@@ -109,8 +116,8 @@ function trocaPontos(dados, botao) {
 
   let pontosUsuarios = document.getElementById("pontos-usuario");
   pontosUsuarios.innerHTML = `${valorAtual} pontos`;
-  
+
   salvaDados(dados);
 }
 
-window.addEventListener('load', imprimeDados);
+window.addEventListener("load", imprimeDados);
