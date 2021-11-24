@@ -3,10 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Rotas do Klug">
+    <link rel="icon" href="./svg/icon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="perfil.css">
 </head>
 
@@ -29,25 +31,18 @@
                         <h4 class="text-right">Configurações do Perfil</h4>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-6"><label class="labels">Nome</label><input type="text" class="form-control"
-                                placeholder="Primeiro nome..." id="txt_nome"></div>
-                        <div class="col-md-6"><label class="labels">Sobrenome</label><input type="text"
-                                class="form-control" placeholder="Segundo nome..." id="txt_sobrenome"></div>
+                        <div class="col-md-6"><label class="labels">Nome</label><input type="text" class="form-control" placeholder="Primeiro nome..." id="txt_nome"></div>
+                        <div class="col-md-6"><label class="labels">Sobrenome</label><input type="text" class="form-control" placeholder="Segundo nome..." id="txt_sobrenome"></div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-6" label class="labels">País</label><input type="text" class="form-control"
-                                placeholder="País..." id="txt_pais"></div>
-                        <div class="col-md-6"><label class="labels">Estado</label><input type="text"
-                                class="form-control" placeholder="Estado..." id="txt_estado"></div>
+                        <div class="col-md-6" label class="labels">País</label><input type="text" class="form-control" placeholder="País..." id="txt_pais"></div>
+                        <div class="col-md-6"><label class="labels">Estado</label><input type="text" class="form-control" placeholder="Estado..." id="txt_estado"></div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Email</label><input type="text"
-                                class="form-control" placeholder="Gmail, Hotmail..." id="txt_email"></div>
-                        <div class="col-md-12"><label class="labels">Senha</label><input type="text"
-                                class="form-control" placeholder="Alterar senha..." id="txt_senha"></div>
+                        <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="Gmail, Hotmail..." id="txt_email"></div>
+                        <div class="col-md-12"><label class="labels">Senha</label><input type="text" class="form-control" placeholder="Alterar senha..." id="txt_senha"></div>
                     </div>
-                    <div class="mt-5 text-center"><button class="btn btn-primary" id="profile-button"
-                            type="button">Salvar
+                    <div class="mt-5 text-center"><button class="btn btn-primary" id="profile-button" type="button">Salvar
                             alterações</button></div>
                 </div>
             </div>
@@ -55,10 +50,8 @@
                 <div class="p-3 py-5">
                     <div class="mt-5 text-center"><button class="btn btn-primary" id="profile-button" type="button">Meus
                             pontos +</button></div>
-                    <div class="mt-5 text-center"><button class="btn btn-primary" id="profile-button"
-                            type="button">Histórico de viagens +</button></div>
-                    <div class="mt-5 text-center"><button class="btn btn-primary" id="profile-button"
-                            type="button">Dúvidas +</button></div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary" id="profile-button" type="button">Histórico de viagens +</button></div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary" id="profile-button" type="button">Dúvidas +</button></div>
                     <div class="mt-5 text-center"><button class="btn btn-primary" id="profile-button" type="button">Meus
                             Feedbacks +</button></div>
                 </div>
@@ -82,31 +75,31 @@
             let email = document.getElementById('txt_email').value;
             let senha = document.getElementById('txt_senha').value;
             if (nome == '') {
-                    alert('Preencha todos os espaços.');
-                    document.getElementById("txt_nome").style.borderColor = "#f00";
-                    return
-                }
-                if (sobrenome == '') {
-                    alert('Preencha todos os espaços.');
-                    document.getElementById("txt_sobrenome").style.borderColor = "#f00";
-                    return
-                }
-                if (pais == '') {
-                    alert('Preencha todos os espaços.');
-                    document.getElementById("txt_pais").style.borderColor = "#f00";
-                }
-                if (estado == '') {
-                    alert('Preencha todos os espaços.');
-                    document.getElementById("txt_estado").style.borderColor = "#f00";
-                }
-                if (email == '') {
-                    alert('Preencha todos os espaços.');
-                    document.getElementById("txt_email").style.borderColor = "#f00";
-                }
-                if (senha == '') {
-                    alert('Preencha todos os espaços.');
-                    document.getElementById("txt_senha").style.borderColor = "#f00";
-                }
+                alert('Preencha todos os espaços.');
+                document.getElementById("txt_nome").style.borderColor = "#f00";
+                return
+            }
+            if (sobrenome == '') {
+                alert('Preencha todos os espaços.');
+                document.getElementById("txt_sobrenome").style.borderColor = "#f00";
+                return
+            }
+            if (pais == '') {
+                alert('Preencha todos os espaços.');
+                document.getElementById("txt_pais").style.borderColor = "#f00";
+            }
+            if (estado == '') {
+                alert('Preencha todos os espaços.');
+                document.getElementById("txt_estado").style.borderColor = "#f00";
+            }
+            if (email == '') {
+                alert('Preencha todos os espaços.');
+                document.getElementById("txt_email").style.borderColor = "#f00";
+            }
+            if (senha == '') {
+                alert('Preencha todos os espaços.');
+                document.getElementById("txt_senha").style.borderColor = "#f00";
+            }
             // Adiciona o usuário no banco de dados
             addUser(nome, sobrenome, pais, estado, email, senha, email);
             alert('Usuário salvo com sucesso.');
@@ -123,17 +116,17 @@
             let listaPerfil4 = '';
             let listaPerfil5 = '';
             let perfil = db_perfil.perfil;
-             listaPerfil = `${perfil.nome}`;
-             listaPerfil1 = `${perfil.sobrenome}`;
-             listaPerfil2 = `${perfil.pais}`;
-             listaPerfil3 = `${perfil.estado}`;
-             listaPerfil4 = `${perfil.email}`;
-             listaPerfil5 = `${perfil.senha}`;
+            listaPerfil = `${perfil.nome}`;
+            listaPerfil1 = `${perfil.sobrenome}`;
+            listaPerfil2 = `${perfil.pais}`;
+            listaPerfil3 = `${perfil.estado}`;
+            listaPerfil4 = `${perfil.email}`;
+            listaPerfil5 = `${perfil.senha}`;
             // Substitui as linhas do corpo dos inputs
             document.getElementById("txt_nome").innerHTML = listaPerfil
             document.getElementById("txt_sobrenome").innerHTML = listaPerfil1
             document.getElementById("txt_pais").innerHTML = listaPerfil2
-            document.getElementById("txt_estado").innerHTML =  listaPerfil3
+            document.getElementById("txt_estado").innerHTML = listaPerfil3
             document.getElementById("txt_email").innerHTML = listaPerfil4
             document.getElementById("txt_senha").innerHTML = listaPerfil5
 
@@ -147,15 +140,9 @@
         // Associar salvamento ao botao
         document.getElementById('profile-button').addEventListener('click', salvaPerfil);
     </script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>
