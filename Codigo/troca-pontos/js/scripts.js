@@ -10,7 +10,7 @@ function leDados() {
         {
           nome: "Nícolas Carneiro",
           foto: "https://www.placecage.com/300/300",
-          pontos: 900,
+          pontos: 1000,
         },
       ],
 
@@ -97,7 +97,8 @@ function imprimeDados() {
     botoes[i].addEventListener("click", function () {
       alert(
         '"' +
-        objDados.produtosTrocas[i].titulo + '"' +
+          objDados.produtosTrocas[i].titulo +
+          '"' +
           " comprado por " +
           objDados.produtosTrocas[i].preco +
           " pontos"
@@ -114,6 +115,8 @@ function trocaPontos(dados, botao) {
   let valorAtual = dados.usuario[0].pontos;
 
   valorAtual -= valorDescontado;
+
+  dados.usuario[0].pontos = valorAtual;
 
   let pontosUsuarios = document.getElementById("pontos-usuario");
   pontosUsuarios.innerHTML = `${valorAtual} pontos`;
