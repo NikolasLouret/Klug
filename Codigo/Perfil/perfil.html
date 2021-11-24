@@ -81,6 +81,32 @@
             let estado = document.getElementById('txt_estado').value;
             let email = document.getElementById('txt_email').value;
             let senha = document.getElementById('txt_senha').value;
+            if (nome == '') {
+                    alert('Preencha todos os espaços.');
+                    document.getElementById("txt_nome").style.borderColor = "#f00";
+                    return
+                }
+                if (sobrenome == '') {
+                    alert('Preencha todos os espaços.');
+                    document.getElementById("txt_sobrenome").style.borderColor = "#f00";
+                    return
+                }
+                if (pais == '') {
+                    alert('Preencha todos os espaços.');
+                    document.getElementById("txt_pais").style.borderColor = "#f00";
+                }
+                if (estado == '') {
+                    alert('Preencha todos os espaços.');
+                    document.getElementById("txt_estado").style.borderColor = "#f00";
+                }
+                if (email == '') {
+                    alert('Preencha todos os espaços.');
+                    document.getElementById("txt_email").style.borderColor = "#f00";
+                }
+                if (senha == '') {
+                    alert('Preencha todos os espaços.');
+                    document.getElementById("txt_senha").style.borderColor = "#f00";
+                }
             // Adiciona o usuário no banco de dados
             addUser(nome, sobrenome, pais, estado, email, senha, email);
             alert('Usuário salvo com sucesso.');
