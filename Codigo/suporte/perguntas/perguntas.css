@@ -271,10 +271,6 @@ div.modal-body {
         text-decoration: none;
         font-family: 'Montserrat', sans-serif;
     }
-    nav a:hover {
-        cursor: pointer;
-        color: #8b8b8b;
-    }
     #logo img {
         width: 30px;
     }
