@@ -67,7 +67,7 @@ article#container-pontos span#pontos-do-usuario {
   font-size: 2rem;
 }
 
-section .container-itens {
+section #container-itens {
   background-color: red;
   display: flex;
   flex-direction: row;
@@ -86,6 +86,7 @@ section article.item {
   flex-wrap: nowrap;
   align-content: center;
   align-items: center;
+  text-align: center;
 
   border-radius: 1rem;
 }
@@ -98,7 +99,11 @@ section article.item img {
   display: block;
 }
 
-section .container-itens article button {
+section article.item span {
+  font-weight: bold;
+}
+
+section #container-itens article button {
   width: 100%;
   height: 50px;
   background-color: var(--green);;
