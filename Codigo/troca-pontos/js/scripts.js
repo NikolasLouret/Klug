@@ -122,8 +122,6 @@ function imprimeDados() {
 }
 
 function trocaPontos(dados, botao) {
-  verificaSaldo(dados);
-
   let valorDescontado = dados.produtosTrocas[botao].preco;
   let valorAtual = dados.usuario[0].pontos;
 
@@ -135,6 +133,7 @@ function trocaPontos(dados, botao) {
   pontosUsuarios.innerHTML = `${valorAtual} pontos`;
 
   salvaDados(dados);
+  verificaSaldo(dados);
 }
 
 function verificaSaldo(dados, botoes) {

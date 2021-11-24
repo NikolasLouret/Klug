@@ -70,9 +70,6 @@ header.header-pontos article#container-pontos {
   border-radius: 1rem;
 }
 
-header.header-pontos article#container-pontos .zerado {}
-
-
 article#container-pontos > span#pontos-usuario {
   font-weight: bold;
   font-size: 2.5rem;
