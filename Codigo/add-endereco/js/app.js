@@ -30,7 +30,7 @@ const db_stores = {
             "address": "Av. Augusto de Lima, 744 - Centro, Belo Horizonte - MG, 30190-922",
             "open": "08:00",
             "close": "18:00",
-            "site": "https://mercadocentral.com.br/"
+            "site": "https://www.mercadocentral.com.br/"
         }
     }, {
         "type": "Feature",
@@ -46,7 +46,7 @@ const db_stores = {
             "address": "R. Dom José Gaspar, 500 - Coração Eucarístico, Belo Horizonte - MG, 30535-901",
             "open": "08:00",
             "close": "20:00",
-            "site": "https://pucminas.br/"
+            "site": "https://www.pucminas.br/"
         }
     }, {
         "type": "Feature",
