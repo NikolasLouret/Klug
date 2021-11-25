@@ -113,7 +113,7 @@ function alterarEndereco() {
     let campoOpen = $("#inputOpenEdit").val();
     let campoClose = $("#inputCloseEdit").val();
     let campoSite = $("#inputSiteEdit").val();
-    let infos = {
+    let endereco = {
         name: campoName,
         category: campoCategory,
         description: campoDescription,
@@ -127,7 +127,7 @@ function alterarEndereco() {
     const sidebarId = document.querySelector('.sidebar').id;
 
     //Adicionar os novos dados no banco de dados
-    updateAddress(sidebarId.replace("sidebar-", ""), infos);
+    updateAddress(sidebarId.replace("sidebar-", ""), endereco);
 
     //Recarregar a página
     location.reload();

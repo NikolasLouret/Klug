@@ -85,9 +85,8 @@ const db_stores = {
 
 // Caso os dados já estejam no Local Storage, caso contrário, carrega os dados iniciais
 var stores = JSON.parse(localStorage.getItem('db_address'));
-if (!stores) {
+if (!stores)
     stores = db_stores;
-}
 
 /* Assign a unique ID to each store */
 stores.features.forEach(function(store, i) {
@@ -365,6 +364,8 @@ function updateAddress(id, endereco) {
         let index = features.map(obj => obj.properties.id)[id];
         const propertiesIndex = features[index].properties;
         const geometry = features[index].geometry;
+
+        //Encontra as coordenadas do enderço pesquisado
         const address = result.find(element => element.place_name = inputEnderecoEdit.val());
         const coordenadas = address.geometry;
 

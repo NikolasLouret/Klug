@@ -1,12 +1,12 @@
 // Importar a chave da API do mapa
 //import { APIKEY } from "./apikey.js";
 
-// Chama a função que pega as coordenadas do usuário
-getLocation();
-
 // Recupera as coordenadas do localSession
 let coordenadas = JSON.parse(window.sessionStorage.getItem("coordenadas"));
-console.log(coordenadas);
+
+// Chama a função que pega as coordenadas do usuáriovar
+if (!coordenadas)
+    getLocation();
 
 // Se não tem as coordenadas do usuário, coloca como sendo o marco central de BH
 if (!coordenadas) {
