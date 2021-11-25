@@ -232,7 +232,7 @@ function buildLocationInfos(marker) {
         $(".infos").append(`<a href="${marker.properties.site}" class="dados" id="site"><i class="fas fa-globe-americas"></i><p class="text"></p></a>`);
 
         //Insere o texto nela
-        const url = `${marker.properties.site}`
+        const url = `${marker.properties.site}`;
         const site = document.querySelector("#site p.text");
         site.innerText = url.replace("https://www.", "");
     }
@@ -365,15 +365,8 @@ function updateAddress(id, endereco) {
         let index = features.map(obj => obj.properties.id)[id];
         const propertiesIndex = features[index].properties;
         const geometry = features[index].geometry;
-
-        //console.log(address.place_name);
         const address = result.find(element => element.place_name = inputEnderecoEdit.val());
         const coordenadas = address.geometry;
-
-
-        console.log(geometry);
-        console.log(coordenadas);
-        // console.log("Nome: " + endereco.name);
 
         // Altera os dados do objeto no array
         geometry.coordinates = coordenadas.coordinates,
@@ -392,14 +385,8 @@ function updateAddress(id, endereco) {
 }
 
 function deleteAddress(id) {
-    // Filtra o array removendo o elemento com o id passado
-    const properties = stores.features[id].properties;
-    console.log(properties);
-    // properties = properties.filter(function(element) { return element.id != id });
-    stores.features.splice(id, 2); // This will remove the object that first name equals to Test1
-
-    //delete stores.features[id];
-    console.log(stores.features);
+    //Deleta todo o Array selecionado
+    stores.features.splice(id, 1);
 
     // Atualiza os dados no Local Storage
     localStorage.setItem('db_address', JSON.stringify(stores));
