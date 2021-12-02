@@ -34,12 +34,10 @@ function perfil(data) {
 function exibePerfil(user) {
     let nome = `${user.nome}`;
     let sobrenome = `${user.sobrenome}`;
-    let endereco = `${user.endereco}`;
     let email = `${user.email}`;
 
     // Substitui as linhas do corpo dos inputs
     $('#txt_nome').val(nome);
     $('#txt_sobrenome').val(sobrenome);
-    $('#txt_address').val(endereco);
     $('#txt_email').val(email);
 }
