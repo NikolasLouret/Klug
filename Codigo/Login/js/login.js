@@ -53,9 +53,10 @@ function loginUser(nome, senha) {
 
             // Retorna true para usuário encontrado
             return true;
-        } else
-            return false;
+        }
     }
+
+    return false;
 }
 
 // Apaga os dados do usuário corrente no sessionStorage
