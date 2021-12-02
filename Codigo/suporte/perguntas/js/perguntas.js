@@ -73,12 +73,12 @@ function star() {
 
     const login = document.querySelector('#loginProfile');
     // Se o usuário não estiver logado, no menu aparecerá a palavra "Entrar"
-    if (userLogin.length == undefined) {
-        login.innerHTML = 'Entrar';
-        login.setAttribute('href', LOGIN_URL);
-    } else {
+    if (userLogin != undefined) {
         login.innerHTML = userLogin.nome;
         login.setAttribute('href', PERFIL_URL);
+    } else {
+        login.innerHTML = 'Entrar';
+        login.setAttribute('href', LOGIN_URL);
     }
 
     login.addEventListener('click', function() {
