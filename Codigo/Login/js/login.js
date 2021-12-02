@@ -63,7 +63,7 @@ function loginUser(nome, senha) {
 function logoutUser() {
     usuarioCorrente = {};
     localStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
-    window.location = LOGIN_URL;
+    window.location.href = 'https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/Login/login.html';
 }
 
 function addUser(nome, sobrenome, senha, email) {
