@@ -1,4 +1,5 @@
 const PERFIL_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/perfil/perfilPrincipal.html";
+var link = JSON.parse(localStorage.getItem('link'));
 
 function validacaoForm() {
     //Verificar os campos do formulário das perguntas individualmente
@@ -59,6 +60,11 @@ function validacaoForm() {
     }
 }
 
+function start() {
+    const btnEntrar = $('#btn-entrar');
+    btnEntrar.setAttribute('href', link);
+}
+
 // Declara uma função para processar o formulário de login
 function processaFormLogin(event) {
     // Cancela a submissão do formulário para tratar sem fazer refresh da tela
@@ -80,11 +86,8 @@ function processaFormLogin(event) {
     if (username && password) {
         resultadoLogin = loginUser(username, password);
 
-        if (resultadoLogin) {
-            window.location.replace(PERFIL_URL);
-        } else { // Se login falhou, avisa ao usuário
+        if (!resultadoLogin)
             alert('Usuário ou senha incorretos');
-        }
     }
 }
 
