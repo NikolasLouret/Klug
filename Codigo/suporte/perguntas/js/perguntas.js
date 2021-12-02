@@ -1,3 +1,6 @@
+const LOGIN_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/Login/login.html";
+const PERFIL_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/perfil/perfilPrincipal.html";
+
 var idPerguntaModal;
 
 function validacaoForm() {
@@ -60,6 +63,42 @@ function validacaoForm() {
         field.addEventListener("blur", customValidation);
     }
 }
+
+function star() {
+    localStorage.setItem('link', JSON.stringify(""));
+
+    // Pega os dados do usuário logado
+    var userLogin = JSON.parse(localStorage.getItem('usuarioCorrente'));
+
+    const login = document.querySelector('#loginProfile');
+    // Se o usuário não estiver logado, no menu aparecerá a palavra "Entrar"
+    if (userLogin.length == undefined) {
+        login.innerHTML = 'Entrar';
+        login.setAttribute('href', LOGIN_URL);
+    } else {
+        login.innerHTML = userLogin.nome;
+        login.setAttribute('href', PERFIL_URL);
+    }
+
+    login.addEventListener('click', function() {
+        localStorage.setItem('link', JSON.stringify("https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/suporte/perguntas/perguntas.html"));
+    })
+
+    const btnAdd = document.querySelector('#adicionar_mais');
+
+    btnAdd.addEventListener('click', function() {
+        // Se não houver dados, o usuário é redirecionado para a página de login
+        if (userLogin.length == undefined) {
+            alert("Faça o login para adicionar uma pergunta");
+            //window.location.replace(LOGIN_URL);
+        } else {
+
+        }
+    })
+}
+
+
+
 
 function addPergunta() {
     //Faz a verificação individual de cada campo do formulário
