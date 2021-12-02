@@ -53,11 +53,9 @@ function loginUser(nome, senha) {
 
             // Retorna true para usuário encontrado
             return true;
-        }
+        } else
+            return false;
     }
-
-    // Se chegou até aqui, é por que não encontrou o usuário e retorna falso
-    return false;
 }
 
 // Apaga os dados do usuário corrente no sessionStorage
