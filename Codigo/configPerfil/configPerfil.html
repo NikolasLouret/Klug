@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Rotas do Klug">
+    <link rel="icon" href="./svg/icon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Arquivo CSS -->
+    <link rel="stylesheet" href="perfil.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+</head>
+
+<body>
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right" id="parteRosa">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img id="logo" src="Logo-Klug-3-branco.svg">
+                </div>
+
+                <div class="row slogan">
+                    <strong>O MELHOR CAMINHO PARA A MELHOR PESSOA</strong>
+                </div>
+
+                <div class="row pergunta"></div>
+            </div>
+
+            <div class="col-md-5 border-right">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Configurações do Perfil</h4>
+                </div>
+
+                <form id="form-configPerfil">
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label class="labels">Nome</label>
+                            <input type="text" class="form-control" placeholder="Primeiro nome" id="txt_nome" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="labels">Sobrenome</label>
+                            <input type="text" class="form-control" placeholder="Segundo nome" id="txt_sobrenome">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-12" label class="labels">Endereco</label>
+                            <input type="text" class="form-control" placeholder="Endereço" id="txt_address">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="labels">Email</label>
+                            <input type="text" class="form-control" placeholder="Adicionar email" id="txt_email" required>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="labels">Senha</label>
+                            <input type="text" class="form-control" placeholder="Alterar senha" id="txt_senha" required>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 text-center">
+                        <button class="btn btn-primary" id="profile-button" type="button">Salvar alterações</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 py-5">
+                    <div class="mt-5 text-center">
+                        <button class="btn btn-primary" id="profile-button" type="button">Meus pontos +</button>
+                    </div>
+
+                    <div class="mt-5 text-center">
+                        <button class="btn btn-primary" id="profile-button" type="button">Histórico de viagens +</button>
+                    </div>
+
+                    <div class="mt-5 text-center">
+                        <button class="btn btn-primary" id="profile-button" type="button">Dúvidas +</button>
+                    </div>
+
+                    <div class="mt-5 text-center">
+                        <button class="btn btn-primary" id="profile-button" type="button">Meus Feedbacks +</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Arquivos JS -->
+    <script src="./js/configPerfil.js"></script>
+    <script src="./js/formularioPerfil.js"></script>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,3 +1,5 @@
+const LOGIN_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/Login/login.html";
+
 function validacaoForm() {
     var asterisco;
 
@@ -112,7 +114,7 @@ document.getElementById('profile-button').addEventListener('click', salvaPerfil)
 function logoutUser() {
     const perfilCorrente = {};
     localStorage.setItem('usuarioCorrente', JSON.stringify(perfilCorrente));
-    window.location.href = 'https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/Login/login.html';
+    window.location.href = LOGIN_URL;
 }
 
 const usuario = JSON.parse(localStorage.getItem('usuarioCorrente'));

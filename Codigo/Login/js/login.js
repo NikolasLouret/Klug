@@ -5,6 +5,7 @@
 // Página inicial de Login
 const LOGIN_URL = "login.html";
 
+
 // função para gerar códigos randômicos a serem utilizados como código de usuário
 // Fonte: https://stackoverflow.com/questions/105034/how-to-create-guid-uuid
 function generateUUID() { // Public Domain/MIT
@@ -63,7 +64,7 @@ function loginUser(nome, senha) {
 function logoutUser() {
     usuarioCorrente = {};
     localStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
-    window.location.href = 'https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/Login/login.html';
+    window.location.href = LOGIN_URL;
 }
 
 function addUser(nome, sobrenome, senha, email) {
