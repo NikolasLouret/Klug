@@ -29,15 +29,52 @@
 </head>
 
 <body>
-    <main class="main">
-        <!--Perfil-->
-        <div class="perfil" id="perfil"></div>
+    <header class="cabecalho">
 
+    </header>
+
+    <main class="main">
+        <!-- Perfil -->
+        <div class="infosPerfil">
+            <div class="perfil" id="perfil"></div>
+
+            <!-- Btn editar perfil -->
+            <div class="btn-config">
+                <a href="#"><button id="btnLogout" onclick="logoutUser()">Logout</button></a>
+            </div>
+        </div>
+
+        <!-- Editar configs -->
+        <div class="editPerfil">
+            <form id="form-configPerfil">
+                <label class="labels">Nome</label>
+                <input type="text" class="form-control" placeholder="Primeiro nome" id="txt_nome" required>
+
+                <label class="labels">Sobrenome</label>
+                <input type="text" class="form-control" placeholder="Segundo nome" id="txt_sobrenome">
+
+                <label class="labels">Endereco</label>
+                <input type="text" class="form-control" placeholder="Endereço" id="txt_address">
+
+                <label class="labels">Email</label>
+                <input type="text" class="form-control" placeholder="Adicionar email" id="txt_email" required>
+
+                <label class="labels">Senha</label>
+                <input type="text" class="form-control" placeholder="Alterar senha" id="txt_senha" required>
+            </form>
+            <div class="btn-saveChanges">
+                <button class="btn" id="profile-button" type="button">Salvar alterações</button>
+            </div>
+        </div>
     </main>
+
+    <footer class="rodape">
+
+    </footer>
 
     <!-- Arquivos JS -->
     <script src="./js/perfil.js"></script>
-    <script src="./js/user.json"></script>
+    <script src="./js/form.js"></script>
 </body>
 
 </html>

@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="login.css">
 </head>
 
@@ -16,51 +15,48 @@
             <div id="login-row" class="d-flex flex-lg-row flex-column-reverse">
                 <div id="login-column" class="col-md-10">
                     <div id="login-box1" class="col-md-10">
-                        <form id="login-form1" class="form" method="post" onsubmit="loginUser (this)">
+                        <form id="login-form1" class="form" method="post">
                             <h3 class="text-center text-info">Login</h3>
                             <div class="form-group">
                                 <label for="username" class="text-info">Usuário</label><br>
-                                <input type="text" name="username" id="username" class="form-control">
+                                <input type="text" name="username" id="username" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Senha</label><br>
                                 <div class="senha">
-                                    <input type="password" name="password" id="password" class="form-control">
+                                    <input type="password" name="password" id="password" class="form-control" required>
                                 </div>
                             </div>
                             <div class="row botoesBaixo col-md-12">
                                 <div class="row newUser col-md-10">
-                                    <button type="button" class="btn btn-info" data-toggle="modal"
-                                        data-target="#loginModal">Novo usuario</button>
+                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#loginModal">Novo usuario</button>
                                 </div>
                                 <div class="form-group text-right">
                                     <div class="row submit">
-                                        <input type="submit" name="submit" class="btn btn-info btn-md" value="Entrar">
+                                        <a href="Codigo/perfil/index.html" id="btn-entrar"><button type="submit" name="submit" class="btn btn-info btn-md">Entrar</button></a>
                                     </div>
                                 </div>
-
+                            </div>
                         </form>
                     </div>
-
                 </div>
-            </div>
-            <div class="row klug-info">
-                <div class="d-flex flex-lg-row flex-column-reverse">
-                    <div id="card card2" class="col-md-12">
-                        <div id="card-direita" class="col-md-12">
-                            <div class="row imagem-klug">
-                                <img id="logo" src="images/Logo-Klug-3-branco.svg">
-                            </div>
-                            <div class="row slogan">
-                                <strong>O MELHOR CAMINHO PARA A MELHOR PESSOA</strong>
-                            </div>
-                            <div class="row pergunta">
-                                <p><strong>VOCÊ JÁ POSSUI UM CADASTRO?</strong></p>
-                            </div>
-                            <div class="row mobile">
-                               <a href=#login-column><button type="button" class="btn btn-sim">SIM</button></a> 
-                               <button type="button" class="btn btn-info" data-toggle="modal"
-                                        data-target="#loginModal">NÃO</button>
+                <div class="row klug-info">
+                    <div class="d-flex flex-lg-row flex-column-reverse">
+                        <div id="card card2" class="col-md-12">
+                            <div id="card-direita" class="col-md-12">
+                                <div class="row imagem-klug">
+                                    <img id="logo" src="images/Logo-Klug-3-branco.svg">
+                                </div>
+                                <div class="row slogan">
+                                    <strong>O MELHOR CAMINHO PARA A MELHOR PESSOA</strong>
+                                </div>
+                                <div class="row pergunta">
+                                    <p><strong>VOCÊ JÁ POSSUI UM CADASTRO?</strong></p>
+                                </div>
+                                <div class="row mobile">
+                                    <a href=#login-column><button type="button" class="btn btn-sim">SIM</button></a>
+                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#loginModal">NÃO</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -68,12 +64,10 @@
             </div>
         </div>
     </div>
-    </div>
 
 
     <!-- Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -91,37 +85,21 @@
                 <div class="modal-body preencher">
                     <div id="login-box2" class="col-md-12">
                         <form id="login-form2" class="form" method="post" onsubmit="loginUser (this)">
-                            <p class="text-center text-info">
-                            <h3>Novo usuário</h3>
-                            </p>
+                            <p class="text-center text-info">Novo usuário</p>
                             <div class="form-group">
-                                <label for="login" class="text-info">
-                                    <h6>Usuário</h6>
-                                </label>
-                                <input type="text" name="txt_login" id="txt_login" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="nome" class="text-info">
-                                    <h6>Nome completo</h6>
-                                </label>
+                                <label for="login" class="text-info">Nome</label>
                                 <input type="text" name="txt_nome" id="txt_nome" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="text-info">
-                                    <h6>Email</h6>
-                                </label>
+
+                                <label for="nome" class="text-info">Sobrenome</label>
+                                <input type="text" name="txt_sobrenome" id="txt_sobrenome" class="form-control" required>
+
+                                <label for="email" class="text-info">Email</label>
                                 <input type="text" name="txt_email" id="txt_email" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="senha" class="text-info">
-                                    <h6>Senha</h6>
-                                </label>
+
+                                <label for="senha" class="text-info">Senha</label>
                                 <input type="password" name="txt_senha" id="txt_senha" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="senha2" class="text-info">
-                                    <h6>Confirmação de Senha</h6>
-                                </label>
+
+                                <label for="senha2" class="text-info">Confirmação de Senha</label>
                                 <input type="password" name="txt_senha2" id="txt_senha2" class="form-control" required>
                             </div>
 
@@ -135,97 +113,13 @@
             </div>
         </div>
     </div>
-    <body>
 
+    <script src="./js/login.js"></script>
+    <script src="./js/formularioLogin.js"></script>
 
-        <script src="login.js"></script>
-        <script>
-
-            // Declara uma função para processar o formulário de login
-            function processaFormLogin(event) {
-                // Cancela a submissão do formulário para tratar sem fazer refresh da tela
-                event.preventDefault();
-
-                // Obtem os dados de login e senha a partir do formulário de login
-                var username = document.getElementById('username').value;
-                var password = document.getElementById('password').value;
-
-                // Valida login e se estiver ok, redireciona para tela inicial da aplicação
-                resultadoLogin = loginUser(username, password);
-                if (resultadoLogin) {
-                    window.location.href = 'index.html';
-                }
-                else { // Se login falhou, avisa ao usuário
-                    alert('Usuário ou senha incorretos');
-                }
-            }
-
-            function salvaLogin(event) {
-                // Cancela a submissão do formulário para tratar sem fazer refresh da tela
-                event.preventDefault();
-
-                // Obtem os dados do formulário
-                let login = document.getElementById('txt_login').value;
-                let nome = document.getElementById('txt_nome').value;
-                let email = document.getElementById('txt_email').value;
-                let senha = document.getElementById('txt_senha').value;
-                let senha2 = document.getElementById('txt_senha2').value;
-                if (login == '') {
-                    alert('Preencha todos os espaços.');
-                    document.getElementById("txt_login").style.borderColor = "#f00";
-                    return
-                }
-                if (nome == '') {
-                    alert('Preencha todos os espaços.');
-                    document.getElementById("txt_nome").style.borderColor = "#f00";
-                    return
-                }
-                if (email == '') {
-                    alert('Preencha todos os espaços.');
-                    document.getElementById("txt_email").style.borderColor = "#f00";
-                }
-                if (senha == '') {
-                    alert('Preencha todos os espaços.');
-                    document.getElementById("txt_senha").style.borderColor = "#f00";
-                }
-                if (senha2 == '') {
-                    alert('Preencha todos os espaços.');
-                    document.getElementById("txt_senha2").style.borderColor = "#f00";
-                }
-                if (senha != senha2) {
-                    alert('As senhas informadas não conferem.');
-                    document.getElementById("txt_senha").style.borderColor = "#f00";
-                    document.getElementById("txt_senha2").style.borderColor = "#f00";
-                    return
-                }
-
-
-                // Adiciona o usuário no banco de dados
-                addUser(nome, login, senha, email);
-                alert('Usuário salvo com sucesso. Proceda com o login para ');
-
-                // Oculta a div modal do login
-                //document.getElementById ('loginModal').style.display = 'none';
-                $('#loginModal').modal('hide');
-            }
-
-            // Associa a funçao processaFormLogin  formulário adicionado um manipulador do evento submit
-            document.getElementById('login-form1').addEventListener('submit', processaFormLogin);
-
-
-            // Associar salvamento ao botao
-            document.getElementById('btn_salvar').addEventListener('click', salvaLogin);
-        </script>
-
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-    </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
 
 </html>
