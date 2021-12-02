@@ -91,14 +91,9 @@ function star() {
         if (userLogin.length == undefined) {
             alert("Faça o login para adicionar uma pergunta");
             //window.location.replace(LOGIN_URL);
-        } else {
-
         }
     })
 }
-
-
-
 
 function addPergunta() {
     //Faz a verificação individual de cada campo do formulário
