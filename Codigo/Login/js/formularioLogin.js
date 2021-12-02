@@ -61,7 +61,7 @@ function validacaoForm() {
 }
 
 function start() {
-    const btnEntrar = $('#btn-entrar');
+    const btnEntrar = document.querySelector('#btn-entrar');
     btnEntrar.setAttribute('href', link);
 }
 
