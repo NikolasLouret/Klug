@@ -81,7 +81,7 @@ function processaFormLogin(event) {
         resultadoLogin = loginUser(username, password);
 
         if (resultadoLogin) {
-            window.location.href = PERFIL_URL;
+            window.location.replace(PERFIL_URL);
         } else { // Se login falhou, avisa ao usuário
             alert('Usuário ou senha incorretos');
         }
