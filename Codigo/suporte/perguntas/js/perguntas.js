@@ -1,5 +1,6 @@
 const LOGIN_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/Login/login.html";
 const PERFIL_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/perfil/perfilPrincipal.html";
+var userLogin = JSON.parse(localStorage.getItem('usuarioCorrente'));
 
 var idPerguntaModal;
 
@@ -68,7 +69,7 @@ function star() {
     localStorage.setItem('link', JSON.stringify(""));
 
     // Pega os dados do usuário logado
-    var userLogin = JSON.parse(localStorage.getItem('usuarioCorrente'));
+    console.log(userLogin)
 
     const login = document.querySelector('#loginProfile');
     // Se o usuário não estiver logado, no menu aparecerá a palavra "Entrar"
