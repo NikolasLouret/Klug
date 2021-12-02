@@ -60,7 +60,7 @@ function validacaoForm() {
 // Declara uma função para processar o formulário de login
 function processaFormLogin(event) {
     // Cancela a submissão do formulário para tratar sem fazer refresh da tela
-    event.preventDefault();
+    //event.preventDefault();
 
     //Faz a verificação individual de cada campo do formulário
     validacaoForm();
@@ -79,7 +79,8 @@ function processaFormLogin(event) {
         resultadoLogin = loginUser(username, password);
 
         if (resultadoLogin) {
-            window.location = "PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/perfil/index.html";
+            console.log("Logou")
+            window.location.href = 'https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/perfil/index.html';
         } else { // Se login falhou, avisa ao usuário
             alert('Usuário ou senha incorretos');
         }
@@ -88,7 +89,7 @@ function processaFormLogin(event) {
 
 function salvaLogin(event) {
     // Cancela a submissão do formulário para tratar sem fazer refresh da tela
-    event.preventDefault();
+    //event.preventDefault();
 
     //Faz a verificação individual de cada campo do formulário
     validacaoForm();
