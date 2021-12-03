@@ -77,7 +77,7 @@ function adicionarEndereco() {
     let campoOpen = $("#inputOpen").val();
     let campoClose = $("#inputClose").val();
     let campoSite = $("#inputSite").val();
-    let endereco = {
+    let infos = {
         name: campoName,
         category: campoCategory,
         description: campoDescription,
@@ -89,7 +89,7 @@ function adicionarEndereco() {
     }
 
     //Adicionar a nova pergunta no banco de dados
-    insertAddress(endereco);
+    insertAddress(infos);
 
     //Recarregar a página
     location.reload();
@@ -157,7 +157,10 @@ function editarEndereco(id) {
     $("#inputAddressEdit").val($("#address p.text").text());
     $("#inputOpenEdit").val(properties.open);
     $("#inputCloseEdit").val(properties.close);
-    $("#inputSiteEdit").val(url + site);
+    if (!!document.getElementById("site"))
+        $("#inputSiteEdit").val(url + site);
+    else
+        $("#inputSiteEdit").val("");
 }
 
 const btnMobile = document.getElementById('btn-mobile');
