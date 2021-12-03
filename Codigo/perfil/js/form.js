@@ -96,7 +96,7 @@ function salvaPerfil(event) {
     let address = $("#txt_address").val();
     let email = $("#txt_email").val();
     let senha = $("#txt_senha").val();
-    let user = {
+    let userInfos = {
         nome: nome,
         sobrenome: sobrenome,
         address: address,
@@ -105,7 +105,7 @@ function salvaPerfil(event) {
     }
 
     // Adiciona o usuário no banco de dados
-    updateUser(user);
+    updateUser(userInfos);
 }
 
 // Associar salvamento ao botao
@@ -132,13 +132,13 @@ function updateUser(data) {
         usuariosJSON.user[index].email = data.email,
         usuariosJSON.user[index].senha = data.senha
 
-    // Atualiza os dados no Local Storage
-    //localStorage.setItem('db_quests', JSON.stringify(db));
-
     const perfilCorrente = {};
     localStorage.setItem('usuarioCorrente', JSON.stringify(perfilCorrente));
 
     // Salva o novo banco de dados com o novo usuário no localStorage
     localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
-    localStorage.setItem('usuarioCorrente', JSON.stringify(data));
+    localStorage.setItem('usuarioCorrente', JSON.stringify(usuariosJSON.user[index]));
+
+    //Recarregar a página
+    location.reload();
 }

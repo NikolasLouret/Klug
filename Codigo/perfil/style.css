@@ -31,3 +31,7 @@ html {
     width: 50%;
     border-radius: 100%;
 }
+
+.hidden {
+    display: none;
+}
