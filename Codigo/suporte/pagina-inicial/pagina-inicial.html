@@ -6,250 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./img/icon.svg">
+    <title>Suporte KLUG</title>
 
-    <title>Suporte</title>
-
-    <link rel="icon" href="./img/icon.svg">
+    <!-- Arquivo CSS -->
     <link rel="stylesheet" href="pagina-inicial.css">
+
+    <!-- Bootsatrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
+    <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/c89ded80b6.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="app.js"></script>
-    <script>
-        function validacaoForm() {
-            var asterisco;
 
-            $("#botao_enviar").click(function() {
-                // Verfica se o formulário está preenchido corretamente
-                if (!$('#form_fale_conosco')[0].checkValidity()) {
-                    return
-                }
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
-                document.location.reload()
-            })
-
-            //Verificar os campos do formulário das perguntas individualmente
-            const fields = document.querySelectorAll("[required]")
-
-            function validateField(field) {
-                //Lógica para verificar se existem erros
-                function verifyErrors() {
-                    let foundError = false;
-
-                    for (key in field.validity) {
-                        if (field.validity[key] && !field.validity.valid) {
-                            foundError = key
-                        }
-                    };
-                    return foundError
-                }
-
-                function setCustomMessage(message) {
-                    if (message) {
-                        $(field).attr('placeholder', field.placeholder + message)
-                    }
-                }
-
-                return function() {
-                    if (verifyErrors()) {
-                        field.style.border = "1px solid red"
-
-                        if (!asterisco) {
-                            setCustomMessage("*")
-                            asterisco = true;
-                        }
-                    } else {
-                        field.style.border = "1px solid rgb(0, 201, 0)"
-                        setCustomMessage()
-                    }
-                }
-            }
-
-            function customValidation(event) {
-                const field = event.target
-                const validation = validateField(field)
-                if (field.placeholder == "Primeiro nome" || field.placeholder == "Último nome" || field.placeholder == "Endereço de email" || field.placeholder == "Descreva o problema")
-                    asterisco = false;
-                else asterisco = true
-                validation()
-            }
-
-            for (field of fields) {
-                field.addEventListener("invalid", event => {
-                    //Tirar o bubble
-                    event.preventDefault()
-
-                    customValidation(event)
-                })
-
-                field.addEventListener("blur", customValidation)
-            }
-        }
-
-        function filtroPerguntas() {
-            const inputSearch = document.querySelector('#barra-pesquisa input')
-            const filterInput = document.querySelector("#search")
-            const filterList = document.querySelector('#historico')
-            const cleanButton = document.querySelector("#cleanButton")
-            const searchButton = document.querySelector("#searchButton")
-            const posts = document.querySelectorAll("#conteudo_discussao li")
-
-            const filterResults = (results, inputValue, returnMatchedResults) => results
-                .filter(result => {
-                    const matchedResults = result.textContent.toLowerCase().includes(inputValue)
-                    return returnMatchedResults ? matchedResults : !matchedResults
-                })
-
-            const hideResults = (results, inputValue) => {
-                filterResults(results, inputValue, false)
-                    .forEach(result => {
-                        result.classList.remove('block')
-                        result.classList.add('hidden')
-                    })
-            }
-
-            const showResults = (results, inputValue) => {
-                filterResults(results, inputValue, true)
-                    .forEach(result => {
-                        result.classList.remove('hidden')
-                        result.classList.add('block')
-                    })
-            }
-
-            const showPostIfMatchInputValue = inputValue => post => {
-                const postTitle = post.querySelector('#tituloPergunta').textContent.toLocaleLowerCase()
-                const postBody1 = post.querySelector('#p1-pergunta').textContent.toLocaleLowerCase()
-                const postBody2 = post.querySelector('#p2-pergunta').textContent.toLocaleLowerCase()
-                const postContainsInputValue = postTitle.includes(inputValue) ||
-                    postBody1.includes(inputValue) ||
-                    postBody2.includes(inputValue)
-
-                if (postContainsInputValue) {
-                    post.style.display = 'block'
-                    return
-                }
-
-                post.style.display = 'none'
-            }
-
-            const cleanInput = event => {
-                inputSearch.value = ""
-
-                posts.forEach(post => {
-                    post.style.display = 'block'
-                })
-
-                switchSearchIcon()
-            }
-
-            function switchSearchIcon() {
-                if (inputSearch.value.length > 0) {
-                    searchButton.classList.remove("block");
-                    searchButton.classList.add("hidden");
-
-                    cleanButton.classList.remove("hidden");
-                    cleanButton.classList.add("block");
-                } else {
-                    searchButton.classList.remove("hidden");
-                    searchButton.classList.add("block");
-
-                    cleanButton.classList.remove("block");
-                    cleanButton.classList.add("hidden");
-                }
-            }
-
-            const handleInputValue = event => {
-                const inputValue = event.target.value.trim().toLowerCase()
-                const results = Array.from(filterList.children)
-
-
-                posts.forEach(showPostIfMatchInputValue(inputValue))
-
-                hideResults(results, inputValue)
-                showResults(results, inputValue)
-
-                switchSearchIcon()
-            }
-
-            filterList.addEventListener('click', event => {
-                const posts = document.querySelectorAll("#conteudo_discussao li")
-                const inputValue = event.target.textContent.toLocaleLowerCase()
-
-                posts.forEach(showPostIfMatchInputValue(inputValue))
-
-                filterInput.value = event.target.textContent
-            })
-
-            inputSearch.addEventListener('input', handleInputValue)
-
-            inputSearch.addEventListener('blur', switchSearchIcon())
-
-            cleanButton.addEventListener('click', cleanInput)
-        }
-        const btnMobile = document.getElementById('btn-mobile')
-
-        function toggleMenu() {
-            const nav = document.getElementById("nav")
-
-            nav.classList.toggle('active')
-        }
-
-        function init() {
-
-            //Calcula o ano
-            document.querySelector('#ano').innerHTML = new Date().getFullYear()
-
-            //Limpa todas as informações do Data Base
-            $("#conteudo_discussao").html("");
-
-            // Popula a lista com os registros do banco de dados
-            for (i = 0; i < db.data.length; i++) {
-                let discus = db.data[i];
-                $("#conteudo_discussao").append(`<li display="block" class="perguntaLinha" data-bs-target="#modal-pergunta" data-bs-toggle="modal" id="${discus.id}">
-                                                <h5 id="tituloPergunta">${discus.titulo_pergunta}</h5>           
-                                                <p id="p1-pergunta">${discus.nickname}</p>
-                                                <p id="p2-pergunta">${discus.texto}</p>
-                                                <hr>
-                                            </li>`);
-                $("#historico").append(`<option id="historicoPesquisa">${discus.titulo_pergunta}</option>`)
-            }
-
-            // Identifica qual pergunta clickada 
-            $("#conteudo_discussao").on("click", "li", function(e) {
-                let linhaPergunta = this;
-                gerarModal(linhaPergunta, linhaPergunta.id)
-            });
-
-            const filterSearch = document.querySelector('#historico')
-            const inputSearch = document.querySelector('#barra-pesquisa input')
-
-            function resolveAfterXs(x) {
-                return new Promise(resolve => {
-                    setTimeout(() => {
-                        resolve(x);
-                    }, 100);
-                });
-            }
-
-            const hideResults = async event => {
-                await resolveAfterXs(1);
-                const results = Array.from(filterSearch.children).forEach(result => {
-                    result.classList.remove('block')
-                    result.classList.add('hidden')
-                })
-            }
-
-            const showResults = event => {
-                const results = Array.from(filterSearch.children).forEach(result => {
-                    result.classList.remove('hidden')
-                    result.classList.add('block')
-                })
-            }
-
-            inputSearch.addEventListener('click', showResults)
-            inputSearch.addEventListener('blur', hideResults)
-        }
-    </script>
+    <!-- Arquivo JS -->
+    <script src="./js/app.js"></script>
 </head>
 
 <body id="body" onload="init(), validacaoForm()">
@@ -265,7 +39,7 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Editar rota</a></li>
                 <li>
-                    <a href="#">Entrar</a>
+                    <a id="loginProfile" href="">Entrar</a>
                 </li>
             </ul>
         </nav>
@@ -276,7 +50,7 @@
             <div class="container background-globe">
                 <h1 id="titulo">Suporte KLUG</h1>
                 <div class="pesquisa">
-                    <form id="barra-pesquisa" class="d-flex" action="" method="submit">
+                    <form id="barra-pesquisa" class="d-flex" action="https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/suporte/perguntas/perguntas.html" method="submit">
                         <input onclick="filtroPerguntas()" type="text" class="form-control" name="search" id="search" placeholder="Pesquisar" aria-label="Search" list="historico">
 
                         <button id="searchButton" class="block"><i id="icon_search" class="fas fa-search"></i></button>

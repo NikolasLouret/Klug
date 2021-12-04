@@ -1,85 +1,190 @@
-var db_perguntas = {
-    "data": [{
-            "id": 1,
-            "nickname": "Wellington",
-            "titulo_pergunta": "Como faz para criar um aviso de buraco no mapa?",
-            "texto": "Onde eu moro tem muito buraco na rua, e eu queria criar alguns avisos no mapa pra mostrar pras outras pessoas onde eles estão. As únicas opções que eu encontro é de acidente, engarrafamento e pista alagada.",
-        },
-        {
-            "id": 2,
-            "nickname": "Cleber",
-            "titulo_pergunta": "Como faz pra mudar a visualização do gráfico da inclinação da rua?",
-            "texto": "Sempre que tem uma rua mais inclinada, o site avisa através de um gráfico. Porém eu não entendo ele direito e eu queria mudar a vizualização dele pra outra mais simples."
-        },
-        {
-            "id": 3,
-            "nickname": "Luiz",
-            "titulo_pergunta": "Como que faz pra registrar o carro como forma de locomoção?",
-            "texto": "Eu comprei um carro novo e queria mudar as formas de transporte pra aparecer apenas carro. O padrão é mostrar todos os meios de transporte, e eu queria mudar isso. Como que faz?"
-        },
-        {
-            "id": 4,
-            "nickname": "Andriano",
-            "titulo_pergunta": "Como faço pra tirar as marcações dos lugares do meu mapa",
-            "texto": "Outro dia eu tava fazendo uma rota no site e não conseguia ver as ruas no mapa porque tinha muita marcação. Eu não gosto dessas marcações, por isso eu queria tirar. Eu fui nas configurações do mapa mas eu não encontrei nada. Alguém pode me ajudar?"
-        },
-        {
-            "id": 5,
-            "nickname": "Wesley Wagner",
-            "titulo_pergunta": "Como faz pra reportar as rotas erradas?",
-            "texto": "Eu moro no interior e toda vez que eu faço um percurso, o site me indica uma rota que toda errada. Eu queria reportar essas rotas para que elas não apareçam mais. Obrigado!!!!"
+const LOGIN_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/Login/login.html";
+const PERFIL_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/perfil/perfilPrincipal.html";
+var userLogin = JSON.parse(localStorage.getItem('usuarioCorrente'));
+
+function validacaoForm() {
+    var asterisco;
+
+    $("#botao_enviar").click(function() {
+        // Verfica se o formulário está preenchido corretamente
+        if (!$('#form_fale_conosco')[0].checkValidity()) {
+            return;
         }
-    ]
+
+        document.location.reload();
+    })
+
+    //Verificar os campos do formulário das perguntas individualmente
+    const fields = document.querySelectorAll("[required]");
+
+    function validateField(field) {
+        //Lógica para verificar se existem erros
+        function verifyErrors() {
+            let foundError = false;
+
+            for (key in field.validity) {
+                if (field.validity[key] && !field.validity.valid) {
+                    foundError = key;
+                }
+            };
+            return foundError;
+        }
+
+        function setCustomMessage(message) {
+            if (message) {
+                $(field).attr('placeholder', field.placeholder + message);
+            }
+        }
+
+        return function() {
+            if (verifyErrors()) {
+                field.style.border = "1px solid red";
+
+                if (!asterisco) {
+                    setCustomMessage("*");
+                    asterisco = true;
+                }
+            } else {
+                field.style.border = "1px solid rgb(0, 201, 0)";
+                setCustomMessage();
+            }
+        }
+    }
+
+    function customValidation(event) {
+        const field = event.target;
+        const validation = validateField(field);
+        if (field.placeholder == "Primeiro nome" || field.placeholder == "Último nome" || field.placeholder == "Endereço de email" || field.placeholder == "Descreva o problema")
+            asterisco = false;
+        else asterisco = true;
+        validation();
+    }
+
+    for (field of fields) {
+        field.addEventListener("invalid", event => {
+            //Tirar o bubble
+            event.preventDefault();
+
+            customValidation(event);
+        })
+
+        field.addEventListener("blur", customValidation);
+    }
 }
 
-// Caso os dados já estejam no Local Storage, caso contrário, carrega os dados iniciais
-var db = JSON.parse(localStorage.getItem('db_quests'));
-if (!db) {
-    db = db_perguntas;
+function filtroPerguntas() {
+    const inputSearch = document.querySelector('#barra-pesquisa input');
+    const filterInput = document.querySelector("#search");
+    const filterList = document.querySelector('#historico');
+    const searchButton = document.querySelector("#searchButton");
+
+    const filterResults = (results, inputValue, returnMatchedResults) => results
+        .filter(result => {
+            const matchedResults = result.textContent.toLowerCase().includes(inputValue);
+            return returnMatchedResults ? matchedResults : !matchedResults;
+        })
+
+    const hideResults = (results, inputValue) => {
+        filterResults(results, inputValue, false)
+            .forEach(result => {
+                result.classList.remove('block');
+                result.classList.add('hidden');
+            })
+    }
+
+    const showResults = (results, inputValue) => {
+        filterResults(results, inputValue, true)
+            .forEach(result => {
+                result.classList.remove('hidden');
+                result.classList.add('block');
+            })
+    }
+
+    const cleanInput = event => {
+        inputSearch.value = "";
+    }
+
+
+    const handleInputValue = event => {
+        const inputValue = event.target.value.trim().toLowerCase();
+        const results = Array.from(filterList.children);
+
+        hideResults(results, inputValue);
+        showResults(results, inputValue);
+
+    }
+
+    filterList.addEventListener('click', event => {
+        const inputValue = event.target.textContent.toLocaleLowerCase();
+
+        filterInput.value = event.target.textContent;
+    })
+
+    inputSearch.addEventListener('input', handleInputValue);
+
+    cleanButton.addEventListener('click', cleanInput);
+}
+const btnMobile = document.getElementById('btn-mobile');
+
+function toggleMenu() {
+    const nav = document.getElementById("nav");
+
+    nav.classList.toggle('active');
 }
 
-function insertPergunta(pergunta) {
-    let novoId
+function salvaResults(result) {
+    localStorage.setItem('results', JSON.stringify(result));
+    console.log(result)
+}
 
-    if (!db.data.length) {
-        novoId = 1;
+function init() {
+    //Calcula o ano
+    document.querySelector('#ano').innerHTML = new Date().getFullYear();
+
+    const filterSearch = document.querySelector('#historico');
+    const inputSearch = document.querySelector('#search');
+
+    function resolveAfterXs(x) {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve(x);
+            }, 100);
+        });
+    }
+
+    const hideResults = async event => {
+        await resolveAfterXs(1);
+        const results = Array.from(filterSearch.children).forEach(result => {
+            result.classList.remove('block');
+            result.classList.add('hidden');
+        });
+    }
+
+    const showResults = event => {
+        const results = Array.from(filterSearch.children).forEach(result => {
+            result.classList.remove('hidden');
+            result.classList.add('block');
+        });
+    }
+
+    inputSearch.addEventListener('click', showResults);
+    inputSearch.addEventListener('blur', hideResults);
+    inputSearch.onblur = function() { salvaResults(inputSearch.value); }
+
+
+    localStorage.setItem('link', JSON.stringify(""));
+
+    const login = document.querySelector('#loginProfile');
+    // Se o usuário não estiver logado, no menu aparecerá a palavra "Entrar"
+    if (userLogin != undefined) {
+        login.innerHTML = userLogin.nome;
+        login.setAttribute('href', PERFIL_URL);
     } else {
-        novoId = db.data[db.data.length - 1].id + 1;
+        login.innerHTML = 'Entrar';
+        login.setAttribute('href', LOGIN_URL);
     }
 
-    let novaPergunta = {
-        "id": novoId,
-        "nickname": pergunta.nickname,
-        "titulo_pergunta": pergunta.titulo_pergunta,
-        "texto": pergunta.texto
-    }
-
-    // Insere o novo objeto no array
-    db.data.push(novaPergunta);
-
-    // Atualiza os dados no Local Storage
-    localStorage.setItem('db_quests', JSON.stringify(db));
-}
-
-
-function updatePergunta(id, pergunta) {
-    // Localiza o indice do objeto a ser alterado no array a partir do seu ID
-    let index = db.data.map(obj => obj.id).indexOf(id);
-
-    // Altera os dados do objeto no array
-    db.data[index].nickname = pergunta.nickname,
-        db.data[index].titulo_pergunta = pergunta.titulo_pergunta,
-        db.data[index].texto = pergunta.texto;
-
-    // Atualiza os dados no Local Storage
-    localStorage.setItem('db_quests', JSON.stringify(db));
-}
-
-
-function deletePergunta(id) {
-    // Filtra o array removendo o elemento com o id passado
-    db.data = db.data.filter(function(element) { return element.id != id });
-
-    // Atualiza os dados no Local Storage
-    localStorage.setItem('db_quests', JSON.stringify(db));
+    login.addEventListener('click', function() {
+        localStorage.setItem('link', JSON.stringify("https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/suporte/perguntas/perguntas.html"));
+    })
 }
