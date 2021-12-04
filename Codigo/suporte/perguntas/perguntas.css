@@ -51,7 +51,9 @@ div.modal-header {
 #inputTitulo,
 #inputTituloModal,
 #inputProblema,
-#inputProblemaModal {
+#inputProblemaModal,
+#inputRespostaModal,
+#inputRespostaEditModal {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     border: #F4F2F2;
@@ -63,6 +65,7 @@ div.modal-header {
 
 div.modal-body-config {
     width: 85%;
+    margin: 0 auto;
 }
 
 form .form-control:focus,
@@ -79,6 +82,9 @@ div.modal-body {
     margin: 0px 33px 10px;
     padding: 0;
 }
+
+
+/* Desktop */
 
 @media (min-width: 601px) {
     div.modal-header h5 {
@@ -103,13 +109,20 @@ div.modal-body {
     }
     div.hudRodape {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
+        flex-direction: row;
         padding: 10px 0 20px;
         border: none;
-        margin: 15px 30px 0 auto;
+        margin: 15px 0;
+    }
+    div.hudRodape button {
+        width: 100px;
     }
 }
+
+
+/* Mobile */
 
 @media (max-width:600px) {
     div.modal-header h5 {
@@ -130,19 +143,25 @@ div.modal-body {
     }
     div.hudRodape {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
+        flex-direction: row;
         padding: 10px 0 20px;
         border: none;
-        flex: 1;
-        margin-right: 33px;
+        margin: 15px 0;
+    }
+    div.hudRodape button {
+        width: 100px;
     }
 }
 
 #botao-editar,
 #apagar-pergunta,
 #postar,
-#confirmar-alteracao {
+#confirmar-alteracao,
+#responder,
+#btnApagarResposta,
+#btnConfirmarEdicaoResposta {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
@@ -158,18 +177,20 @@ div.modal-body {
 #postar:hover,
 #botao-editar:hover,
 #apagar-pergunta:hover,
-#confirmar-alteracao:hover {
+#confirmar-alteracao:hover,
+#responder:hover,
+#btnApagarResposta:hover,
+#btnConfirmarEdicaoRespost:hover {
     background-color: #1b718b;
 }
 
 #postar:focus,
 #botao-editar:focus,
 #apagar-pergunta:focus,
-#confirmar-alteracao:focus {
-    box-shadow: none;
-}
-
-#postar:focus #botao-editar:focus #apagar-pergunta:focus #confirmar-alteracao:focus {
+#confirmar-alteracao:focus,
+#responder:focus,
+#btnApagarResposta:focus,
+#btnConfirmarEdicaoResposta:focus {
     box-shadow: none;
 }
 
@@ -400,6 +421,8 @@ div.suport {
     border-radius: 50px;
     background-color: #F4F2F2;
     margin: 30px auto 0;
+    display: flex;
+    align-items: center;
 }
 
 #barra-pesquisa input,
@@ -448,19 +471,17 @@ input::-webkit-calendar-picker-indicator {
 @media (max-width:899px) {
     div.suport {
         background-color: #0A0A0A;
-    }
-    .background-globe {
-        height: 280px;
+        padding: 60px 0;
+        margin: 0;
         background-image: url(img/Globo-defocado.png);
         background-repeat: no-repeat;
         background-position-x: calc(100vw - 250px);
         background-position-y: center;
         background-size: 400px;
-        padding: 0 !important;
     }
     #titulo {
         width: 70%;
-        margin: 85px auto 0;
+        margin: 35px auto 0;
         text-align: center;
         color: white;
         letter-spacing: 10px;
@@ -484,6 +505,11 @@ input::-webkit-calendar-picker-indicator {
         width: 70%;
         border-radius: 50px;
         background-color: #F4F2F2;
+        display: flex;
+        align-items: center;
+    }
+    #searchButton {
+        margin: 0 !important;
     }
     #barra-pesquisa input,
     #barra-pesquisa button {
@@ -637,6 +663,7 @@ div.conteudo {
         justify-content: space-between;
         align-items: center;
         padding: 0;
+        margin-bottom: 20px;
     }
     .titulo_botao>h3 {
         margin: 0;
@@ -676,16 +703,38 @@ div.conteudo {
     #inputId {
         display: none;
     }
-    .tituloPergunta {
-        margin-top: 25px;
+    .tituloData {
         font-family: 'Montserrat', sans-serif;
+    }
+    .tituloPergunta {
         font-size: 17px;
-        font-weight: bold;
+        font-weight: 600;
+        margin: 0;
+    }
+    .hudBtns {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .hudBtns button {
+        margin-left: 0 !important;
     }
 }
 
-button.hidden {
-    display: none;
+.tituloData {
+    display: flex;
+    align-items: center;
+    margin: 25px 0 7px;
+}
+
+span.data {
+    font-size: 13px;
+    margin-left: 15px;
+    font-style: italic;
+}
+
+h4.nomeUser {
+    margin: 0;
 }
 
 
@@ -716,6 +765,7 @@ button.hidden {
         justify-content: space-between;
         align-items: center;
         padding: 0;
+        margin-bottom: 20px;
     }
     .titulo_botao>h3 {
         margin: 0;
@@ -768,12 +818,37 @@ button.hidden {
     #inputId {
         display: none;
     }
-    .tituloPergunta {
-        margin-top: 25px;
+    .tituloData {
         font-family: 'Montserrat', sans-serif;
-        font-size: 17px;
-        font-weight: bold;
     }
+    .tituloPergunta {
+        font-size: 17px;
+        font-weight: 600;
+        margin: 0;
+    }
+    .hudBtns {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+    }
+    .hudBtns button {
+        margin-left: 20px !important;
+    }
+}
+
+#adicionar_mais.hidden {
+    display: none;
+}
+
+#btn-voltar {
+    background-color: #154F61;
+    margin: 0;
+    padding: 5px 10px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: white;
+    border-radius: 50px;
 }
 
 
@@ -804,6 +879,7 @@ button.hidden {
         justify-content: space-between;
         align-items: center;
         padding: 0;
+        margin-bottom: 20px;
     }
     .titulo_botao>h3 {
         margin: 0;
@@ -812,7 +888,9 @@ button.hidden {
         font-size: 25px;
         color: #1a1919;
     }
-    .botaoAdd {
+    #adicionar_mais {
+        position: absolute;
+        right: 20%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -825,6 +903,7 @@ button.hidden {
         border-radius: 50px;
         width: 30px;
         height: 30px;
+        transition: width .3s;
     }
     .trasicao {
         transition: width .3s;
@@ -844,16 +923,16 @@ button.hidden {
         }
     }
     #mais {
-        width: 13px;
-        height: 13px;
-        margin: 0 8.5px 0 auto;
+        position: absolute;
+        right: 9.5px;
+        font-size: 13px;
         transition: all .4s;
     }
-    .trasicao:hover {
+    #adicionar_mais:hover {
         width: 185px;
         background-color: #1b718b;
     }
-    .trasicao:hover::before {
+    #adicionar_mais:hover::before {
         animation: fadeIn 0.3s linear .03s;
         animation-fill-mode: forwards;
         margin: 0 0 0 17px;
@@ -861,10 +940,11 @@ button.hidden {
         font-family: 'Montserrat', sans-serif;
         font-size: 13px;
     }
-    .trasicao:hover #mais {
-        margin: 0 8.5px 0 auto;
-        float: right;
+    #adicionar_mais:hover #mais {
         transform: rotateZ(-180deg);
+    }
+    #adicionar_mais.hidden {
+        display: none;
     }
     div.bloco_perguntas,
     div.area_perguntas {
@@ -883,12 +963,70 @@ button.hidden {
     #inputId {
         display: none;
     }
-    .tituloPergunta {
-        margin-top: 25px;
+    .tituloData {
         font-family: 'Montserrat', sans-serif;
-        font-size: 17px;
-        font-weight: bold;
     }
+    .tituloPergunta {
+        font-size: 17px;
+        font-weight: 600;
+        margin: 0;
+    }
+    .hudBtns {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+    }
+    .hudBtns button {
+        margin-left: 20px !important;
+    }
+}
+
+#reponder-pergunta {
+    background-color: #154F61;
+    margin: 0;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: white;
+    border-radius: 50px;
+    width: 100px;
+    padding: 5px 10px !important;
+}
+
+.respostas {
+    margin-top: 50px;
+}
+
+.respContent {
+    padding: 0;
+    margin-top: 30px;
+}
+
+.respContent li {
+    list-style: none;
+    font-family: 'Montserrat', sans-serif;
+    margin: 30px 0 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .3);
+}
+
+.respContent li:hover {
+    cursor: pointer;
+}
+
+.nomeUser {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.contentResp {
+    margin-bottom: 5px;
+}
+
+.mnsgemRepos {
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    text-align: center;
 }
 
 
@@ -911,15 +1049,24 @@ button.hidden {
     }
     .copyright {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
         padding: 0 5%;
         font-family: 'Montserrat', sans-serif;
+        margin-bottom: 30px;
     }
-    .copyright-texto h5 {
-        width: 60%;
+    .copyright-texto p {
         text-align: center;
         font-size: 13px;
+    }
+    div.logo-redes {
+        display: none !important;
+    }
+    #linha-footer {
+        display: none;
+    }
+    .pais {
+        display: none !important;
     }
 }
 
@@ -938,7 +1085,7 @@ footer {
 
 .final-footer {
     width: 80%;
-    margin: 35px auto 0;
+    margin: 10px auto 0;
 }
 
 div.logo-redes {
@@ -1004,7 +1151,7 @@ div.logo-redes {
 
 .copyright {
     display: flex;
-    height: 25px;
+    justify-content: space-between;
     width: 100%;
     margin-top: 5px;
     padding: 0;
@@ -1017,7 +1164,7 @@ div.logo-redes {
     align-items: center;
 }
 
-.copyright-texto h5 {
+.copyright-texto p {
     font-size: 13px;
 }
 

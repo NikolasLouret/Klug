@@ -4,7 +4,7 @@ function mostraPergunta(id, classNome) {
 
     const btnMostraTudo = document.createElement('button');
     btnMostraTudo.id = 'btn-voltar';
-    btnMostraTudo.innerText = 'voltar';
+    btnMostraTudo.innerHTML = `<i class="fas fa-arrow-left"></i>`;
 
     const titulo_botao = document.querySelector('.titulo_botao');
     titulo_botao.appendChild(btnMostraTudo);
@@ -21,11 +21,14 @@ function mostraPergunta(id, classNome) {
 
         if ((discus[i] == id) && (i == substring)) {
             $("#conteudo_discussao").append(`<div class="perguntaLinha-${i}" id="${info.id}">
-                                                            <h5 id="show-tituloPergunta">${info.titulo_pergunta}</h5>           
-                                                            <p id="show-p1-pergunta">${info.nickname}</p>
-                                                            <p id="show-p2-pergunta">${info.texto}</p>
-                                                            <div class="hudBtns"></div> 
-                                                </div>`);
+                                                <div class="tituloData">
+                                                    <h5 class="tituloPergunta">${info.titulo_pergunta}</h5>
+                                                    <span class="data">${info.date}</span>
+                                                </div>         
+                                                <p id="show-p1-pergunta">${info.nickname}</p>
+                                                <p id="show-p2-pergunta">${info.texto}</p>
+                                                <div class="hudBtns"></div> 
+                                            </div>`);
             btnParaLogado(id);
         }
     }
@@ -55,20 +58,41 @@ function mostraPergunta(id, classNome) {
         const perguntas = document.querySelector('div.perguntas');
         perguntas.appendChild(areaResps);
 
+
+
         // Lista todas as respostas da respectiva pergunta
         for (var i = 0; i < resps.length; i++) {
             let info = db.data[substring].question;
+            let respId = db.data[substring].resp;
 
-            if (userLogin.id == id)
-                $(".respContent").append(`<li class="resposta-${i}" id="${info.id}" data-bs-dismiss="modal" data-bs-target="#modalEditarResposta" data-bs-toggle="modal">
-                                                <h4 class="nomeUser">${userLogin.nome}</h4>
+            console.log()
+
+            if (userLogin != undefined) {
+                if (userLogin.id == respId[i].respId) {
+                    $(".respContent").append(`<li class="resposta-${i}" id="${respId[i].respId}" data-bs-dismiss="modal" data-bs-target="#modalEditarResposta" data-bs-toggle="modal">
+                                                <div class="tituloData">
+                                                    <h4 class="nomeUser">${userLogin.nome}</h4>
+                                                    <span class="data">${respId[i].date}</span>
+                                                </div>
                                                 <p class="contentResp">${resps[i].content}</p>
                                             </li>`);
-            else
-                $(".respContent").append(`<li class="resposta-${i}" id="${info.id}">
-                                                <h4 class="nomeUser">${resps[i].name}</h4>
+                } else
+                    $(".respContent").append(`<li class="resposta-${i}" id="${info.id}">
+                                                <div class="tituloData">
+                                                    <h4 class="nomeUser">${resps[i].name}</h4>
+                                                    <span class="data">${respId[i].date}</span>
+                                                </div> 
                                                 <p class="contentResp">${resps[i].content}</p>
                                         </li>`);
+            } else {
+                $(".respContent").append(`<li class="resposta-${i}" id="${info.id}">
+                                                <div class="tituloData">
+                                                    <h4 class="nomeUser">${resps[i].name}</h4>
+                                                    <span class="data">${respId[i].date}</span>
+                                                </div> 
+                                                <p class="contentResp">${resps[i].content}</p>
+                                        </li>`);
+            }
         }
     }
 
@@ -77,6 +101,7 @@ function mostraPergunta(id, classNome) {
 
     const responder = document.querySelector('#responder');
     responder.onclick = () => {
+        console.log("Clicado")
         addResposta(substring);
     }
 
@@ -112,11 +137,14 @@ function mostraTudo() {
         let discus = data.question;
 
         $("#conteudo_discussao").append(`<li display="block" class="perguntaLinha-${i}" id="${discus.id}">
-                                                        <h5 class="tituloPergunta">${discus.titulo_pergunta}</h5>           
-                                                        <p class="p1-pergunta">${discus.nickname}</p>
-                                                        <p class="p2-pergunta">${discus.texto}</p>
-                                                        <hr>
-                                                    </li>`);
+                                            <div class="tituloData">
+                                                <h5 class="tituloPergunta">${discus.titulo_pergunta}</h5>
+                                                <span class="data">${discus.date}</span>
+                                            </div>        
+                                            <p class="p1-pergunta">${discus.nickname}</p>
+                                            <p class="p2-pergunta">${discus.texto}</p>
+                                            <hr>
+                                        </li>`);
         $("#historico").append(`<option id="historicoPesquisa">${discus.titulo_pergunta}</option>`);
     }
 
@@ -135,10 +163,11 @@ function mostraTudo() {
 function btnParaLogado(id) {
     if (userLogin != undefined) {
         if (userLogin.id == id) {
-            $(".hudBtns").append(`<button onclick="editarModal()" type="submit" id="botao-editar" class="btn btn-default" data-bs-target="#modalEditar" data-bs-toggle="modal">Editar</button>
-                                    <button onclick="apagarPergunta()" type="submit" id="apagar-pergunta" class="btn btn-default">Apagar</button>
-                                    <button id="reponder-pergunta" class="btn btn-default" data-bs-dismiss="modal" data-bs-target="#modalResponder" data-bs-toggle="modal">Responder</button>`);
+            $(".hudBtns").append(`<button onclick="editarModal()" type="submit" id="botao-editar" class="" data-bs-target="#modalEditar" data-bs-toggle="modal">Editar</button>
+                                    <button onclick="apagarPergunta()" type="submit" id="apagar-pergunta" class="">Apagar</button>
+                                    <button id="reponder-pergunta" class="" data-bs-dismiss="modal" data-bs-target="#modalResponder" data-bs-toggle="modal">Responder</button>`);
         } else
-            $(".hudBtns").append(`<button id="reponder-pergunta" class="btn btn-default" data-bs-dismiss="modal" data-bs-target="#modalResponder" data-bs-toggle="modal">Responder</button>`);
-    }
+            $(".hudBtns").append(`<button id="reponder-pergunta" class="" data-bs-dismiss="modal" data-bs-target="#modalResponder" data-bs-toggle="modal">Responder</button>`);
+    } else
+        $(".hudBtns").append(`<button id="reponder-pergunta" class="" data-bs-dismiss="modal" data-bs-target="#modalResponder" data-bs-toggle="modal">Responder</button>`);
 }

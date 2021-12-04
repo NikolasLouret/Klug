@@ -1,6 +1,7 @@
 const LOGIN_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/Login/login.html";
 const PERFIL_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/perfil/perfilPrincipal.html";
 var userLogin = JSON.parse(localStorage.getItem('usuarioCorrente'));
+var resultadoPesquisa = JSON.parse(localStorage.getItem('results'));
 
 function validacaoForm() {
     var asterisco;
@@ -64,6 +65,11 @@ function validacaoForm() {
 }
 
 function start() {
+    if (resultadoPesquisa != '') {
+        $('#search').val(resultadoPesquisa)
+        filtroPerguntas()
+    }
+
     localStorage.setItem('link', JSON.stringify(""));
 
     const login = document.querySelector('#loginProfile');
@@ -92,7 +98,6 @@ function addPergunta() {
         alert("Faça o login para adicionar uma pergunta");
         window.location.replace(LOGIN_URL);
     } else {
-
         //Faz a verificação individual de cada campo do formulário
         validacaoForm();
 
@@ -101,12 +106,16 @@ function addPergunta() {
             return;
         }
 
+        // Data atual
+        let newDate = new Date().toLocaleDateString();
+
         // Obtem os valores dos campos do formulário
         let campoNome = $("#inputNome").val();
         let campoTitulo = $("#inputTitulo").val();
         let campoTexto = $("#inputProblema").val();
         let pergunta = {
             nickname: campoNome,
+            date: newDate,
             titulo_pergunta: campoTitulo,
             texto: campoTexto
         }
@@ -136,6 +145,9 @@ function addResposta(substring) {
             return;
         }
 
+        // Data atual
+        let newDate = new Date().toLocaleDateString();
+
         // Obtem os valores dos campos do formulário
         let respostaContent = $("#inputRespostaModal").val();
 
@@ -146,15 +158,18 @@ function addResposta(substring) {
         var id = $(lineQuestion).closest('[data-id]');
 
         // Adicionar a nova pergunta no banco de dados
-        insertResp(id.context.className, respostaContent, userLogin.id);
+        insertResp(id.context.className, respostaContent, userLogin.id, newDate);
 
         // Mostra a pergunta novamente
         const tamanhoDeLi = document.querySelectorAll('.respContent li');
 
         $(".respContent").append(`<li class="resposta-${tamanhoDeLi.length}" id="${userLogin.id}" data-bs-dismiss="modal" data-bs-target="#modalEditarResposta" data-bs-toggle="modal">
-                                                <h4 class="nomeUser">${userLogin.nome}</h4>
-                                                <p class="contentResp">${respostaContent}</p>
-                                            </li>`);
+                                    <div class="tituloData">
+                                        <h4 class="nomeUser">${userLogin.nome}</h4>
+                                        <span class="data">${newDate}</span>
+                                    </div>
+                                    <p class="contentResp">${respostaContent}</p>
+                                </li>`);
 
         // Seleciona as li's de todas as respostas
         let lineAnswer = document.querySelectorAll('.respContent li');
@@ -163,8 +178,6 @@ function addResposta(substring) {
         for (var j = 0; j < lineAnswer.length; j++) {
             lineAnswer[j].onclick = function(e) {
                 var id = $(this).closest('[data-id]');
-                console.log(lineAnswer.length)
-                console.log(id.context.className)
                 editarResp(id.context.className, substring);
             }
         }
@@ -277,11 +290,8 @@ function editarModal() {
 }
 
 function filtroPerguntas() {
-    const inputSearch = document.querySelector('#barra-pesquisa input');
-    const filterInput = document.querySelector("#search");
+    const inputSearch = document.querySelector('#search');
     const filterList = document.querySelector('#historico');
-    const cleanButton = document.querySelector("#cleanButton");
-    const searchButton = document.querySelector("#searchButton");
     const posts = document.querySelectorAll("#conteudo_discussao li");
 
     const filterResults = (results, inputValue, returnMatchedResults) => results
@@ -307,9 +317,9 @@ function filtroPerguntas() {
     }
 
     const showPostIfMatchInputValue = inputValue => post => {
-        const postTitle = post.querySelector('#tituloPergunta').textContent.toLocaleLowerCase();
-        const postBody1 = post.querySelector('#p1-pergunta').textContent.toLocaleLowerCase();
-        const postBody2 = post.querySelector('#p2-pergunta').textContent.toLocaleLowerCase();
+        const postTitle = post.querySelector('.tituloPergunta').textContent.toLocaleLowerCase();
+        const postBody1 = post.querySelector('.p1-pergunta').textContent.toLocaleLowerCase();
+        const postBody2 = post.querySelector('.p2-pergunta').textContent.toLocaleLowerCase();
         const postContainsInputValue = postTitle.includes(inputValue) ||
             postBody1.includes(inputValue) ||
             postBody2.includes(inputValue);
@@ -328,24 +338,6 @@ function filtroPerguntas() {
         posts.forEach(post => {
             post.style.display = 'block';
         });
-
-        switchSearchIcon();
-    }
-
-    function switchSearchIcon() {
-        if (inputSearch.value.length > 0) {
-            searchButton.classList.remove("block");
-            searchButton.classList.add("hidden");
-
-            cleanButton.classList.remove("hidden");
-            cleanButton.classList.add("block");
-        } else {
-            searchButton.classList.remove("hidden");
-            searchButton.classList.add("block");
-
-            cleanButton.classList.remove("block");
-            cleanButton.classList.add("hidden");
-        }
     }
 
     const handleInputValue = event => {
@@ -357,8 +349,6 @@ function filtroPerguntas() {
 
         hideResults(results, inputValue);
         showResults(results, inputValue);
-
-        switchSearchIcon();
     }
 
     filterList.addEventListener('click', event => {
@@ -366,12 +356,17 @@ function filtroPerguntas() {
 
         posts.forEach(showPostIfMatchInputValue(inputValue));
 
-        filterInput.value = event.target.textContent;
+        inputSearch.value = event.target.textContent;
     });
 
-    inputSearch.addEventListener('input', handleInputValue);
+    if (resultadoPesquisa != '') {
+        const inputValue = inputSearch.value.trim().toLowerCase();
+        const results = Array.from(filterList.children);
+        posts.forEach(showPostIfMatchInputValue(inputValue));
+    }
 
-    inputSearch.addEventListener('blur', switchSearchIcon());
+
+    inputSearch.addEventListener('input', handleInputValue);
 
     cleanButton.addEventListener('click', cleanInput);
 }
