@@ -359,11 +359,15 @@ function filtroPerguntas() {
         inputSearch.value = event.target.textContent;
     });
 
+    // Caso haja um resultado na barra de pesquisa, o código irá filtrar automaticamente
     if (resultadoPesquisa != '') {
         const inputValue = inputSearch.value.trim().toLowerCase();
-        const results = Array.from(filterList.children);
         posts.forEach(showPostIfMatchInputValue(inputValue));
+
+        resultadoPesquisa = "";
+        localStorage.setItem('db_quests', JSON.stringify(resultadoPesquisa));
     }
+
 
 
     inputSearch.addEventListener('input', handleInputValue);
