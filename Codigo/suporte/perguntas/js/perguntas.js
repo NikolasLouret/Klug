@@ -2,8 +2,6 @@ const LOGIN_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7
 const PERFIL_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/perfil/perfilPrincipal.html";
 var userLogin = JSON.parse(localStorage.getItem('usuarioCorrente'));
 
-var idPerguntaModal;
-
 function validacaoForm() {
     var asterisco;
 
@@ -47,7 +45,7 @@ function validacaoForm() {
     function customValidation(event) {
         const field = event.target;
         const validation = validateField(field);
-        if (field.placeholder == "Nome" || field.placeholder == "Título da pergunta" || field.placeholder == "Descreva o problema")
+        if (field.placeholder == "Nome" || field.placeholder == "Título da pergunta" || field.placeholder == "Descreva o problema" || field.placeholder == "Responder")
             asterisco = false;
         else asterisco = true;
         validation();
@@ -65,11 +63,8 @@ function validacaoForm() {
     }
 }
 
-function star() {
+function start() {
     localStorage.setItem('link', JSON.stringify(""));
-
-    // Pega os dados do usuário logado
-    console.log(userLogin)
 
     const login = document.querySelector('#loginProfile');
     // Se o usuário não estiver logado, no menu aparecerá a palavra "Entrar"
@@ -85,45 +80,132 @@ function star() {
         localStorage.setItem('link', JSON.stringify("https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/suporte/perguntas/perguntas.html"));
     })
 
-    const btnAdd = document.querySelector('#adicionar_mais');
-
-    btnAdd.addEventListener('click', function() {
-        // Se não houver dados, o usuário é redirecionado para a página de login
-        if (userLogin.length == undefined) {
-            alert("Faça o login para adicionar uma pergunta");
-            //window.location.replace(LOGIN_URL);
-        }
+    const btnAddQuestion = document.querySelector('#adicionar_mais');
+    btnAddQuestion.addEventListener('click', function() {
+        $("#inputNome").val(userLogin.nome);
     })
 }
 
 function addPergunta() {
-    //Faz a verificação individual de cada campo do formulário
-    validacaoForm();
+    // Se não houver dados, o usuário é redirecionado para a página de login
+    if (!(userLogin != undefined)) {
+        alert("Faça o login para adicionar uma pergunta");
+        window.location.replace(LOGIN_URL);
+    } else {
 
-    // Verfica se o formulário está preenchido corretamente
-    if (!$('#form-perguntas')[0].checkValidity()) {
-        return;
+        //Faz a verificação individual de cada campo do formulário
+        validacaoForm();
+
+        // Verfica se o formulário está preenchido corretamente
+        if (!$('#form-perguntas')[0].checkValidity()) {
+            return;
+        }
+
+        // Obtem os valores dos campos do formulário
+        let campoNome = $("#inputNome").val();
+        let campoTitulo = $("#inputTitulo").val();
+        let campoTexto = $("#inputProblema").val();
+        let pergunta = {
+            nickname: campoNome,
+            titulo_pergunta: campoTitulo,
+            texto: campoTexto
+        }
+
+        //Adicionar a nova pergunta no banco de dados
+        insertPergunta(userLogin.id, pergunta);
+
+        //Recarregar a página
+        location.reload();
     }
-
-    // Obtem os valores dos campos do formulário
-    let campoNome = $("#inputNome").val();
-    let campoTitulo = $("#inputTitulo").val();
-    let campoTexto = $("#inputProblema").val();
-    let pergunta = {
-        nickname: campoNome,
-        titulo_pergunta: campoTitulo,
-        texto: campoTexto
-    }
-
-    //Adicionar a nova pergunta no banco de dados
-    insertPergunta(pergunta);
-
-    //Recarregar a página
-    location.reload();
 }
 
-function alterarPergunta() {
-    //Faz a verificação individual de cada campo do formulário
+function addResposta(substring) {
+    if (!(userLogin != undefined)) {
+        alert("Faça o login para adicionar uma pergunta");
+        window.location.replace(LOGIN_URL);
+    } else {
+        const mnsgemRepos = document.querySelector('.mnsgemRepos');
+        if (mnsgemRepos)
+            mnsgemRepos.remove();
+
+        //Faz a verificação individual de cada campo do formulário
+        validacaoForm();
+
+        // Verfica se o formulário está preenchido corretamente
+        if (!$('#form-addresposta-modal')[0].checkValidity()) {
+            return;
+        }
+
+        // Obtem os valores dos campos do formulário
+        let respostaContent = $("#inputRespostaModal").val();
+
+        $("#inputRespostaModal").val("");
+
+        const lineQuestion = document.querySelector('#conteudo_discussao div');
+
+        var id = $(lineQuestion).closest('[data-id]');
+
+        // Adicionar a nova pergunta no banco de dados
+        insertResp(id.context.className, respostaContent, userLogin.id);
+
+        // Mostra a pergunta novamente
+        const tamanhoDeLi = document.querySelectorAll('.respContent li');
+
+        $(".respContent").append(`<li class="resposta-${tamanhoDeLi.length}" id="${userLogin.id}" data-bs-dismiss="modal" data-bs-target="#modalEditarResposta" data-bs-toggle="modal">
+                                                <h4 class="nomeUser">${userLogin.nome}</h4>
+                                                <p class="contentResp">${respostaContent}</p>
+                                            </li>`);
+
+        // Seleciona as li's de todas as respostas
+        let lineAnswer = document.querySelectorAll('.respContent li');
+
+        // Identifica o id e a classe da pergunta clicada
+        for (var j = 0; j < lineAnswer.length; j++) {
+            lineAnswer[j].onclick = function(e) {
+                var id = $(this).closest('[data-id]');
+                console.log(lineAnswer.length)
+                console.log(id.context.className)
+                editarResp(id.context.className, substring);
+            }
+        }
+    }
+}
+
+function editarResp(classNome, respId) {
+    // Adicionar o texto da resposta no input
+    $("#inputRespostaEditModal").val($(`.${classNome} .contentResp`).text());
+
+    // Identificar o id da resposta assim q o botão confirmar for pressionado
+    const btnConfirmarEdicaoResposta = document.querySelector('#btnConfirmarEdicaoResposta');
+
+    // Evento click do botão e chamada de função
+    btnConfirmarEdicaoResposta.onclick = function() {
+        // Faz a verificação individual de cada campo do formulário
+        validacaoForm();
+
+        // Verfica se o formulário está preenchido corretamente
+        if (!$('#form-RespostaEdit-modal')[0].checkValidity()) {
+            return;
+        }
+
+        // Captura do texto da nova resposta
+        const novaResp = $("#inputRespostaEditModal").val();
+        updateResposta(classNome, novaResp, respId);
+
+        // Atualiza o conteúdo da resposta
+        document.querySelector(`.${classNome} p.contentResp`).textContent = $("#inputRespostaEditModal").val();
+    }
+
+    const btnApagar = document.querySelector('#btnApagarResposta');
+
+    btnApagar.onclick = function() {
+        deleteResp(classNome, respId);
+        apagarResp(classNome)
+    }
+}
+
+function alterarPergunta(classNome) {
+    // Faz a verificação individual de cada campo do formulário
     validacaoForm();
 
     // Verfica se o formulário está preenchido corretamente
@@ -141,43 +223,57 @@ function alterarPergunta() {
         texto: campoTexto
     }
 
-    //Adicionar os novos dados no banco de dados
-    updatePergunta(parseInt(idPerguntaModal.id), pergunta);
+    const id = classNome.substring(14);
 
-    //Recarregar a página
+    // Adicionar os novos dados no banco de dados
+    updatePergunta(id, pergunta);
+
+    // Recarregar a página
     location.reload();
-}
-
-function descobrirId(idPergunta) {
-    //Descobrir qual o id da pergunta
-    idPerguntaModal = db.data.find(element => element.id == idPergunta);
 }
 
 function apagarPergunta() {
-    //Apaga os dados da pergunta no banco de dados
-    deletePergunta(parseInt(idPerguntaModal.id));
+    const lineQuestion = document.querySelector('#conteudo_discussao div');
 
-    //Recarregar a página
+    lineQuestion.onclick = function() {
+        var id = $(this).closest('[data-id]');
+        deletePergunta(id.context.className);
+    }
+
+    // Recarregar a página
     location.reload();
 }
 
-function gerarModal() {
-    $(".modal-header").html("");
-    $("#corpoModal").html("");
+function apagarResp(classNome) {
+    const lineResp = document.querySelector(`.${classNome}`);
+    lineResp.remove();
 
-    // Gera o modal com a pergunta
-    $("#tituloModal").append(`<h5 id="titulo_disc">${idPerguntaModal.titulo_pergunta}</h5>
-                                        <button id="fecharModalMostrarPergunta" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>`);
+    const lineAnswer = document.querySelectorAll('.respContent li');
 
-    $("#corpoModal").append(`<p id="p1-pergunta">${idPerguntaModal.nickname}</p>
-                                        <p id="p2-pergunta" class="p2-modal">${idPerguntaModal.texto}</p>`);
+    if (lineAnswer.length < 1) {
+        const tituloResps = document.querySelector('.respostas');
+        const mnsgResps = document.createElement('p');
+        mnsgResps.className = 'mnsgemRepos';
+        mnsgResps.innerText = 'Não há mais respostas';
+
+        tituloResps.appendChild(mnsgResps);
+
+    }
 }
 
 function editarModal() {
-    //Preenche os campos do modal para possível edição
-    $("#inputNomeModal").val($("#p1-pergunta").text());
-    $("#inputTituloModal").val($("#titulo_disc").text());
-    $("#inputProblemaModal").val($("#p2-pergunta").text());
+    // Preenche os campos do modal para possível edição
+    $("#inputNomeModal").val($("#show-p1-pergunta").text());
+    $("#inputTituloModal").val($("#show-tituloPergunta").text());
+    $("#inputProblemaModal").val($("#show-p2-pergunta").text());
+
+    const btnConfirmarEdicao = document.querySelector('#confirmar-alteracao');
+    const lineQuestion = document.querySelector('#conteudo_discussao div');
+
+    btnConfirmarEdicao.onclick = function() {
+        var id = $(lineQuestion).closest('[data-id]');
+        alterarPergunta(id.context.className);
+    }
 }
 
 function filtroPerguntas() {
@@ -291,27 +387,5 @@ $(document).ready(function() {
     //Calcula o ano
     document.querySelector('#ano').innerHTML = new Date().getFullYear();
 
-    //Limpa todas as informações do Data Base
-    $("#conteudo_discussao").html("");
-    $("#historico").html("");
-
-    // Popula a lista com os registros do banco de dados
-    for (i = 0; i < db.data.length; i++) {
-        let discus = db.data[i];
-        $("#conteudo_discussao").append(`<li display="block" class="perguntaLinha" data-bs-target="#modal-pergunta" data-bs-toggle="modal" id="${discus.id}">
-                                                    <h5 id="tituloPergunta">${discus.titulo_pergunta}</h5>           
-                                                    <p id="p1-pergunta">${discus.nickname}</p>
-                                                    <p id="p2-pergunta">${discus.texto}</p>
-                                                    <hr>
-                                                </li>`);
-        $("#historico").append(`<option id="historicoPesquisa">${discus.titulo_pergunta}</option>`);
-    }
-
-
-    // Identifica qual pergunta clickada 
-    $("#conteudo_discussao").on("click", "li", function(e) {
-        let linhaPergunta = this;
-        descobrirId(linhaPergunta.id);
-        gerarModal();
-    });
+    mostraTudo();
 })
