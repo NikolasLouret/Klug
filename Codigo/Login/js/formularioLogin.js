@@ -88,6 +88,18 @@ function processaFormLogin(event) {
     }
 }
 
+function linkBtnEntrar() {
+    const btnEntrar = document.querySelector('#btn-entrar');
+    const inputNome = document.querySelector('#username');
+    const inputSenha = document.querySelector('#password');
+
+    if (link.length != 0)
+        inputSenha.oninput = () => {
+            if (loginUser(inputNome.value, inputSenha.value))
+                btnEntrar.setAttribute('href', link);
+        }
+}
+
 function salvaLogin(event) {
     //Faz a verificação individual de cada campo do formulário
     validacaoForm();
@@ -118,3 +130,10 @@ document.getElementById('login-form1').addEventListener('submit', processaFormLo
 
 // Associar salvamento ao botao
 document.getElementById('btn_salvar').addEventListener('click', salvaLogin);
+
+function start() {
+    const btnEntrar = document.querySelector('#btn-entrar');
+
+    if (link.length == 0)
+        btnEntrar.setAttribute('href', "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/rotas/rotas.html");
+}
