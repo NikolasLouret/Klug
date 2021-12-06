@@ -128,7 +128,7 @@ function addPergunta() {
     }
 }
 
-function addResposta(substring) {
+const addResposta = (substring) => {
     if (!(userLogin != undefined)) {
         alert("Faça o login para adicionar uma pergunta");
         window.location.replace(LOGIN_URL);
@@ -142,7 +142,7 @@ function addResposta(substring) {
 
         // Verfica se o formulário está preenchido corretamente
         if (!$('#form-addresposta-modal')[0].checkValidity()) {
-            return;
+            return
         }
 
         // Data atual
@@ -155,32 +155,37 @@ function addResposta(substring) {
 
         const lineQuestion = document.querySelector('#conteudo_discussao div');
 
+        // Mostra a pergunta novamente
+        const tamanhoDeLi = document.querySelectorAll('.respContent li');
+
+        if (tamanhoDeLi.length < 0) {
+            // Criar um título para a área de perguntas
+            const tituloResps = document.createElement('h3');
+            tituloResps.innerText = 'Respostas';
+
+            // Criar lista para as respostas
+            const listResps = document.createElement('ul');
+            listResps.className = 'respContent';
+
+            // Criar um elemento que armazenará a lista de respostas
+            const areaResps = document.createElement('div');
+            areaResps.className = 'respostas';
+
+            // Afilhando o título da área de respostas e a lista dentro da div
+            areaResps.appendChild(tituloResps);
+            areaResps.appendChild(listResps);
+
+            // Colocando essa div na página
+            const perguntas = document.querySelector('div.perguntas');
+            perguntas.appendChild(areaResps);
+        }
+
         var id = $(lineQuestion).closest('[data-id]');
 
         // Adicionar a nova pergunta no banco de dados
         insertResp(id.context.className, respostaContent, userLogin.id, newDate);
 
-        // Mostra a pergunta novamente
-        const tamanhoDeLi = document.querySelectorAll('.respContent li');
-
-        $(".respContent").append(`<li class="resposta-${tamanhoDeLi.length}" id="${userLogin.id}" data-bs-dismiss="modal" data-bs-target="#modalEditarResposta" data-bs-toggle="modal">
-                                    <div class="tituloData">
-                                        <h4 class="nomeUser">${userLogin.nome}</h4>
-                                        <span class="data">${newDate}</span>
-                                    </div>
-                                    <p class="contentResp">${respostaContent}</p>
-                                </li>`);
-
-        // Seleciona as li's de todas as respostas
-        let lineAnswer = document.querySelectorAll('.respContent li');
-
-        // Identifica o id e a classe da pergunta clicada
-        for (var j = 0; j < lineAnswer.length; j++) {
-            lineAnswer[j].onclick = function(e) {
-                var id = $(this).closest('[data-id]');
-                editarResp(id.context.className, substring);
-            }
-        }
+        loadAnswers(substring);
     }
 }
 
@@ -212,8 +217,7 @@ function editarResp(classNome, respId) {
     const btnApagar = document.querySelector('#btnApagarResposta');
 
     btnApagar.onclick = function() {
-        deleteResp(classNome, respId);
-        apagarResp(classNome)
+        apagarResp(classNome, respId);
     }
 }
 
@@ -257,7 +261,8 @@ function apagarPergunta() {
     location.reload();
 }
 
-function apagarResp(classNome) {
+function apagarResp(classNome, respId) {
+    deleteResp(classNome, respId);
     const lineResp = document.querySelector(`.${classNome}`);
     lineResp.remove();
 
@@ -270,7 +275,11 @@ function apagarResp(classNome) {
         mnsgResps.innerText = 'Não há mais respostas';
 
         tituloResps.appendChild(mnsgResps);
-
+    } else {
+        // Atribuir uma nova classe para os itens da lista
+        for (var i = 0; i < lineAnswer.length; i++) {
+            lineAnswer[i].className = `resposta-${i}`;
+        }
     }
 }
 
@@ -367,8 +376,6 @@ function filtroPerguntas() {
         resultadoPesquisa = "";
         localStorage.setItem('results', JSON.stringify(resultadoPesquisa));
     }
-
-
 
     inputSearch.addEventListener('input', handleInputValue);
 
