@@ -365,7 +365,7 @@ function filtroPerguntas() {
         posts.forEach(showPostIfMatchInputValue(inputValue));
 
         resultadoPesquisa = "";
-        localStorage.setItem('db_quests', JSON.stringify(resultadoPesquisa));
+        localStorage.setItem('results', JSON.stringify(resultadoPesquisa));
     }
 
 
