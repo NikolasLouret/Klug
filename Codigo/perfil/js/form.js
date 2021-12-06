@@ -28,14 +28,14 @@ function validacaoForm() {
 
         return function() {
             if (verifyErrors()) {
-                field.style.border = "1px solid red";
+                field.style.borderBottom = "2px solid red";
 
                 if (!asterisco) {
                     setCustomMessage("*");
                     asterisco = true;
                 }
             } else {
-                field.style.border = "1px solid rgb(0, 201, 0)";
+                field.style.borderBottom = "2px solid rgb(0, 201, 0)";
                 setCustomMessage();
             }
         }
@@ -160,10 +160,6 @@ function mudarSenha() {
             inputs[i].setAttribute('disabled', 'disabled');
         }
 
-        // Muda o texto da última label
-        const lastLabel = document.querySelector('.labels-senha');
-        lastLabel.textContent = 'Mudar senha';
-
         // Reativa o último input para edição
         const lastInput = document.querySelector('#txt_senha');
         lastInput.removeAttribute('disabled', 'disabled');
@@ -181,14 +177,8 @@ function mudarSenha() {
         newInput.classList = 'form-control';
         newInput.id = 'txt_confirmar-senha';
 
-        // Adicionar nova label para o input criado
-        const newLabel = document.createElement('label');
-        newLabel.className = 'labels';
-        newLabel.textContent = 'Confirmar senha';
-
         // Adicionar os itens criados no form
         const form = document.querySelector('#form-configPerfil');
-        form.appendChild(newLabel);
         form.appendChild(newInput);
 
         // Mudança do btn change-password para confirmar a mudança
