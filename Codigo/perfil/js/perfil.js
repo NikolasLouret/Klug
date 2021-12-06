@@ -30,15 +30,17 @@ function perfil(data) {
                             </div>
                         </div>`);
 
-    const location = document.querySelector('#location')
+    const location = document.querySelector('#location');
 
+    // Verifica a existência do endereço do usuário. Se não existir, essa informação não aparece no perfil do usuário
     if ((data.address == undefined) || (data.address == ''))
         location.classList.add('hidden');
     else if (location.classList.contains('hidden'))
-        location.classList.remove('hidden')
+        location.classList.remove('hidden');
 }
 
 function exibePerfil(user) {
+    // Armazena os valores do user em variáveis
     let nome = `${user.nome}`;
     let sobrenome = `${user.sobrenome}`;
     let email = `${user.email}`;
@@ -47,6 +49,9 @@ function exibePerfil(user) {
     // Substitui as linhas do corpo dos inputs
     $('#txt_nome').val(nome);
     $('#txt_sobrenome').val(sobrenome);
-    $('#txt_address').val(address);
     $('#txt_email').val(email);
+
+    // Verifica se o atributo tem alguma informação. Caso contrário, no input para o enderço não é preenchido
+    if ((address != undefined) || (address != null) || (address != ''))
+        $('#txt_address').val(address);
 }
