@@ -111,6 +111,8 @@ function salvaPerfil(event) {
     // Adiciona o usuário no banco de dados, caso a senha tenha sido digitada corretamente
     if (senha == usuario.senha)
         updateUser(userInfos);
+    else
+        alert("Senha incorreta");
 }
 
 function confirmarMudancaSenha(event) {
@@ -143,15 +145,33 @@ function confirmarMudancaSenha(event) {
     // Compara os valores digitados para ver se são iguais
     if (novaSenha == confirmarNovaSenha)
         updateSenha(userInfos);
+    else
+        alert("Senha incorreta");
 }
 
 function mudarSenha() {
     const input = document.querySelector('#txt_confirmar-senha');
 
     if (!input) {
+        // Desabilita todos os outros inputs
+        const inputs = document.querySelectorAll('.form-control');
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].removeAttribute('required', 'required');
+            inputs[i].setAttribute('disabled', 'disabled');
+        }
+
         // Muda o texto da última label
         const lastLabel = document.querySelector('.labels-senha');
         lastLabel.textContent = 'Mudar senha';
+
+        // Reativa o último input para edição
+        const lastInput = document.querySelector('#txt_senha');
+        lastInput.removeAttribute('disabled', 'disabled');
+        lastInput.setAttribute('required', 'required');
+
+        // Esconde o btn 'Salvar Alterações'
+        const btnSalvar = document.querySelector('#profile-button');
+        btnSalvar.classList = 'hidden';
 
         // Adicionar novo input e seus atributos
         const newInput = document.createElement('input');
