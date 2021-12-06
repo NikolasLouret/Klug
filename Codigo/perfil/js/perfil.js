@@ -4,6 +4,8 @@ var user = JSON.parse(localStorage.getItem('usuarioCorrente'));
 window.addEventListener('load', function() {
     perfil(user);
     exibePerfil(user);
+
+    document.querySelector('#tiuloAba').innerText = `Perfil - ${user.nome} ${user.sobrenome}`;
 });
 
 
