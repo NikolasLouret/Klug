@@ -155,31 +155,6 @@ const addResposta = (substring) => {
 
         const lineQuestion = document.querySelector('#conteudo_discussao div');
 
-        // Mostra a pergunta novamente
-        const tamanhoDeLi = document.querySelectorAll('.respContent li');
-
-        if (tamanhoDeLi.length < 0) {
-            // Criar um título para a área de perguntas
-            const tituloResps = document.createElement('h3');
-            tituloResps.innerText = 'Respostas';
-
-            // Criar lista para as respostas
-            const listResps = document.createElement('ul');
-            listResps.className = 'respContent';
-
-            // Criar um elemento que armazenará a lista de respostas
-            const areaResps = document.createElement('div');
-            areaResps.className = 'respostas';
-
-            // Afilhando o título da área de respostas e a lista dentro da div
-            areaResps.appendChild(tituloResps);
-            areaResps.appendChild(listResps);
-
-            // Colocando essa div na página
-            const perguntas = document.querySelector('div.perguntas');
-            perguntas.appendChild(areaResps);
-        }
-
         var id = $(lineQuestion).closest('[data-id]');
 
         // Adicionar a nova pergunta no banco de dados

@@ -1,3 +1,5 @@
+var init = true;
+
 function mostraPergunta(id, classNome) {
     const btnAddMais = document.querySelector('#adicionar_mais');
     btnAddMais.classList.add('hidden');
@@ -41,17 +43,22 @@ function mostraPergunta(id, classNome) {
     const listResps = document.createElement('ul');
     listResps.className = 'respContent';
 
-    // Criar um elemento que armazenará a lista de respostas
-    const areaResps = document.createElement('div');
-    areaResps.className = 'respostas';
+    if (init) {
+        // Criar um elemento que armazenará a lista de respostas
+        const areaResps = document.createElement('div');
+        areaResps.className = 'respostas';
+
+        // Colocando essa div na página
+        const perguntas = document.querySelector('div.perguntas');
+        perguntas.appendChild(areaResps);
+        init = false;
+    }
+
+    const areaResps = document.querySelector('.respostas');
 
     // Afilhando o título da área de respostas e a lista dentro da div
     areaResps.appendChild(tituloResps);
     areaResps.appendChild(listResps);
-
-    // Colocando essa div na página
-    const perguntas = document.querySelector('div.perguntas');
-    perguntas.appendChild(areaResps);
 
     loadAnswers(substring);
 
@@ -62,11 +69,11 @@ function loadAnswers(substring) {
     // Armazena todas as perguntas da respectiva pergunta em uma variável
     const resps = db.data[substring].resp;
 
-    if (resps.length < 1) {
+    if (resps.length == 0) {
         const tituloResps = document.querySelector('.respostas');
         const mnsgResps = document.createElement('p');
         mnsgResps.className = 'mnsgemRepos';
-        mnsgResps.innerText = 'Não há mais respostas';
+        mnsgResps.innerText = 'Não há respostas';
 
         tituloResps.appendChild(mnsgResps);
     }
@@ -88,7 +95,7 @@ function loadAnswers(substring) {
                                             </div>
                                             <p class="contentResp">${resps[i].content}</p>
                                         </li>`);
-            } else
+            } else {
                 $(".respContent").append(`<li class="resposta-${i}" id="${info.id}">
                                             <div class="tituloData">
                                                 <h4 class="nomeUser">${resps[i].name}</h4>
@@ -96,6 +103,7 @@ function loadAnswers(substring) {
                                             </div> 
                                             <p class="contentResp">${resps[i].content}</p>
                                     </li>`);
+            }
         } else {
             $(".respContent").append(`<li class="resposta-${i}" id="${info.id}">
                                             <div class="tituloData">
@@ -132,7 +140,7 @@ function mostraTudo() {
     // Apaga o botão de voltar para as perguntas
     const btnMostraTudo = document.querySelector('#btn-voltar');
     if (btnMostraTudo != null)
-        btnMostraTudo.parentNode.removeChild(btnMostraTudo);
+        btnMostraTudo.remove();
 
     //Limpa todas as informações do Data Base
     $("#conteudo_discussao").html("");
