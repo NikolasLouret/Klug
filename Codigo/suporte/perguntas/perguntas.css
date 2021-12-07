@@ -1087,8 +1087,12 @@ div.logo-redes {
         color: rgb(0, 163, 0);
     }
     .data {
-        margin: 10px 0 0 !important;
+        margin-left: 10px !important;
         color: red;
+    }
+    /* Rodapé */
+    .principais-topicos {
+        padding: 20px 10% !important;
     }
 }
 
