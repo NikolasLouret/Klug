@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Site Pessoal">
     <link rel="icon" href="./svg/icon.svg">
-    <title>Perfil do usuário</title>
+    <title id="tiuloAba"></title>
 
     <!-- Aquivo CSS -->
     <link rel="stylesheet" href="style.css">
@@ -35,35 +35,36 @@
 
     <main class="main">
         <!-- Perfil -->
-        <div class="infosPerfil">
+        <div class="profile">
             <div class="perfil" id="perfil"></div>
 
             <!-- Btn editar perfil -->
             <div class="btn-config">
-                <button id="btnLogout" onclick="logoutUser()">Logout</button>
+                <button type="button" id="btnLogout" onclick="logoutUser()">Logout</button>
             </div>
         </div>
 
         <!-- Editar configs -->
         <div class="editPerfil">
             <form id="form-configPerfil">
-                <label class="labels">Nome</label>
+                <span class="label"></span>
                 <input type="text" class="form-control" placeholder="Primeiro nome" id="txt_nome" required>
 
-                <label class="labels">Sobrenome</label>
+                <span class="label"></span>
                 <input type="text" class="form-control" placeholder="Segundo nome" id="txt_sobrenome">
 
-                <label class="labels">Endereco</label>
+                <span class="label"></span>
                 <input type="text" class="form-control" placeholder="Endereço" id="txt_address">
 
-                <label class="labels">Email</label>
+                <span class="label"></span>
                 <input type="email" class="form-control" placeholder="Adicionar email" id="txt_email" required>
 
-                <label class="labels">Senha</label>
-                <input type="password" class="form-control" placeholder="Alterar senha" id="txt_senha" required>
+                <span class="label"></span>
+                <input type="password" class="form-control" placeholder="Digite a senha" id="txt_senha" required>
             </form>
-            <div class="btn-saveChanges">
-                <button class="btn" id="profile-button" type="button">Salvar alterações</button>
+            <div class="hudBtns">
+                <button class="btn-saveChanges" id="profile-button" type="button">Salvar alterações</button>
+                <button class="btn-password" id="change-password" type="button">Mudar senha</button>
             </div>
         </div>
     </main>

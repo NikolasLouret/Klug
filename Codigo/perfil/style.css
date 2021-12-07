@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 * {
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -16,11 +18,16 @@ html {
     flex-direction: row;
     justify-content: center;
     width: 70%;
-    margin: 0 auto;
+    margin: 50px auto 0;
 }
 
-.infosPerfil {
-    width: 30%;
+
+/* Perfil Desktop */
+
+.profile {
+    width: 40%;
+    border-right: 1px solid rgba(0, 0, 0, .3);
+    margin-right: 30px;
 }
 
 .editPerfil {
@@ -30,8 +37,153 @@ html {
 #avatar_img {
     width: 50%;
     border-radius: 100%;
+    margin-bottom: 30px;
+}
+
+.infos {
+    margin: 10px 0 0;
+    padding: 0 0 10px;
+}
+
+.infos div {
+    margin-top: 10px;
+    font-size: 15px;
+    display: flex;
+    justify-content: initial;
+    align-items: center;
+}
+
+.infos div span {
+    display: flex;
+    justify-content: initial;
+    align-items: center;
+    width: 125px;
+}
+
+i.fas {
+    text-align: center;
+    width: 20px;
+    margin-right: 5px;
 }
 
 .hidden {
     display: none;
+}
+
+
+/* Edição de informações do Perfil */
+
+#form-configPerfil input {
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid rgba(0, 0, 0, .5);
+    height: 60px;
+    margin-top: 30px;
+}
+
+#form-configPerfil input:focus {
+    box-shadow: none;
+    border-bottom-color: #1461ff;
+}
+
+#form-configPerfil input::placeholder {
+    transition: all .2s;
+}
+
+#form-configPerfil input:focus::placeholder {
+    transform: translateY(-25px);
+    color: #1461ff;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    box-shadow: 0 0 0 30px white inset !important;
+}
+
+
+/* Botões */
+
+button[type=button] {
+    margin: 30px 20px 0 0;
+    background: #1461ff;
+    border: none;
+    border-radius: 50px;
+    padding: 7px 20px;
+    color: #fff;
+    font-weight: 500;
+    transition: all .2s;
+}
+
+button[type=button]:focus {
+    box-shadow: none;
+}
+
+button[type=button]:hover {
+    background: #fafafa;
+    color: #1461ff;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
+}
+
+@media (max-width: 1000px) {
+    .main {
+        flex-direction: column;
+        justify-content: center;
+        width: 95%;
+    }
+    .profile {
+        width: 90%;
+        border: none;
+        margin: 30px auto 0;
+    }
+    #perfil {
+        text-align: center;
+    }
+    #avatar_img {
+        margin: 0 auto 20px;
+    }
+    .infos {
+        margin-top: 30px;
+        border-bottom: 1px solid rgba(0, 0, 0, .3);
+    }
+    .infos div {
+        font-size: 13px;
+    }
+    i.fas {
+        width: 15px;
+    }
+    .infos div span {
+        width: 105px;
+    }
+    .editPerfil {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .hudBtns {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    button[type=button] {
+        margin: 30px auto 50px;
+    }
+}
+
+@media (min-width: 1001px) and (max-width: 1400px) {
+    .main {
+        width: 85%;
+    }
+    .profile {
+        width: 45%;
+    }
+    i.fas {
+        width: 15px;
+    }
+    .infos div span {
+        width: 110px;
+    }
+    .infos div {
+        font-size: 13px;
+    }
 }

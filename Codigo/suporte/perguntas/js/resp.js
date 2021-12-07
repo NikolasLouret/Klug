@@ -33,75 +33,84 @@ function mostraPergunta(id, classNome) {
         }
     }
 
+    // Criar um título para a área de perguntas
+    const tituloResps = document.createElement('h3');
+    tituloResps.innerText = 'Respostas';
+
+    // Criar lista para as respostas
+    const listResps = document.createElement('ul');
+    listResps.className = 'respContent';
+
+    // Criar um elemento que armazenará a lista de respostas
+    const areaResps = document.createElement('div');
+    areaResps.className = 'respostas';
+
+    // Afilhando o título da área de respostas e a lista dentro da div
+    areaResps.appendChild(tituloResps);
+    areaResps.appendChild(listResps);
+
+    // Colocando essa div na página
+    const perguntas = document.querySelector('div.perguntas');
+    perguntas.appendChild(areaResps);
+
+    loadAnswers(substring);
+
+    btnMostraTudo.addEventListener('click', function() { mostraTudo() });
+}
+
+function loadAnswers(substring) {
     // Armazena todas as perguntas da respectiva pergunta em uma variável
     const resps = db.data[substring].resp;
 
-    // Mostra as resposta existentes
-    if (resps.length > 0) {
-        // Criar um título para a área de perguntas
-        const tituloResps = document.createElement('h3');
-        tituloResps.innerText = 'Respostas';
+    if (resps.length < 1) {
+        const tituloResps = document.querySelector('.respostas');
+        const mnsgResps = document.createElement('p');
+        mnsgResps.className = 'mnsgemRepos';
+        mnsgResps.innerText = 'Não há mais respostas';
 
-        // Criar lista para as respostas
-        const listResps = document.createElement('ul');
-        listResps.className = 'respContent';
+        tituloResps.appendChild(mnsgResps);
+    }
 
-        // Criar um elemento que armazenará a lista de respostas
-        const areaResps = document.createElement('div');
-        areaResps.className = 'respostas';
+    // Limpar a área das respostas para que seja gerada uma nova
+    $(".respContent").html("");
 
-        // Afilhando o título da área de respostas e a lista dentro da div
-        areaResps.appendChild(tituloResps);
-        areaResps.appendChild(listResps);
+    // Lista todas as respostas da respectiva pergunta
+    for (var i = 0; i < resps.length; i++) {
+        let info = db.data[substring].question;
+        let respId = db.data[substring].resp;
 
-        // Colocando essa div na página
-        const perguntas = document.querySelector('div.perguntas');
-        perguntas.appendChild(areaResps);
-
-
-
-        // Lista todas as respostas da respectiva pergunta
-        for (var i = 0; i < resps.length; i++) {
-            let info = db.data[substring].question;
-            let respId = db.data[substring].resp;
-
-            console.log()
-
-            if (userLogin != undefined) {
-                if (userLogin.id == respId[i].respId) {
-                    $(".respContent").append(`<li class="resposta-${i}" id="${respId[i].respId}" data-bs-dismiss="modal" data-bs-target="#modalEditarResposta" data-bs-toggle="modal">
-                                                <div class="tituloData">
-                                                    <h4 class="nomeUser">${userLogin.nome}</h4>
-                                                    <span class="data">${respId[i].date}</span>
-                                                </div>
-                                                <p class="contentResp">${resps[i].content}</p>
-                                            </li>`);
-                } else
-                    $(".respContent").append(`<li class="resposta-${i}" id="${info.id}">
-                                                <div class="tituloData">
-                                                    <h4 class="nomeUser">${resps[i].name}</h4>
-                                                    <span class="data">${respId[i].date}</span>
-                                                </div> 
-                                                <p class="contentResp">${resps[i].content}</p>
+        if (userLogin != undefined) {
+            if (userLogin.id == respId[i].respId) {
+                $(".respContent").append(`<li class="resposta-${i}" id="${respId[i].respId}" data-bs-dismiss="modal" data-bs-target="#modalEditarResposta" data-bs-toggle="modal">
+                                            <div class="tituloData">
+                                                <h4 class="nomeUser">${userLogin.nome}</h4>
+                                                <span class="data">${respId[i].date}</span>
+                                            </div>
+                                            <p class="contentResp">${resps[i].content}</p>
                                         </li>`);
-            } else {
+            } else
                 $(".respContent").append(`<li class="resposta-${i}" id="${info.id}">
-                                                <div class="tituloData">
-                                                    <h4 class="nomeUser">${resps[i].name}</h4>
-                                                    <span class="data">${respId[i].date}</span>
-                                                </div> 
-                                                <p class="contentResp">${resps[i].content}</p>
-                                        </li>`);
-            }
+                                            <div class="tituloData">
+                                                <h4 class="nomeUser">${resps[i].name}</h4>
+                                                <span class="data">${respId[i].date}</span>
+                                            </div> 
+                                            <p class="contentResp">${resps[i].content}</p>
+                                    </li>`);
+        } else {
+            $(".respContent").append(`<li class="resposta-${i}" id="${info.id}">
+                                            <div class="tituloData">
+                                                <h4 class="nomeUser">${resps[i].name}</h4>
+                                                <span class="data">${respId[i].date}</span>
+                                            </div> 
+                                            <p class="contentResp">${resps[i].content}</p>
+                                    </li>`);
         }
     }
 
-    // Seleciona as li's de todas as respostas
-    let lineAnswer = document.querySelectorAll('.respContent li');
+    const lineAnswer = document.querySelectorAll('.respContent li');
 
     const responder = document.querySelector('#responder');
     responder.onclick = () => {
-        console.log("Clicado")
         addResposta(substring);
     }
 
@@ -113,7 +122,6 @@ function mostraPergunta(id, classNome) {
         }
     }
 
-    btnMostraTudo.addEventListener('click', function() { mostraTudo() });
 }
 
 function mostraTudo() {

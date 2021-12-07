@@ -1,3 +1,7 @@
+const LOGIN_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/Login/login.html";
+const PERFIL_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/perfil/perfilPrincipal.html";
+var userLogin = JSON.parse(localStorage.getItem('usuarioCorrente'));
+
 function validacaoForm() {
     var asterisco;
 
@@ -60,39 +64,45 @@ function validacaoForm() {
 }
 
 function adicionarEndereco() {
-    //Faz a verificação individual de cada campo do formulário
-    validacaoForm();
+    if ((userLogin == undefined) || (userLogin == null)) {
+        alert("Faça o login para adicionar uma pergunta");
+        window.location.replace(LOGIN_URL);
+    } else {
+        //Faz a verificação individual de cada campo do formulário
+        validacaoForm();
 
-    // // Verfica se o formulário está preenchido corretamente
-    if (!$('#form-enderecos')[0].checkValidity()) {
-        return;
+        // // Verfica se o formulário está preenchido corretamente
+        if (!$('#form-enderecos')[0].checkValidity()) {
+            return;
+        }
+
+        // Obtem os valores dos campos do formulário
+        let campoName = $("#inputName").val();
+        let campoCategory = $("#inputCategory").val();
+        let campoDescription = $("#inputDescription").val();
+        let campoPhoneFormatted = $("#inputPhone").val();
+        let campoAddress = $("#inputAddress").val();
+        let campoOpen = $("#inputOpen").val();
+        let campoClose = $("#inputClose").val();
+        let campoSite = $("#inputSite").val();
+        let infos = {
+            name: campoName,
+            category: campoCategory,
+            description: campoDescription,
+            phoneFormatted: campoPhoneFormatted,
+            address: campoAddress,
+            open: campoOpen,
+            close: campoClose,
+            site: campoSite,
+            id: userLogin.id
+        }
+
+        //Adicionar a nova pergunta no banco de dados
+        insertAddress(infos);
+
+        //Recarregar a página
+        location.reload();
     }
-
-    // Obtem os valores dos campos do formulário
-    let campoName = $("#inputName").val();
-    let campoCategory = $("#inputCategory").val();
-    let campoDescription = $("#inputDescription").val();
-    let campoPhoneFormatted = $("#inputPhone").val();
-    let campoAddress = $("#inputAddress").val();
-    let campoOpen = $("#inputOpen").val();
-    let campoClose = $("#inputClose").val();
-    let campoSite = $("#inputSite").val();
-    let infos = {
-        name: campoName,
-        category: campoCategory,
-        description: campoDescription,
-        phoneFormatted: campoPhoneFormatted,
-        address: campoAddress,
-        open: campoOpen,
-        close: campoClose,
-        site: campoSite
-    }
-
-    //Adicionar a nova pergunta no banco de dados
-    insertAddress(infos);
-
-    //Recarregar a página
-    location.reload();
 }
 
 function alterarEndereco() {

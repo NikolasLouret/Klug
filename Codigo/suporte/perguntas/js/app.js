@@ -169,7 +169,7 @@ function deleteResp(classNome, respId) {
     const id = classNome.substring(9);
 
     // Deleta todo o Array selecionado
-    const resposta = db.data[respId].resp
+    const resposta = db.data[respId].resp;
     resposta.splice(id, 1);
 
     // Atualiza os dados no Local Storage
