@@ -1,7 +1,7 @@
 // importa a chave de credencial de outro arquivo, por motivos de segurança
 import { APIKEY } from "./config.js";
 
-let strDados = localStorage.getItem("coordenadas");
+let strDados = localStorage.getItem("dados");
 let coordenadas = {};
 
 function leCoordenadas() {
@@ -15,7 +15,7 @@ function leCoordenadas() {
     coordenadas = pegaLocalizacao();
   }
 
-  salvaCoordenadas(coordenadas);
+  // salvaCoordenadas(coordenadas);
 
   console.log(coordenadas);
   
@@ -23,7 +23,7 @@ function leCoordenadas() {
 }
 
 function salvaCoordenadas(coordenadas) {
-  localStorage.setItem("coordenadas", JSON.stringify(coordenadas));
+  localStorage.setItem("dados", JSON.stringify(coordenadas));
 
   console.log(coordenadas);
 }
