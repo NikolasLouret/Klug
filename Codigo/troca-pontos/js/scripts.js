@@ -107,7 +107,7 @@ function imprimeDados() {
           '"' +
             objDados.produtosTrocas[i].titulo +
             '"' +
-            " comprado por " +
+            " trocado por " +
             objDados.produtosTrocas[i].preco +
             " pontos"
         );
