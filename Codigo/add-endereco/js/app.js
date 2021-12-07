@@ -88,9 +88,12 @@ var stores = JSON.parse(localStorage.getItem('db_address'));
 if (!stores)
     stores = db_stores;
 
+var userLogin = JSON.parse(localStorage.getItem('usuarioCorrente'));
+
 /* Assign a unique ID to each store */
 stores.features.forEach(function(store, i) {
-    store.properties.id = i;
+    if ((userLogin.id == undefined) || (userLogin.id == null) || (userLogin.id == ''))
+        store.properties.id = i;
 });
 
 map.on('load', () => {
@@ -109,13 +112,15 @@ map.on('load', () => {
 });
 
 function addMarkers() {
+    let i = 0;
     /* For each feature in the GeoJSON object above: */
     for (const marker of stores.features) {
         /* Create a div element for the marker. */
         const el = document.createElement('div');
 
         /* Assign a unique `id` to the marker. */
-        el.id = `marker-${marker.properties.id}`;
+        el.id = `marker-${i++}`;
+
 
         /* Assign the `marker` class to each marker for styling. */
         el.className = 'marker';
@@ -132,14 +137,15 @@ function addMarkers() {
             .setLngLat(marker.geometry.coordinates)
             .addTo(map);
 
-        createPopUp(marker);
+        createPopUp(marker, el.id);
 
         el.addEventListener('click', () => {
+            const id = el.id;
+
             /* Close all other popups and display popup for clicked store */
-            buildLocationInfos(marker);
+            buildLocationInfos(marker, id);
             showSidebar();
 
-            const id = el.id;
             const popUpContent = document.querySelector(`#popUp-${id.replace("marker-", "")}`);
             popUpContent.classList.add('active');
             el.classList.add('active');
@@ -147,12 +153,13 @@ function addMarkers() {
     }
 }
 
-function buildLocationInfos(marker) {
+function buildLocationInfos(marker, markerId) {
     //Limpa todo o conteúdo
     $(".menuLateral").html("");
+    const quantMark = document.querySelectorAll('.marker');
 
     /* Criação dos elementos principais */
-    $(".menuLateral").append(`<div class='sidebar' id="sidebar-${marker.properties.id}">
+    $(".menuLateral").append(`<div class='sidebar' id="sidebar-${markerId.replace("marker-", "")}">
                                 <div id='listings' class='listings'>
                                     <div id="titulo">
                                         <h2 id="estabelecimentoNome"></h2>
@@ -164,16 +171,17 @@ function buildLocationInfos(marker) {
                                     <div class="infos">
                                         <div class="dados" id="address"></div>
                                     </div>
-                                
-                                    <button id="changeInfos" data-bs-toggle="modal" data-bs-target="#editarEndereco">
-                                        <i class='bx bxs-pencil'></i> <section id="btn-editar">Editar informações</section> 
-                                    </button>
                                 </div>
-                        </div>
-                    
-                        <button id="minimizer" onclick="toggleSidebar()">
-                            <i id="btnLateral" class="fas fa-chevron-left"></i>
-                        </button>`);
+                            </div>
+                        
+                            <button id="minimizer" onclick="toggleSidebar()">
+                                <i id="btnLateral" class="fas fa-chevron-left"></i>
+                            </button>`);
+
+    if (userLogin.id == marker.properties.id)
+        $("#listings").append(`<button id="changeInfos" data-bs-toggle="modal" data-bs-target="#editarEndereco">
+                                    <i class='bx bxs-pencil'></i> <section id="btn-editar">Editar informações</section> 
+                                </button>`);
 
     /* Adicionar o nome do estabelecimento */
     //Cria os elementos da div address
@@ -250,16 +258,16 @@ function buildLocationInfos(marker) {
 
     $('#changeInfos').button().click(function() {
         //console.log("id em descobirirSidebar quando o btn editar foi clicado " + id);
-        editarEndereco(`${marker.properties.id}`);
+        editarEndereco(markerId.replace("marker-", ""));
     });
 }
 
-function createPopUp(currentFeature) {
+function createPopUp(currentFeature, id) {
     const popup = new mapboxgl.Popup({
             closeOnClick: false
         })
         .setLngLat(currentFeature.geometry.coordinates)
-        .setHTML(`<p id="popUp-${currentFeature.properties.id}">${currentFeature.properties.name}</p>`)
+        .setHTML(`<p id="popUp-${id.replace("marker-", "")}">${currentFeature.properties.name}</p>`)
         .addTo(map);
 }
 
@@ -344,7 +352,8 @@ function insertAddress(endereco) {
                 "address": endereco.address,
                 "open": endereco.open,
                 "close": endereco.close,
-                "site": endereco.site
+                "site": endereco.site,
+                "id": endereco.id
             }
         }
 
@@ -361,9 +370,8 @@ function updateAddress(id, endereco) {
     data.then(function(result) {
         // Localiza o indice do objeto a ser alterado no array a partir do seu ID
         const features = stores.features;
-        let index = features.map(obj => obj.properties.id)[id];
-        const propertiesIndex = features[index].properties;
-        const geometry = features[index].geometry;
+        const propertiesIndex = features[id].properties;
+        const geometry = features[id].geometry;
 
         //Encontra as coordenadas do enderço pesquisado
         const address = result.find(element => element.place_name = inputEnderecoEdit.val());
@@ -379,6 +387,8 @@ function updateAddress(id, endereco) {
             propertiesIndex.open = endereco.open,
             propertiesIndex.close = endereco.close,
             propertiesIndex.site = endereco.site;
+
+        console.log(propertiesIndex)
 
         // Atualiza os dados no Local Storage
         localStorage.setItem('db_address', JSON.stringify(stores));
