@@ -64,7 +64,7 @@ function validacaoForm() {
 }
 
 function adicionarEndereco() {
-    if (!(userLogin != undefined)) {
+    if ((userLogin == undefined) || (userLogin == null)) {
         alert("Faça o login para adicionar uma pergunta");
         window.location.replace(LOGIN_URL);
     } else {

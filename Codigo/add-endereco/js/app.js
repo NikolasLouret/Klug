@@ -92,7 +92,7 @@ var userLogin = JSON.parse(localStorage.getItem('usuarioCorrente'));
 
 /* Assign a unique ID to each store */
 stores.features.forEach(function(store, i) {
-    if ((userLogin.id == undefined) || (userLogin.id == null) || (userLogin.id == ''))
+    if ((userLogin == undefined) || (userLogin == null) || (userLogin == ''))
         store.properties.id = i;
 });
 
@@ -178,10 +178,13 @@ function buildLocationInfos(marker, markerId) {
                                 <i id="btnLateral" class="fas fa-chevron-left"></i>
                             </button>`);
 
-    if (userLogin.id == marker.properties.id)
-        $("#listings").append(`<button id="changeInfos" data-bs-toggle="modal" data-bs-target="#editarEndereco">
+    if ((userLogin != null)) {
+        if (userLogin.id == marker.properties.id) {
+            $("#listings").append(`<button id="changeInfos" data-bs-toggle="modal" data-bs-target="#editarEndereco">
                                     <i class='bx bxs-pencil'></i> <section id="btn-editar">Editar informações</section> 
                                 </button>`);
+        }
+    }
 
     /* Adicionar o nome do estabelecimento */
     //Cria os elementos da div address
