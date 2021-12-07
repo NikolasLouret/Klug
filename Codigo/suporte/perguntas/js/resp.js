@@ -151,7 +151,6 @@ function mostraTudo() {
                                             </div>        
                                             <p class="p1-pergunta">${discus.nickname}</p>
                                             <p class="p2-pergunta">${discus.texto}</p>
-                                            <hr>
                                         </li>`);
         $("#historico").append(`<option id="historicoPesquisa">${discus.titulo_pergunta}</option>`);
     }

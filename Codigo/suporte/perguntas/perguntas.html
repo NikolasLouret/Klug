@@ -17,6 +17,10 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/c89ded80b6.js" crossorigin="anonymous"></script>
 
+    <!-- Boxicons -->
+    <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -148,10 +152,12 @@
             <nav id="nav">
                 <button onclick="toggleMenu()" id="btn-mobile" aria-controls="menu" aria-haspopup="true" aria-label="Abrir Menu"><span id="hamburguer"></span></button>
                 <ul id="menu" role="menu">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Editar rota</a></li>
+                    <li><a href="#">Home</a>
+                        <i class="bx bxs-home"></i>
+                    </li>
+                    <li><a href="#">Editar rota</a> <i class="fas fa-map-marker-alt"></i></li>
                     <li>
-                        <a id="loginProfile" href=""></a>
+                        <a id="loginProfile" href=""> </a><i class="fas fa-user"></i>
                     </li>
                 </ul>
             </nav>
@@ -162,6 +168,7 @@
         <div class="suport">
             <div class="background-globe">
                 <h2 id="titulo">Suporte Klug</h2>
+                <div class="lineSuport"></div>
                 <div class="pesquisa">
                     <form id="barra-pesquisa" action="" method="submit">
                         <input onclick="filtroPerguntas()" type="text" class="form-control" name="search" id="search" placeholder="Pesquisar" aria-label="Search" list="historico">
@@ -175,15 +182,18 @@
 
         <div class="conteudo">
             <div class="instrucoes">
-                <h2>Perguntas da Comunidade</h2>
-                <p id="p1">Tire suas dúvidas aqui</p>
-                <p id="p2">Se você tiver alguma dúvida ainda não respondida, basta escrevê-la e publicá-la</p>
+                <div class="content_tittleRepos">
+                    <strong id="reposSubtittle">Dúvidas</strong>
+                    <h2 class="tituloRepos" title="Repositórios GitHub">Perguntas da Comunidade</h2>
+                    <p class="textTittle">Se você tiver alguma dúvida ainda não respondida, basta escrevê-la e publicá-la</p>
+                    <div class="lineRepos"></div>
+                </div>
             </div>
 
             <div class="perguntas">
                 <div class="titulo_botao">
                     <h3>Perguntas</h3>
-                    <button class="botaoAdd trasicao" id="adicionar_mais" type="button" data-bs-target="#adicioner-pergunta" data-bs-toggle="modal"><i id="mais" class="fas fa-plus"></i></button>
+                    <button class="botaoAdd trasicao" id="adicionar_mais" type="button" data-bs-target="#adicioner-pergunta" data-bs-toggle="modal">Adicionar Pergunta<i id="mais" class="fas fa-plus"></i></button>
                 </div>
 
                 <div class="area_perguntas">
@@ -193,9 +203,9 @@
         </div>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="principais-topicos">
-            <h4 class="titulo-rodape"><b>Principais tópicos de ajuda</b></h4>
+            <h4 class="titulo-rodape">Principais tópicos de ajuda</h4>
 
             <div class="editar-rotas">
                 <button id="botao-principais-topicos" class="btn btn-default" type="button" data-bs-toggle="collapse" data-bs-target="#edicao-rotas" aria-expanded="false" aria-controls="edicao-rotas">
@@ -249,7 +259,7 @@
             <div class="logo-redes">
                 <div class="logo-footer">
                     <a href="#">
-                        <img src="./svg/Logo-Klug-1-cinza.svg" id="logo-rodape" alt="Logo">
+                        <img src="./svg/Logo-Klug-1-branco.svg" id="logo-rodape" alt="Logo">
                         <i class="fas fa-chevron-right"></i>
                         <span id="indicador-pagina-rodape">Suporte</span>
                     </a>
@@ -261,8 +271,6 @@
                     <a class="instagram" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-
-            <hr id="linha-footer">
 
             <div class="copyright">
                 <div class="copyright-texto">
