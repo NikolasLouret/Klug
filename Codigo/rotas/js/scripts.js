@@ -1,25 +1,35 @@
 // importa a chave de credencial de outro arquivo, por motivos de segurança
 import { APIKEY } from "./config.js";
 
-// chama a função que pega as coordenadas do usuário
-getLocation();
+let strDados = localStorage.getItem("coordenadas");
+let coordenadas = {};
 
-// recupera as coordenadas do localSession
-let coordenadas = JSON.parse(localStorage.getItem("coordenadas"));
-// se não tem as coordenadas do usuário, coloca como sendo o marco central de BH
-if (!coordenadas) {
-  coordenadas = {
-    lat: -19.916667,
-    lng: -43.933333,
-  };
+function leCoordenadas() {
+  if (strDados) {
+    coordenadas = JSON.parse(strDados);
+  } else {
+    // coordenadas = {
+    //   lat: -19.916667,
+    //   lng: -43.933333,
+    // };
+    coordenadas = pegaLocalizacao();
+  }
+
+  salvaCoordenadas(coordenadas);
+
+  console.log(coordenadas);
+  
+  return coordenadas;
 }
 
-console.log(coordenadas);
+function salvaCoordenadas(coordenadas) {
+  localStorage.setItem("coordenadas", JSON.stringify(coordenadas));
 
-loadMap();
+  console.log(coordenadas);
+}
 
 // função que pega as coordenadas do usuário
-function getLocation() {
+function pegaLocalizacao() {
   // verifica se o navegador suporta geolocalização
   if (navigator.geolocation) {
     // caso sim, chama a função que vai guardar as coordenadas
@@ -33,17 +43,19 @@ function getLocation() {
   // função que guarda as coordenadas do usuário, recebendo a posição como parâmetro
   function myLocation(position) {
     // cria o objeto e guarda as coordenadas
-    let objetoCoordenadas = {
+    let coordenadas = {
       lat: position.coords.latitude,
       lng: position.coords.longitude,
     };
 
-    // salva tudo no localSession
-    localStorage.setItem("coordenadas", JSON.stringify(objetoCoordenadas));
+    // salva tudo no localStorage
+    salvaCoordenadas(coordenadas);
   }
 }
 
-function loadMap() {
+function carregaMapa() {
+  let coordenadas = leCoordenadas();
+
   // cria o mapa, com estilo próprio feito e com algumas configurações adicionais
   mapboxgl.accessToken = APIKEY;
   const map = new mapboxgl.Map({
@@ -93,3 +105,5 @@ function loadMap() {
     "top-left"
   );
 }
+
+window.addEventListener("load", carregaMapa);
