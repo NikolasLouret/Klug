@@ -664,7 +664,7 @@ h4.nomeUser {
 footer {
     margin-top: 50px;
     width: 100%;
-    background: #303030;
+    background: linear-gradient( -45deg, rgb(88, 195, 255) 10%, rgb(0, 77, 230) 50%, rgb(0, 59, 177) 100%);
     box-shadow: 0px -5px 10px rgba(0, 0, 0, .2);
 }
 
@@ -898,6 +898,8 @@ div.logo-redes {
         border-bottom: 1px solid rgba(255, 255, 255, .3);
     }
     #menu li a {
+        text-align: end;
+        font-size: 14px;
         color: #222;
     }
     #menu i,
