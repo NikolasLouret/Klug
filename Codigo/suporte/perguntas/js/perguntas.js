@@ -310,14 +310,6 @@ function filtroPerguntas(resultParam) {
         post.style.display = 'none';
     }
 
-    const cleanInput = event => {
-        inputSearch.value = "";
-
-        posts.forEach(post => {
-            post.style.display = 'block';
-        });
-    }
-
     const handleInputValue = event => {
         const inputValue = event.target.value.trim().toLowerCase();
         const results = Array.from(filterList.children);
@@ -344,8 +336,6 @@ function filtroPerguntas(resultParam) {
     }
 
     inputSearch.addEventListener('input', handleInputValue);
-
-    cleanButton.addEventListener('click', cleanInput);
 }
 const btnMobile = document.getElementById('btn-mobile');
 
