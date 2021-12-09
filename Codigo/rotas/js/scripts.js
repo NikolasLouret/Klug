@@ -1,13 +1,18 @@
 // importa a chave de credencial de outro arquivo, por motivos de segurança
 import { APIKEY } from "./config.js";
 
+// carrega os dados de coordenadas do localStorage
 let strDados = localStorage.getItem("dados");
+// declara a variável de coordenadas
 let coordenadas = {};
 
+// função que lê as coordenadas
 function leCoordenadas() {
+  // caso ela já estejam salvas no localStorage, coloca dentro da variável
   if (strDados) {
     coordenadas = JSON.parse(strDados);
   } else {
+    // caso não, chama a função que pega as coordenadas
     coordenadas = pegaLocalizacao();
   }
 
