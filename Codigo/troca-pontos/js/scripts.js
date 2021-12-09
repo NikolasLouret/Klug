@@ -117,9 +117,14 @@ function imprimeDados() {
 
   // pega todos os botões da página
   let botoes = document.querySelectorAll("button");
+
+  // percorre por todos os botões da página
   for (let i = 0; i < botoes.length; i++) {
+    // adiciona um Event Listener em cada um deles
     botoes[i].addEventListener("click", function () {
+      // confere se o valor do item da a troca é maior do que o saldo do usuário
       if (objDados.produtosTrocas[i].preco > objDados.usuario[0].pontos) {
+        // caso seja, exibe uma mensagem de alerta avisando o usuário
         alert(
           "Saldo insuficiente para trocar " +
             '"' +
