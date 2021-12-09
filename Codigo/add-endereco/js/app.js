@@ -445,6 +445,7 @@ function hideMenuLateral() {
     const btnAddAddress = document.querySelector("#addAddress");
     const marker = document.querySelector(".marker.active");
     const popUpContent = document.querySelector('.mapboxgl-popup-content p.active');
+    const nav = document.getElementById("nav");
 
     if (sidebar.className != 'hidden') {
         sidebar.classList.remove('block');
@@ -455,6 +456,10 @@ function hideMenuLateral() {
         btnAddAddress.classList.remove('hidden');
         btnAddAddress.classList.add('block');
     }
+
+    if (nav.className == 'active')
+        nav.classList.remove('active');
+
 
     popUpContent.classList.remove('active');
     marker.classList.remove('active');
