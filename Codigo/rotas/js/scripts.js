@@ -128,9 +128,11 @@ function recarregaPagina() {
       // recarrega a página
       window.location.reload();
     } else {
+      // caso já tenha recarregado a página, tira o item do localStorage
       localStorage.removeItem("recarrega");
     }
   }
 }
 
+// quando todos os elementos da tela carregarem, chama a função de carregaMapa
 window.addEventListener("load", carregaMapa);
