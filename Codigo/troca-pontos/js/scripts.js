@@ -148,8 +148,10 @@ function imprimeDados() {
     });
   }
 
+  // chama a função que verifica o saldo do usuário
   verificaSaldo(objDados, botoes);
 
+  // mostra os botões no console, apenas para controle
   console.log(botoes);
 }
 
