@@ -117,6 +117,7 @@ function carregaMapa() {
   );
 }
 
+// função que recarrega a página
 function recarregaPagina() {
   if (window.localStorage) {
     if (!localStorage.getItem("recarrega")) {
