@@ -196,4 +196,5 @@ function verificaSaldo(dados, botoes) {
   }
 }
 
+// quando todos os itens da tela terminas de ser carregados, chama a função imprimeDados
 window.addEventListener("load", imprimeDados);
