@@ -48,11 +48,11 @@ header.container-header nav a {
   cursor: pointer;
 }
 
-header.container-header img {
-  border-radius: 50rem;
-  width: 5rem;
-  margin: 0 1rem;
-  border: 6px solid #273c75;
+header.container-header nav a:hover {
+  background-color: rgba(255, 217, 0, 0.753);
+  color: var(--bg);
+
+  transition: all 0.3s linear;
 }
 
 header.header-pontos {
