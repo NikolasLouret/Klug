@@ -24,16 +24,31 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-header .container-header {
+header.container-header {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  justify-content: center;
+
+  background-color: var(--bg-sec);
+}
+
+header.container-header nav {
+  display: flex;
+}
+
+header.container-header nav a {
+  background-color: rgb(255 255 255 / 10%);
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: bold;
+
+  margin: 0 1rem;
   padding: 1rem;
 
-  background-color: #fbd133;
-  color: var(--bg);
+  cursor: pointer;
 }
-header .container-header img {
+
+header.container-header img {
   border-radius: 50rem;
   width: 5rem;
   margin: 0 1rem;
