@@ -153,7 +153,7 @@ div.hudRodape {
     font-size: 13px;
     color: #FFF;
     border: none;
-    background-color: #154F61;
+    background-color: #1461ff;
     border-radius: 20px;
     padding: 0px 15px !important;
     height: 30px;
@@ -196,76 +196,6 @@ input[type="time"] {
     width: 100px !important;
 }
 
-@media (max-width: 600px) {
-    div.inputNome {
-        width: 95%;
-        margin: 0 auto;
-    }
-    div.nameCategory {
-        padding: 0;
-        display: flex;
-        justify-content: space-between;
-    }
-    .telFunc {
-        width: 95%;
-        margin: 15px auto 0;
-    }
-    #inputName,
-    #inputNameEdit,
-    #inputCategory,
-    #inputCategoryEdit,
-    #inputAddress,
-    #inputAddressEdit,
-    #inputPhone,
-    #inputPhoneEdit,
-    #inputOpen,
-    #inputOpenEdit,
-    #inputClose,
-    #inputCloseEdit,
-    #inputSite,
-    #inputSiteEdit,
-    #inputDescription,
-    #inputDescriptionEdit {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 13px;
-        border: #F4F2F2;
-        background-color: #F4F2F2;
-        padding: 7px 15px;
-        border-radius: 10px 10px;
-        margin: 0 auto;
-        width: 95%;
-    }
-    #inputName,
-    #inputNameEdit,
-    #inputCategory,
-    #inputCategoryEdit,
-    #inputOpen,
-    #inputOpenEdit,
-    #inputClose,
-    #inputCloseEdit,
-    #inputPhone,
-    #inputPhoneEdit {
-        margin: 0;
-    }
-    #inputName,
-    #inputNameEdit {
-        width: 160px;
-    }
-    #inputCategory,
-    #inputCategoryEdit {
-        width: 140px;
-    }
-    div.col-7 {
-        padding-left: 5px;
-    }
-    input[type="tel"] {
-        width: 120px !important;
-    }
-    input[type="time"] {
-        width: 85px !important;
-    }
-}
-
 input+span.validacao {
     padding-right: 30px;
 }
@@ -283,10 +213,23 @@ input:valid+span.validacao:after {
 }
 
 
-/*Fim Input*/
+/* Fim Input */
 
 
 /* Página lateral que ocupa 30% da tela no desktop */
+
+#lateralMenu.block {
+    position: absolute;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    max-width: 30%;
+}
+
+#lateralMenu.hidden {
+    display: none;
+}
 
 #minimizer {
     background-color: #FFF;
@@ -446,134 +389,62 @@ a:hover {
 }
 
  ::-webkit-scrollbar-thumb {
-    background: #154F61;
+    background: #1461ff;
     border-radius: 0;
 }
 
 
-/*Fim Scroll bar*/
+/* Fim Scroll bar */
 
 
-/*Fim Página lateral*/
+/* Btn Adicionar Enderço */
 
+#addAddress {
+    position: absolute;
+    z-index: 1000;
+    right: 50px;
+    bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1461ff;
+    margin: 0;
+    padding: 7px 15px;
+    border: none;
+    font-size: 13px;
+    color: white;
+    font-size: 15px;
+    border-radius: 50px;
+    transition: all .3s;
+}
 
-/*Desktop*/
+#mais {
+    font-size: 13px;
+    transition: all .4s;
+}
 
-@media (min-width: 1400px) {
-    #lateralMenu.block {
-        position: absolute;
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        height: 100vh;
-        max-width: 30%;
-    }
-    #lateralMenu.hidden {
-        display: none;
-    }
-    #addAddress {
-        position: absolute;
-        z-index: 1000;
-        right: 50px;
-        bottom: 50px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #154F61;
-        margin: 0;
-        border: none;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 13px;
-        color: white;
-        border-radius: 50px;
-        width: 30px;
-        height: 30px;
-        transition: width .3s;
-    }
-    #addAddress::before {
-        opacity: 0;
-        content: '';
-    }
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            content: '';
-        }
-        to {
-            content: 'Adicionar Endereço';
-            opacity: 1;
-        }
-    }
-    #mais {
-        position: absolute;
-        right: 9.5px;
-        font-size: 13px;
-        transition: all .4s;
-    }
-    #addAddress:hover {
-        width: 185px;
-        background-color: #1b718b;
-    }
-    #addAddress:hover::before {
-        animation: fadeIn 0.3s linear .03s;
-        animation-fill-mode: forwards;
-        margin: 0 0 0 17px;
-        color: white;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 13px;
-    }
-    #addAddress:hover #mais {
-        transform: rotateZ(-180deg);
-    }
-    #addAddress:hover {
-        cursor: pointer;
-    }
+#addAdress:hover {
+    background-color: #fafafa;
+    color: #1461ff;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, .2);
+}
+
+#addAddress:hover #mais {
+    transform: rotateZ(-180deg);
 }
 
 
-/*Fim Desktop*/
+/*Fim Btn Adicionar Endereço*/
 
 
 /*Tablet*/
 
 @media (min-width: 601px) and (max-width: 1399px) {
     #lateralMenu.block {
-        position: absolute;
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        height: 100vh;
         max-width: 50%;
-    }
-    #lateralMenu.hidden {
-        display: none;
-    }
-    #addAddress {
-        position: absolute;
-        z-index: 1000;
-        right: 50px;
-        bottom: 50px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #154F61;
-        margin: 0;
-        border: none;
-        font-size: 13px;
-        color: white;
-        border-radius: 50px;
-        width: 185px;
-        height: 35px;
     }
     #mais {
         display: none;
-    }
-    #addAddress::before {
-        content: 'Adicionar Endereço';
-        margin: 0 auto;
-        color: white;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 16px;
     }
 }
 
@@ -584,15 +455,75 @@ a:hover {
 /*Mobile*/
 
 @media (max-width: 600px) {
-    #lateralMenu.block {
-        display: block;
-        position: absolute;
-        z-index: 1000;
-        height: 100vh;
-        width: 100%;
+    div.inputNome {
+        width: 95%;
+        margin: 0 auto;
     }
-    #lateralMenu.hidden {
-        display: none;
+    div.nameCategory {
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+    .telFunc {
+        width: 95%;
+        margin: 15px auto 0;
+    }
+    #inputName,
+    #inputNameEdit,
+    #inputCategory,
+    #inputCategoryEdit,
+    #inputAddress,
+    #inputAddressEdit,
+    #inputPhone,
+    #inputPhoneEdit,
+    #inputOpen,
+    #inputOpenEdit,
+    #inputClose,
+    #inputCloseEdit,
+    #inputSite,
+    #inputSiteEdit,
+    #inputDescription,
+    #inputDescriptionEdit {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+        border: #F4F2F2;
+        background-color: #F4F2F2;
+        padding: 7px 15px;
+        border-radius: 10px 10px;
+        margin: 0 auto;
+        width: 95%;
+    }
+    #inputName,
+    #inputNameEdit,
+    #inputCategory,
+    #inputCategoryEdit,
+    #inputOpen,
+    #inputOpenEdit,
+    #inputClose,
+    #inputCloseEdit,
+    #inputPhone,
+    #inputPhoneEdit {
+        margin: 0;
+    }
+    #inputName,
+    #inputNameEdit {
+        width: 160px;
+    }
+    #inputCategory,
+    #inputCategoryEdit {
+        width: 140px;
+    }
+    div.col-7 {
+        padding-left: 5px;
+    }
+    input[type="tel"] {
+        width: 120px !important;
+    }
+    input[type="time"] {
+        width: 85px !important;
+    }
+    #lateralMenu.block {
+        max-width: 100%;
     }
     #minimizer {
         display: none;
@@ -607,7 +538,7 @@ a:hover {
         width: 30px;
         border: none;
         border-radius: 50px;
-        background: #154F61;
+        background: #1461ff;
         color: #FFF;
         font-size: 16px;
     }
@@ -618,32 +549,14 @@ a:hover {
         display: none;
     }
     #addAddress {
-        position: absolute;
-        z-index: 1000;
         right: 0;
         left: 0;
         bottom: 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #154F61;
         margin: 0 auto;
-        border: none;
-        font-size: 13px;
-        color: white;
-        border-radius: 50px;
-        width: 185px;
-        height: 35px;
+        width: 177.8px;
     }
     #mais {
         display: none;
-    }
-    #addAddress::before {
-        content: 'Adicionar Endereço';
-        margin: 0 auto;
-        color: white;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 16px;
     }
 }
 
@@ -669,7 +582,7 @@ a:hover {
 }
 
 .mapboxgl-popup-content p {
-    color: #1b718b;
+    color: #1461ff;
     user-select: none;
     pointer-events: none;
     font-size: 10px;
@@ -700,7 +613,7 @@ a:hover {
 .marker {
     cursor: pointer;
     font-size: 25px;
-    color: #1b718b;
+    color: #1461ff;
     transition: font .2s;
 }
 
