@@ -62,7 +62,9 @@ function pegaLocalizacao() {
   }
 }
 
+// função que carrega o mapa
 function carregaMapa() {
+  // define a posição central do mapa como as coordenadas do usuário
   let posicao = leCoordenadas();
 
   // cria o mapa, com estilo próprio feito e com algumas configurações adicionais
