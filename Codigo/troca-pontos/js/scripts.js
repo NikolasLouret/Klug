@@ -1,12 +1,17 @@
 
 // função que lê os dados do localStorage
 function leDados() {
+  // pega os dados do localStorage
   let strDados = localStorage.getItem("db");
+  // cria o objeto de dados
   let objDados = {};
 
+  // confere se existe algo no localStorage
   if (strDados) {
+    // caso tenha, coloca dentro da variável de dados
     objDados = JSON.parse(strDados);
   } else {
+    // caso não tenha, cria o próprio objeto com os dados
     objDados = {
       usuario: [
         {
@@ -55,10 +60,13 @@ function leDados() {
     };
   }
 
+  // mostra os dados no console
   console.log(objDados);
 
+  // chama a função que salva os dados do localStorage
   salvaDados(objDados);
 
+  // retorna o objeto, quando é chamada
   return objDados;
 }
 
