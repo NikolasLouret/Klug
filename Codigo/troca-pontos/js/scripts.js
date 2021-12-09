@@ -184,10 +184,13 @@ function trocaPontos(dados, botao) {
 
 // função que verifica o saldo do usuário, apenas por questões estéticas
 function verificaSaldo(dados, botoes) {
+  // pega os pontos que o usuário tem atualmente
   let pontos = dados.usuario[0].pontos;
   let botaoAtual = botoes;
 
+  // confere se o valor dos pontos é menor do que 20 (troca mais barata)
   if (pontos < 20) {
+    // se for, define a cor do fundo do card como vermelho, apenas para layout
     document.getElementById("container-pontos").style.backgroundColor =
       "#e92929";
   }
