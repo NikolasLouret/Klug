@@ -1,0 +1,168 @@
+/* Global ====================================================================*/
+:root {
+  --bg: #3d3d3d;
+  --bg-panel: #dfdfdf;
+  --color-text: #fff5f5;
+  --color-text-secondary: #333333;
+  --green: #49aa26;
+  --bg-sec: #34495e;
+
+  transition: all 0.3s linear;
+}
+
+/* retira todos os espaçamentos e tamanhos do documento */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  /* tamanho da fonte, para questões de responsividade */
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+}
+
+header.container-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  background-color: var(--bg-sec);
+}
+
+header.container-header nav {
+  display: flex;
+}
+
+header.container-header nav a {
+  background-color: rgb(255 255 255 / 10%);
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: bold;
+
+  margin: 0 1rem;
+  padding: 1rem;
+
+  cursor: pointer;
+}
+
+header.container-header nav a:hover {
+  background-color: rgba(255, 217, 0, 0.753);
+  color: var(--bg);
+
+  transition: all 0.3s linear;
+}
+
+header.header-pontos {
+  background-color: var(--bg);
+  padding: 1rem;
+  color: var(--color-text);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header.header-pontos p {
+  font-size: 1.2rem;
+}
+
+header.header-pontos article#container-pontos {
+  background-color: var(--green);
+  width: 20rem;
+  color: var(--color-text);
+
+  font-size: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+article#container-pontos > span#pontos-usuario {
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+section #container-itens {
+  background-color: #192a56;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+section article.item {
+  width: 20rem;
+  background-color: #273c75;
+  padding: 2rem;
+  margin: 1rem;
+  color: var(--color-text);
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+
+  border-radius: 1rem;
+}
+
+section article.item img {
+  border-radius: 0.8rem;
+  width: 100%;
+  margin: 1rem;
+
+  display: block;
+}
+
+section article.item span {
+  font-weight: bold;
+}
+
+section #container-itens article button {
+  width: 100%;
+  height: 50px;
+  background-color: var(--green);
+  color: var(--color-text);
+
+  border: none;
+  font-weight: bold;
+
+  margin-top: 1rem;
+
+  border-radius: 0.25rem;
+
+  cursor: pointer;
+}
+
+footer.footer-container {
+  padding: 2rem;
+
+  background-color: var(--bg);
+  color: var(--color-text);
+}
+
+/* Responsive =====================================*/
+@media (max-width: 800px) {
+  html {
+    font-size: 87.5%;
+  }
+
+  header.container-header nav {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    width: 100vw;
+    gap: 0.5rem;
+  }
+}

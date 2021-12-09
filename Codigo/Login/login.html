@@ -3,13 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./images/icon.svg">
     <title>Login</title>
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Arquivo CSS -->
     <link rel="stylesheet" href="login.css">
 </head>
 
-<body>
+<body onload="start()">
     <div class="container login">
         <div class="row login-card">
             <div id="login-row" class="d-flex flex-lg-row flex-column-reverse">
@@ -19,7 +25,7 @@
                             <h3 class="text-center text-info">Login</h3>
                             <div class="form-group">
                                 <label for="username" class="text-info">Usuário</label><br>
-                                <input type="text" name="username" id="username" class="form-control" required>
+                                <input type="text" name="username" id="username" class="form-control" onfocus="linkBtnEntrar()" required>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Senha</label><br>
@@ -33,7 +39,7 @@
                                 </div>
                                 <div class="form-group text-right">
                                     <div class="row submit">
-                                        <a href="" id="btn-entrar"><button type="submit" name="submit" class="btn btn-info btn-md">Entrar</button></a>
+                                        <a href="" id="btn-entrar"><button type="button" name="submit" class="btn btn-info btn-md">Entrar</button></a>
                                     </div>
                                 </div>
                             </div>

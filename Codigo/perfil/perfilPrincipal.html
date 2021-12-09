@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Site Pessoal">
     <link rel="icon" href="./svg/icon.svg">
-    <title>Perfil do usuário</title>
+    <title id="tiuloAba"></title>
 
     <!-- Aquivo CSS -->
     <link rel="stylesheet" href="style.css">
@@ -30,40 +30,70 @@
 
 <body>
     <header class="cabecalho">
-
+        <div class="header">
+            <a id="logo" href="https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/suporte/pagina-inicial/pagina-inicial.html">
+                <img src="./svg/Logo-Klug-2-branco.svg" id="logo-menu" alt="Logo">
+                <span id="nomelogo">KLUG </span>
+                <span id="localpagina">| Perfil</span>
+            </a>
+            <nav id="nav">
+                <button onclick="toggleMenu()" id="btn-mobile" aria-controls="menu" aria-haspopup="true" aria-label="Abrir Menu"><span id="hamburguer"></span></button>
+                <ul id="menu" role="menu">
+                    <li><a href="https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/rotas/rotas.html">Home</a>
+                        <i class="bx bxs-home"></i>
+                    </li>
+                    <li><a href="https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/add-endereco/index.html">Adicionar Endereço</a> <i class="fas fa-map-marker-alt"></i></li>
+                    <li><a id="loginTrocaPonto" href="https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/troca-pontos/troca-pontos.html">Trocar Pontos</a> <i class="fas fa-ticket-alt"></i></li>
+                    <li><a href="https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/suporte/pagina-inicial/pagina-inicial.html">Suporte</a> <i class="fas fa-wrench"></i></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main class="main">
-        <!-- Perfil -->
-        <div class="infosPerfil">
-            <div class="perfil" id="perfil"></div>
+        <div class="user">
+            <!-- Perfil -->
+            <div class="profile">
+                <div class="perfil" id="perfil"></div>
 
-            <!-- Btn editar perfil -->
-            <div class="btn-config">
-                <button id="btnLogout" onclick="logoutUser()">Logout</button>
+                <!-- Btn editar perfil -->
+                <div class="btn-config">
+                    <button type="button" id="btnLogout" onclick="logoutUser()">Logout</button>
+                </div>
+            </div>
+
+            <!-- Editar configs -->
+            <div class="editPerfil">
+                <form id="form-configPerfil">
+                    <span class="label"></span>
+                    <input type="text" class="form-control" placeholder="Primeiro nome" id="txt_nome" required>
+
+                    <span class="label"></span>
+                    <input type="text" class="form-control" placeholder="Segundo nome" id="txt_sobrenome">
+
+                    <span class="label"></span>
+                    <input type="text" class="form-control" placeholder="Endereço" id="txt_address">
+
+                    <span class="label"></span>
+                    <input type="email" class="form-control" placeholder="Adicionar email" id="txt_email" required>
+
+                    <span class="label"></span>
+                    <input type="password" class="form-control" placeholder="Digite a senha" id="txt_senha" required>
+                </form>
+                <div class="hudBtns">
+                    <button class="btn-saveChanges" id="profile-button" type="button">Salvar alterações</button>
+                    <button class="btn-password" id="change-password" type="button">Mudar senha</button>
+                </div>
             </div>
         </div>
 
-        <!-- Editar configs -->
-        <div class="editPerfil">
-            <form id="form-configPerfil">
-                <label class="labels">Nome</label>
-                <input type="text" class="form-control" placeholder="Primeiro nome" id="txt_nome" required>
-
-                <label class="labels">Sobrenome</label>
-                <input type="text" class="form-control" placeholder="Segundo nome" id="txt_sobrenome">
-
-                <label class="labels">Endereco</label>
-                <input type="text" class="form-control" placeholder="Endereço" id="txt_address">
-
-                <label class="labels">Email</label>
-                <input type="email" class="form-control" placeholder="Adicionar email" id="txt_email" required>
-
-                <label class="labels">Senha</label>
-                <input type="password" class="form-control" placeholder="Alterar senha" id="txt_senha" required>
-            </form>
-            <div class="btn-saveChanges">
-                <button class="btn" id="profile-button" type="button">Salvar alterações</button>
+        <!-- Minhas Perguntas e Respostas -->
+        <div class="minhasPergResps">
+            <div class="perg">
+                <h2>Minhas Perguntas</h2>
+            </div>
+            <div class="resps">
+                <h2>Minhas Respostas</h2>
             </div>
         </div>
     </main>
@@ -75,6 +105,7 @@
     <!-- Arquivos JS -->
     <script src="./js/perfil.js"></script>
     <script src="./js/form.js"></script>
+    <script src="./js/userInfos.js"></script>
 </body>
 
 </html>

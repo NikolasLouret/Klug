@@ -50,7 +50,7 @@ const map = new mapboxgl.Map({
     // ID do container do map
     container: 'map',
     // URL do estilo do mapa padrão
-    style: 'mapbox://styles/mapbox/streets-v11',
+    style: 'mapbox://styles/mpolomartins/ckv3szjic4mit14leuvd8rz5a',
     // Iniciando com a posição das coordenadas [lng, lat] do usuário, caso tenha
     center: [coordenadas.lng, coordenadas.lat],
     // Define o zoom inicial do mapa
