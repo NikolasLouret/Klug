@@ -182,6 +182,7 @@ function trocaPontos(dados, botao) {
   verificaSaldo(dados);
 }
 
+// função que verifica o saldo do usuário, apenas por questões estéticas
 function verificaSaldo(dados, botoes) {
   let pontos = dados.usuario[0].pontos;
   let botaoAtual = botoes;
