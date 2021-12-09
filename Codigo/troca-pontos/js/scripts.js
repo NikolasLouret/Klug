@@ -186,7 +186,6 @@ function trocaPontos(dados, botao) {
 function verificaSaldo(dados, botoes) {
   // pega os pontos que o usuário tem atualmente
   let pontos = dados.usuario[0].pontos;
-  let botaoAtual = botoes;
 
   // confere se o valor dos pontos é menor do que 20 (troca mais barata)
   if (pontos < 20) {
