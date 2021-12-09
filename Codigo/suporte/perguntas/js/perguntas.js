@@ -1,7 +1,6 @@
 const LOGIN_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/Login/login.html";
 const PERFIL_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/perfil/perfilPrincipal.html";
 var userLogin = JSON.parse(localStorage.getItem('usuarioCorrente'));
-var resultadoPesquisa = JSON.parse(localStorage.getItem('results'));
 
 function validacaoForm() {
     var asterisco;
@@ -65,11 +64,6 @@ function validacaoForm() {
 }
 
 function start() {
-    if (resultadoPesquisa != '') {
-        $('#search').val(resultadoPesquisa)
-        filtroPerguntas()
-    }
-
     localStorage.setItem('link', JSON.stringify(""));
 
     const login = document.querySelector('#loginProfile');
@@ -273,7 +267,7 @@ function editarModal() {
     }
 }
 
-function filtroPerguntas() {
+function filtroPerguntas(resultParam) {
     const inputSearch = document.querySelector('#search');
     const filterList = document.querySelector('#historico');
     const posts = document.querySelectorAll("#conteudo_discussao li");
@@ -344,12 +338,9 @@ function filtroPerguntas() {
     });
 
     // Caso haja um resultado na barra de pesquisa, o código irá filtrar automaticamente
-    if (resultadoPesquisa != '') {
-        const inputValue = inputSearch.value.trim().toLowerCase();
-        posts.forEach(showPostIfMatchInputValue(inputValue));
-
-        resultadoPesquisa = "";
-        localStorage.setItem('results', JSON.stringify(resultadoPesquisa));
+    if (resultParam) {
+        posts.forEach(showPostIfMatchInputValue(resultParam));
+        $('#search').val(resultParam);
     }
 
     inputSearch.addEventListener('input', handleInputValue);
@@ -372,5 +363,11 @@ $(document).ready(function() {
     //Calcula o ano
     document.querySelector('#ano').innerHTML = new Date().getFullYear();
 
+    // Função que mostra as perguntas
     mostraTudo();
+
+    // Função que captura o parâmetro 'search' da url para ser utilizada na filtragem das perguntas
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchParam = urlParams.get('search');
+    filtroPerguntas(searchParam);
 })
