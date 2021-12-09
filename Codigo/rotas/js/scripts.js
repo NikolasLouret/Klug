@@ -39,16 +39,19 @@ function pegaLocalizacao() {
   // caso não, mostra um mensagem de erro
   else {
     alert("O seu navegador não suporta Geolocalização.");
+    // define um valor para as coordenadas, o centro de BH
     coordenadas = {
       lat: -19.916667,
       lng: -43.933333,
     };
+
+    // salva as coordenadas no localStorage
     salvaCoordenadas(coordenadas);
   }
 
   // função que guarda as coordenadas do usuário, recebendo a posição como parâmetro
   function myLocation(position) {
-    // cria o objeto e guarda as coordenadas
+    // guarda a posição no objeto de coordenadas
     coordenadas = {
       lat: position.coords.latitude,
       lng: position.coords.longitude,
