@@ -144,13 +144,6 @@ function verificaSaldo(dados, botoes) {
     document.getElementById("container-pontos").style.backgroundColor =
       "#e92929";
   }
-
-  // for (let i = 0; i < botoes.length; i++) {
-  //   if(dados.produtosTrocas[i].preco < dados.usuario[0].pontos){
-  //     botaoAtual = botoes[i];
-  //     botaoAtual.setAttribute("disabled","disabled");
-  //   }
-  // }
 }
 
 window.addEventListener("load", imprimeDados);
