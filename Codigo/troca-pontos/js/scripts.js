@@ -166,12 +166,19 @@ function trocaPontos(dados, botao) {
   // desconta os pontos do usuário do preço da troca
   valorAtual -= valorDescontado;
 
+  // define o valor de pontos do usuário como o novo valor
   dados.usuario[0].pontos = valorAtual;
-
+  
+  // pega o elemento de pontos na tela
   let pontosUsuarios = document.getElementById("pontos-usuario");
+
+  // atualiza no HTML o valor de pontos do usuário
   pontosUsuarios.innerHTML = `${valorAtual} pontos`;
 
+  // chama a função que salva os dados atualizados no localStorage
   salvaDados(dados);
+
+  // chama a função que verifica o saldo do usuário
   verificaSaldo(dados);
 }
 
