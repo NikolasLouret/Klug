@@ -117,7 +117,7 @@ function carregaMapa() {
   );
 }
 
-// função que recarrega a página
+// função que recarrega a página, feita assim para não entrar no loop de recarregar
 function recarregaPagina() {
   // confere se consegue acessar o localStorage
   if (window.localStorage) {
