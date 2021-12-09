@@ -99,6 +99,7 @@ function imprimeDados() {
   // carrega os pontos do usuário na tela
   pontosUsuarios.innerHTML = `${objDados.usuario[0].pontos} pontos`;
 
+  // executa item por item e salva dentro da variável
   for (let i = 0; i < objDados.produtosTrocas.length; i++) {
     conteudoTroca += `
             <article class="item">
@@ -111,8 +112,10 @@ function imprimeDados() {
     `;
   }
 
+  // coloca a variável no HTML da página
   containerItens.innerHTML = conteudoTroca;
 
+  // pega todos os botões da página
   let botoes = document.querySelectorAll("button");
   for (let i = 0; i < botoes.length; i++) {
     botoes[i].addEventListener("click", function () {
