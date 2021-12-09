@@ -1,3 +1,5 @@
+
+// função que lê os dados do localStorage
 function leDados() {
   let strDados = localStorage.getItem("db");
   let objDados = {};
