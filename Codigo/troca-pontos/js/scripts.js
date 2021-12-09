@@ -159,8 +159,11 @@ function imprimeDados() {
 function trocaPontos(dados, botao) {
   // pega o valor do item a ser trocado
   let valorDescontado = dados.produtosTrocas[botao].preco;
+
+  // pega o valor de pontos que o usuário tem atualmente
   let valorAtual = dados.usuario[0].pontos;
 
+  // desconta os pontos do usuário do preço da troca
   valorAtual -= valorDescontado;
 
   dados.usuario[0].pontos = valorAtual;
