@@ -136,11 +136,6 @@ function toggleMenu() {
     footer.classList.toggle('active');
 }
 
-function salvaResults(result) {
-    localStorage.setItem('results', JSON.stringify(result));
-    console.log(result)
-}
-
 function init() {
     //Calcula o ano
     document.querySelector('#ano').innerHTML = new Date().getFullYear();
@@ -173,8 +168,6 @@ function init() {
 
     inputSearch.addEventListener('click', showResults);
     inputSearch.addEventListener('blur', hideResults);
-    inputSearch.onblur = function() { salvaResults(inputSearch.value); }
-
 
     localStorage.setItem('link', JSON.stringify(""));
 
