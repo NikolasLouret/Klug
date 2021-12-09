@@ -132,6 +132,7 @@ function imprimeDados() {
             '"'
         );
       } else {
+        // caso tenha saldo, mostra o produto e o valor dele
         alert(
           '"' +
             objDados.produtosTrocas[i].titulo +
@@ -140,6 +141,8 @@ function imprimeDados() {
             objDados.produtosTrocas[i].preco +
             " pontos"
         );
+
+        // chama a função que troca pontos, passando o objeto de dados e a posição do botão
         trocaPontos(objDados, i);
       }
     });
