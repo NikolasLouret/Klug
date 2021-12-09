@@ -76,18 +76,27 @@ function salvaDados(dados) {
   localStorage.setItem("db", JSON.stringify(dados));
 }
 
+// função que imprime os dados na tela
 function imprimeDados() {
+  // pega algumas informações do usuário no HTML da página
   let nomeUsuario = document.getElementById("nome-usuario");
   let fotoUsuario = document.getElementById("foto-usuario");
   let pontosUsuarios = document.getElementById("pontos-usuario");
 
+  // pega o container dos itens para troca
   let containerItens = document.getElementById("container-itens");
-  let conteudoTroca = "";
 
+  // declara variável que irá receber os itens
+  let conteudoTroca = "";
+  
+  // define o objeto de dados como o retorno da função de ler dados
   let objDados = leDados();
 
+  // coloca a frase abaixo com o nome do usuário no h1 do HTML
   nomeUsuario.innerHTML = `Olá, ${objDados.usuario[0].nome}`;
+  // define o caminho da foto do usuário como o salvo no objeto
   fotoUsuario.src = `${objDados.usuario[0].foto}`;
+  // carrega os pontos do usuário na tela
   pontosUsuarios.innerHTML = `${objDados.usuario[0].pontos} pontos`;
 
   for (let i = 0; i < objDados.produtosTrocas.length; i++) {
