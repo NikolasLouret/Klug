@@ -1,4 +1,3 @@
-
 // função que lê os dados do localStorage
 function leDados() {
   // pega os dados do localStorage
@@ -88,7 +87,7 @@ function imprimeDados() {
 
   // declara variável que irá receber os itens
   let conteudoTroca = "";
-  
+
   // define o objeto de dados como o retorno da função de ler dados
   let objDados = leDados();
 
@@ -168,7 +167,7 @@ function trocaPontos(dados, botao) {
 
   // define o valor de pontos do usuário como o novo valor
   dados.usuario[0].pontos = valorAtual;
-  
+
   // pega o elemento de pontos na tela
   let pontosUsuarios = document.getElementById("pontos-usuario");
 
