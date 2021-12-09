@@ -16,11 +16,16 @@ function leCoordenadas() {
     coordenadas = pegaLocalizacao();
   }
 
+  // retorna as coordenadas, quando é chamada
   return coordenadas;
 }
 
+// função que salva as coordenadas do usuário
 function salvaCoordenadas(posicao) {
+  // pega as coordenadas e salva no localStorage
   localStorage.setItem("dados", JSON.stringify(posicao));
+
+  // chama a função que recarrega a página
   recarregaPagina();
 }
 
