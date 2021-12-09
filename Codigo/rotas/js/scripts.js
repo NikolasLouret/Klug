@@ -119,9 +119,13 @@ function carregaMapa() {
 
 // função que recarrega a página
 function recarregaPagina() {
+  // confere se consegue acessar o localStorage
   if (window.localStorage) {
+    // caso sim, confere se já existe a variável salva no localStorage
     if (!localStorage.getItem("recarrega")) {
+      // se não tiver, cria a variável e a define como true
       localStorage["recarrega"] = true;
+      // recarrega a página
       window.location.reload();
     } else {
       localStorage.removeItem("recarrega");
