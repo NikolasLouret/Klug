@@ -93,7 +93,7 @@ function linkBtnEntrar() {
     const inputNome = document.querySelector('#username');
     const inputSenha = document.querySelector('#password');
 
-    if (link.length != 0)
+    if (link)
         inputSenha.oninput = () => {
             if (loginUser(inputNome.value, inputSenha.value))
                 btnEntrar.setAttribute('href', link);
