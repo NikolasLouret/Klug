@@ -70,7 +70,9 @@ function leDados() {
   return objDados;
 }
 
+// função que salva os dados no localStorage
 function salvaDados(dados) {
+  // salva os dados passados por parâmetro no localStorage
   localStorage.setItem("db", JSON.stringify(dados));
 }
 
