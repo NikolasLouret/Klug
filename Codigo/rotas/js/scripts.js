@@ -16,6 +16,7 @@ function leCoordenadas() {
 
 function salvaCoordenadas(posicao) {
   localStorage.setItem("dados", JSON.stringify(posicao));
+  recarregaPagina();
 }
 
 // função que pega as coordenadas do usuário
@@ -99,6 +100,17 @@ function carregaMapa() {
     // local onde ficará o campo de criar rota
     "top-left"
   );
+}
+
+function recarregaPagina() {
+  if (window.localStorage) {
+    if (!localStorage.getItem("recarrega")) {
+      localStorage["recarrega"] = true;
+      window.location.reload();
+    } else {
+      localStorage.removeItem("recarrega");
+    }
+  }
 }
 
 window.addEventListener("load", carregaMapa);
