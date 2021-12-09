@@ -57,3 +57,11 @@ function exibePerfil(user) {
     if ((address != undefined) || (address != null) || (address != ''))
         $('#txt_address').val(address);
 }
+
+function toggleMenu() {
+    const nav = document.getElementById("nav");
+    const main = document.querySelector(".main");
+
+    nav.classList.toggle('active');
+    main.classList.toggle('active');
+}
