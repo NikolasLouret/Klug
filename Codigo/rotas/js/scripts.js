@@ -8,24 +8,14 @@ function leCoordenadas() {
   if (strDados) {
     coordenadas = JSON.parse(strDados);
   } else {
-    // coordenadas = {
-    //   lat: -19.916667,
-    //   lng: -43.933333,
-    // };
     coordenadas = pegaLocalizacao();
   }
 
-  // salvaCoordenadas(coordenadas);
-
-  console.log(coordenadas);
-  
   return coordenadas;
 }
 
-function salvaCoordenadas(coordenadas) {
-  localStorage.setItem("dados", JSON.stringify(coordenadas));
-
-  console.log(coordenadas);
+function salvaCoordenadas(posicao) {
+  localStorage.setItem("dados", JSON.stringify(posicao));
 }
 
 // função que pega as coordenadas do usuário
@@ -38,12 +28,17 @@ function pegaLocalizacao() {
   // caso não, mostra um mensagem de erro
   else {
     alert("O seu navegador não suporta Geolocalização.");
+    coordenadas = {
+      lat: -19.916667,
+      lng: -43.933333,
+    };
+    salvaCoordenadas(coordenadas);
   }
 
   // função que guarda as coordenadas do usuário, recebendo a posição como parâmetro
   function myLocation(position) {
     // cria o objeto e guarda as coordenadas
-    let coordenadas = {
+    coordenadas = {
       lat: position.coords.latitude,
       lng: position.coords.longitude,
     };
@@ -54,7 +49,7 @@ function pegaLocalizacao() {
 }
 
 function carregaMapa() {
-  let coordenadas = leCoordenadas();
+  let posicao = leCoordenadas();
 
   // cria o mapa, com estilo próprio feito e com algumas configurações adicionais
   mapboxgl.accessToken = APIKEY;
@@ -64,7 +59,7 @@ function carregaMapa() {
     // URL do estilo do mapa, focado para quem dirige
     style: "mapbox://styles/mpolomartins/ckv3szjic4mit14leuvd8rz5a",
     // iniciando com a posição das coordenadas [lng, lat] do usuário, caso tenha
-    center: [coordenadas.lng, coordenadas.lat],
+    center: [posicao.lng, posicao.lat],
     // define o zoom do mapa
     zoom: 18, // starting zoom
   });
