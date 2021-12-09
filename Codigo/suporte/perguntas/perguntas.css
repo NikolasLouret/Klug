@@ -910,7 +910,7 @@ div.logo-redes {
         width: 30px;
     }
     #nav.active #menu {
-        width: 40%;
+        width: 55%;
         right: 0;
     }
     .main,
@@ -1115,8 +1115,5 @@ div.logo-redes {
     }
     #barra-pesquisa {
         width: 70% !important;
-    }
-    .hidden {
-        display: none;
     }
 }

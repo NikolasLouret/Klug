@@ -67,6 +67,8 @@ function start() {
     localStorage.setItem('link', JSON.stringify(""));
 
     const login = document.querySelector('#loginProfile');
+    const trocaPonto = document.querySelector('#loginTrocaPonto');
+
     // Se o usuário não estiver logado, no menu aparecerá a palavra "Entrar"
     if (userLogin != undefined) {
         login.innerHTML = userLogin.nome;
@@ -74,6 +76,8 @@ function start() {
     } else {
         login.innerHTML = 'Entrar';
         login.setAttribute('href', LOGIN_URL);
+
+        trocaPonto.classList.add("hidden");
     }
 
     login.addEventListener('click', function() {
