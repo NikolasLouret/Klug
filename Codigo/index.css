@@ -158,17 +158,11 @@ footer.footer-container {
   }
 
   header.container-header nav {
-    background-color: rgb(255 255 255 / 10%);
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    
-    width: 100%;
-    
-    gap: 1rem;
-  }
-  
-  header.container-header nav a {
-    background-color: none;
-    cursor: pointer;
+    text-align: center;
+
+    width: 100vw;
+    gap: 0.5rem;
   }
 }
