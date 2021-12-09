@@ -63,33 +63,6 @@ function validacaoForm() {
     }
 }
 
-function start() {
-    localStorage.setItem('link', JSON.stringify(""));
-
-    const login = document.querySelector('#loginProfile');
-    const trocaPonto = document.querySelector('#loginTrocaPonto');
-
-    // Se o usuário não estiver logado, no menu aparecerá a palavra "Entrar"
-    if (userLogin != undefined) {
-        login.innerHTML = userLogin.nome;
-        login.setAttribute('href', PERFIL_URL);
-    } else {
-        login.innerHTML = 'Entrar';
-        login.setAttribute('href', LOGIN_URL);
-
-        trocaPonto.classList.add("hidden");
-    }
-
-    login.addEventListener('click', function() {
-        localStorage.setItem('link', JSON.stringify("https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/suporte/perguntas/perguntas.html"));
-    })
-
-    const btnAddQuestion = document.querySelector('#adicionar_mais');
-    btnAddQuestion.addEventListener('click', function() {
-        $("#inputNome").val(userLogin.nome);
-    })
-}
-
 function addPergunta() {
     // Se não houver dados, o usuário é redirecionado para a página de login
     if (!(userLogin != undefined)) {
@@ -364,4 +337,29 @@ $(document).ready(function() {
     const urlParams = new URLSearchParams(window.location.search);
     const searchParam = urlParams.get('search');
     filtroPerguntas(searchParam);
+
+    localStorage.setItem('link', JSON.stringify(""));
+
+    const login = document.querySelector('#loginProfile');
+    const trocaPonto = document.querySelector('#loginTrocaPonto');
+
+    // Se o usuário não estiver logado, no menu aparecerá a palavra "Entrar"
+    if (userLogin != undefined) {
+        login.innerHTML = userLogin.nome;
+        login.setAttribute('href', PERFIL_URL);
+    } else {
+        login.innerHTML = 'Entrar';
+        login.setAttribute('href', LOGIN_URL);
+
+        trocaPonto.classList.add("hidden");
+    }
+
+    login.addEventListener('click', function() {
+        localStorage.setItem('link', JSON.stringify("https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/suporte/perguntas/perguntas.html"));
+    })
+
+    const btnAddQuestion = document.querySelector('#adicionar_mais');
+    btnAddQuestion.addEventListener('click', function() {
+        $("#inputNome").val(userLogin.nome);
+    })
 })
