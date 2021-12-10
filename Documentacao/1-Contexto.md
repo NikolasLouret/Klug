@@ -9,14 +9,15 @@ Atualmente, há um crescente número de aplicativos que utilizam como ferramenta
 >O objetivo do grupo é criar um aplicativo de rotas GPS que seja fidedigno as ruas da vida real, intuitivo e funcional.
 >O foco principal é em poder evitar rotas indesejadas pelo usuário, impossibilitando que este chegue em locais perigosos ou de total discordância do seu objetivo final.
 >Além disso, esperamos que o uso da aplicação seja leve, dinâmica e principalmente intuitiva, com ferramentas adicionais de edição de rotas.
->
+
+
 ## Justificativa
-
 > A motivação para trabalhar com esta aplicação veio da própria experiência com rotas mal feitas, como cliente de aplicativos de transporte.
-> Nossos objetivos foram traçados  através do desgin sprint e de entrevistas com pessoas que fazem uso constante de apps para GPS e os problemas por elas
-> relatados.
-## Público-Alvo
+> Além disso, percebemos através de uma pesquisa feita pelo G1, em que de acordo com engenheiros de tráfego, o GPS não é 100% preciso, sendo esse um problema
+> que precisa ser solucionado.
+> Nossos objetivos foram traçados através do Desgin sprint e de entrevistas com usuários e trabalhadores que fazem uso constante de apps para GPS, buscando quais os problemas eram relatados com recorrência.
 
+## Público-Alvo
 > O perfil geral dos usuários é muito amplo, contudo em nossas entrevistas percebemos que dos entrevistados,
 > - 83.3% são do gênero masculino, sendo um dado equivalente à realidade, visto que segundo o portal de notícias "A Crítica", a maioria dos motoristas em trânsito atualmente, são homens;
 > - A idade média dos entrevistados é de 32 anos, confirmando a pesquisa pelo IBGE, em que é informado que a maioria dos motoristas tem entre 30 anos e 49 anos de idade;
