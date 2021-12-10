@@ -86,6 +86,7 @@ var db_perguntas = {
 var db = JSON.parse(localStorage.getItem('db_quests'));
 if (!db) {
     db = db_perguntas;
+    localStorage.setItem('db_quests', JSON.stringify(db));
 }
 
 var user = JSON.parse(localStorage.getItem('usuarioCorrente'));

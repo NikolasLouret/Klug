@@ -149,7 +149,7 @@ div.modal-body {
 #confirmar-alteracao:hover,
 #responder:hover,
 #btnApagarResposta:hover,
-#btnConfirmarEdicaoRespost:hover {
+#btnConfirmarEdicaoResposta:hover {
     background-color: #fafafa;
     color: #1461ff;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, .2);
