@@ -19,7 +19,7 @@ Atualmente, há um crescente número de aplicativos que utilizam como ferramenta
 
 > O perfil geral dos usuários é muito amplo, contudo em nossas entrevistas percebemos que dos entrevistados,
 > - 83.3% são do gênero masculino, sendo um dado equivalente à realidade, visto que segundo o portal de notícias "A Crítica", a maioria dos motoristas em trânsito atualmente, são homens;
-> - A idade média dos entrevistados é de 32 anos;
+> - A idade média dos entrevistados é de 32 anos, confirmando a pesquisa pelo IBGE, em que é informado que a maioria dos motoristas tem entre 30 anos e 49 anos de idade;
 > - 100% dos entrevistados utilizam algum tipo de aplicativo para rotas de GPS e tiveram feedbacks negativos e positivos para os apps que cada um mais usa.
 > 
 
