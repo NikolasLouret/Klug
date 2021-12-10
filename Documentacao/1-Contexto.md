@@ -8,7 +8,7 @@ Atualmente, há um crescente número de aplicativos que utilizam como ferramenta
 ## Objetivos
 >O objetivo do grupo é criar um aplicativo de rotas GPS que seja fidedigno as ruas da vida real, intuitivo e funcional.
 >O foco principal é em poder evitar rotas indesejadas pelo usuário, impossibilitando que este chegue em locais perigosos ou de total discordância do seu objetivo final.
->Além disso esperamos que o uso da aplicação seja leve, dinâmica e principalmente intuitiva, com ferramentas adicionais de edição de rotas.
+>Além disso, esperamos que o uso da aplicação seja leve, dinâmica e principalmente intuitiva, com ferramentas adicionais de edição de rotas.
 >
 ## Justificativa
 
