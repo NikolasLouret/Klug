@@ -12,8 +12,8 @@ Atualmente, há um crescente número de aplicativos que utilizam como ferramenta
 
 
 ## Justificativa
-> - A motivação para trabalhar com esta aplicação veio da própria experiência com rotas mal feitas, como cliente de aplicativos de transporte.
-> Além disso, percebemos através de uma pesquisa feita pelo G1, em que de acordo com engenheiros de tráfego, o GPS não é 100% preciso, sendo esse um problema
+> - A nossa motivação para trabalhar com esta aplicação veio da nossa percepção derevida de experiências com rotas mal feitas, como cliente de aplicativos de transporte.
+> - Além disso, percebemos através de uma pesquisa feita pelo G1, em que de acordo com engenheiros de tráfego, o GPS não é 100% preciso, sendo esse um problema
 > que precisa ser solucionado.
 > - Nossos objetivos foram traçados através do Desgin sprint e de entrevistas com usuários e trabalhadores que fazem uso constante de apps para GPS, buscando quais os problemas eram relatados com recorrência.
 
