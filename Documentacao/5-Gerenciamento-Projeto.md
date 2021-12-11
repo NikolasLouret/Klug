@@ -44,6 +44,27 @@ Após a criação das nossas metas, definição da nossa persona e implementaç�
 utilizamos a última semana para organização final para a entrega do trabalho, 
 como últimos ajustes no projeto e transcrição para a documentação no GitHub.
 
+##
+
+|               ENTREGAS DA SPRINT 2                  |                  Nome                    |
+| --------------------------------------------------- | ---------------------------------------- |
+|   Criação de avisos e marcação de áreas perigosas   | Daniel Jost Andrade                      |
+|   Cadastro de novos usuários e login                | Frederico dos Santos Ferreira de Andrade |
+|   Criação e filtragem de rotas                      | Igor de Oliveira Martins dos Santos      |
+|   Criação da página de suporte                      | Nikolas Augusto Vieira Louret            |
+
+##
+
+|          ENTREGAS DA SPRINT 3          |                  Nome                    |
+| -------------------------------------- | ---------------------------------------- |
+|   Marcadores no mapa                   | Daniel Jost Andrade                      |
+|   Perfil do Usuário                    | Frederico dos Santos Ferreira de Andrade |
+|   Benefícios de pontos                 | Igor de Oliveira Martins dos Santos      |
+|   Cadastro de endereço de empresas     | Nikolas Augusto Vieira Louret            |
+
+
+
+
 ## Ferramentas
 
 As ferramentas empregadas no projeto são:
