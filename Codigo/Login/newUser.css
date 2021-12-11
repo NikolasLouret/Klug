@@ -19,7 +19,7 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-image: url(/images/rm218-bb-07.jpg);
+    background-image: url(images/rm218-bb-07.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
