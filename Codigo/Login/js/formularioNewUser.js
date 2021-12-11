@@ -1,11 +1,13 @@
 var link = JSON.parse(localStorage.getItem('link'));
 
 function salvaLogin(event) {
+    event.preventDefault();
     //Faz a verificação individual de cada campo do formulário
     validacaoForm();
 
     // // Verfica se o formulário está preenchido corretamente
     if (!$('#newUserForm')[0].checkValidity()) {
+        alert('Dados incorretos');
         event.preventDefault();
         return;
     }
@@ -18,6 +20,7 @@ function salvaLogin(event) {
 
     // Adiciona o usuário no banco de dados
     addUser(nome, sobrenome, senha, email);
+
 }
 
 function linkBtnEntrar() {
@@ -41,7 +44,7 @@ $(document).ready(function() {
         btnSalvar.setAttribute('href', "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/rotas/rotas.html");
 
     // Associa a funçao processaFormLogin  formulário adicionado um manipulador do evento submit
-    document.getElementById('btn_salvar').addEventListener('click', salvaLogin);
+    document.getElementById('btn_salvar').onclick = salvaLogin;
 
     // Associar link da página antiga ao botão entrar
     document.getElementById('txt_senha2').addEventListener('focus', linkBtnEntrar);

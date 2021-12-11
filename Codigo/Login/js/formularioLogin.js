@@ -15,7 +15,6 @@ function processaFormLogin(event) {
     // Obtem os dados de login e senha a partir do formulário de login
     var username = $('#username').val();
     var password = $('#password').val();
-    console.log(username)
 
     // Valida login e se estiver ok, redireciona para tela inicial da aplicação
     if (username && password) {
@@ -24,7 +23,7 @@ function processaFormLogin(event) {
         if (!resultadoLogin) {
             // Cancela a submissão do formulário para tratar sem fazer refresh da tela
             event.preventDefault();
-            alert('Usuário ou senha incorretos');
+            displayMessage('Usuário ou senha incorretos');
         }
     }
 }
