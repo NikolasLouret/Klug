@@ -447,6 +447,8 @@ function hideMenuLateral() {
     const nav = document.getElementById("nav");
 
     if (!sidebar.classList.contains('hidden')) {
+        btnAddAddress.classList.remove('hidden');
+        btnAddAddress.classList.add('block');
         sidebar.classList.remove('block');
         sidebar.classList.add('hidden');
         btnCloseSidebar.classList.remove('block');
