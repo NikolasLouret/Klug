@@ -66,3 +66,6 @@ As ferramentas empregadas no projeto são:
  > O Google Docs foi utilizado para a criação de um questionário, 
  > entregando um relátorio visual e detalhado dos resultados.
 ##
+- [![Visual Studio Code](https://img.shields.io/badge/-Visual%20Studio%20Code-blue)](https://code.visualstudio.com/)
+> O Visual Studio Code foi utilizado como ferramenta de construção e edição do código.
+
