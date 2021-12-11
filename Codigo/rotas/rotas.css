@@ -468,7 +468,11 @@ header #criar-rota:hover {
         cursor: pointer;
         color: white;
         margin: 0 0 0 auto;
-        gap: .5rem
+        gap: .5rem;
+        position: absolute;
+        z-index: 500;
+        right: 15px;
+        top: 20px;
     }
     #hamburguer {
         margin-top: -2px;
@@ -476,10 +480,6 @@ header #criar-rota:hover {
         width: 20px;
         border-top: 1px solid #222;
         color: #222;
-        position: absolute;
-        z-index: 500;
-        right: 15px;
-        top: 20px;
         transition: border-top .2s;
     }
     #hamburguer::before,
@@ -605,6 +605,7 @@ header #criar-rota:hover {
     font-weight: 500;
     margin: 0;
     width: 100px;
+    transition: all .2s;
 }
 
 .mapboxgl-popup-content p.active {
@@ -627,7 +628,7 @@ header #criar-rota:hover {
     cursor: pointer;
     font-size: 25px;
     color: #1461ff;
-    transition: font .2s;
+    transition: all .2s;
 }
 
 .marker.active {
