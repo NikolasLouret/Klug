@@ -33,5 +33,4 @@ function toggleMenu() {
         btnAddEndereco.classList.remove('hidden');
         btnAddEndereco.classList.add('block');
     }
-
 }

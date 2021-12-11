@@ -88,28 +88,40 @@ var stores = JSON.parse(localStorage.getItem('db_address'));
 if (!stores)
     stores = db_stores;
 
+// Link do perfil do usuário
+const PERFIL_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/perfil/perfilPrincipal.html";
+
+// Pegar os dados do usuário logado
 var userLogin = JSON.parse(localStorage.getItem('usuarioCorrente'));
 
-/* Assign a unique ID to each store */
-stores.features.forEach(function(store, i) {
-    if ((userLogin == undefined) || (userLogin == null) || (userLogin == ''))
-        store.properties.id = i;
-});
+// Quando todos os elementos da tela carregarem, chama a função de carregaMapa e outras configurações
+$(document).ready(function() {
+    localStorage.setItem('link', JSON.stringify(""));
 
-map.on('load', () => {
-    /* Add the data to your map as a layer */
-    map.addSource('places', {
-        type: 'geojson',
-        data: stores
-    });
-    addMarkers();
+    const login = document.querySelector('#loginProfile');
+    const trocaPonto = document.querySelector('#loginTrocaPonto');
+    const btnMobile = document.querySelector('#btn-mobile');
 
-    $('#inputPhone, #inputPhoneEdit').mask("(99) 99999-9999");
+    // Se o usuário não estiver logado, no menu aparecerá a palavra "Entrar"
+    if (userLogin != undefined) {
+        login.innerHTML = userLogin.nome;
+        login.setAttribute('href', PERFIL_URL);
+    } else {
+        login.innerHTML = 'Entrar';
+        login.setAttribute('href', LOGIN_URL);
 
-    $('.mapboxgl-canvas, #closeMobile').on('click', function() {
-        hideMenuLateral();
+        trocaPonto.classList.add("hidden");
+    }
+
+    login.addEventListener('click', function() {
+        localStorage.setItem('link', JSON.stringify("https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/add-enderecos/index.html"));
     })
-});
+
+    btnMobile.onclick = () => {
+        const nav = document.getElementById("nav");
+        nav.classList.toggle('active');
+    };
+})
 
 function addMarkers() {
     let i = 0;
@@ -153,6 +165,7 @@ function addMarkers() {
     }
 }
 
+
 function buildLocationInfos(marker, markerId) {
     //Limpa todo o conteúdo
     $(".menuLateral").html("");
@@ -160,31 +173,23 @@ function buildLocationInfos(marker, markerId) {
 
     /* Criação dos elementos principais */
     $(".menuLateral").append(`<div class='sidebar' id="sidebar-${markerId.replace("marker-", "")}">
-                                <div id='listings' class='listings'>
-                                    <div id="titulo">
-                                        <h2 id="estabelecimentoNome"></h2>
-                                        <p id="categoria"></p>
-                                    </div>
+                              <div id='listings' class='listings'>
+                                  <div id="titulo">
+                                      <h2 id="estabelecimentoNome"></h2>
+                                      <p id="categoria"></p>
+                                  </div>
 
-                                    <div id="description"></div>
+                                  <div id="description"></div>
 
-                                    <div class="infos">
-                                        <div class="dados" id="address"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                            <button id="minimizer" onclick="toggleSidebar()">
-                                <i id="btnLateral" class="fas fa-chevron-left"></i>
-                            </button>`);
-
-    if ((userLogin != null)) {
-        if (userLogin.id == marker.properties.id) {
-            $("#listings").append(`<button id="changeInfos" data-bs-toggle="modal" data-bs-target="#editarEndereco">
-                                    <i class='bx bxs-pencil'></i> <section id="btn-editar">Editar informações</section> 
-                                </button>`);
-        }
-    }
+                                  <div class="infos">
+                                      <div class="dados" id="address"></div>
+                                  </div>
+                              </div>
+                          </div>
+                      
+                          <button id="minimizer" onclick="toggleSidebar()">
+                              <i id="btnLateral" class="fas fa-chevron-left"></i>
+                          </button>`);
 
     /* Adicionar o nome do estabelecimento */
     //Cria os elementos da div address
@@ -257,11 +262,6 @@ function buildLocationInfos(marker, markerId) {
         const phoneNumber = document.querySelector("#phone p.text");
         phoneNumber.innerText = `${marker.properties.phoneFormatted}`;
     }
-
-    $('#changeInfos').button().click(function() {
-        //console.log("id em descobirirSidebar quando o btn editar foi clicado " + id);
-        editarEndereco(markerId.replace("marker-", ""));
-    });
 }
 
 function createPopUp(currentFeature, id) {
@@ -273,151 +273,9 @@ function createPopUp(currentFeature, id) {
         .addTo(map);
 }
 
-const inputEndereco = $('#inputAddress');
-const inputEnderecoEdit = $('#inputAddressEdit');
-
-inputEndereco.on('focus', () => {
-    if (!inputEndereco.val()) {
-        $("#listAddress").html("");
-
-        for (var i = 0; i < 5; i++)
-            $("#listAddress, #listAddressEdit").append(`<option class="listAddressOption${i}"></option>`);
-    }
-});
-
-inputEndereco.on('input', () => {
-    const data = searchAddress();
-    data.then(function(result) {
-        if (inputEndereco.val())
-            if (!(result.find(element => element.place_name == inputEndereco.val())))
-                for (var i = 0; i < result.length; i++)
-                    $(`.listAddressOption${i}`).html(`${result[i].place_name}`);
-    })
-});
-
-const searchAddress = async function() {
-    const query = await fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${inputEndereco.val()}.json?country=br&language=pt&access_token=pk.eyJ1Ijoibmlrb2xhc2xvdXJldCIsImEiOiJja3Z5MWF5aTQ5djUyMnVxMXpwZHFtY3p3In0.tmhesiuf4EmWuiptIuhaAg`, { method: "GET" }
-    );
-    const json = await query.json();
-    const data = json.features;
-
-    return data;
-}
-
-inputEnderecoEdit.on('focus', () => {
-    $("#listAddressEdit").html("");
-
-    for (var i = 0; i < 5; i++)
-        $("#listAddressEdit").append(`<option class="listAddressOptionEdit${i}"></option>`);
-});
-
-inputEnderecoEdit.on('input', () => {
-    const data = searchAddressEdit();
-    data.then(function(result) {
-        if (inputEnderecoEdit.val())
-            if (!(result.find(element => element.place_name == inputEnderecoEdit.val())))
-                for (var i = 0; i < 5; i++)
-                    $(`.listAddressOptionEdit${i}`).html(`${result[i].place_name}`);
-    })
-});
-
-const searchAddressEdit = async function() {
-    const query = await fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${inputEnderecoEdit.val()}.json?country=br&language=pt&access_token=pk.eyJ1Ijoibmlrb2xhc2xvdXJldCIsImEiOiJja3Z5MWF5aTQ5djUyMnVxMXpwZHFtY3p3In0.tmhesiuf4EmWuiptIuhaAg`, { method: "GET" }
-    );
-    const json = await query.json();
-    const data = json.features;
-
-    return data;
-}
-
-function insertAddress(endereco) {
-    const data = searchAddress();
-    data.then(function(result) {
-        //Descobrir qual o id da pergunt
-        const address = result.find(element => element.place_name = inputEndereco.val());
-
-        let coordenadas = address.geometry;
-
-        let newAddress = {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": coordenadas.coordinates
-            },
-            "properties": {
-                "name": endereco.name,
-                "category": endereco.category,
-                "description": endereco.description,
-                "phoneFormatted": endereco.phoneFormatted,
-                "address": endereco.address,
-                "open": endereco.open,
-                "close": endereco.close,
-                "site": endereco.site,
-                "id": endereco.id
-            }
-        }
-
-        // Insere o novo objeto no array
-        stores.features.push(newAddress);
-
-        // Atualiza os dados no Local Storage
-        localStorage.setItem('db_address', JSON.stringify(stores));
-    })
-}
-
-function updateAddress(id, endereco) {
-    const data = searchAddressEdit();
-    data.then(function(result) {
-        // Localiza o indice do objeto a ser alterado no array a partir do seu ID
-        const features = stores.features;
-        const propertiesIndex = features[id].properties;
-        const geometry = features[id].geometry;
-
-        //Encontra as coordenadas do enderço pesquisado
-        const address = result.find(element => element.place_name = inputEnderecoEdit.val());
-        const coordenadas = address.geometry;
-
-        // Altera os dados do objeto no array
-        geometry.coordinates = coordenadas.coordinates,
-            propertiesIndex.name = endereco.name,
-            propertiesIndex.category = endereco.category,
-            propertiesIndex.description = endereco.description,
-            propertiesIndex.phoneFormatted = endereco.phoneFormatted,
-            propertiesIndex.address = endereco.address,
-            propertiesIndex.open = endereco.open,
-            propertiesIndex.close = endereco.close,
-            propertiesIndex.site = endereco.site;
-
-        console.log(propertiesIndex)
-
-        // Atualiza os dados no Local Storage
-        localStorage.setItem('db_address', JSON.stringify(stores));
-    })
-}
-
-function deleteAddress(id) {
-    //Deleta todo o Array selecionado
-    stores.features.splice(id, 1);
-
-    // Atualiza os dados no Local Storage
-    localStorage.setItem('db_address', JSON.stringify(stores));
-}
-
-function toggleSidebar() {
-    const btnSidebar = document.getElementById('minimizer');
-    const sidebar = document.querySelector('.sidebar');
-
-    btnSidebar.classList.toggle('block');
-    sidebar.classList.toggle('hidden');
-    sidebar.classList.toggle('block');
-}
-
 function showSidebar() {
     const sidebar = document.querySelector('#lateralMenu');
     const btnCloseSidebar = document.querySelector('#closeMobile');
-    const btnAddAddress = document.querySelector("#addAddress");
     const allMarker = document.querySelectorAll(".marker");
     const allPopUpContent = document.querySelectorAll('.mapboxgl-popup-content p');
 
@@ -432,8 +290,6 @@ function showSidebar() {
         sidebar.classList.add('block');
         btnCloseSidebar.classList.remove('hidden');
         btnCloseSidebar.classList.add('block');
-        btnAddAddress.classList.remove('block');
-        btnAddAddress.classList.add('hidden');
     }
 }
 
@@ -441,7 +297,6 @@ function hideMenuLateral() {
     const btnSidebar = document.getElementById('minimizer');
     const sidebar = document.querySelector('#lateralMenu');
     const btnCloseSidebar = document.querySelector('#closeMobile');
-    const btnAddAddress = document.querySelector("#addAddress");
     const marker = document.querySelector(".marker.active");
     const popUpContent = document.querySelector('.mapboxgl-popup-content p.active');
     const nav = document.getElementById("nav");
@@ -452,8 +307,6 @@ function hideMenuLateral() {
         btnSidebar.classList.add('hidden');
         btnCloseSidebar.classList.remove('block');
         btnCloseSidebar.classList.add('hidden');
-        btnAddAddress.classList.remove('hidden');
-        btnAddAddress.classList.add('block');
     }
 
     if (nav.className == 'active')
@@ -462,4 +315,13 @@ function hideMenuLateral() {
 
     popUpContent.classList.remove('active');
     marker.classList.remove('active');
+}
+
+function toggleSidebar() {
+    const btnSidebar = document.getElementById('minimizer');
+    const sidebar = document.querySelector('.sidebar');
+
+    btnSidebar.classList.toggle('block');
+    sidebar.classList.toggle('hidden');
+    sidebar.classList.toggle('block');
 }
