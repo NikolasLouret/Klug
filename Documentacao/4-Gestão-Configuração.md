@@ -21,9 +21,10 @@ O projeto segue a seguinte convenção para o nome de branchs:
 Quanto à gerência de issues, o projeto adota a seguinte convenção para
 etiquetas:
 
-- `bugfix`: uma funcionalidade encontra-se com problemas
-- `enhancement`: uma funcionalidade precisa ser melhorada
-- `feature`: uma nova funcionalidade precisa ser introduzida
+- `aprimoramento`: a funcionalidade deve ainda ser otimizada e integrada
+- `futura funcionalidade`: a entrega da funcionalidade ainda será efetuada
+- `nomes`: nome da cada integrante responsável pela entrega
+- `sprint`: a qual entrega aquele artefato se refere
 
 > Discuta como a configuração do projeto foi feita na ferramenta de
 > versionamento escolhida. Exponha como a gerência de tags, merges,
