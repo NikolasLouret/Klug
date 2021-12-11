@@ -46,23 +46,33 @@ como últimos ajustes no projeto e transcrição para a documentação no GitHub
 
 ##
 
-|               ENTREGAS DA SPRINT 2                  |                  Nome                    |
-| --------------------------------------------------- | ---------------------------------------- |
-|   Criação de avisos e marcação de áreas perigosas   | Daniel Jost Andrade                      |
-|   Cadastro de novos usuários e login                | Frederico dos Santos Ferreira de Andrade |
-|   Criação e filtragem de rotas                      | Igor de Oliveira Martins dos Santos      |
-|   Criação da página de suporte                      | Nikolas Augusto Vieira Louret            |
+|               ENTREGAS DA SPRINT 2                   |                  Nome                    |
+| ---------------------------------------------------- | ---------------------------------------- |
+|   1- Criação de avisos e marcação de áreas perigosas | Daniel Jost Andrade                      |
+|   2- Cadastro de novos usuários e login              | Frederico dos Santos Ferreira de Andrade |
+|   3- Criação e filtragem de rotas                    | Igor de Oliveira Martins dos Santos      |
+|   4- Criação da página de suporte                    | Nikolas Augusto Vieira Louret            |
+
+- Detalhes das entregas da sprint 2:
+1- Página destinada para marcar e mostrar as áreas sinalizadas como perigosas no mapa;
+2- Cadastro do perfil do usuário no sistema para efetuar o login futuramente;
+3- Criar rotas e filtrar tipos de rotas que passam por determinados locais indesejados ou possibilitar que o usuário escolha o tipo de rota desejada. Ex.: rotas que evitem locais mais movimentados;
+4- Tela destinada para os usuários mandarem os principais problemas encontrados no site, além de tirar dúvidas sobre determinada funcionalidade.
 
 ##
 
 |          ENTREGAS DA SPRINT 3          |                  Nome                    |
 | -------------------------------------- | ---------------------------------------- |
-|   Marcadores no mapa                   | Daniel Jost Andrade                      |
-|   Perfil do Usuário                    | Frederico dos Santos Ferreira de Andrade |
-|   Benefícios de pontos                 | Igor de Oliveira Martins dos Santos      |
-|   Cadastro de endereço de empresas     | Nikolas Augusto Vieira Louret            |
+|  1- Marcadores no mapa                 | Daniel Jost Andrade                      |
+|  2- Perfil do Usuário                  | Frederico dos Santos Ferreira de Andrade |
+|  3- Benefícios de pontos               | Igor de Oliveira Martins dos Santos      |
+|  4- Cadastro de endereço de empresas   | Nikolas Augusto Vieira Louret            |
 
-
+- Detalhes das entregas da sprint 3:
+1- Criar marcadores e avisos no mapa que serão visíveis pelos outros usuários;
+2- Além da possibilidade de edição dos dados do perfil do usuário, haverá uma área com os dados do usuário coletados pelo site, como, pontos acumulados, feedbacks e perguntas na área de comunidade no suporte;
+3- Página em que o usuário poderá gastar os pontos acumulados, a partir do uso do App/Web e suas funcionalidades (criar rotas e marcadores no mapa, enviar feedbacks, etc), com diversos benefícios e parcerias de outros serviços terceiros;
+4- Cadastrar novos empreendimentos que ficarão visíveis como marcadores no mapa, e que, ao clicadas, mostrarão mais informações da empresa, como endereço, telefone, horário de funcionamento, etc.
 
 
 ## Ferramentas
