@@ -147,9 +147,6 @@ function updatePergunta(id, pergunta) {
 
     // Atualiza os dados no Local Storage
     localStorage.setItem('db_quests', JSON.stringify(db));
-
-    // Limpa o formulario
-    $("#form-perguntas-moda")[0].reset();
 }
 
 function updateResposta(classNome, resposta, respId) {
@@ -163,9 +160,6 @@ function updateResposta(classNome, resposta, respId) {
 
     // Atualiza os dados no Local Storage
     localStorage.setItem('db_quests', JSON.stringify(db));
-
-    // Limpa o formulario
-    $("#form-RespostaEdit-modal")[0].reset();
 }
 
 function deletePergunta(classNome) {
