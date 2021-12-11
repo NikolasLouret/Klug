@@ -232,7 +232,7 @@ function apagarResp(classNome, respId) {
 function editarModal() {
     // Preenche os campos do modal para possível edição
     $("#inputNomeModal").val($("#show-p1-pergunta").text());
-    $("#inputTituloModal").val($("#show-tituloPergunta").text());
+    $("#inputTituloModal").val($("#tituloPergunta").text());
     $("#inputProblemaModal").val($("#show-p2-pergunta").text());
 
     const btnConfirmarEdicao = document.querySelector('#confirmar-alteracao');
