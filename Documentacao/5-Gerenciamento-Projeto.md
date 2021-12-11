@@ -54,6 +54,7 @@ como últimos ajustes no projeto e transcrição para a documentação no GitHub
 |   4- Criação da página de suporte                    | Nikolas Augusto Vieira Louret            |
 
 - Detalhes das entregas da sprint 2:
+
 1- Página destinada para marcar e mostrar as áreas sinalizadas como perigosas no mapa;
 2- Cadastro do perfil do usuário no sistema para efetuar o login futuramente;
 3- Criar rotas e filtrar tipos de rotas que passam por determinados locais indesejados ou possibilitar que o usuário escolha o tipo de rota desejada. Ex.: rotas que evitem locais mais movimentados;
@@ -69,6 +70,7 @@ como últimos ajustes no projeto e transcrição para a documentação no GitHub
 |  4- Cadastro de endereço de empresas   | Nikolas Augusto Vieira Louret            |
 
 - Detalhes das entregas da sprint 3:
+
 1- Criar marcadores e avisos no mapa que serão visíveis pelos outros usuários;
 2- Além da possibilidade de edição dos dados do perfil do usuário, haverá uma área com os dados do usuário coletados pelo site, como, pontos acumulados, feedbacks e perguntas na área de comunidade no suporte;
 3- Página em que o usuário poderá gastar os pontos acumulados, a partir do uso do App/Web e suas funcionalidades (criar rotas e marcadores no mapa, enviar feedbacks, etc), com diversos benefícios e parcerias de outros serviços terceiros;
