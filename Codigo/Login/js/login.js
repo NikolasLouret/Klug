@@ -61,8 +61,7 @@ function logoutUser() {
 }
 
 function addUser(nome, sobrenome, senha, email) {
-    console.log("Dentro da função")
-        // Cria um objeto de usuario para o novo usuario 
+    // Cria um objeto de usuario para o novo usuario 
     let newId = generateUUID();
     let usuario = { "id": newId, "nome": nome, "senha": senha, "sobrenome": sobrenome, "email": email };
 

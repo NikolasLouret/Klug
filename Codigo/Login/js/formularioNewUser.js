@@ -1,7 +1,6 @@
 var link = JSON.parse(localStorage.getItem('link'));
 
 function salvaLogin(event) {
-    event.preventDefault();
     //Faz a verificação individual de cada campo do formulário
     validacaoForm();
 
@@ -20,7 +19,6 @@ function salvaLogin(event) {
 
     // Adiciona o usuário no banco de dados
     addUser(nome, sobrenome, senha, email);
-
 }
 
 function linkBtnEntrar() {
