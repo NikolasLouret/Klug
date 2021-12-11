@@ -1,4 +1,5 @@
 const db = JSON.parse(localStorage.getItem('db_quests'));
+let oneTime = true;
 
 function loadQuestions(user) {
     // Inicializa a variável para contar a quantidade de perguntas feitas pelo usuário
@@ -40,12 +41,15 @@ function loadQuestions(user) {
                 }
 
             } else {
-                const tituloPergs = document.querySelector('.perg');
-                const mnsgPergs = document.createElement('p');
-                mnsgPergs.className = 'mnsgemRepos';
-                mnsgPergs.innerText = 'Você não tem perguntas';
+                if (oneTime) {
+                    const tituloPergs = document.querySelector('.perg');
+                    const mnsgPergs = document.createElement('p');
+                    mnsgPergs.className = 'mnsgemRepos';
+                    mnsgPergs.innerText = 'Você não tem perguntas';
 
-                tituloPergs.appendChild(mnsgPergs);
+                    tituloPergs.appendChild(mnsgPergs);
+                    oneTime = false;
+                }
             }
         }
     } else {
@@ -60,6 +64,9 @@ function loadQuestions(user) {
     // Mostra a quantidade de perguntas e respostas que o usuário já fez
     document.querySelector('.quantQuestions').innerText = quantQuestions;
 }
+
+oneTime = true;
+
 
 function loadAnswers(user) {
     // Inicializa a variável para contar a quantidade de perguntas feitas pelo usuário
@@ -90,12 +97,15 @@ function loadAnswers(user) {
                     }
                 }
             } else {
-                const tituloResps = document.querySelector('.resps');
-                const mnsgResps = document.createElement('p');
-                mnsgResps.className = 'mnsgemRepos';
-                mnsgResps.innerText = 'Você não tem respostas';
+                if (oneTime) {
+                    const tituloResps = document.querySelector('.resps');
+                    const mnsgResps = document.createElement('p');
+                    mnsgResps.className = 'mnsgemRepos';
+                    mnsgResps.innerText = 'Você não tem respostas';
 
-                tituloResps.appendChild(mnsgResps);
+                    tituloResps.appendChild(mnsgResps);
+                    oneTime = false;
+                }
             }
         }
     } else {
