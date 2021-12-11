@@ -16,7 +16,7 @@ para a realização final do trabalho.
 
 ## Processo
 
-> - SPRINT 1
+- SPRINT 1
 O grupo, por meio de reuniões na plataforma Google Meet e gerenciamento no Miro, implementou o design thinking. 
 Esse processo de idealização durou aproximadamente 1 mês, sendo dividido em semanas:
 
