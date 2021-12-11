@@ -446,20 +446,22 @@ function hideMenuLateral() {
     const popUpContent = document.querySelector('.mapboxgl-popup-content p.active');
     const nav = document.getElementById("nav");
 
-    if (sidebar.className != 'hidden') {
+    if (!sidebar.classList.contains('hidden')) {
         sidebar.classList.remove('block');
         sidebar.classList.add('hidden');
-        btnSidebar.classList.add('hidden');
         btnCloseSidebar.classList.remove('block');
         btnCloseSidebar.classList.add('hidden');
-        btnAddAddress.classList.remove('hidden');
-        btnAddAddress.classList.add('block');
+
+        if (marker)
+            marker.classList.remove('active');
+
+        if (popUpContent)
+            popUpContent.classList.remove('active');
+
+        if (btnSidebar)
+            btnSidebar.classList.add('hidden');
     }
 
     if (nav.className == 'active')
         nav.classList.remove('active');
-
-
-    popUpContent.classList.remove('active');
-    marker.classList.remove('active');
 }
