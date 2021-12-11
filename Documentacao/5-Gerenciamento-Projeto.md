@@ -13,7 +13,6 @@ para a realização final do trabalho.
 |   Desenvolvedor   | Frederico dos Santos Ferreira de Andrade |
 |   Desenvolvedor   | Igor de Oliveira Martins dos Santos      |
 |   Desenvolvedor   | Nikolas Augusto Vieira Louret            |
-|   Desenvolvedor   | Rafael Fernandino Vitoretti              |
 
 ## Processo
 
