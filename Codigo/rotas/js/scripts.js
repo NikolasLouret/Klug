@@ -81,6 +81,10 @@ let oneTime = true;
 
 function criarRota() {
     if (oneTime) {
+        // Muda a aba do site
+        const tituloAba = document.querySelector('#tituloAba');
+        tituloAba.innerText = "KLUG - Criar Rota";
+
         // adiciona o botão de encontrar a localização do usuário
         map.addControl(
             new mapboxgl.GeolocateControl({

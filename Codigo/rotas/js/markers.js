@@ -121,6 +121,9 @@ $(document).ready(function() {
         const nav = document.getElementById("nav");
         nav.classList.toggle('active');
     };
+
+    const tituloAba = document.querySelector('#tituloAba');
+    tituloAba.innerText = "KLUG - Mapa";
 })
 
 function addMarkers() {
