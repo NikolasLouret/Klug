@@ -2,8 +2,11 @@
 var user = JSON.parse(localStorage.getItem('usuarioCorrente'));
 
 window.addEventListener('load', function() {
+    // Ativa as funções
     perfil(user);
     exibePerfil(user);
+    loadQuestions(user);
+    loadAnswers(user);
 
     document.querySelector('#tiuloAba').innerText = `Perfil - ${user.nome} ${user.sobrenome}`;
 });
@@ -61,7 +64,9 @@ function exibePerfil(user) {
 function toggleMenu() {
     const nav = document.getElementById("nav");
     const main = document.querySelector(".main");
+    const footer = document.querySelector(".footer");
 
     nav.classList.toggle('active');
     main.classList.toggle('active');
+    footer.classList.toggle('active');
 }

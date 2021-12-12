@@ -86,6 +86,7 @@ var db_perguntas = {
 var db = JSON.parse(localStorage.getItem('db_quests'));
 if (!db) {
     db = db_perguntas;
+    localStorage.setItem('db_quests', JSON.stringify(db));
 }
 
 var user = JSON.parse(localStorage.getItem('usuarioCorrente'));
@@ -107,6 +108,9 @@ function insertPergunta(userId, pergunta) {
 
     // Atualiza os dados no Local Storage
     localStorage.setItem('db_quests', JSON.stringify(db));
+
+    // Limpa o formulario
+    $("#form-perguntas")[0].reset();
 }
 
 function insertResp(classNome, resposta, userId, newDate) {
@@ -126,6 +130,9 @@ function insertResp(classNome, resposta, userId, newDate) {
 
     // Atualiza os dados no Local Storage
     localStorage.setItem('db_quests', JSON.stringify(db));
+
+    // Limpa o formulario
+    $("#form-addresposta-modal")[0].reset();
 }
 
 

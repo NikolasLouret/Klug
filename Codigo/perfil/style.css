@@ -25,6 +25,10 @@ html {
     padding: 60px 0;
 }
 
+.minhasPergResps {
+    padding: 100px 0 0;
+}
+
 
 /* Menu */
 
@@ -206,6 +210,314 @@ button[type=button]:hover {
     box-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
 }
 
+
+/* Minhas Perguntas */
+
+.questContent {
+    margin-top: 30px;
+    padding: 0;
+    list-style: none;
+}
+
+.perg {
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.perg h2 {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.questContent li {
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    background: #fafafa;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, .2);
+    padding: 20px 30px;
+    margin-top: 30px;
+    transition: all .2s;
+}
+
+.questContent li a {
+    color: #222;
+    text-decoration: none;
+}
+
+.questContent li:hover {
+    border-bottom: 2px solid #1461ff;
+    transform: translateY(-7px);
+}
+
+.questContent li:hover .tituloPergunta {
+    color: #1461ff;
+}
+
+.tituloPergunta {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.tituloData {
+    display: flex;
+    align-items: center;
+    margin: 0 0 15px;
+}
+
+span.data {
+    font-size: 13px;
+    margin-left: 15px;
+    font-style: italic;
+    transition: all .2s;
+}
+
+.questContent li:hover span.data {
+    color: red;
+}
+
+.p1-pergunta {
+    margin-top: -3px;
+    font-size: 13px;
+}
+
+.p2-pergunta {
+    margin: 10px 0 0;
+    font-size: 16px;
+}
+
+
+/* Respostas */
+
+.resps {
+    margin-top: 50px;
+}
+
+.resps h2 {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.respContent {
+    padding: 0;
+    margin-top: 30px;
+}
+
+.respContent li {
+    list-style: none;
+    border: none;
+    border-radius: 15px;
+    background: #fafafa;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, .2);
+    padding: 20px 30px;
+    margin-top: 30px;
+    transition: all .2s;
+}
+
+.tituloData {
+    display: flex;
+    align-items: center;
+    margin: 0 0 15px;
+}
+
+span.data {
+    font-size: 13px;
+    margin-left: 15px;
+    font-style: italic;
+    transition: all .2s;
+}
+
+h4.nomeUser {
+    margin: 0;
+}
+
+.respContent li:hover {
+    cursor: pointer;
+    border-bottom: 2px solid rgb(0, 163, 0);
+    transform: translateY(-7px);
+}
+
+.respContent li:hover .nomeUser {
+    color: rgb(0, 163, 0);
+}
+
+.respContent li:hover .data {
+    color: red;
+}
+
+.nomeUser {
+    font-size: 16px;
+    font-weight: 600;
+    transition: all .2s;
+}
+
+.contentResp {
+    margin: 0;
+}
+
+.mnsgemRepos {
+    font-size: 15px;
+    font-style: italic;
+    text-align: center;
+}
+
+
+/* Inicio Rodapé */
+
+footer {
+    margin-top: 50px;
+    width: 100%;
+    background: linear-gradient( -45deg, rgb(88, 195, 255) 10%, rgb(0, 77, 230) 50%, rgb(0, 59, 177) 100%);
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, .2);
+}
+
+.principais-topicos {
+    padding: 15px 30%;
+}
+
+.final-footer {
+    width: 70%;
+    margin: 10px auto 0;
+}
+
+div.logo-redes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 5px 0;
+    margin: 0;
+    border-bottom: 1px solid #fafafa;
+}
+
+.logo-footer a,
+.logo-footer a:hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    gap: 5px;
+    color: #fafafa;
+}
+
+#letra-rodape {
+    font-family: 'Intro';
+    color: #fafafa;
+    font-size: 13px;
+}
+
+#logo-rodape {
+    width: 20px;
+}
+
+#indicador-pagina-rodape {
+    font-size: 13px;
+    color: #fafafa;
+}
+
+.redes-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+
+#siga-nos {
+    margin-right: 5px;
+    font-size: 10px;
+    color: #fafafa;
+}
+
+.redes-footer i {
+    color: #fafafa;
+    width: 20px;
+}
+
+.copyright {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 5px;
+    padding: 0;
+}
+
+.copyright-texto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.copyright-texto p {
+    color: #fafafa;
+    font-size: 13px;
+}
+
+.pais {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.texto-expansivo {
+    font-size: 1rem;
+}
+
+.editar-rotas,
+.personalizar-rotas,
+.explorar-o-mapa {
+    margin-top: 20px;
+    border: 1px solid #fafafa;
+    border-radius: 10px 10px;
+}
+
+.titulo-rodape {
+    margin: 30px 0 20px;
+    font-weight: 600;
+    color: #fafafa;
+}
+
+.btn {
+    width: 100%;
+    height: 40px;
+}
+
+#botao-principais-topicos {
+    color: #fafafa;
+    text-align: left;
+}
+
+#botao-principais-topicos:focus {
+    box-shadow: none;
+}
+
+#icone-dropdonw {
+    float: right;
+}
+
+#texto-expansivo {
+    color: #fafafa;
+    background: none;
+    border: none;
+}
+
+.pais p {
+    color: #fafafa;
+    text-align: right;
+    font-size: 14px;
+}
+
+#menu i,
+#menu box-icon {
+    display: none;
+}
+
+
+/* Fim Rodapé */
+
+
+/* Mobile */
+
 @media (max-width: 1000px) {
     /* Menu */
     .header {
@@ -371,6 +683,92 @@ button[type=button]:hover {
         margin: 30px auto 50px;
         font-size: 13px !important;
     }
+    /* Área perguntas */
+    .perg {
+        padding-bottom: 30px;
+        border-bottom: 1px solid rgba(0, 0, 0, .2);
+    }
+    .minhasPergResps {
+        width: 95%;
+        margin: 0 auto;
+    }
+    #p1 {
+        margin: 10px 0;
+        padding: 0;
+        font-weight: normal;
+        font-size: 23px;
+        color: #1a1919;
+    }
+    #p2 {
+        margin: 0;
+        padding: 0;
+        font-weight: normal;
+        font-size: 18px;
+        color: #1a1919;
+    }
+    .tituloPergunta {
+        font-size: 17px;
+        font-weight: 600;
+        margin: 0;
+        color: #1461ff;
+    }
+    .hudBtns {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .tituloData {
+        flex-direction: column;
+        align-items: start !important;
+    }
+    .questContent li {
+        border-bottom: 2px solid #1461ff !important;
+    }
+    /* Área Respostas */
+    .resps {
+        margin-top: 30px;
+    }
+    .respContent li {
+        border-bottom: 2px solid rgb(0, 163, 0) !important;
+    }
+    .nomeUser {
+        color: rgb(0, 163, 0);
+    }
+    .data {
+        margin: 10px 0 0 !important;
+        color: red;
+    }
+    /* Rodapé */
+    .principais-topicos {
+        padding: 20px 10% !important;
+    }
+    .final-footer {
+        width: 90% !important;
+        margin: 0 auto;
+    }
+    .logo-redes {
+        display: none;
+    }
+    .copyright {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        padding: 0 5%;
+        margin-bottom: 30px;
+    }
+    .copyright-texto p {
+        text-align: center;
+        font-size: 13px;
+    }
+    div.logo-redes {
+        display: none !important;
+    }
+    #linha-footer {
+        display: none;
+    }
+    .pais {
+        display: none !important;
+    }
 }
 
 @media (min-width: 1001px) and (max-width: 1400px) {
@@ -388,5 +786,40 @@ button[type=button]:hover {
     }
     .infos div {
         font-size: 13px;
+    }
+    /* Área Perguntas */
+    .tituloPergunta {
+        font-size: 17px;
+        font-weight: 600;
+        margin: 0;
+    }
+    .hudBtns {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+    }
+    .hudBtns button {
+        margin-left: 20px !important;
+    }
+    .questContent li {
+        border-bottom: 2px solid #1461ff !important;
+    }
+    .tituloPergunta {
+        color: #1461ff;
+    }
+    /* Área Respostas */
+    .respContent li {
+        border-bottom: 2px solid rgb(0, 163, 0) !important;
+    }
+    .nomeUser {
+        color: rgb(0, 163, 0);
+    }
+    .data {
+        margin-left: 10px !important;
+        color: red;
+    }
+    /* Rodapé */
+    .principais-topicos {
+        padding: 20px 10% !important;
     }
 }

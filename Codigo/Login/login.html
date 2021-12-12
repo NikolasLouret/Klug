@@ -6,126 +6,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./images/icon.svg">
-    <title>Login</title>
+    <title>Login - KLUG</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/c89ded80b6.js" crossorigin="anonymous"></script>
+
+    <!-- Boxicons -->
+    <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
     <!-- Arquivo CSS -->
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="./login.css">
 </head>
 
-<body onload="start()">
-    <div class="container login">
-        <div class="row login-card">
-            <div id="login-row" class="d-flex flex-lg-row flex-column-reverse">
-                <div id="login-column" class="col-md-10">
-                    <div id="login-box1" class="col-md-10">
-                        <form id="login-form1" class="form" method="post">
-                            <h3 class="text-center text-info">Login</h3>
-                            <div class="form-group">
-                                <label for="username" class="text-info">Usuário</label><br>
-                                <input type="text" name="username" id="username" class="form-control" onfocus="linkBtnEntrar()" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="text-info">Senha</label><br>
-                                <div class="senha">
-                                    <input type="password" name="password" id="password" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="row botoesBaixo col-md-12">
-                                <div class="row newUser col-md-10">
-                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#loginModal">Novo usuario</button>
-                                </div>
-                                <div class="form-group text-right">
-                                    <div class="row submit">
-                                        <a href="" id="btn-entrar"><button type="button" name="submit" class="btn btn-info btn-md">Entrar</button></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="row klug-info">
-                    <div class="d-flex flex-lg-row flex-column-reverse">
-                        <div id="card card2" class="col-md-12">
-                            <div id="card-direita" class="col-md-12">
-                                <div class="row imagem-klug">
-                                    <img id="logo" src="images/Logo-Klug-3-branco.svg">
-                                </div>
-                                <div class="row slogan">
-                                    <strong>O MELHOR CAMINHO PARA A MELHOR PESSOA</strong>
-                                </div>
-                                <div class="row pergunta">
-                                    <p><strong>VOCÊ JÁ POSSUI UM CADASTRO?</strong></p>
-                                </div>
-                                <div class="row mobile">
-                                    <a href=#login-column><button type="button" class="btn btn-sim">SIM</button></a>
-                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#loginModal">NÃO</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<body>
+    <img src="./images/Logo-Klug-1-branco.svg" alt="logo" class="logo">
+    <div class="loginContent">
+        <form id="loginForm" class="form">
+            <h3>LOGIN</h3>
+            <div class="form-group">
+                <input type="text" name="username" id="username" class="form-control" placeholder="Nome de Usuário" required>
             </div>
-        </div>
+            <div class="form-group">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Senha" required>
+            </div>
+            <div class="botoesBaixo">
+                <a href="" id="btn-entrar"><button type="button" name="submit" id="btnEntrar">Entrar</button></a>
+                <span class="newUser">Não tem um conta? <a href="https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/Login/newUser.html" id="newUserLink">Registrar</a></span>
+            </div>
+        </form>
     </div>
 
-
-    <!-- Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="row cabecalho">
-                        <div class="klugNovoUsuario">
-                            <img src="images/Logo-Klug-2-branco.svg">
-                        </div>
-                        <div class="close">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-body preencher">
-                    <div id="login-box2" class="col-md-12">
-                        <form id="login-form2" class="form" method="post" onsubmit="loginUser (this)">
-                            <p class="text-center text-info">Novo usuário</p>
-                            <div class="form-group">
-                                <label for="login" class="text-info">Nome</label>
-                                <input type="text" name="txt_nome" id="txt_nome" class="form-control" required>
-
-                                <label for="nome" class="text-info">Sobrenome</label>
-                                <input type="text" name="txt_sobrenome" id="txt_sobrenome" class="form-control" required>
-
-                                <label for="email" class="text-info">Email</label>
-                                <input type="text" name="txt_email" id="txt_email" class="form-control" required>
-
-                                <label for="senha" class="text-info">Senha</label>
-                                <input type="password" name="txt_senha" id="txt_senha" class="form-control" required>
-
-                                <label for="senha2" class="text-info">Confirmação de Senha</label>
-                                <input type="password" name="txt_senha2" id="txt_senha2" class="form-control" required>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" id="btn_salvar" class="btn btn-info">Salvar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <!-- Arquivos JS -->
     <script src="./js/login.js"></script>
     <script src="./js/formularioLogin.js"></script>
+    <script src="./js/validaForm.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 
 </html>

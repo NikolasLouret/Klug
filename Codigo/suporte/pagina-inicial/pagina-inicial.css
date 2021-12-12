@@ -101,6 +101,7 @@ div.suport {
     padding: 100px 0;
     margin-top: 60px;
     background: #fff !important;
+    text-align: center;
 }
 
 #titulo {
@@ -128,7 +129,7 @@ div.suport {
     width: 650px;
     border-radius: 50px;
     background-color: #fff;
-    margin: 30px auto 0;
+    margin: 30px auto;
     display: flex;
     align-items: center;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
@@ -168,6 +169,13 @@ input[type=text]::-webkit-outer-spin-button {
 
 input::-webkit-calendar-picker-indicator {
     opacity: 0;
+}
+
+#comunidade {
+    text-align: center;
+    margin: 30px auto 0;
+    color: #3E97FF;
+    text-decoration: none;
 }
 
 
@@ -231,7 +239,6 @@ div.texto-problemas {
 }
 
 #link-para-editar a {
-    font-family: 'Montserrat', sans-serif;
     color: #3E97FF;
     text-decoration: none;
 }
@@ -593,6 +600,112 @@ div.logo-redes {
 /* Mobile */
 
 @media (max-width: 799px) {
+    /* Pesquisa */
+    #barra-pesquisa {
+        width: 90%;
+    }
+    /* Principais Problemas */
+    div.texto-problemas {
+        display: flex;
+        flex-direction: column;
+        margin: 30px auto;
+        text-align: center;
+        width: 90%;
+    }
+    .texto-problemas a {
+        padding: 25px 0;
+        font-family: 'Montserrat', sans-serif;
+        text-decoration: none;
+        color: #3E97FF;
+        letter-spacing: 1px;
+    }
+    #lv {
+        height: 1px;
+        width: 70%;
+        border-right: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, .2);
+    }
+    /* Link Editor Rotas */
+    .icone-editar img {
+        margin: 20px auto;
+        width: 70px;
+        transform: scaleX(-1);
+    }
+    .link-editor {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .conteudo-editar h4 {
+        margin-top: 10px;
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 25px;
+    }
+    #texto-editar {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 17px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    #link-para-editar {
+        margin-top: 25px;
+        margin-bottom: 70px;
+        text-align: center;
+    }
+    #link-para-editar a {
+        font-size: 17px;
+        font-family: 'Montserrat', sans-serif;
+        color: #3E97FF;
+        text-decoration: none;
+    }
+    #seta {
+        padding-left: 7px;
+    }
+    /* Sobre KLUG */
+    .texto-sobre-klug {
+        width: 90%;
+    }
+    /* Fale Conosco */
+    div.formulario-fale-conosco {
+        width: 90%;
+        margin: 0 auto;
+    }
+    /* Rodapé */
+    .principais-topicos {
+        padding: 20px 10% !important;
+    }
+    .final-footer {
+        width: 90% !important;
+        margin: 0 auto;
+    }
+    .logo-redes {
+        display: none;
+    }
+    .copyright {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        padding: 0 5%;
+        margin-bottom: 30px;
+    }
+    .copyright-texto p {
+        text-align: center;
+        font-size: 13px;
+    }
+    div.logo-redes {
+        display: none !important;
+    }
+    #linha-footer {
+        display: none;
+    }
+    .pais {
+        display: none !important;
+    }
+}
+
+@media(max-width: 900px) {
     /* Menu */
     .header {
         padding: 15px 5% !important;
@@ -708,108 +821,5 @@ div.logo-redes {
     #nav.active.active #hamburguer::after {
         transform: rotate(-135deg);
         top: -6px;
-    }
-    /* Pesquisa */
-    #barra-pesquisa {
-        width: 90%;
-    }
-    /* Principais Problemas */
-    div.texto-problemas {
-        display: flex;
-        flex-direction: column;
-        margin: 30px auto;
-        text-align: center;
-        width: 90%;
-    }
-    .texto-problemas a {
-        padding: 25px 0;
-        font-family: 'Montserrat', sans-serif;
-        text-decoration: none;
-        color: #3E97FF;
-        letter-spacing: 1px;
-    }
-    #lv {
-        height: 1px;
-        width: 70%;
-        border-right: 0;
-        border-bottom: 1px solid rgba(0, 0, 0, .2);
-    }
-    /* Link Editor Rotas */
-    .icone-editar img {
-        margin: 20px auto;
-        width: 70px;
-        transform: scaleX(-1);
-    }
-    .link-editor {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .conteudo-editar h4 {
-        margin-top: 10px;
-        text-align: center;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 25px;
-    }
-    #texto-editar {
-        text-align: center;
-        margin-top: 10px;
-        font-size: 17px;
-        font-family: 'Montserrat', sans-serif;
-    }
-    #link-para-editar {
-        margin-top: 25px;
-        margin-bottom: 70px;
-        text-align: center;
-    }
-    #link-para-editar a {
-        font-size: 17px;
-        font-family: 'Montserrat', sans-serif;
-        color: #3E97FF;
-        text-decoration: none;
-    }
-    #seta {
-        padding-left: 7px;
-    }
-    /* Sobre KLUG */
-    .texto-sobre-klug {
-        width: 90%;
-    }
-    /* Fale Conosco */
-    div.formulario-fale-conosco {
-        width: 90%;
-        margin: 0 auto;
-    }
-    /* Rodapé */
-    .principais-topicos {
-        padding: 20px 10% !important;
-    }
-    .final-footer {
-        width: 90% !important;
-        margin: 0 auto;
-    }
-    .logo-redes {
-        display: none;
-    }
-    .copyright {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        padding: 0 5%;
-        margin-bottom: 30px;
-    }
-    .copyright-texto p {
-        text-align: center;
-        font-size: 13px;
-    }
-    div.logo-redes {
-        display: none !important;
-    }
-    #linha-footer {
-        display: none;
-    }
-    .pais {
-        display: none !important;
     }
 }

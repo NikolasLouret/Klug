@@ -614,7 +614,7 @@ a:hover {
         margin-top: -2px;
         display: block;
         width: 20px;
-        border-top: 1x solid;
+        border-top: 1px solid #222;
         color: #222;
         position: absolute;
         z-index: 200;
@@ -633,7 +633,8 @@ a:hover {
         position: relative;
     }
     #nav.active #hamburguer {
-        border-top-color: transparent;
+        z-index: 500;
+        border-top: none;
     }
     #nav.active #hamburguer::before {
         transform: rotate(135deg);

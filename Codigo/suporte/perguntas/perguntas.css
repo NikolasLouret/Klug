@@ -149,7 +149,7 @@ div.modal-body {
 #confirmar-alteracao:hover,
 #responder:hover,
 #btnApagarResposta:hover,
-#btnConfirmarEdicaoRespost:hover {
+#btnConfirmarEdicaoResposta:hover {
     background-color: #fafafa;
     color: #1461ff;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, .2);
@@ -845,6 +845,101 @@ div.logo-redes {
     div.hudRodape button {
         width: 100px;
     }
+    /* Área perguntas */
+    div.conteudo {
+        margin: 0 auto;
+        padding: 20px 5%;
+    }
+    .instrucoes>h2 {
+        font-weight: bold;
+        font-size: 30px;
+        color: #1a1919;
+        padding: 0;
+        margin: 0;
+    }
+    #p1 {
+        margin: 10px 0;
+        padding: 0;
+        font-weight: normal;
+        font-size: 23px;
+        color: #1a1919;
+    }
+    #p2 {
+        margin: 0;
+        padding: 0;
+        font-weight: normal;
+        font-size: 18px;
+        color: #1a1919;
+    }
+    #inputId {
+        display: none;
+    }
+    .tituloPergunta {
+        font-size: 17px;
+        font-weight: 600;
+        margin: 0;
+        color: #1461ff;
+    }
+    .hudBtns {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .tituloData {
+        flex-direction: column;
+        align-items: start !important;
+    }
+    #conteudo_discussao li {
+        border-bottom: 2px solid #1461ff !important;
+    }
+    /* Área Respostas */
+    .hudBtns button {
+        margin-left: 0 !important;
+    }
+    .respContent li {
+        border-bottom: 2px solid rgb(0, 163, 0) !important;
+    }
+    .nomeUser {
+        color: rgb(0, 163, 0);
+    }
+    .data {
+        margin: 10px 0 0 !important;
+        color: red;
+    }
+    /* Rodapé */
+    .principais-topicos {
+        padding: 20px 10% !important;
+    }
+    .final-footer {
+        width: 90% !important;
+        margin: 0 auto;
+    }
+    .logo-redes {
+        display: none;
+    }
+    .copyright {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        padding: 0 5%;
+        margin-bottom: 30px;
+    }
+    .copyright-texto p {
+        text-align: center;
+        font-size: 13px;
+    }
+    div.logo-redes {
+        display: none !important;
+    }
+    #linha-footer {
+        display: none;
+    }
+    .pais {
+        display: none !important;
+    }
+}
+
+@media (max-width: 900px) {
     /* Menu */
     .header {
         padding: 15px 5% !important;
@@ -960,98 +1055,6 @@ div.logo-redes {
     #nav.active.active #hamburguer::after {
         transform: rotate(-135deg);
         top: -6px;
-    }
-    /* Área perguntas */
-    div.conteudo {
-        margin: 0 auto;
-        padding: 20px 5%;
-    }
-    .instrucoes>h2 {
-        font-weight: bold;
-        font-size: 30px;
-        color: #1a1919;
-        padding: 0;
-        margin: 0;
-    }
-    #p1 {
-        margin: 10px 0;
-        padding: 0;
-        font-weight: normal;
-        font-size: 23px;
-        color: #1a1919;
-    }
-    #p2 {
-        margin: 0;
-        padding: 0;
-        font-weight: normal;
-        font-size: 18px;
-        color: #1a1919;
-    }
-    #inputId {
-        display: none;
-    }
-    .tituloPergunta {
-        font-size: 17px;
-        font-weight: 600;
-        margin: 0;
-        color: #1461ff;
-    }
-    .hudBtns {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .tituloData {
-        flex-direction: column;
-        align-items: start !important;
-    }
-    #conteudo_discussao li {
-        border-bottom: 2px solid #1461ff !important;
-    }
-    /* Área Respostas */
-    .hudBtns button {
-        margin-left: 0 !important;
-    }
-    .respContent li {
-        border-bottom: 2px solid rgb(0, 163, 0) !important;
-    }
-    .nomeUser {
-        color: rgb(0, 163, 0);
-    }
-    .data {
-        margin: 10px 0 0 !important;
-        color: red;
-    }
-    /* Rodapé */
-    .principais-topicos {
-        padding: 20px 10% !important;
-    }
-    .final-footer {
-        width: 90% !important;
-        margin: 0 auto;
-    }
-    .logo-redes {
-        display: none;
-    }
-    .copyright {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        padding: 0 5%;
-        margin-bottom: 30px;
-    }
-    .copyright-texto p {
-        text-align: center;
-        font-size: 13px;
-    }
-    div.logo-redes {
-        display: none !important;
-    }
-    #linha-footer {
-        display: none;
-    }
-    .pais {
-        display: none !important;
     }
 }
 

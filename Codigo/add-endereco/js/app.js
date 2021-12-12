@@ -257,7 +257,6 @@ function buildLocationInfos(marker, markerId) {
         const phoneNumber = document.querySelector("#phone p.text");
         phoneNumber.innerText = `${marker.properties.phoneFormatted}`;
     }
-    //console.log(`id em buildLocationList ${marker.properties.id}`);
 
     $('#changeInfos').button().click(function() {
         //console.log("id em descobirirSidebar quando o btn editar foi clicado " + id);
@@ -447,20 +446,24 @@ function hideMenuLateral() {
     const popUpContent = document.querySelector('.mapboxgl-popup-content p.active');
     const nav = document.getElementById("nav");
 
-    if (sidebar.className != 'hidden') {
-        sidebar.classList.remove('block');
-        sidebar.classList.add('hidden');
-        btnSidebar.classList.add('hidden');
-        btnCloseSidebar.classList.remove('block');
-        btnCloseSidebar.classList.add('hidden');
+    if (!sidebar.classList.contains('hidden')) {
         btnAddAddress.classList.remove('hidden');
         btnAddAddress.classList.add('block');
+        sidebar.classList.remove('block');
+        sidebar.classList.add('hidden');
+        btnCloseSidebar.classList.remove('block');
+        btnCloseSidebar.classList.add('hidden');
+
+        if (marker)
+            marker.classList.remove('active');
+
+        if (popUpContent)
+            popUpContent.classList.remove('active');
+
+        if (btnSidebar)
+            btnSidebar.classList.add('hidden');
     }
 
     if (nav.className == 'active')
         nav.classList.remove('active');
-
-
-    popUpContent.classList.remove('active');
-    marker.classList.remove('active');
 }

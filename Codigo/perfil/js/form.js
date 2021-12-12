@@ -246,3 +246,97 @@ document.getElementById('profile-button').addEventListener('click', salvaPerfil)
 
 // Associar mudar senha ao botao
 document.getElementById('change-password').addEventListener('click', mudarSenha);
+
+function alterarPergunta(classNome) {
+    // Faz a verificação individual de cada campo do formulário
+    validacaoForm();
+
+    // Verfica se o formulário está preenchido corretamente
+    if (!$('#form-perguntas-modal')[0].checkValidity()) {
+        return;
+    }
+
+    // Intercepta o click do botão Alterar
+    let campoNome = $("#inputNomeModal").val();
+    let campoTitulo = $("#inputTituloModal").val();
+    let campoTexto = $("#inputProblemaModal").val();
+    let pergunta = {
+        nickname: campoNome,
+        titulo_pergunta: campoTitulo,
+        texto: campoTexto
+    }
+
+    const id = classNome.substring(14);
+
+    // Adicionar os novos dados no banco de dados
+    updatePergunta(id, pergunta);
+
+    // Recarregar a página
+    location.reload();
+}
+
+function apagarPergunta() {
+    const lineQuestion = document.querySelector('#conteudo_discussao div');
+
+    lineQuestion.onclick = function() {
+        var id = $(this).closest('[data-id]');
+        deletePergunta(id.context.className);
+    }
+
+    // Recarregar a página
+    location.reload();
+}
+
+function editarResp(classNome, respId) {
+    // Adicionar o texto da resposta no input
+    $("#inputRespostaEditModal").val($(`.${classNome} .contentResp`).text());
+
+    // Identificar o id da resposta assim q o botão confirmar for pressionado
+    const btnConfirmarEdicaoResposta = document.querySelector('#btnConfirmarEdicaoResposta');
+
+    // Evento click do botão e chamada de função
+    btnConfirmarEdicaoResposta.onclick = function() {
+        // Faz a verificação individual de cada campo do formulário
+        validacaoForm();
+
+        // Verfica se o formulário está preenchido corretamente
+        if (!$('#form-RespostaEdit-modal')[0].checkValidity()) {
+            return;
+        }
+
+        // Captura do texto da nova resposta
+        const novaResp = $("#inputRespostaEditModal").val();
+        updateResposta(classNome, novaResp, respId);
+
+        // Atualiza o conteúdo da resposta
+        document.querySelector(`.${classNome} p.contentResp`).textContent = $("#inputRespostaEditModal").val();
+    }
+
+    const btnApagar = document.querySelector('#btnApagarResposta');
+
+    btnApagar.onclick = function() {
+        apagarResp(classNome, respId);
+    }
+}
+
+function apagarResp(classNome, respId) {
+    deleteResp(classNome, respId);
+    const lineResp = document.querySelector(`.${classNome}`);
+    lineResp.remove();
+
+    const lineAnswer = document.querySelectorAll('.respContent li');
+
+    if (lineAnswer.length < 1) {
+        const tituloResps = document.querySelector('.respostas');
+        const mnsgResps = document.createElement('p');
+        mnsgResps.className = 'mnsgemRepos';
+        mnsgResps.innerText = 'Não há mais respostas';
+
+        tituloResps.appendChild(mnsgResps);
+    } else {
+        // Atribuir uma nova classe para os itens da lista
+        for (var i = 0; i < lineAnswer.length; i++) {
+            lineAnswer[i].className = `resposta-${i}`;
+        }
+    }
+}

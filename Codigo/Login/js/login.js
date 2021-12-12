@@ -1,13 +1,7 @@
-// Código JavaScript - Login Klug
-// Código fonte: https://replit.com/@rommelpuc/LoginApp
-
-
 // Página inicial de Login
 const LOGIN_URL = "login.html";
 
-
 // função para gerar códigos randômicos a serem utilizados como código de usuário
-// Fonte: https://stackoverflow.com/questions/105034/how-to-create-guid-uuid
 function generateUUID() { // Public Domain/MIT
     var d = new Date().getTime(); //Timestamp
     var d2 = (performance && performance.now && (performance.now() * 1000)) || 0; //Time in microseconds since page-load or 0 if unsupported
