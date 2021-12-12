@@ -23,7 +23,7 @@ etiquetas:
 
 > O projeto foi configurado utilizando a ferramenta Git, em que a branch `dev` era
 > utilizada como uma versão alternativa para testes e commits iniciais, e posteriormente, na branch
-> `master`, integramos todo o projeto na mesma merge.
+> `master`, integramos todo o projeto final na mesma merge.
 
 ## Hospedagem
 
