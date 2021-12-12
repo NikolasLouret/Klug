@@ -1,10 +1,16 @@
+// função que lê os dados do localStorage
 function leDados() {
+  // pega os dados do localStorage
   let strDados = localStorage.getItem("db");
+  // cria o objeto de dados
   let objDados = {};
 
+  // confere se existe algo no localStorage
   if (strDados) {
+    // caso tenha, coloca dentro da variável de dados
     objDados = JSON.parse(strDados);
   } else {
+    // caso não tenha, cria o próprio objeto com os dados
     objDados = {
       usuario: [
         {
@@ -53,31 +59,46 @@ function leDados() {
     };
   }
 
+  // mostra os dados no console
   console.log(objDados);
 
+  // chama a função que salva os dados do localStorage
   salvaDados(objDados);
 
+  // retorna o objeto, quando é chamada
   return objDados;
 }
 
+// função que salva os dados no localStorage
 function salvaDados(dados) {
+  // salva os dados passados por parâmetro no localStorage
   localStorage.setItem("db", JSON.stringify(dados));
 }
 
+// função que imprime os dados na tela
 function imprimeDados() {
+  // pega algumas informações do usuário no HTML da página
   let nomeUsuario = document.getElementById("nome-usuario");
   let fotoUsuario = document.getElementById("foto-usuario");
   let pontosUsuarios = document.getElementById("pontos-usuario");
 
+  // pega o container dos itens para troca
   let containerItens = document.getElementById("container-itens");
+
+  // declara variável que irá receber os itens
   let conteudoTroca = "";
 
+  // define o objeto de dados como o retorno da função de ler dados
   let objDados = leDados();
 
+  // coloca a frase abaixo com o nome do usuário no h1 do HTML
   nomeUsuario.innerHTML = `Olá, ${objDados.usuario[0].nome}`;
+  // define o caminho da foto do usuário como o salvo no objeto
   fotoUsuario.src = `${objDados.usuario[0].foto}`;
+  // carrega os pontos do usuário na tela
   pontosUsuarios.innerHTML = `${objDados.usuario[0].pontos} pontos`;
 
+  // executa item por item e salva dentro da variável
   for (let i = 0; i < objDados.produtosTrocas.length; i++) {
     conteudoTroca += `
             <article class="item">
@@ -90,12 +111,19 @@ function imprimeDados() {
     `;
   }
 
+  // coloca a variável no HTML da página
   containerItens.innerHTML = conteudoTroca;
 
+  // pega todos os botões da página
   let botoes = document.querySelectorAll("button");
+
+  // percorre por todos os botões da página
   for (let i = 0; i < botoes.length; i++) {
+    // adiciona um Event Listener em cada um deles
     botoes[i].addEventListener("click", function () {
+      // confere se o valor do item da a troca é maior do que o saldo do usuário
       if (objDados.produtosTrocas[i].preco > objDados.usuario[0].pontos) {
+        // caso seja, exibe uma mensagem de alerta avisando o usuário
         alert(
           "Saldo insuficiente para trocar " +
             '"' +
@@ -103,54 +131,68 @@ function imprimeDados() {
             '"'
         );
       } else {
+        // caso tenha saldo, mostra o produto e o valor dele
         alert(
           '"' +
             objDados.produtosTrocas[i].titulo +
             '"' +
-            " comprado por " +
+            " trocado por " +
             objDados.produtosTrocas[i].preco +
             " pontos"
         );
+
+        // chama a função que troca pontos, passando o objeto de dados e a posição do botão
         trocaPontos(objDados, i);
       }
     });
   }
 
+  // chama a função que verifica o saldo do usuário
   verificaSaldo(objDados, botoes);
 
+  // mostra os botões no console, apenas para controle
   console.log(botoes);
 }
 
+// função que troca os pontos
 function trocaPontos(dados, botao) {
+  // pega o valor do item a ser trocado
   let valorDescontado = dados.produtosTrocas[botao].preco;
+
+  // pega o valor de pontos que o usuário tem atualmente
   let valorAtual = dados.usuario[0].pontos;
 
+  // desconta os pontos do usuário do preço da troca
   valorAtual -= valorDescontado;
 
+  // define o valor de pontos do usuário como o novo valor
   dados.usuario[0].pontos = valorAtual;
 
+  // pega o elemento de pontos na tela
   let pontosUsuarios = document.getElementById("pontos-usuario");
+
+  // atualiza no HTML o valor de pontos do usuário
   pontosUsuarios.innerHTML = `${valorAtual} pontos`;
 
+  // chama a função que salva os dados atualizados no localStorage
   salvaDados(dados);
+
+  // chama a função que verifica o saldo do usuário
   verificaSaldo(dados);
 }
 
+// função que verifica o saldo do usuário, apenas por questões estéticas
 function verificaSaldo(dados, botoes) {
+  // pega os pontos que o usuário tem atualmente
   let pontos = dados.usuario[0].pontos;
-  let botaoAtual = botoes;
 
+  // confere se o valor dos pontos é menor do que 20 (troca mais barata)
   if (pontos < 20) {
+    // se for, define a cor do fundo do card como vermelho, apenas para layout
     document.getElementById("container-pontos").style.backgroundColor =
       "#e92929";
   }
-
-  // for (let i = 0; i < botoes.length; i++) {
-  //   if(dados.produtosTrocas[i].preco < dados.usuario[0].pontos){
-  //     botaoAtual = botoes[i];
-  //     botaoAtual.setAttribute("disabled","disabled");
-  //   }
-  // }
 }
 
+// quando todos os itens da tela terminas de ser carregados, chama a função imprimeDados
 window.addEventListener("load", imprimeDados);
