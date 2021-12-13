@@ -24,6 +24,86 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+/* Menu */
+
+.header {
+  width: 100%;
+  padding: 15px 15%;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(
+    -45deg,
+    rgba(88, 195, 255, 1) 0,
+    rgba(0, 77, 230, 1) 40%,
+    rgba(0, 59, 177, 1) 100%
+  );
+}
+
+#btn-mobile {
+  display: none;
+}
+
+#nav {
+  margin: 0 0 0 auto;
+}
+
+header a,
+#nome-perfil {
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+nav a:hover,
+#nome-perfil:hover {
+  cursor: pointer;
+  color: #fff;
+}
+
+#logo img {
+  width: 30px;
+}
+
+#logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+}
+
+#logo:hover {
+  color: #fff;
+}
+
+#nomelogo {
+  margin: 3px 5px 0 10px;
+  font-family: "Intro";
+  color: white;
+}
+
+#menu {
+  margin: 0 0 3px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+#menu a {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+#menu li i {
+  display: none;
+}
+
 header .container-header {
   display: flex;
   flex-direction: row;
