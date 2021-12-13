@@ -87,7 +87,7 @@ const PNTS_Pergunta = 25;
 const PNTS_Resposta = 15;
 
 // Caso os dados já estejam no Local Storage, caso contrário, carrega os dados iniciais
-const db = JSON.parse(localStorage.getItem('db_quests'));
+var db = JSON.parse(localStorage.getItem('db_quests'));
 if (!db) {
     db = db_perguntas;
     localStorage.setItem('db_quests', JSON.stringify(db));
