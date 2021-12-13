@@ -96,6 +96,8 @@ function addUser(nome, sobrenome, senha, email) {
     senha: senha,
     sobrenome: sobrenome,
     email: email,
+    foto: foto,
+    pontos: pontos,
   };
 
   // Insere o novo objeto no array
