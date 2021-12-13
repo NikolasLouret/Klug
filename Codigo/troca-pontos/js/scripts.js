@@ -92,11 +92,11 @@ function imprimeDados() {
   let objDados = leDados();
 
   // coloca a frase abaixo com o nome do usuário no h1 do HTML
-  nomeUsuario.innerHTML = `Olá, ${objDados.usuario[0].nome}`;
+  nomeUsuario.innerHTML = `Olá, ${objDados.nome}`;
   // define o caminho da foto do usuário como o salvo no objeto
-  fotoUsuario.src = `${objDados.usuario[0].foto}`;
+  fotoUsuario.src = `${objDados.foto}`;
   // carrega os pontos do usuário na tela
-  pontosUsuarios.innerHTML = `${objDados.usuario[0].pontos} pontos`;
+  pontosUsuarios.innerHTML = `${objDados.pontos} pontos`;
 
   // executa item por item e salva dentro da variável
   for (let i = 0; i < objDados.produtosTrocas.length; i++) {
@@ -122,7 +122,7 @@ function imprimeDados() {
     // adiciona um Event Listener em cada um deles
     botoes[i].addEventListener("click", function () {
       // confere se o valor do item da a troca é maior do que o saldo do usuário
-      if (objDados.produtosTrocas[i].preco > objDados.usuario[0].pontos) {
+      if (objDados.produtosTrocas[i].preco > objDados.pontos) {
         // caso seja, exibe uma mensagem de alerta avisando o usuário
         alert(
           "Saldo insuficiente para trocar " +
@@ -160,13 +160,13 @@ function trocaPontos(dados, botao) {
   let valorDescontado = dados.produtosTrocas[botao].preco;
 
   // pega o valor de pontos que o usuário tem atualmente
-  let valorAtual = dados.usuario[0].pontos;
+  let valorAtual = dados.pontos;
 
   // desconta os pontos do usuário do preço da troca
   valorAtual -= valorDescontado;
 
   // define o valor de pontos do usuário como o novo valor
-  dados.usuario[0].pontos = valorAtual;
+  dados.pontos = valorAtual;
 
   // pega o elemento de pontos na tela
   let pontosUsuarios = document.getElementById("pontos-usuario");
@@ -184,7 +184,7 @@ function trocaPontos(dados, botao) {
 // função que verifica o saldo do usuário, apenas por questões estéticas
 function verificaSaldo(dados, botoes) {
   // pega os pontos que o usuário tem atualmente
-  let pontos = dados.usuario[0].pontos;
+  let pontos = dados.pontos;
 
   // confere se o valor dos pontos é menor do que 20 (troca mais barata)
   if (pontos < 20) {
