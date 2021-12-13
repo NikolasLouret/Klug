@@ -5,6 +5,43 @@ function leDados() {
   // cria o objeto de dados
   let dadosUser = {};
 
+  let produtosTrocas = [
+    {
+      imagem: "./imgs/cinema.jpg",
+      titulo: "R$ 5,00 de desconto em cinemas",
+      descricao: "Tenha descontos para assistir seus filmes favoritos",
+      preco: 40,
+    },
+    {
+      imagem: "./imgs/ingresso.jpg",
+      titulo: "Sorteio par de ingressos",
+      descricao:
+        "Participe do sorteio de um par de ingressos para ver Transformers",
+      preco: 20,
+    },
+    {
+      imagem: "./imgs/gift-card-music.jpg",
+      titulo: "Gift Card de R$10",
+      descricao:
+        "Troque seus pontos por um gift card de R$10 em seu serviço de streaming de música favorito",
+      preco: 60,
+    },
+    {
+      imagem: "./imgs/bike.jpg",
+      titulo: "Desconto de R$10 em serviços de bike",
+      descricao:
+        "Troque seus pontos por desconto em serviços de mobilidade urbana que usem bikes. Além de fazer bem para a saúde, ajuda o meio ambiente.",
+      preco: 20,
+    },
+    {
+      imagem: "./imgs/pet.jpg",
+      titulo: "Banho no seu pet",
+      descricao:
+        "Troque seus pontos por um banho em seu pet. As pets shops são parceiras de nossa plataforma e irão tratar seu amigo com muito carinho.",
+      preco: 400,
+    },
+  ];
+
   // confere se existe algo no localStorage
   if (strDados) {
     // caso tenha, coloca dentro da variável de dados
@@ -20,42 +57,7 @@ function leDados() {
         },
       ],
 
-      produtosTrocas: [
-        {
-          imagem: "./imgs/cinema.jpg",
-          titulo: "R$ 5,00 de desconto em cinemas",
-          descricao: "Tenha descontos para assistir seus filmes favoritos",
-          preco: 40,
-        },
-        {
-          imagem: "./imgs/ingresso.jpg",
-          titulo: "Sorteio par de ingressos",
-          descricao:
-            "Participe do sorteio de um par de ingressos para ver Transformers",
-          preco: 20,
-        },
-        {
-          imagem: "./imgs/gift-card-music.jpg",
-          titulo: "Gift Card de R$10",
-          descricao:
-            "Troque seus pontos por um gift card de R$10 em seu serviço de streaming de música favorito",
-          preco: 60,
-        },
-        {
-          imagem: "./imgs/bike.jpg",
-          titulo: "Desconto de R$10 em serviços de bike",
-          descricao:
-            "Troque seus pontos por desconto em serviços de mobilidade urbana que usem bikes. Além de fazer bem para a saúde, ajuda o meio ambiente.",
-          preco: 20,
-        },
-        {
-          imagem: "./imgs/pet.jpg",
-          titulo: "Banho no seu pet",
-          descricao:
-            "Troque seus pontos por um banho em seu pet. As pets shops são parceiras de nossa plataforma e irão tratar seu amigo com muito carinho.",
-          preco: 400,
-        },
-      ],
+      
     };
   }
 
