@@ -12,7 +12,7 @@ function loadQuestions(user) {
             const questions = db.data[i].question;
 
             // Lista todas as perguntas do localStorage cujo id seja igual ao do usuário logado
-            if (questions && !questions.length) {
+            if (questions && questions.length) {
                 if (user != undefined) {
                     if (user.id == questions.id) {
                         $(".questContent").append(`<li class="perguntaLinha-${i}" id="${questions.id}">
@@ -79,7 +79,7 @@ function loadAnswers(user) {
             const resps = db.data[i].resp;
 
             // Lista todas as respostas de todas as perguntas do localStorage cujo id seja igual ao do usuário logado
-            if (resps && !resps.length) {
+            if (resps && resps.length) {
                 if (user != undefined) {
                     for (var j = 0; j < resps.length; j++) {
                         if (user.id == resps[j].respId) {
