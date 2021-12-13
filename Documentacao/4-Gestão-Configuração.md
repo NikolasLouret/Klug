@@ -4,7 +4,7 @@
 
 A ferramenta de controle de versão adotada no projeto foi o
 [Git](https://git-scm.com/), sendo que o [Github](https://github.com)
-foi utilizado para hospedagem do repositório `upstream`.
+foi utilizado para hospedagem do repositório `master`, que é o principal no qual o [GitHub Pages](https://pages.github.com/) carrega nosso projeto.
 
 O projeto segue a seguinte convenção para o nome de branchs:
 
@@ -19,7 +19,7 @@ etiquetas:
 - `aprimoramento`: a funcionalidade deve ainda ser otimizada e integrada
 - `futura funcionalidade`: a entrega da funcionalidade ainda será efetuada
 - `nomes`: nome da cada integrante responsável pela entrega
-- `sprint`: a qual entrega aquele artefato se refere
+- `sprint x`: a qual entrega aquele artefato se refere
 
 > O projeto foi configurado utilizando a ferramenta Git, em que a branch `dev` era
 > utilizada como uma versão alternativa para testes e commits iniciais, e posteriormente, na branch
