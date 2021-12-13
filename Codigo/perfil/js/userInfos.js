@@ -1,7 +1,8 @@
 const db = JSON.parse(localStorage.getItem('db_quests'));
-let oneTime = true;
+let oneTime;
 
 function loadQuestions(user) {
+    oneTime = true;
     // Inicializa a variável para contar a quantidade de perguntas feitas pelo usuário
     var quantQuestions = 0;
 
@@ -65,10 +66,8 @@ function loadQuestions(user) {
     document.querySelector('.quantQuestions').innerText = quantQuestions;
 }
 
-oneTime = true;
-
-
 function loadAnswers(user) {
+    oneTime = true;
     // Inicializa a variável para contar a quantidade de perguntas feitas pelo usuário
     var quantResps = 0;
 
