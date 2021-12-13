@@ -3,15 +3,15 @@ function leDados() {
   // pega os dados do localStorage
   let strDados = localStorage.getItem("usuarioCorrente");
   // cria o objeto de dados
-  let objDados = {};
+  let dadosUser = {};
 
   // confere se existe algo no localStorage
   if (strDados) {
     // caso tenha, coloca dentro da variável de dados
-    objDados = JSON.parse(strDados);
+    dadosUser = JSON.parse(strDados);
   } else {
     // caso não tenha, cria o próprio objeto com os dados
-    objDados = {
+    dadosUser = {
       usuario: [
         {
           nome: "Nícolas Carneiro",
@@ -60,13 +60,13 @@ function leDados() {
   }
 
   // mostra os dados no console
-  console.log(objDados);
+  console.log(dadosUser);
 
   // chama a função que salva os dados do localStorage
-  salvaDados(objDados);
+  salvaDados(dadosUser);
 
   // retorna o objeto, quando é chamada
-  return objDados;
+  return dadosUser;
 }
 
 // função que salva os dados no localStorage
@@ -89,23 +89,23 @@ function imprimeDados() {
   let conteudoTroca = "";
 
   // define o objeto de dados como o retorno da função de ler dados
-  let objDados = leDados();
+  let dadosUser = leDados();
 
   // coloca a frase abaixo com o nome do usuário no h1 do HTML
-  nomeUsuario.innerHTML = `Olá, ${objDados.nome}`;
+  nomeUsuario.innerHTML = `Olá, ${dadosUser.nome}`;
   // define o caminho da foto do usuário como o salvo no objeto
-  fotoUsuario.src = `${objDados.foto}`;
+  fotoUsuario.src = `${dadosUser.foto}`;
   // carrega os pontos do usuário na tela
-  pontosUsuarios.innerHTML = `${objDados.pontos} pontos`;
+  pontosUsuarios.innerHTML = `${dadosUser.pontos} pontos`;
 
   // executa item por item e salva dentro da variável
-  for (let i = 0; i < objDados.produtosTrocas.length; i++) {
+  for (let i = 0; i < dadosUser.produtosTrocas.length; i++) {
     conteudoTroca += `
             <article class="item">
-              <img src=${objDados.produtosTrocas[i].imagem} alt="Imagem ilustrativa">
-              <span>${objDados.produtosTrocas[i].titulo}</span>
-              <p>${objDados.produtosTrocas[i].descricao}</p>
-              <span>Preço: ${objDados.produtosTrocas[i].preco} pontos</span>
+              <img src=${dadosUser.produtosTrocas[i].imagem} alt="Imagem ilustrativa">
+              <span>${dadosUser.produtosTrocas[i].titulo}</span>
+              <p>${dadosUser.produtosTrocas[i].descricao}</p>
+              <span>Preço: ${dadosUser.produtosTrocas[i].preco} pontos</span>
               <button id="button">Trocar</button>
               </article>
     `;
@@ -122,33 +122,33 @@ function imprimeDados() {
     // adiciona um Event Listener em cada um deles
     botoes[i].addEventListener("click", function () {
       // confere se o valor do item da a troca é maior do que o saldo do usuário
-      if (objDados.produtosTrocas[i].preco > objDados.pontos) {
+      if (dadosUser.produtosTrocas[i].preco > dadosUser.pontos) {
         // caso seja, exibe uma mensagem de alerta avisando o usuário
         alert(
           "Saldo insuficiente para trocar " +
             '"' +
-            objDados.produtosTrocas[i].titulo +
+            dadosUser.produtosTrocas[i].titulo +
             '"'
         );
       } else {
         // caso tenha saldo, mostra o produto e o valor dele
         alert(
           '"' +
-            objDados.produtosTrocas[i].titulo +
+            dadosUser.produtosTrocas[i].titulo +
             '"' +
             " trocado por " +
-            objDados.produtosTrocas[i].preco +
+            dadosUser.produtosTrocas[i].preco +
             " pontos"
         );
 
         // chama a função que troca pontos, passando o objeto de dados e a posição do botão
-        trocaPontos(objDados, i);
+        trocaPontos(dadosUser, i);
       }
     });
   }
 
   // chama a função que verifica o saldo do usuário
-  verificaSaldo(objDados, botoes);
+  verificaSaldo(dadosUser, botoes);
 
   // mostra os botões no console, apenas para controle
   console.log(botoes);
