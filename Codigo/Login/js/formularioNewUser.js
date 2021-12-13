@@ -1,16 +1,12 @@
 var link = JSON.parse(localStorage.getItem('link'));
 
+// Verifica se não existe um nome de usuário igual no banco de dados
+var usuariosJSON = JSON.parse(localStorage.getItem('db_usuarios'));
+
 function salvaLogin(event) {
     let oneTime = true;
     //Faz a verificação individual de cada campo do formulário
     validacaoForm();
-
-    // // Verfica se o formulário está preenchido corretamente
-    if (!$('#newUserForm')[0].checkValidity()) {
-        alert('Dados incorretos');
-        event.preventDefault();
-        return;
-    }
 
     // Obtem os dados do formulário
     let usuario = document.getElementById('txt_user').value;
@@ -20,27 +16,43 @@ function salvaLogin(event) {
     let senha = document.getElementById('txt_senha').value;
     let senha2 = document.getElementById('txt_senha2').value;
 
-    // Verifica se não existe um nome de usuário igual no banco de dados
-    var usuariosJSON = JSON.parse(localStorage.getItem('db_usuarios'));
+    // Verfica se o formulário está preenchido corretamente
+    if (!$('#newUserForm')[0].checkValidity()) {
+        if (usuario.length <= 8 || usuario.length >= 25)
+            alert('Nome de usuário menor que 8 caracteres');
+        else if (senha.length <= 8 || senha.length >= 15)
+            alert('Senha menor que 8 caracteres');
+        else
+            alert('Dados incorretos');
+        event.preventDefault();
+        return;
+    }
+
+    let sim = 0;
+
     for (var i = 0; i < usuariosJSON.user.length; i++) {
         // Teste cada nome de usuario já existente com o informado polo usuário
         if (usuario != usuariosJSON.user[i].username) {
             // Adiciona o usuário no banco de dados, caso as senhas estejam corretas
-            if (senha == senha2)
+            if (senha == senha2) {
                 if (oneTime) {
                     oneTime = false;
-                    event.preventDefault();
-                    addUser(usuario, nome, sobrenome, senha, email);
-                } else {
-                    alert('As senhas não coincidem');
-                    event.preventDefault();
-                    return;
+                    sim++;
                 }
+            } else {
+                alert('As senhas não coincidem');
+                event.preventDefault();
+                return;
+            }
         } else {
             alert('Nome de usuário já exisitente');
             event.preventDefault();
             return;
         }
+    }
+
+    if (sim) {
+        addUser(usuario, nome, sobrenome, senha, email);
     }
 }
 

@@ -6,15 +6,21 @@ function processaFormLogin(event) {
     //Faz a verificação individual de cada campo do formulário
     validacaoForm();
 
-    // // Verfica se o formulário está preenchido corretamente
-    if (!$('#loginForm')[0].checkValidity()) {
-        event.preventDefault();
-        return;
-    }
-
     // Obtem os dados de login e senha a partir do formulário de login
     var username = $('#username').val();
     var password = $('#password').val();
+
+    // Verfica se o formulário está preenchido corretamente
+    if (!$('#loginForm')[0].checkValidity()) {
+        if (username.length <= 8 || username.length >= 25)
+            alert('Nome de usuário menor que 8 caracteres');
+        else if (password.length <= 8 || password.length >= 15)
+            alert('Senha menor que 8 caracteres');
+        else
+            alert('Dados incorretos');
+        event.preventDefault();
+        return;
+    }
 
     // Valida login e se estiver ok, redireciona para tela inicial da aplicação
     if (username && password) {

@@ -29,6 +29,7 @@ if (!usuarioCorrente)
 var usuariosJSON = JSON.parse(localStorage.getItem('db_usuarios'));
 if (!usuariosJSON) {
     usuariosJSON = { "user": [{ "id": "", "username": "", "nome": "", "sobrenome": "", "senha": "", "email": "", "endereco": "", "pontos": 0 }] };
+    localStorage.setItem("db_usuarios", JSON.stringify(usuariosJSON));
 }
 
 // Verifica se o login do usuário está ok e, se positivo, direciona para a página inicial
@@ -39,6 +40,7 @@ function loginUser(username, senha) {
 
         // Se encontrou login, carrega usuário corrente e salva no Session Storage
         if (username == usuario.username && senha == usuario.senha) {
+            console.log("username =", username, "senha =", senha)
             usuarioCorrente.id = usuario.id;
             usuarioCorrente.username = usuario.username;
             usuarioCorrente.nome = usuario.nome;
@@ -64,19 +66,6 @@ function logoutUser() {
     usuarioCorrente = {};
     localStorage.setItem("usuarioCorrente", JSON.stringify(usuarioCorrente));
     window.location.href = LOGIN_URL;
-}
-
-function addUser(username, nome, sobrenome, senha, email) {
-    // Cria um objeto de usuario para o novo usuario 
-    let newId = generateUUID();
-    let usuario = { "id": newId, "username": username, "nome": nome, "senha": senha, "sobrenome": sobrenome, "email": email, "pontos": 0 };
-
-    // Insere o novo objeto no array
-    console.log(usuariosJSON.user);
-    usuariosJSON.user.push(usuario);
-
-    // Salva o novo banco de dados com o novo usuário no localStorage
-    var usuariosJSON = JSON.parse(localStorage.getItem('db_usuarios'));
 }
 
 function addUser(username, nome, sobrenome, senha, email) {
