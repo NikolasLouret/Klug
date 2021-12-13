@@ -32,6 +32,10 @@ function perfil(data) {
                                     <span><i class="fas fa-envelope"></i> Email</span>
                                     : ${data.email}
                                 </div>
+                                <div id="pontos">
+                                    <span><i class="fas fa-ticket-alt"></i> Pontos</span>
+                                    : ${data.pontos}
+                                </div>
                             </div>
                         </div>`);
 
@@ -42,6 +46,15 @@ function perfil(data) {
         location.classList.add('hidden');
     else if (location.classList.contains('hidden'))
         location.classList.remove('hidden');
+
+
+    const points = document.querySelector('#pontos');
+
+    // Verifica a existência do endereço do usuário. Se não existir, essa informação não aparece no perfil do usuário
+    if ((data.pontos == undefined) || (data.pontos == ''))
+        points.classList.add('hidden');
+    else if (points.classList.contains('hidden'))
+        points.classList.remove('hidden');
 }
 
 function exibePerfil(user) {
@@ -57,7 +70,7 @@ function exibePerfil(user) {
     $('#txt_email').val(email);
 
     // Verifica se o atributo tem alguma informação. Caso contrário, no input para o enderço não é preenchido
-    if ((address != undefined) || (address != null) || (address != ''))
+    if ((address != undefined) && (address != null) && (address != ''))
         $('#txt_address').val(address);
 }
 
