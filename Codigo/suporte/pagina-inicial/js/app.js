@@ -76,7 +76,6 @@ function filtroPerguntas() {
     const inputSearch = document.querySelector('#barra-pesquisa input');
     const filterInput = document.querySelector("#search");
     const filterList = document.querySelector('#historico');
-    const searchButton = document.querySelector("#searchButton");
 
     const filterResults = (results, inputValue, returnMatchedResults) => results
         .filter(result => {
@@ -100,11 +99,6 @@ function filtroPerguntas() {
             })
     }
 
-    const cleanInput = event => {
-        inputSearch.value = "";
-    }
-
-
     const handleInputValue = event => {
         const inputValue = event.target.value.trim().toLowerCase();
         const results = Array.from(filterList.children);
@@ -121,8 +115,6 @@ function filtroPerguntas() {
     })
 
     inputSearch.addEventListener('input', handleInputValue);
-
-    cleanButton.addEventListener('click', cleanInput);
 }
 const btnMobile = document.getElementById('btn-mobile');
 
@@ -184,6 +176,10 @@ function init() {
 
         trocaPonto.classList.add("hidden");
     }
+
+    document.querySelector('#barra-pesquisa').addEventListener('submit', () => {
+        inputSearch.value.toLocaleLowerCase();
+    })
 
     login.addEventListener('click', function() {
         localStorage.setItem('link', JSON.stringify("https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/suporte/perguntas/perguntas.html"));
