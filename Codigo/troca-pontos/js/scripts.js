@@ -1,7 +1,7 @@
 // função que lê os dados do localStorage
 function leDados() {
   // pega os dados do localStorage
-  let strDados = localStorage.getItem("db");
+  let strDados = localStorage.getItem("usuarioCorrente");
   // cria o objeto de dados
   let objDados = {};
 
@@ -72,7 +72,7 @@ function leDados() {
 // função que salva os dados no localStorage
 function salvaDados(dados) {
   // salva os dados passados por parâmetro no localStorage
-  localStorage.setItem("db", JSON.stringify(dados));
+  localStorage.setItem("usuarioCorrente", JSON.stringify(dados));
 }
 
 // função que imprime os dados na tela
