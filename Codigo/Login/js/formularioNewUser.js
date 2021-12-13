@@ -1,17 +1,15 @@
 var link = JSON.parse(localStorage.getItem('link'));
 
 function salvaLogin(event) {
-    event.preventDefault();
-
     let oneTime = true;
     //Faz a verificação individual de cada campo do formulário
     validacaoForm();
 
     // // Verfica se o formulário está preenchido corretamente
-    if ($('#newUserForm')[0].checkValidity()) {
-        // alert('Dados incorretos');
+    if (!$('#newUserForm')[0].checkValidity()) {
+        alert('Dados incorretos');
         event.preventDefault();
-        // return;
+        return;
     }
 
     // Obtem os dados do formulário

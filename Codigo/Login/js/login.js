@@ -79,7 +79,7 @@ function addUser(username, nome, sobrenome, senha, email) {
     var usuariosJSON = JSON.parse(localStorage.getItem('db_usuarios'));
 }
 
-function addUser(username, sobrenome, senha, email) {
+function addUser(username, nome, sobrenome, senha, email) {
     // Cria um objeto de usuario para o novo usuario
     let newId = generateUUID();
     let usuario = {
@@ -89,8 +89,8 @@ function addUser(username, sobrenome, senha, email) {
         senha: senha,
         sobrenome: sobrenome,
         email: email,
-        foto: foto,
-        pontos: pontos,
+        foto: '',
+        pontos: 0,
     };
 
     // Insere o novo objeto no array
