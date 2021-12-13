@@ -46,14 +46,6 @@ function perfil(data) {
         location.classList.add('hidden');
     else if (location.classList.contains('hidden'))
         location.classList.remove('hidden');
-
-    const points = document.querySelector('#pontos');
-
-    // Verifica a existência do endereço do usuário. Se não existir, essa informação não aparece no perfil do usuário
-    if (!data.pontos)
-        points.classList.add('hidden');
-    else if (points.classList.contains('hidden'))
-        points.classList.remove('hidden');
 }
 
 function exibePerfil(user) {
@@ -72,7 +64,8 @@ function exibePerfil(user) {
     if (address != undefined && address != '') {
         console.log("address =", address);
         $('#txt_address').val(address);
-    }
+    } else
+        $('#txt_address').val();
 }
 
 function toggleMenu() {
