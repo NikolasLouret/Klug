@@ -13,7 +13,7 @@ function loadQuestions(user) {
             const questions = db.data[i].question;
 
             // Lista todas as perguntas do localStorage cujo id seja igual ao do usuário logado
-            if (questions && questions.length) {
+            if (questions) {
                 if (user != undefined) {
                     if (user.id == questions.id) {
                         $(".questContent").append(`<li class="perguntaLinha-${i}" id="${questions.id}">
@@ -41,19 +41,11 @@ function loadQuestions(user) {
                     }
                 }
 
-            } else {
-                if (oneTime) {
-                    const tituloPergs = document.querySelector('.perg');
-                    const mnsgPergs = document.createElement('p');
-                    mnsgPergs.className = 'mnsgemRepos';
-                    mnsgPergs.innerText = 'Você não tem perguntas';
-
-                    tituloPergs.appendChild(mnsgPergs);
-                    oneTime = false;
-                }
             }
         }
-    } else {
+    }
+
+    if (!quantQuestions) {
         const tituloPergs = document.querySelector('.perg');
         const mnsgPergs = document.createElement('p');
         mnsgPergs.className = 'mnsgemRepos';
@@ -78,7 +70,7 @@ function loadAnswers(user) {
             const resps = db.data[i].resp;
 
             // Lista todas as respostas de todas as perguntas do localStorage cujo id seja igual ao do usuário logado
-            if (resps && resps.length) {
+            if (resps) {
                 if (user != undefined) {
                     for (var j = 0; j < resps.length; j++) {
                         if (user.id == resps[j].respId) {
@@ -95,19 +87,11 @@ function loadAnswers(user) {
                         }
                     }
                 }
-            } else {
-                if (oneTime) {
-                    const tituloResps = document.querySelector('.resps');
-                    const mnsgResps = document.createElement('p');
-                    mnsgResps.className = 'mnsgemRepos';
-                    mnsgResps.innerText = 'Você não tem respostas';
-
-                    tituloResps.appendChild(mnsgResps);
-                    oneTime = false;
-                }
             }
         }
-    } else {
+    }
+
+    if (!quantResps) {
         const tituloResps = document.querySelector('.resps');
         const mnsgResps = document.createElement('p');
         mnsgResps.className = 'mnsgemRepos';

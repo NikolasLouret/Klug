@@ -118,10 +118,12 @@ function insertPergunta(userId, pergunta) {
 
     // Adiciona os pontos por fazer uma pergunta no JSON do usuário
     usuariosJSON.user[index].pontos += PNTS_Pergunta;
+    user.pontos += PNTS_Pergunta;
 
     // Atualiza os dados no Local Storage
     localStorage.setItem('db_quests', JSON.stringify(db));
     localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
+    localStorage.setItem('usuarioCorrente', JSON.stringify(user));
 
     // Limpa o formulario
     $("#form-perguntas")[0].reset();
@@ -147,10 +149,12 @@ function insertResp(classNome, resposta, userId, newDate) {
 
     // Adiciona os pontos por responder uma pergunta no JSON do usuário
     usuariosJSON.user[index].pontos += PNTS_Resposta;
+    user.pontos += PNTS_Resposta;
 
     // Atualiza os dados no Local Storage
     localStorage.setItem('db_quests', JSON.stringify(db));
     localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
+    localStorage.setItem('usuarioCorrente', JSON.stringify(user));
 
     // Limpa o formulario
     $("#form-addresposta-modal")[0].reset();
@@ -194,10 +198,12 @@ function deletePergunta(classNome) {
 
     // Subtrai os pontos por apagar uma pergunta no JSON do usuário
     usuariosJSON.user[index].pontos -= PNTS_Pergunta;
+    user.pontos -= PNTS_Pergunta;
 
     // Atualiza os dados no Local Storage
     localStorage.setItem('db_quests', JSON.stringify(db));
     localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
+    localStorage.setItem('usuarioCorrente', JSON.stringify(user));
 }
 
 function deleteResp(classNome, respId) {
@@ -212,8 +218,10 @@ function deleteResp(classNome, respId) {
 
     // Subtrai os pontos por apagar uma resposta no JSON do usuário
     usuariosJSON.user[index].pontos -= PNTS_Resposta;
+    user.pontos -= PNTS_Resposta;
 
     // Atualiza os dados no Local Storage
     localStorage.setItem('db_quests', JSON.stringify(db));
     localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
+    localStorage.setItem('usuarioCorrente', JSON.stringify(user));
 }

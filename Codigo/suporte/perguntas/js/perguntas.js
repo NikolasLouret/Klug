@@ -133,6 +133,8 @@ const addResposta = (substring) => {
 
         loadAnswers(substring);
     }
+
+    console.log(user.pontos)
 }
 
 function editarResp(classNome, respId) {
@@ -232,6 +234,8 @@ function apagarResp(classNome, respId) {
             lineAnswer[i].className = `resposta-${i}`;
         }
     }
+
+    console.log(user.pontos)
 }
 
 function editarModal() {
@@ -368,6 +372,8 @@ $(document).ready(function() {
     btnAddQuestion.addEventListener('click', function() {
         $("#inputNome").val(userLogin.nome);
     })
+
+    console.log(user.pontos)
 })
 
 function deleteParamsUrl() {
