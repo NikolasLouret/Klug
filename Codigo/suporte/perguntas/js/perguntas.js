@@ -360,7 +360,7 @@ $(document).ready(function() {
     }
 
     login.addEventListener('click', function() {
-        localStorage.setItem('link', JSON.stringify("../suporte/perguntas/perguntas.html"));
+        localStorage.setItem('link', JSON.stringify("../../suporte/perguntas/perguntas.html"));
     })
 
     const btnAddQuestion = document.querySelector('#adicionar_mais');
