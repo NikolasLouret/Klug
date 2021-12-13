@@ -126,19 +126,6 @@ function criarRota() {
     }
 }
 
-map.on('load', () => {
-    /* Add the data to your map as a layer */
-    map.addSource('places', {
-        type: 'geojson',
-        data: stores
-    });
-    addMarkers();
-
-    $('.mapboxgl-canvas, #closeMobile').on('click', function() { hideMenuLateral() })
-
-    $('#criarRota').on('click', function() { criarRota() });
-});
-
 // função que recarrega a página, feita assim para não entrar no loop de recarregar
 function recarregaPagina() {
     // confere se consegue acessar o localStorage
