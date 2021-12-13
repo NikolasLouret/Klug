@@ -16,7 +16,7 @@ $(document).ready(function() {
     }
 
     login.addEventListener('click', function() {
-        localStorage.setItem('link', JSON.stringify("./add-endereco/index.html"));
+        localStorage.setItem('link', JSON.stringify("../add-endereco/index.html"));
     })
 })
 
