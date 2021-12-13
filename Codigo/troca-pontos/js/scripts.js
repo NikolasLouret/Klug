@@ -5,7 +5,7 @@ function leDados() {
   // cria o objeto de dados
   let dadosUser = {};
 
-  let produtosTrocas = [
+  let produtosTroca = [
     {
       imagem: "./imgs/cinema.jpg",
       titulo: "R$ 5,00 de desconto em cinemas",
@@ -101,13 +101,13 @@ function imprimeDados() {
   pontosUsuarios.innerHTML = `${dadosUser.pontos} pontos`;
 
   // executa item por item e salva dentro da variável
-  for (let i = 0; i < dadosUser.produtosTrocas.length; i++) {
+  for (let i = 0; i < produtosTroca.length; i++) {
     conteudoTroca += `
             <article class="item">
-              <img src=${dadosUser.produtosTrocas[i].imagem} alt="Imagem ilustrativa">
-              <span>${dadosUser.produtosTrocas[i].titulo}</span>
-              <p>${dadosUser.produtosTrocas[i].descricao}</p>
-              <span>Preço: ${dadosUser.produtosTrocas[i].preco} pontos</span>
+              <img src=${produtosTroca[i].imagem} alt="Imagem ilustrativa">
+              <span>${produtosTroca[i].titulo}</span>
+              <p>${produtosTroca[i].descricao}</p>
+              <span>Preço: ${produtosTroca[i].preco} pontos</span>
               <button id="button">Trocar</button>
               </article>
     `;
