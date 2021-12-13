@@ -2,31 +2,33 @@
 const LOGIN_URL = "login.html";
 
 // função para gerar códigos randômicos a serem utilizados como código de usuário
-function generateUUID() { // Public Domain/MIT
+function generateUUID() {
+    // Public Domain/MIT
     var d = new Date().getTime(); //Timestamp
-    var d2 = (performance && performance.now && (performance.now() * 1000)) || 0; //Time in microseconds since page-load or 0 if unsupported
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var d2 = (performance && performance.now && performance.now() * 1000) || 0; //Time in microseconds since page-load or 0 if unsupported
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
         var r = Math.random() * 16; //random number between 0 and 16
-        if (d > 0) { //Use timestamp until depleted
+        if (d > 0) {
+            //Use timestamp until depleted
             r = (d + r) % 16 | 0;
             d = Math.floor(d / 16);
-        } else { //Use microseconds since page-load if supported
+        } else {
+            //Use microseconds since page-load if supported
             r = (d2 + r) % 16 | 0;
             d2 = Math.floor(d2 / 16);
         }
-        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
     });
 }
 
 var usuarioCorrente = JSON.parse(localStorage.getItem('usuarioCorrente'));
 if (!usuarioCorrente)
-    usuarioCorrente = { "id": "", "username": "", "nome": "", "sobrenome": "", "senha": "", "email": "", "endereco": "", "pnts": 0 };
+    usuarioCorrente = { "id": "", "username": "", "nome": "", "sobrenome": "", "senha": "", "email": "", "endereco": "", "pontos": 0 };
 
 // Obtem a string JSON com os dados de usuários a partir do localStorage
 var usuariosJSON = JSON.parse(localStorage.getItem('db_usuarios'));
 if (!usuariosJSON) {
-    usuariosJSON = { "user": [{ "id": "", "username": "", "nome": "", "sobrenome": "", "senha": "", "email": "", "endereco": "", "pnts": 0 }] };
-    localStorage.setItem('db_usuarios', JSON.stringify(usuarios));
+    usuariosJSON = { "user": [{ "id": "", "username": "", "nome": "", "sobrenome": "", "senha": "", "email": "", "endereco": "", "pontos": 0 }] };
 }
 
 // Verifica se o login do usuário está ok e, se positivo, direciona para a página inicial
@@ -44,10 +46,10 @@ function loginUser(username, senha) {
             usuarioCorrente.email = usuario.email;
             usuarioCorrente.senha = usuario.senha;
             usuarioCorrente.endereco = usuario.endereco;
-            usuarioCorrente.pnts = usuario.pnts;
+            usuarioCorrente.pontos = usuario.pontos;
 
             // Salva os dados do usuário corrente no Session Storage, mas antes converte para string
-            localStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
+            localStorage.setItem("usuarioCorrente", JSON.stringify(usuarioCorrente));
 
             // Retorna true para usuário encontrado
             return true;
@@ -60,14 +62,14 @@ function loginUser(username, senha) {
 // Apaga os dados do usuário corrente no sessionStorage
 function logoutUser() {
     usuarioCorrente = {};
-    localStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
+    localStorage.setItem("usuarioCorrente", JSON.stringify(usuarioCorrente));
     window.location.href = LOGIN_URL;
 }
 
 function addUser(username, nome, sobrenome, senha, email) {
     // Cria um objeto de usuario para o novo usuario 
     let newId = generateUUID();
-    let usuario = { "id": newId, "username": username, "nome": nome, "senha": senha, "sobrenome": sobrenome, "email": email, "pnts": 0 };
+    let usuario = { "id": newId, "username": username, "nome": nome, "senha": senha, "sobrenome": sobrenome, "email": email, "pontos": 0 };
 
     // Insere o novo objeto no array
     console.log(usuariosJSON.user);
@@ -75,4 +77,25 @@ function addUser(username, nome, sobrenome, senha, email) {
 
     // Salva o novo banco de dados com o novo usuário no localStorage
     var usuariosJSON = JSON.parse(localStorage.getItem('db_usuarios'));
+}
+
+function addUser(username, sobrenome, senha, email) {
+    // Cria um objeto de usuario para o novo usuario
+    let newId = generateUUID();
+    let usuario = {
+        id: newId,
+        username: username,
+        nome: nome,
+        senha: senha,
+        sobrenome: sobrenome,
+        email: email,
+        foto: foto,
+        pontos: pontos,
+    };
+
+    // Insere o novo objeto no array
+    usuariosJSON.user.push(usuario);
+
+    // Salva o novo banco de dados com o novo usuário no localStorage
+    localStorage.setItem("db_usuarios", JSON.stringify(usuariosJSON));
 }
