@@ -30,7 +30,7 @@ body {
   width: 100%;
   padding: 15px 15%;
   margin: 0 auto;
-  /* position: absolute; */
+  position: absolute;
   top: 0;
   display: flex;
   align-items: center;
@@ -109,6 +109,7 @@ header .container-header {
   flex-direction: row;
   align-items: center;
   padding: 1rem;
+  margin-top: 3.5rem;
 
   background-color: #fbd133;
   color: var(--bg);
@@ -231,7 +232,7 @@ footer.footer-container {
   .header {
     padding: 15px 5% !important;
     margin: 0;
-    /* position: fixed; */
+    position: fixed;
     background: linear-gradient(
       -45deg,
       rgb(88, 195, 255) 0,
