@@ -195,5 +195,15 @@ function verificaSaldo(dados, botoes) {
   }
 }
 
+function toggleMenu() {
+  const nav = document.getElementById("nav");
+  const main = document.querySelector(".main");
+  const footer = document.querySelector(".footer");
+
+  nav.classList.toggle('active');
+  main.classList.toggle('active');
+  footer.classList.toggle('active');
+}
+
 // quando todos os itens da tela terminas de ser carregados, chama a função imprimeDados
 window.addEventListener("load", imprimeDados);
