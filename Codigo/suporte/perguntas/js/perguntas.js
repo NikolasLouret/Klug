@@ -95,7 +95,7 @@ function addPergunta() {
         insertPergunta(userLogin.id, pergunta);
 
         //Recarregar a página
-        location.reload();
+        deleteParamsUrl();
     }
 }
 
@@ -197,7 +197,7 @@ function alterarPergunta(classNome) {
     updatePergunta(id, pergunta);
 
     // Recarregar a página
-    location.reload();
+    deleteParamsUrl();
 }
 
 function apagarPergunta() {
@@ -209,7 +209,7 @@ function apagarPergunta() {
     }
 
     // Recarregar a página
-    location.reload();
+    deleteParamsUrl();
 }
 
 function apagarResp(classNome, respId) {
@@ -369,3 +369,9 @@ $(document).ready(function() {
         $("#inputNome").val(userLogin.nome);
     })
 })
+
+function deleteParamsUrl() {
+    var url = window.location.href;
+    url = url.split(/[?#]/)[0];
+    window.location.replace(url);
+}

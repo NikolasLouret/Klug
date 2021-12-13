@@ -190,7 +190,7 @@ function deletePergunta(classNome) {
     db.data.splice(id, 1);
 
     // Identifica a posição do JSON do usuário logado
-    let index = usuariosJSON.user.map(obj => obj.id).indexOf(userId);
+    let index = usuariosJSON.user.map(obj => obj.id).indexOf(user.id);
 
     // Subtrai os pontos por apagar uma pergunta no JSON do usuário
     usuariosJSON.user[index].pontos -= PNTS_Pergunta;
@@ -208,7 +208,7 @@ function deleteResp(classNome, respId) {
     resposta.splice(id, 1);
 
     // Identifica a posição do JSON do usuário logado
-    let index = usuariosJSON.user.map(obj => obj.id).indexOf(userId);
+    let index = usuariosJSON.user.map(obj => obj.id).indexOf(user.id);
 
     // Subtrai os pontos por apagar uma resposta no JSON do usuário
     usuariosJSON.user[index].pontos -= PNTS_Resposta;
