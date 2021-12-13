@@ -39,7 +39,7 @@ $(document).ready(function() {
     const btnSalvar = document.querySelector('#salvarLink');
 
     if (link == '' || link == null)
-        btnSalvar.setAttribute('href', "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/rotas/rotas.html");
+        btnSalvar.setAttribute('href', "../rotas/rotas.html");
 
     // Associa a funçao processaFormLogin  formulário adicionado um manipulador do evento submit
     document.getElementById('btn_salvar').onclick = salvaLogin;
