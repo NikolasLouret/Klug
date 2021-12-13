@@ -49,13 +49,14 @@ function leDados() {
   } else {
     // caso não tenha, cria o próprio objeto com os dados
     dadosUser = {
-      usuario: [
-        {
-          nome: "Nícolas Carneiro",
-          foto: "https://www.placecage.com/300/300",
-          pontos: 600,
-        },
-      ],
+      email: "nickzada@gmail.com",
+      id: "977d97ac-890b-4e20-88c5-902580136c81",
+      nome: "Nícolas",
+      pontos: 600,
+      senha: "12345678",
+      sobrenome: "Carneiro",
+      username: "admin1234",
+      foto: "https://www.placecage.com/300/300"
     };
   }
 
