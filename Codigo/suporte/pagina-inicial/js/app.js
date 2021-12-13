@@ -182,6 +182,6 @@ function init() {
     })
 
     login.addEventListener('click', function() {
-        localStorage.setItem('link', JSON.stringify("../../suporte/perguntas/perguntas.html"));
+        localStorage.setItem('link', JSON.stringify("../suporte/perguntas/perguntas.html"));
     })
 }
