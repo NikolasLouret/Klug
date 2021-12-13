@@ -1,5 +1,5 @@
 const LOGIN_URL = "../../Login/login.html";
-const PERFIL_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/perfil/perfilPrincipal.html";
+const PERFIL_URL = "../../perfil/perfilPrincipal.html";
 var userLogin = JSON.parse(localStorage.getItem('usuarioCorrente'));
 
 function validacaoForm() {
