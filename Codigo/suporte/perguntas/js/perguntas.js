@@ -346,7 +346,7 @@ $(document).ready(function() {
     localStorage.setItem('link', JSON.stringify(""));
 
     const login = document.querySelector('#loginProfile');
-    const trocaPonto = document.querySelector('#loginTrocaPonto');
+    const trocaPonto = document.querySelector('#lineTrocaPontos');
 
     // Se o usuário não estiver logado, no menu aparecerá a palavra "Entrar"
     if (userLogin != undefined) {
