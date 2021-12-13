@@ -14,7 +14,7 @@ function processaFormLogin(event) {
     if (!$('#loginForm')[0].checkValidity()) {
         if (username.length <= 8 || username.length >= 25)
             alert('Nome de usuário menor que 8 caracteres');
-        else if (password.length <= 8 || password.length >= 15)
+        else if (password.length <= 8 || password;.length >= 15)
             alert('Senha menor que 8 caracteres');
         else
             alert('Dados incorretos');
