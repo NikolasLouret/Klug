@@ -228,9 +228,7 @@ function updateSenha(data) {
         usuariosJSON.user[index].sobrenome = data.sobrenome,
         usuariosJSON.user[index].address = data.address,
         usuariosJSON.user[index].email = data.email,
-        usuariosJSON.user[index].senha = data.senha,
-        usuariosJSON.user[index].foto = data.foto,
-        usuariosJSON.user[index].pontos = data.pontos;
+        usuariosJSON.user[index].senha = data.senha
 
     const perfilCorrente = {};
     localStorage.setItem('usuarioCorrente', JSON.stringify(perfilCorrente));
