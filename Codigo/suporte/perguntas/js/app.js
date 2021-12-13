@@ -82,14 +82,20 @@ var db_perguntas = {
     ]
 }
 
+// Define a pontuação que o usuário irá ganhar ao adicionar uma pergunta ou resposta. Caso elas sejam apagadas, o usuário perderá esses pontos
+const PNTS_Pergunta = 25;
+const PNTS_Resposta = 15;
+
 // Caso os dados já estejam no Local Storage, caso contrário, carrega os dados iniciais
-var db = JSON.parse(localStorage.getItem('db_quests'));
+const db = JSON.parse(localStorage.getItem('db_quests'));
 if (!db) {
     db = db_perguntas;
     localStorage.setItem('db_quests', JSON.stringify(db));
 }
 
-var user = JSON.parse(localStorage.getItem('usuarioCorrente'));
+// Atribuir os dados do usuários à variáveis para manipulação
+const user = JSON.parse(localStorage.getItem('usuarioCorrente'));
+const usuariosJSON = JSON.parse(localStorage.getItem('db_usuarios'));
 
 function insertPergunta(userId, pergunta) {
     let novaPergunta = {
@@ -103,11 +109,27 @@ function insertPergunta(userId, pergunta) {
         "resp": []
     }
 
+    let index = usuariosJSON.user.map(obj => obj.id).indexOf(userId);
+    console.log(index)
+
+    const userCadastro = usuariosJSON.user[index];
+
+    var pntsAtual = userCadastro.pnts;
+
+    let pnts = {
+        "pontos": pntsAtual + PNTS_Pergunta
+    }
+
+    const teste = JSON.parse(localStorage.getItem('db_usuarios').user[index]);
+    console.log(teste)
+
     // Insere o novo objeto no array
-    db.data.push(novaPergunta);
+    // db.data.push(novaPergunta);
+
 
     // Atualiza os dados no Local Storage
-    localStorage.setItem('db_quests', JSON.stringify(db));
+    // localStorage.setItem('db_quests', JSON.stringify(db));
+    // localStorage.setItem(localStorage.getItem('db_usuarios'), JSON.stringify(pnts));
 
     // Limpa o formulario
     $("#form-perguntas")[0].reset();

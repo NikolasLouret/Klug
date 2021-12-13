@@ -23,7 +23,7 @@ function processaFormLogin(event) {
         if (!resultadoLogin) {
             // Cancela a submissão do formulário para tratar sem fazer refresh da tela
             event.preventDefault();
-            displayMessage('Usuário ou senha incorretos');
+            alert('Nome de usuário ou senha incorretos');
         }
     }
 }

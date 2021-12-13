@@ -18,29 +18,33 @@ function generateUUID() { // Public Domain/MIT
     });
 }
 
-usuarioCorrente = JSON.parse(localStorage.getItem('usuarioCorrente'));
+var usuarioCorrente = JSON.parse(localStorage.getItem('usuarioCorrente'));
 if (!usuarioCorrente)
-    usuarioCorrente = { "id": "", "nome": "", "sobrenome": "", "senha": "", "email": "", "endereco": "" };
+    usuarioCorrente = { "id": "", "username": "", "nome": "", "sobrenome": "", "senha": "", "email": "", "endereco": "", "pnts": 0 };
 
 // Obtem a string JSON com os dados de usuários a partir do localStorage
 var usuariosJSON = JSON.parse(localStorage.getItem('db_usuarios'));
-if (!usuariosJSON)
-    usuariosJSON = { "user": [{ "id": "", "nome": "", "sobrenome": "", "senha": "", "email": "", "endereco": "" }] };
+if (!usuariosJSON) {
+    usuariosJSON = { "user": [{ "id": "", "username": "", "nome": "", "sobrenome": "", "senha": "", "email": "", "endereco": "", "pnts": 0 }] };
+    localStorage.setItem('db_usuarios', JSON.stringify(usuarios));
+}
 
 // Verifica se o login do usuário está ok e, se positivo, direciona para a página inicial
-function loginUser(nome, senha) {
+function loginUser(username, senha) {
     // Para localizar o usuário informado no formulario de login
     for (var i = 0; i < usuariosJSON.user.length; i++) {
         var usuario = usuariosJSON.user[i];
 
         // Se encontrou login, carrega usuário corrente e salva no Session Storage
-        if (nome == usuario.nome && senha == usuario.senha) {
+        if (username == usuario.username && senha == usuario.senha) {
             usuarioCorrente.id = usuario.id;
+            usuarioCorrente.username = usuario.username;
             usuarioCorrente.nome = usuario.nome;
             usuarioCorrente.sobrenome = usuario.sobrenome;
             usuarioCorrente.email = usuario.email;
             usuarioCorrente.senha = usuario.senha;
             usuarioCorrente.endereco = usuario.endereco;
+            usuarioCorrente.pnts = usuario.pnts;
 
             // Salva os dados do usuário corrente no Session Storage, mas antes converte para string
             localStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
@@ -60,14 +64,15 @@ function logoutUser() {
     window.location.href = LOGIN_URL;
 }
 
-function addUser(nome, sobrenome, senha, email) {
+function addUser(username, nome, sobrenome, senha, email) {
     // Cria um objeto de usuario para o novo usuario 
     let newId = generateUUID();
-    let usuario = { "id": newId, "nome": nome, "senha": senha, "sobrenome": sobrenome, "email": email };
+    let usuario = { "id": newId, "username": username, "nome": nome, "senha": senha, "sobrenome": sobrenome, "email": email, "pnts": 0 };
 
     // Insere o novo objeto no array
+    console.log(usuariosJSON.user);
     usuariosJSON.user.push(usuario);
 
     // Salva o novo banco de dados com o novo usuário no localStorage
-    localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
+    var usuariosJSON = JSON.parse(localStorage.getItem('db_usuarios'));
 }

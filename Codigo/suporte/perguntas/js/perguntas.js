@@ -95,7 +95,7 @@ function addPergunta() {
         insertPergunta(userLogin.id, pergunta);
 
         //Recarregar a página
-        location.reload();
+        // location.reload();
     }
 }
 
@@ -341,7 +341,8 @@ $(document).ready(function() {
     // Função que captura o parâmetro 'search' da url para ser utilizada na filtragem das perguntas
     const urlParams = new URLSearchParams(window.location.search);
     const searchParam = urlParams.get('search');
-    filtroPerguntas(searchParam.toLocaleLowerCase());
+    if (searchParam)
+        filtroPerguntas(searchParam.toLocaleLowerCase());
 
     localStorage.setItem('link', JSON.stringify(""));
 
