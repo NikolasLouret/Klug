@@ -1,4 +1,4 @@
-const PERFIL_URL = "https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/perfil/perfilPrincipal.html";
+const PERFIL_URL = "../perfil/perfilPrincipal.html";
 var link = JSON.parse(localStorage.getItem('link'));
 
 // Declara uma função para processar o formulário de login
