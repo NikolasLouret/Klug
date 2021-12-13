@@ -1,7 +1,7 @@
 // função que lê os dados do localStorage
 function leDados() {
   // pega os dados do localStorage
-  let strDados = localStorage.getItem("usuarioCorrente");
+  let strDados = localStorage.getItem("db");
   // cria o objeto de dados
   let objDados = {};
 
