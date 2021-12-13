@@ -193,17 +193,21 @@ function deletePergunta(classNome) {
     // Deleta todo o Array selecionado
     db.data.splice(id, 1);
 
+    // Atualiza os dados no Local Storage
+    localStorage.setItem('db_quests', JSON.stringify(db));
+
     // Identifica a posição do JSON do usuário logado
     let index = usuariosJSON.user.map(obj => obj.id).indexOf(user.id);
 
     // Subtrai os pontos por apagar uma pergunta no JSON do usuário
-    usuariosJSON.user[index].pontos -= PNTS_Pergunta;
-    user.pontos -= PNTS_Pergunta;
+    if (user.pontos > 0) {
+        usuariosJSON.user[index].pontos -= PNTS_Pergunta;
+        user.pontos -= PNTS_Pergunta;
 
-    // Atualiza os dados no Local Storage
-    localStorage.setItem('db_quests', JSON.stringify(db));
-    localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
-    localStorage.setItem('usuarioCorrente', JSON.stringify(user));
+        // Atualiza os pontos no Local Storage
+        localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
+        localStorage.setItem('usuarioCorrente', JSON.stringify(user));
+    }
 }
 
 function deleteResp(classNome, respId) {
@@ -213,15 +217,19 @@ function deleteResp(classNome, respId) {
     const resposta = db.data[respId].resp;
     resposta.splice(id, 1);
 
+    // Atualiza os dados no Local Storage
+    localStorage.setItem('db_quests', JSON.stringify(db));
+
     // Identifica a posição do JSON do usuário logado
     let index = usuariosJSON.user.map(obj => obj.id).indexOf(user.id);
 
     // Subtrai os pontos por apagar uma resposta no JSON do usuário
-    usuariosJSON.user[index].pontos -= PNTS_Resposta;
-    user.pontos -= PNTS_Resposta;
+    if (user.pontos > 0) {
+        usuariosJSON.user[index].pontos -= PNTS_Resposta;
+        user.pontos -= PNTS_Resposta;
 
-    // Atualiza os dados no Local Storage
-    localStorage.setItem('db_quests', JSON.stringify(db));
-    localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
-    localStorage.setItem('usuarioCorrente', JSON.stringify(user));
+        // Atualiza os pontos no Local Storage
+        localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
+        localStorage.setItem('usuarioCorrente', JSON.stringify(user));
+    }
 }

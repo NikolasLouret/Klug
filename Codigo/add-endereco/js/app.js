@@ -374,7 +374,10 @@ function insertAddress(endereco) {
     // Adiciona os pontos no JSON do usuário por adicionar um novo endereço no mapa
     if (index >= 0) {
         usuariosJSON.user[index].pontos += PNTS_AddAddress;
+        userLogin.pontos += PNTS_AddAddress;
+
         localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
+        localStorage.setItem('usuarioCorrente', JSON.stringify(userLogin));
     }
 }
 
@@ -415,10 +418,14 @@ function deleteAddress(id) {
 
     // Subtrai os pontos no JSON do usuário por apagar uma endereço cadastrado
     if (index >= 0) {
-        usuariosJSON.user[index].pontos -= PNTS_AddAddress;
+        if (userLogin.pontos > 0) {
+            usuariosJSON.user[index].pontos -= PNTS_AddAddress;
+            userLogin.pontos -= PNTS_AddAddress;
 
-        // Atualiza os dados no Local Storage
-        localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
+            // Atualiza os dados no Local Storage
+            localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
+            localStorage.setItem('usuarioCorrente', JSON.stringify(userLogin));
+        }
     }
 
     // Atualiza os dados no Local Storage
