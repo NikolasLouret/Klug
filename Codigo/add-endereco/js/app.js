@@ -260,7 +260,6 @@ function buildLocationInfos(marker, markerId) {
     }
 
     $('#changeInfos').button().click(function() {
-        //console.log("id em descobirirSidebar quando o btn editar foi clicado " + id);
         editarEndereco(markerId.replace("marker-", ""));
     });
 }
@@ -377,8 +376,6 @@ function insertAddress(endereco) {
         usuariosJSON.user[index].pontos += PNTS_AddAddress;
         localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
     }
-
-    console.log(usuariosJSON.user[index].pontos)
 }
 
 function updateAddress(id, endereco) {
@@ -404,8 +401,6 @@ function updateAddress(id, endereco) {
             propertiesIndex.close = endereco.close,
             propertiesIndex.site = endereco.site;
 
-        console.log(propertiesIndex)
-
         // Atualiza os dados no Local Storage
         localStorage.setItem('db_address', JSON.stringify(stores));
     })
@@ -414,8 +409,6 @@ function updateAddress(id, endereco) {
 function deleteAddress(id) {
     //Deleta todo o Array selecionado
     stores.features.splice(id, 1);
-
-    console.log(id)
 
     // Identifica a posição do JSON do usuário logado
     let index = usuariosJSON.user.map(obj => obj.id).indexOf(userLogin.id);
