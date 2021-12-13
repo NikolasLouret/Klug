@@ -101,7 +101,7 @@ function adicionarEndereco() {
         insertAddress(infos);
 
         //Recarregar a página
-        // location.reload();
+        location.reload();
     }
 }
 
@@ -150,7 +150,7 @@ function apagarEndereco() {
     deleteAddress(sidebarId.replace("sidebar-", ""));
 
     // Recarregar a página
-    // location.reload();
+    location.reload();
 }
 
 function editarEndereco(id) {
