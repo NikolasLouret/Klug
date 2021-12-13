@@ -101,7 +101,7 @@ function adicionarEndereco() {
         insertAddress(infos);
 
         //Recarregar a página
-        location.reload();
+        // location.reload();
     }
 }
 
@@ -146,11 +146,11 @@ function alterarEndereco() {
 function apagarEndereco() {
     const sidebarId = document.querySelector('.sidebar').id;
 
-    //Apaga os dados da pergunta no banco de dados
+    // Apaga os dados da pergunta no banco de dados
     deleteAddress(sidebarId.replace("sidebar-", ""));
 
-    //Recarregar a página
-    location.reload();
+    // Recarregar a página
+    // location.reload();
 }
 
 function editarEndereco(id) {

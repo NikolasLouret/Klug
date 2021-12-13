@@ -89,6 +89,7 @@ if (!stores)
     stores = db_stores;
 
 var userLogin = JSON.parse(localStorage.getItem('usuarioCorrente'));
+var usuariosJSON = JSON.parse(localStorage.getItem('db_usuarios'));
 
 /* Assign a unique ID to each store */
 stores.features.forEach(function(store, i) {
@@ -332,6 +333,8 @@ const searchAddressEdit = async function() {
     return data;
 }
 
+const PNTS_AddAddress = 50;
+
 function insertAddress(endereco) {
     const data = searchAddress();
     data.then(function(result) {
@@ -365,6 +368,17 @@ function insertAddress(endereco) {
         // Atualiza os dados no Local Storage
         localStorage.setItem('db_address', JSON.stringify(stores));
     })
+
+    // Identifica a posição do JSON do usuário logado
+    let index = usuariosJSON.user.map(obj => obj.id).indexOf(userLogin.id);
+
+    // Adiciona os pontos no JSON do usuário por adicionar um novo endereço no mapa
+    if (index >= 0) {
+        usuariosJSON.user[index].pontos += PNTS_AddAddress;
+        localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
+    }
+
+    console.log(usuariosJSON.user[index].pontos)
 }
 
 function updateAddress(id, endereco) {
@@ -401,8 +415,22 @@ function deleteAddress(id) {
     //Deleta todo o Array selecionado
     stores.features.splice(id, 1);
 
+    console.log(id)
+
+    // Identifica a posição do JSON do usuário logado
+    let index = usuariosJSON.user.map(obj => obj.id).indexOf(userLogin.id);
+
+    // Subtrai os pontos no JSON do usuário por apagar uma endereço cadastrado
+    if (index >= 0) {
+        usuariosJSON.user[index].pontos -= PNTS_AddAddress;
+
+        // Atualiza os dados no Local Storage
+        localStorage.setItem('db_usuarios', JSON.stringify(usuariosJSON));
+    }
+
     // Atualiza os dados no Local Storage
     localStorage.setItem('db_address', JSON.stringify(stores));
+
 }
 
 function toggleSidebar() {
