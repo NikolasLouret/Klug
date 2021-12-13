@@ -30,6 +30,8 @@ if (!usuarioCorrente)
     senha: "",
     email: "",
     endereco: "",
+    foto: "",
+    pontos: 200,
   };
 
 // Obtem a string JSON com os dados de usuários a partir do localStorage
@@ -37,7 +39,16 @@ var usuariosJSON = JSON.parse(localStorage.getItem("db_usuarios"));
 if (!usuariosJSON)
   usuariosJSON = {
     user: [
-      { id: "", nome: "", sobrenome: "", senha: "", email: "", endereco: "" },
+      {
+        id: "",
+        nome: "",
+        sobrenome: "",
+        senha: "",
+        email: "",
+        endereco: "",
+        foto: "",
+        pontos: 200,
+      },
     ],
   };
 
@@ -55,6 +66,8 @@ function loginUser(nome, senha) {
       usuarioCorrente.email = usuario.email;
       usuarioCorrente.senha = usuario.senha;
       usuarioCorrente.endereco = usuario.endereco;
+      usuarioCorrente.foto = usuario.foto;
+      usuarioCorrente.pontos = usuario.pontos;
 
       // Salva os dados do usuário corrente no Session Storage, mas antes converte para string
       localStorage.setItem("usuarioCorrente", JSON.stringify(usuarioCorrente));
