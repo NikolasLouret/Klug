@@ -95,7 +95,7 @@ function addPergunta() {
         insertPergunta(userLogin.id, pergunta);
 
         //Recarregar a página
-        // location.reload();
+        location.reload();
     }
 }
 
