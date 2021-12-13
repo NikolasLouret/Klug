@@ -115,7 +115,7 @@ $(document).ready(function() {
     }
 
     login.addEventListener('click', function() {
-        localStorage.setItem('link', JSON.stringify("https://icei-puc-minas-pples-ti.github.io/PLF-ES-2021-2-TI1-7924100-rotas-gps-1/Codigo/add-enderecos/index.html"));
+        localStorage.setItem('link', JSON.stringify("../add-enderecos/index.html"));
     })
 
     btnMobile.onclick = () => {
